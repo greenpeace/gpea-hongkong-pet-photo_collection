@@ -1,8 +1,29 @@
+import React, {useEffect} from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import axios from "axios"
 
 export default function Home() {
+
+  const openWidget = () => {
+    window.cloudinary.createUploadWidget(
+      {
+        cloudName: 'idt',
+        uploadPreset: 'quocv8wr',
+      },
+      (error, { event, info }) => {
+        if (event === 'success') {
+          console.log('event-',event)
+          // this.setState({
+          //   imageUrl: info.secure_url,
+          //   imageAlt: `An image of ${info.original_filename}`
+          // })
+        }
+      },
+    ).open();
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -40,15 +61,12 @@ export default function Home() {
             <p>Discover and deploy boilerplate example Next.js projects.</p>
           </a>
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+          <div className={styles.card} onClick={()=>openWidget()} style={{'cursor': 'pointer'}}>
+            <h2>Upload &rarr;</h2>
+            <p >
+              Open Cloudinary upload widget
             </p>
-          </a>
+          </div>
         </div>
       </main>
 
