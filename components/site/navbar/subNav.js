@@ -46,6 +46,9 @@ export default function withAction() {
               </Center>
             </HStack>
           </HStack>
+          <Center>
+            <Text color={'gray.500'} fontSize={14}>{`<- List filter ->`}</Text>
+          </Center>
           <Flex alignItems={'center'}>
             <Text color={'gray.500'} fontSize={14}>搜尋全部</Text>
           </Flex>
