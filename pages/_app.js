@@ -1,4 +1,4 @@
-// import '/styles/globals.scss'
+import '/styles/globals.scss'
 import React from "react";
 import { ChakraProvider } from "@chakra-ui/react"
 import { wrapper } from "store/configureStore"

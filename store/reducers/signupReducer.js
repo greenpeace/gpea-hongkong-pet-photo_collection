@@ -17,20 +17,20 @@ const signupReducer = (state = initState, action) => {
 
   switch (action.type) {
     
-    case signupActions.CREATE_CUSTOMER:
+    case signupActions.CREATE_USER:
       return {
         ...state,
         lastAction: action.type
     }
 
-    case signupActions.CREATE_CUSTOMER_FAIL:
+    case signupActions.CREATE_USER_FAIL:
       return {
         ...state,
         data: action.data,
         lastAction: action.type
     }
 
-    case signupActions.CREATE_CUSTOMER_SUCCESS:
+    case signupActions.CREATE_USER_SUCCESS:
       return {
         ...state,
         data: action.data,
@@ -44,12 +44,6 @@ const signupReducer = (state = initState, action) => {
         lastAction: null
     }
 
-    case signupActions.SIGNUP_SET_TYPE:
-      return {
-        ...state,
-        type: action.value,
-        lastAction: action.type
-    }
 
     case signupActions.SIGNUP_FORM_SET:
       return {

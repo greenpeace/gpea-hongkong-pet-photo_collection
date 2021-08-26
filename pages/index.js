@@ -2,16 +2,13 @@ import React from "react";
 import Wrapper from "components/site/wrapper";
 import ListItems from "components/list/items";
 import {
-  Box,
-  useDisclosure,
+  Box
 } from "@chakra-ui/react";
 
 export default function Index() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
   return (
     <Box>
-      {/* <ListItems/> */}
+      <ListItems/>
     </Box>
   );
 }

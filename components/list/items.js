@@ -5,13 +5,15 @@ import {
   Heading,
   Image,
 } from "@chakra-ui/react";
+import { connect } from "react-redux";
+import * as modalActions from 'store/actions/action-types/modal-actions'
 
-export default function Index() {
+function Index({openModal}) {
   return (
     <Box gridColumn={"-moz-initial"} p={4}>
         <Box className="masonry">
-          {/* {[...Array(6)].map((d, i) => (
-            <Box className="grid" key={i}>
+          {[...Array(12)].map((d, i) => (
+            <Box className="grid" key={i} onClick={()=>openModal()}>
               <Image
                 src={`https://source.unsplash.com/random/${
                   Math.random() * 100
@@ -29,8 +31,18 @@ export default function Index() {
                 </Box>
               </Box>
             </Box>
-          ))} */}
+          ))}
         </Box>
       </Box>
   );
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    openModal: () => {
+      dispatch({ type: modalActions.OPEN_MODAL });
+    }
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Index);
