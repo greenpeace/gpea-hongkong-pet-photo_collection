@@ -3,29 +3,15 @@ import Wrapper from "components/site/wrapper";
 import ListItems from "components/list/items";
 import {
   Box,
-  Text,
-  Heading,
   useDisclosure,
-  Image,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  Lorem,
-  Button,
 } from "@chakra-ui/react";
-
-
 
 export default function Index() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Box>
-      <ListItems/>
+      {/* <ListItems/> */}
     </Box>
   );
 }

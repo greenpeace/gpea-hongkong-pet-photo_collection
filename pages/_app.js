@@ -1,9 +1,11 @@
+// import '/styles/globals.scss'
 import React from "react";
-import '/styles/globals.scss'
 import { ChakraProvider } from "@chakra-ui/react"
+import { wrapper } from "store/configureStore"
 import theme from "components/site/theme"
 
 const MyApp = ({ Component, pageProps }) => {
+
   const getLayout = Component.getLayout || ((page) => page)
   return (
     <ChakraProvider theme={theme}>
@@ -12,4 +14,4 @@ const MyApp = ({ Component, pageProps }) => {
   )
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);

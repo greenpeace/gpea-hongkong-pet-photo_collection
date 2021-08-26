@@ -10,7 +10,7 @@ export default function Index() {
   return (
     <Box gridColumn={"-moz-initial"} p={4}>
         <Box className="masonry">
-          {[...Array(36)].map((d, i) => (
+          {/* {[...Array(6)].map((d, i) => (
             <Box className="grid" key={i}>
               <Image
                 src={`https://source.unsplash.com/random/${
@@ -29,7 +29,7 @@ export default function Index() {
                 </Box>
               </Box>
             </Box>
-          ))}
+          ))} */}
         </Box>
       </Box>
   );

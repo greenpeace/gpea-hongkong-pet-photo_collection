@@ -1,18 +1,10 @@
 import Head from 'next/head'
 import {
   Box,
-  Text,
-  Heading,
   useDisclosure,
-  Image,
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  Lorem,
   Button,
 } from "@chakra-ui/react";
 import Nav from "components/site/navbar/nav";
@@ -35,7 +27,7 @@ export default function Layout({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box>
-      <Head>
+      {/* <Head>
         <title>Greenpeace 綠色和平 | 香港</title>
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
@@ -45,7 +37,7 @@ export default function Layout({ children }) {
       <Button onClick={()=>onOpen()}>Click</Button>
       {children}
       <Footer/>
-      <ModalWrapper isOpen={isOpen} onClose={onClose}/>
+      <ModalWrapper isOpen={isOpen} onClose={onClose}/> */}
     </Box>
   );
 }
