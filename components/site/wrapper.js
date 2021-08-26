@@ -1,27 +1,38 @@
 import Head from 'next/head'
-import { Box, Flex, Container } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Heading,
+  useDisclosure,
+  Image,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Lorem,
+  Button,
+} from "@chakra-ui/react";
 import Nav from "components/site/navbar/nav";
 import SubNav from "components/site/navbar/subNav";
 import Footer from 'components/site/footer/SmallWithSocial'
 
+const ModalWrapper = ({isOpen, onClose}) => {
+  return (
+    <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+        <ModalContent>
+          Demo
+        </ModalContent>
+    </Modal>
+  );
+};
+
+
 export default function Layout({ children }) {
-  const openWidget = () => {
-    window.cloudinary.createUploadWidget(
-      {
-        cloudName: 'idt',
-        uploadPreset: 'quocv8wr',
-      },
-      (error, { event, info }) => {
-        if (event === 'success') {
-          console.log('event-',event)
-          // this.setState({
-          //   imageUrl: info.secure_url,
-          //   imageAlt: `An image of ${info.original_filename}`
-          // })
-        }
-      },
-    ).open();
-  };
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box>
       <Head>
@@ -31,8 +42,10 @@ export default function Layout({ children }) {
       </Head>
       <Nav/>
       <SubNav/>
+      <Button onClick={()=>onOpen()}>Click</Button>
       {children}
       <Footer/>
+      <ModalWrapper isOpen={isOpen} onClose={onClose}/>
     </Box>
   );
 }
