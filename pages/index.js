@@ -1,37 +1,35 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from "react";
 import Wrapper from "components/site/wrapper";
-import { Box, Image, Text, Center } from "@chakra-ui/react";
+import Card from "components/image";
+import { Box, Image, Text, Heading } from "@chakra-ui/react";
 
-export default function Index() {
-  const [images, setImages] = useState([])
-
-  useEffect(async () => {
-    const getImages = await [...Array(36)].map((d)=> `https://source.unsplash.com/random?sig=${Math.random()*100}`)
-    setImages(getImages)
-  },[]);
-
+export default function Index({ src }) {
   return (
-  <Box p={4}>
-    <Box sx={{ columnCount: [1, 6] }}>
-      {images.map((d,i)=>{
-        return(
-          <Box key={i} mb={4}>
-            <Box>
-              <Image src={d} borderRadius={8} cursor='pointer' _hover={{opacity: .8}}/>
-              <Center py={2}>
-                <Text color={'gray.500'} fontSize={14}>圖片名稱</Text>
-              </Center>
+    <Box>
+      <Box gridColumn={"-moz-initial"} p={4}>
+        <Box className="masonry">
+          {[...Array(36)].map((d, i) => (
+            <Box className="grid" key={i}>
+              <img
+                src={`https://source.unsplash.com/random/${
+                  Math.random() * 100
+                }`}
+              />
+              <Box className="grid__body">
+                <Box className="relative">
+                  <Heading className="grid__title">Title {i+1}</Heading>
+                  <Text className="grid__author">Author</Text>
+                </Box>
+                <Box className="mt-auto">
+                  <Text as="span" className="grid__tag">#Tag name</Text>
+                </Box>
+              </Box>
             </Box>
-          </Box>
-        )
-      })}
+          ))}
+        </Box>
+      </Box>
     </Box>
-  </Box>
-  )
+  );
 }
 
-Index.getLayout = (page) => (
-  <Wrapper>
-    {page}
-  </Wrapper>
-)
+Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
