@@ -10,12 +10,32 @@ import {
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react'
+import React, {useState} from 'react'
 import {
   HamburgerIcon,
   CloseIcon
 } from '@chakra-ui/icons'
 
 export default function WithSubnavigation(props) {
+
+  const openWidget = () => {
+    window.cloudinary.createUploadWidget(
+      {
+        cloudName: 'idt',
+        uploadPreset: 'quocv8wr',
+      },
+      (error, { event, info }) => {
+        if (event === 'success') {
+          console.log('event-',event)
+          // this.setState({
+          //   imageUrl: info.secure_url,
+          //   imageAlt: `An image of ${info.original_filename}`
+          // })
+        }
+      },
+    ).open();
+  }
+
   const { isOpen, onToggle } = useDisclosure()
   return (
     <Box>
@@ -71,7 +91,9 @@ export default function WithSubnavigation(props) {
             href={'#'}
             _hover={{
               bg: 'green.300',
-            }}>
+            }}
+            onClick={()=>openWidget()}
+            >
             上傳圖片
           </Button>
         </Stack>
