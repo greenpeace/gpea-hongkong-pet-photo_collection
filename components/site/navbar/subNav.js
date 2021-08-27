@@ -7,6 +7,7 @@ import {
   Link,
   Divider,
   useColorModeValue,
+  Input
 } from '@chakra-ui/react';
 
 const Links = ['生態環境', '環保活動', '人物特寫'];
@@ -46,9 +47,9 @@ export default function withAction() {
               </Center>
             </HStack>
           </HStack>
-          <Center>
-            <Text color={'gray.500'} fontSize={14}>{`<- List filter ->`}</Text>
-          </Center>
+          <Box flex={1} px={6}>
+            <Input h={8} borderRadius={8} bgColor={'gray.200'} placeholder="搜尋字眼"  style={{fontSize: '14px'}}/>
+          </Box>
           <Flex alignItems={'center'}>
             <Text color={'gray.500'} fontSize={14}>搜尋全部</Text>
           </Flex>
