@@ -27,7 +27,7 @@ function Index({openModal}) {
                   <Flex direction={'row'} align={'center'}>
                     <FaHeart/>
                     <Box pl={2}>
-                      <Text className="grid__author">{Math.floor(Math.random() * 100)}</Text>
+                      <Text className="grid__author">0</Text>
                     </Box>
                   </Flex>
                 </Box>
