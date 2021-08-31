@@ -8,19 +8,21 @@ import {
   Collapse,
   Image,
   useColorModeValue,
-  useDisclosure,
-  Script
+  useDisclosure
 } from '@chakra-ui/react'
-import React, {useState} from 'react'
 import {
   HamburgerIcon,
   CloseIcon
 } from '@chakra-ui/icons'
+import Script from 'next/script'
+import React, {useState, useEffect} from 'react'
+import { connect } from "react-redux";
+import _ from "lodash"
 
-export default function WithSubnavigation(props) {
-
-  <Script src="https://upload-widget.cloudinary.com/global/all.js"></Script> 
-
+function WithSubnavigation({user}) {
+  // TODO:
+  // <Script src="https://upload-widget.cloudinary.com/global/all.js"/>
+  console.log(`user`, user)
   const openWidget = () => {
     window.cloudinary.createUploadWidget(
       {
@@ -72,11 +74,7 @@ export default function WithSubnavigation(props) {
           />
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-            <DesktopNav
-              illustrationSection={props.illustrationSection}
-              imageSection={props.imageSection}
-              testimonials={props.testimonials}
-            />
+            <DesktopNav/>
           </Flex>
         </Flex>
 
@@ -96,7 +94,7 @@ export default function WithSubnavigation(props) {
             _hover={{
               bg: 'green.300',
             }}
-            onClick={()=>openWidget()}
+            onClick={()=>_.isEmpty(user) ? alert('wow')  : openWidget()}
             >
             上傳圖片
           </Button>
@@ -107,31 +105,25 @@ export default function WithSubnavigation(props) {
         <MobileNav
           isOpen={isOpen}
           onToggle={onToggle}
-          illustrationSection={props.illustrationSection}
-          imageSection={props.imageSection}
-          testimonials={props.testimonials}
         />
       </Collapse>
     </Box>
   )
 }
 
-const DesktopNav = ({ illustrationSection, imageSection, testimonials }) => {
+const DesktopNav = () => {
   const NAV_ITEMS = [
     {
       label: '公眾諮詢',
-      href: '#',
-      ref: testimonials,
+      href: '#'
     },
     {
       label: '了解更多',
-      href: '#',
-      ref: imageSection,
+      href: '#'
     },
     {
       label: '捐助支持',
-      href: '#',
-      ref: illustrationSection,
+      href: '#'
     },
   ]
   const linkColor = useColorModeValue('gray.600', 'gray.200')
@@ -164,27 +156,21 @@ const DesktopNav = ({ illustrationSection, imageSection, testimonials }) => {
 }
 
 const MobileNav = ({
-  illustrationSection,
-  imageSection,
-  testimonials,
   isOpen,
   onToggle,
 }) => {
   const NAV_ITEMS = [
     {
       label: '公眾諮詢',
-      href: '#',
-      ref: testimonials,
+      href: '#'
     },
     {
       label: '了解更多',
-      href: '#',
-      ref: imageSection,
+      href: '#'
     },
     {
       label: '捐助支持',
-      href: '#',
-      ref: illustrationSection,
+      href: '#'
     },
   ]
   return (
@@ -217,3 +203,9 @@ const MobileNav = ({
     </Stack>
   )
 }
+
+const mapStateToProps = ({ user }) => ({
+  user: user.data,
+});
+
+export default connect(mapStateToProps)(WithSubnavigation);
