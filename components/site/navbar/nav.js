@@ -18,11 +18,11 @@ import Script from 'next/script'
 import React, {useState, useEffect} from 'react'
 import { connect } from "react-redux";
 import _ from "lodash"
+import * as signupActions from 'store/actions/action-types/signup-actions'
 
-function WithSubnavigation({user}) {
+function WithSubnavigation({user, setModal}) {
   // TODO:
   // <Script src="https://upload-widget.cloudinary.com/global/all.js"/>
-  console.log(`user`, user)
   const openWidget = () => {
     window.cloudinary.createUploadWidget(
       {
@@ -94,7 +94,7 @@ function WithSubnavigation({user}) {
             _hover={{
               bg: 'green.300',
             }}
-            onClick={()=>_.isEmpty(user) ? alert('wow')  : openWidget()}
+            onClick={()=> _.isEmpty(user) ? setModal(true)  : openWidget()}
             >
             上傳圖片
           </Button>
@@ -208,4 +208,12 @@ const mapStateToProps = ({ user }) => ({
   user: user.data,
 });
 
-export default connect(mapStateToProps)(WithSubnavigation);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setModal: (bol) => {
+      dispatch({ type: signupActions.SET_SIGNUP_MODAL, data: bol});
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WithSubnavigation);

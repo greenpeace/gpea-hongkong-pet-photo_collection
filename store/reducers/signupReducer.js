@@ -9,6 +9,7 @@ const initState = {
     marketing: false
   },
   type: 'mail',
+  signupModal: false,
   errorMessage: null,
   lastAction: null
 }
@@ -16,6 +17,13 @@ const initState = {
 const signupReducer = (state = initState, action) => {
 
   switch (action.type) {
+
+    case signupActions.SET_SIGNUP_MODAL:
+      return {
+        ...state,
+        signupModal: action.data,
+        lastAction: action.type
+    }
     
     case signupActions.CREATE_USER:
       return {
@@ -31,6 +39,7 @@ const signupReducer = (state = initState, action) => {
     }
 
     case signupActions.CREATE_USER_SUCCESS:
+      console.log(`reducer`)
       return {
         ...state,
         data: action.data,

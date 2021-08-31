@@ -17,7 +17,7 @@ import * as modalActions from 'store/actions/action-types/modal-actions'
 
 function ModalWrapper({modal, closeModal}) {
   return (
-    <Modal blockScrollOnMount={false} isOpen={modal.isOpen} size={"6xl"}>
+    <Modal blockScrollOnMount={false} isOpen={modal.isOpen} onClose={()=>closeModal()} closeOnOverlayClick={true} size={"6xl"}>
     <ModalOverlay />
       <ModalContent>
       <Box p={6}>
@@ -31,10 +31,10 @@ function ModalWrapper({modal, closeModal}) {
               #生態環境
             </Text>
           </Box>
-          <Button onClick={()=>closeModal()} fontWeight={500}>關閉</Button>
+          {/* <Button onClick={()=>closeModal()} fontWeight={500}>關閉</Button> */}
           <Divider />
           <Box className="masonry">
-          {[...Array(12)].map((d, i) => (
+          {[...Array(8)].map((d, i) => (
             <Box className="grid" key={i} onClick={()=>openModal()} cursor={'pointer'} _hover={{opacity: .8}}>
               <Image
                 src={`https://source.unsplash.com/random/${

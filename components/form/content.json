@@ -1,0 +1,33 @@
+{
+  "label_first_name": "名字",
+  "label_last_name": "姓氏",
+  "label_email": "電郵地址",
+  "label_phone": "手提號碼",
+  "label_phone_optional": "手提號碼（選填）",
+  "label_year_of_birth": "出生年份",
+  "label_year_of_birth_optional": "出生年份（選填）",
+  "select": "請選擇",
+
+  "empty_data_alert": "請填寫資料",
+  "empty_select_data_alert": "請選擇",
+  "invalid_email_alert": "請填上有效電郵地址",
+  "invalid_format_alert": "請輸入有效格式",
+  "minimum_8_characters": "請輸入8位數字",
+
+  "form_header": "聯署制止核廢水排放",
+  "form_description": "與綠色和平一起敦促日本政府立即停止排放廢水到太平洋的計劃，守護海洋生態。",
+  "form_remind": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考私隱政策。",
+
+  "submit_text": "登記",
+
+  "thanks_title": "<p>感謝您加入聯署，阻截核廢水排放，守護海洋生態！</p>",
+  "thanks_ask": "<p>綠色和平是核災後，最快趕赴現場的環境機構之一，10年來進行超過30次的實地檢測調查。此刻，我們急需您的捐助支持，以反對日本政府將核廢水排放到太平洋，長遠淘汰危害您我、下一代的核能！</p>",
+  "thanks_content": "<p>堅持反核使命，守護海洋生態，綠色和平急需您的支持，在不接受政商界資助下，維持足夠資源推動項目工作！</p>",
+  "share_button": "分享出去",
+  "donate_button": "捐助支持",
+  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/donation-new?language=zh_HK&campaign=fukushima&ref=fukushima-thankyou",
+  "shareMessage": "立即聯署與綠色和平一起敦促其長期、妥善地存置這批危害生態和人體的廢水，使大家的海洋免於進一步的破壞。👉 ",
+  "fbURL": "https://act.gp/3bLDMwF",
+  "mainURL": "https://act.gp/3uK2A0S",
+  "whatsappURL": "https://act.gp/3kzJzsY"
+}

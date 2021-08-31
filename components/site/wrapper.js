@@ -5,6 +5,7 @@ import {
 import Nav from "components/site/navbar/nav";
 import SubNav from "components/site/navbar/subNav";
 import Modal from 'components/site/modal'
+import SignupModal from 'components/site/modal/signup'
 import Footer from 'components/site/footer/SmallWithSocial'
 
 export default function Layout({ children }) {
@@ -20,6 +21,7 @@ export default function Layout({ children }) {
       {children}
       <Footer/>
       <Modal/>
+      <SignupModal/>
     </Box>
   );
 }

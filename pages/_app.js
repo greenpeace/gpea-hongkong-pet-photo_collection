@@ -11,7 +11,7 @@ const MyApp = ({ Component, pageProps }) => {
   const dispatch = useDispatch()
   useEffect(() => {
     const data = auth()
-    dispatch({ type: userActions.SET_USER_SUCCESS, data });
+    dispatch({ type: userActions.SET_USER_SUCCESS, data: JSON.parse(data) });
   }, [])
 
   const getLayout = Component.getLayout || ((page) => page)

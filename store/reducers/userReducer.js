@@ -1,4 +1,4 @@
-import * as signupActions from 'store/actions/action-types/signup-actions'
+import * as userActions from 'store/actions/action-types/user-actions'
 
 const initState = {
   data: {},
@@ -8,20 +8,21 @@ const signupReducer = (state = initState, action) => {
 
   switch (action.type) {
     
-    case signupActions.SET_USER:
+    case userActions.SET_USER:
       return {
         ...state,
         lastAction: action.type
     }
 
-    case signupActions.SET_USER_FAIL:
+    case userActions.SET_USER_FAIL:
       return {
         ...state,
         data: action.data,
         lastAction: action.type
     }
 
-    case signupActions.SET_USER_SUCCESS:
+    case userActions.SET_USER_SUCCESS:
+      console.log(`action.data--`,action.data)
       return {
         ...state,
         data: action.data,
