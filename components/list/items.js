@@ -14,12 +14,13 @@ function Index({openModal}) {
   return (
     <Box gridColumn={"-moz-initial"} p={4}>
         <Box className="masonry">
-          {[...Array(12)].map((d, i) => (
+          {[...Array(36)].map((d, i) => (
             <Box className="grid" key={i} onClick={()=>openModal()} cursor={'pointer'} _hover={{opacity: .8}}>
               <Image
                 src={`https://source.unsplash.com/random/${
                   Math.random() * 100
                 }`}
+                alt={``}
               />
               <Box className="grid__body">
                 <Box className="relative">

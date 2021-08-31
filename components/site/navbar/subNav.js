@@ -28,7 +28,7 @@ const NavLink = ({ children }) => (
   </Link>
 );
 
-export default function withAction() {
+export default function WithAction() {
 
   return (
     <>

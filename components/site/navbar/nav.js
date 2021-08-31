@@ -9,6 +9,7 @@ import {
   Image,
   useColorModeValue,
   useDisclosure,
+  Script
 } from '@chakra-ui/react'
 import React, {useState} from 'react'
 import {
@@ -17,6 +18,8 @@ import {
 } from '@chakra-ui/icons'
 
 export default function WithSubnavigation(props) {
+
+  <Script src="https://upload-widget.cloudinary.com/global/all.js"></Script> 
 
   const openWidget = () => {
     window.cloudinary.createUploadWidget(
@@ -65,6 +68,7 @@ export default function WithSubnavigation(props) {
           <Image
             src={'https://www.greenpeace.org/global/static/img/gp-logo.svg'}
             maxW={'120px'}
+            alt={``}
           />
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>

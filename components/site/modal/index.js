@@ -22,7 +22,7 @@ function ModalWrapper({modal, closeModal}) {
       <ModalContent>
       <Box p={6}>
         <Box pb={6}>
-          <Image src={'images/demo_1.jpeg'}/>
+          <Image src={'images/demo_1.jpeg'} alt={``}/>
         </Box>
         <Stack spacing={6} direction={'column'}>
           <Box>
@@ -40,6 +40,7 @@ function ModalWrapper({modal, closeModal}) {
                 src={`https://source.unsplash.com/random/${
                   Math.random() * 100
                 }`}
+                alt={``}
               />
               <Box className="grid__body">
                 <Box className="relative">

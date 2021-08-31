@@ -4,11 +4,11 @@ import { Box, Image, Text, Center, Stack } from "@chakra-ui/react";
 export default function Index({src, otherImageProps}) {
   const imageRef = useRef(null);
   const [loaded, setLoaded] = useState(false);
-  useEffect(() => {
-    if (!loaded && imageRef.current?.complete) {
-      // setLoaded(true);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!loaded && imageRef.current?.complete) {
+  //     // setLoaded(true);
+  //   }
+  // }, []);
   
   return (
       <Box position={'relative'}>
@@ -16,11 +16,11 @@ export default function Index({src, otherImageProps}) {
           <Image
               ref={imageRef}
               src={src}
-              // onError={onError}
               onLoad={() => {
                 setLoaded(true);
               }}
               {...otherImageProps}
+              alt={``}
             />
         </Box>
         {loaded && <Box><Text>123</Text></Box>}
