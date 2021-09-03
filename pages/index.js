@@ -1,6 +1,8 @@
 import React from "react";
 import Wrapper from "components/site/wrapper";
 import ListItems from "components/list/items";
+import axios from "axios"
+
 import {
   Box,
   Stack,
@@ -29,8 +31,12 @@ export default function Index({photos}) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch("https://gsheet-toolkit.small-service.gpeastasia.org/v1/db/photo-collection");
-  const photos = await res.json();
+  const photos = await axios.get(process.env.G_SHEET)
+  .then((response) => response.data)
+  .catch(function (error) {
+    console.log(error);
+  })
+
   return {
     props: { photos },
   };

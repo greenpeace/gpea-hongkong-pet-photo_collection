@@ -8,7 +8,9 @@
   "label_year_of_birth": "出生年份",
   "label_year_of_birth_optional": "出生年份（選填）",
   "label_description": "簡介",
+  "label_file": "圖片",
   "select": "請選擇",
+  "category": "分類",
 
   "empty_data_alert": "請填寫資料",
   "empty_select_data_alert": "請選擇",

@@ -8,6 +8,7 @@ import {
   Collapse,
   Image,
   useColorModeValue,
+  Link,
   useDisclosure
 } from '@chakra-ui/react'
 import {
@@ -22,53 +23,6 @@ import * as signupActions from 'store/actions/action-types/signup-actions'
 import { useRouter } from 'next/router'
 
 function WithSubnavigation({user, setModal}) {
-  const openWidget = () => {
-    // window.cloudinary.createUploadWidget(
-    //   {
-    //     cloudName: 'idt',
-    //     uploadPreset: 'quocv8wr',
-    //     sources: [ 'local', 'url'],
-    //     showAdvancedOptions: true,
-    //     cropping: false,
-    //     multiple: true,
-    //     defaultSource: "local",
-    //     styles: {
-    //       palette: {
-    //           window: "#F5F5F5",
-    //           sourceBg: "#FFFFFF",
-    //           windowBorder: "#90a0b3",
-    //           tabIcon: "#0094c7",
-    //           inactiveTabIcon: "#69778A",
-    //           menuIcons: "#0094C7",
-    //           link: "#53ad9d",
-    //           action: "#8F5DA5",
-    //           inProgress: "#0194c7",
-    //           complete: "#53ad9d",
-    //           error: "#c43737",
-    //           textDark: "#000000",
-    //           textLight: "#FFFFFF"
-    //       },
-    //       fonts: {
-    //           default: null,
-    //           "'Poppins', sans-serif": {
-    //               url: "https://fonts.googleapis.com/css?family=Poppins",
-    //               active: true
-    //           }
-    //       }
-    //   },
-    //   },
-    //   (error, { event, info }) => {
-    //     if (event === 'success') {
-    //       console.log(`info---`, info)
-    //       // this.setState({
-    //       //   imageUrl: info.secure_url,
-    //       //   imageAlt: `An image of ${info.original_filename}`
-    //       // })
-    //     }
-    //   },
-    // ).open();
-  }
-
   const router = useRouter()
   const { isOpen, onToggle } = useDisclosure()
   return (
@@ -100,6 +54,8 @@ function WithSubnavigation({user, setModal}) {
             src={'https://www.greenpeace.org/global/static/img/gp-logo.svg'}
             maxW={'120px'}
             alt={``}
+            onClick={()=>router.push(`/`)}
+            cursor={'pointer'}
           />
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
