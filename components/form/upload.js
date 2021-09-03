@@ -16,6 +16,7 @@ import {
   Text,
   HStack,
   Checkbox,
+  Textarea
 } from "@chakra-ui/react";
 
 const MyForm = (props) => {
@@ -53,40 +54,64 @@ const MyForm = (props) => {
       <Form onSubmit={handleSubmit}>
         <Flex direction='column'>
           <Box flex='1' pb={space}>
-            <FormControl id='email' isInvalid={errors.Email && touched.Email}>
-              <FormLabel {...labelStyle}>{formContent.label_email}</FormLabel>
+            <FormControl
+              id='firstName'
+              isInvalid={errors.FirstName && touched.FirstName}
+            >
+              <FormLabel {...labelStyle}>
+                {formContent.label_first_name}
+              </FormLabel>
               <Input
-                name='Email'
-                type='email'
-                placeholder={formContent.label_email}
+                name='FirstName'
+                type='text'
+                placeholder={formContent.label_first_name}
                 onChange={handleChange}
-                onBlur={handleBlur}
               />
-              <FormErrorMessage color='red'>{errors.Email}</FormErrorMessage>
+              <FormErrorMessage color='red'>
+                {errors.FirstName}
+              </FormErrorMessage>
             </FormControl>
           </Box>
 
-          <HStack>
-            <Box flex='1' pb={space}>
-              <FormControl
-                id='firstName'
-                isInvalid={errors.FirstName && touched.FirstName}
-              >
-                <FormLabel {...labelStyle}>
-                  {formContent.label_first_name}
-                </FormLabel>
-                <Input
-                  name='FirstName'
-                  type='text'
-                  placeholder={formContent.label_first_name}
-                  onChange={handleChange}
-                />
-                <FormErrorMessage color='red'>
-                  {errors.FirstName}
-                </FormErrorMessage>
-              </FormControl>
-            </Box>
-          </HStack>
+          <Box flex='1' pb={space}>
+            <FormControl
+              id='title'
+              isInvalid={errors.Title && touched.Title}
+            >
+              <FormLabel {...labelStyle}>
+                {formContent.label_title}
+              </FormLabel>
+              <Input
+                name='Title'
+                type='text'
+                placeholder={formContent.label_title}
+                onChange={handleChange}
+              />
+              <FormErrorMessage color='red'>
+                {errors.Title}
+              </FormErrorMessage>
+            </FormControl>
+          </Box>
+
+          <Box flex='1' pb={space}>
+            <FormControl
+              id='description'
+              isInvalid={errors.Description && touched.Description}
+            >
+              <FormLabel {...labelStyle}>
+                {formContent.label_description}
+              </FormLabel>
+              <Textarea 
+                name='Title'
+                type='text'
+                placeholder={formContent.label_description}
+                onChange={handleChange}
+              />
+              <FormErrorMessage color='red'>
+                {errors.Description}
+              </FormErrorMessage>
+            </FormControl>
+          </Box>
 
           <Box flex='1' pt={3} pb={3}>
             <Button
@@ -102,21 +127,10 @@ const MyForm = (props) => {
               _hover={{ bg: "campaign.climate" }}
               type='submit'
             >
-              {formContent.submit_text}
+              {formContent.upload_text}
             </Button>
           </Box>
 
-          <Box>
-            <HStack align='flex-start'>
-              <Box pt={5} pb={4}>
-                <FormControl id='optIn'>
-                  <Checkbox name='OptIn' defaultChecked onChange={handleChange}>
-                    <Text fontSize='xs'>{formContent.form_remind}</Text>
-                  </Checkbox>
-                </FormControl>
-              </Box>
-            </HStack>
-          </Box>
         </Flex>
       </Form>
     </Box>
@@ -125,33 +139,23 @@ const MyForm = (props) => {
 
 const MyEnhancedForm = withFormik({
   mapPropsToValues: () => ({
-    Email: "",
-    LastName: "",
-    OptIn: true,
+    FirstName: "",
+    Title: "",
+    Description: ""
   }),
 
   validate: (values) => {
     const errors = {};
 
-    if (!values.Email) {
-      errors.Email = formContent.empty_data_alert;
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Email)
-    ) {
-      errors.Email = formContent.invalid_email_alert;
-    }
-
     return errors;
   },
 
   handleSubmit: (values, { setSubmitting, props }) => {
-    props.createUser()
+    console.log(`values`, values)
+    // props.createUser()
     setTimeout(() => {
-      const data = {mail: values.Email, name: values.FirstName}
-      localStorage.setItem('greenpeacePhotoCollection', JSON.stringify(data))
+      const data = {mail: values.Email, name: values.FirstName, description: values.Description}
       setSubmitting(false)
-      props.setModal(false)
-      props.createUserSuccess(data)
     }, 2000);
   },
 

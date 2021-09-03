@@ -10,7 +10,7 @@ import {
   Input
 } from '@chakra-ui/react';
 
-const Links = ['生態環境', '環保活動', '人物特寫'];
+const CATEGORY = process.env.CATEGORY || [];
 
 const NavLink = ({ children }) => (
   <Link
@@ -39,8 +39,8 @@ export default function WithAction() {
               as={'nav'}
               spacing={4}
               display={{ base: 'none', md: 'flex' }}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+              {CATEGORY.map((d) => (
+                <NavLink key={d.LABEL} href={d.HREF}>{d.LABEL}</NavLink>
               ))}
               <Center height="20px">
                 <Divider orientation="vertical" />

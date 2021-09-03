@@ -19,57 +19,57 @@ import React, {useState, useEffect} from 'react'
 import { connect } from "react-redux";
 import _ from "lodash"
 import * as signupActions from 'store/actions/action-types/signup-actions'
+import { useRouter } from 'next/router'
 
 function WithSubnavigation({user, setModal}) {
-  // TODO:
-  // <Script src="https://upload-widget.cloudinary.com/global/all.js"/>
   const openWidget = () => {
-    window.cloudinary.createUploadWidget(
-      {
-        cloudName: 'idt',
-        uploadPreset: 'quocv8wr',
-        sources: [ 'local', 'url'],
-        showAdvancedOptions: true,
-        cropping: false,
-        multiple: true,
-        defaultSource: "local",
-        styles: {
-          palette: {
-              window: "#F5F5F5",
-              sourceBg: "#FFFFFF",
-              windowBorder: "#90a0b3",
-              tabIcon: "#0094c7",
-              inactiveTabIcon: "#69778A",
-              menuIcons: "#0094C7",
-              link: "#53ad9d",
-              action: "#8F5DA5",
-              inProgress: "#0194c7",
-              complete: "#53ad9d",
-              error: "#c43737",
-              textDark: "#000000",
-              textLight: "#FFFFFF"
-          },
-          fonts: {
-              default: null,
-              "'Poppins', sans-serif": {
-                  url: "https://fonts.googleapis.com/css?family=Poppins",
-                  active: true
-              }
-          }
-      },
-      },
-      (error, { event, info }) => {
-        if (event === 'success') {
-          console.log(`info---`, info)
-          // this.setState({
-          //   imageUrl: info.secure_url,
-          //   imageAlt: `An image of ${info.original_filename}`
-          // })
-        }
-      },
-    ).open();
+    // window.cloudinary.createUploadWidget(
+    //   {
+    //     cloudName: 'idt',
+    //     uploadPreset: 'quocv8wr',
+    //     sources: [ 'local', 'url'],
+    //     showAdvancedOptions: true,
+    //     cropping: false,
+    //     multiple: true,
+    //     defaultSource: "local",
+    //     styles: {
+    //       palette: {
+    //           window: "#F5F5F5",
+    //           sourceBg: "#FFFFFF",
+    //           windowBorder: "#90a0b3",
+    //           tabIcon: "#0094c7",
+    //           inactiveTabIcon: "#69778A",
+    //           menuIcons: "#0094C7",
+    //           link: "#53ad9d",
+    //           action: "#8F5DA5",
+    //           inProgress: "#0194c7",
+    //           complete: "#53ad9d",
+    //           error: "#c43737",
+    //           textDark: "#000000",
+    //           textLight: "#FFFFFF"
+    //       },
+    //       fonts: {
+    //           default: null,
+    //           "'Poppins', sans-serif": {
+    //               url: "https://fonts.googleapis.com/css?family=Poppins",
+    //               active: true
+    //           }
+    //       }
+    //   },
+    //   },
+    //   (error, { event, info }) => {
+    //     if (event === 'success') {
+    //       console.log(`info---`, info)
+    //       // this.setState({
+    //       //   imageUrl: info.secure_url,
+    //       //   imageAlt: `An image of ${info.original_filename}`
+    //       // })
+    //     }
+    //   },
+    // ).open();
   }
 
+  const router = useRouter()
   const { isOpen, onToggle } = useDisclosure()
   return (
     <Box>
@@ -123,7 +123,7 @@ function WithSubnavigation({user, setModal}) {
             _hover={{
               bg: 'green.300',
             }}
-            onClick={()=> _.isEmpty(user) ? setModal(true)  : openWidget()}
+            onClick={()=> _.isEmpty(user) ? setModal(true)  : router.push('/upload')}
             >
             上傳圖片
           </Button>
@@ -141,42 +141,26 @@ function WithSubnavigation({user, setModal}) {
 }
 
 const DesktopNav = () => {
-  const NAV_ITEMS = [
-    {
-      label: '公眾諮詢',
-      href: '#'
-    },
-    {
-      label: '了解更多',
-      href: '#'
-    },
-    {
-      label: '捐助支持',
-      href: '#'
-    },
-  ]
+  const NAV_ITEMS = process.env.NAV || [];
   const linkColor = useColorModeValue('gray.600', 'gray.200')
   const linkHoverColor = useColorModeValue('gray.800', 'white')
   const popoverContentBgColor = useColorModeValue('white', 'gray.800')
 
   return (
     <Stack direction={'row'} spacing={4}>
-      {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label}>
+      {NAV_ITEMS.map((d) => (
+        <Box key={d.LABEL}>
           <Box
             fontSize={'sm'}
             fontWeight={500}
             color={linkColor}
-            onClick={() =>
-              navItem.ref.current.scrollIntoView({ behavior: 'smooth' })
-            }
             _hover={{
               textDecoration: 'none',
               color: linkHoverColor,
               cursor: 'pointer',
             }}
           >
-            {navItem.label}
+            {d.LABEL}
           </Box>
         </Box>
       ))}
@@ -188,34 +172,17 @@ const MobileNav = ({
   isOpen,
   onToggle,
 }) => {
-  const NAV_ITEMS = [
-    {
-      label: '公眾諮詢',
-      href: '#'
-    },
-    {
-      label: '了解更多',
-      href: '#'
-    },
-    {
-      label: '捐助支持',
-      href: '#'
-    },
-  ]
+  const NAV_ITEMS = process.env.NAV || [];
   return (
     <Stack
       bg={useColorModeValue('white', 'gray.800')}
       p={4}
       display={{ md: 'none' }}
     >
-      {NAV_ITEMS.map((navItem) => (
+      {NAV_ITEMS.map((d) => (
         <Stack
-          key={navItem.label}
+          key={d.LABEL}
           spacing={4}
-          onClick={() => {
-            onToggle()
-            navItem.ref.current.scrollIntoView({ behavior: 'smooth' })
-          }}
         >
           <Flex
             py={2}
@@ -225,7 +192,7 @@ const MobileNav = ({
               textDecoration: 'none',
             }}
           >
-            <Text fontWeight={600}>{navItem.label}</Text>
+            <Text fontWeight={600}>{d.LABEL}</Text>
           </Flex>
         </Stack>
       ))}
