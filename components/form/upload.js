@@ -168,7 +168,6 @@ const MyForm = (props) => {
                 letterSpacing={4}
                 bg="#ff8100"
                 _hover={{ bg: "campaign.climate" }}
-                type="submit"
               >
                 {formContent.upload_text}
               </Button>
