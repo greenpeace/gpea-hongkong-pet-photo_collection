@@ -23,13 +23,13 @@ function ModalWrapper({modal, closeModal, photos}) {
 
   useEffect( async () => {
 
-    if(!photos){
-      return
-    }
+    // if(!photos){
+    //   return
+    // }
 
-    const {id} = router.query
-    const getPhoto = await photos.find(d=>d.id===id)
-    setContent(getPhoto)
+    // const {id} = router.query
+    // const getPhoto = await photos.find(d=>d.id===id)
+    // setContent(getPhoto)
 
   }, [router]);
 
@@ -40,7 +40,7 @@ function ModalWrapper({modal, closeModal, photos}) {
     }} closeOnOverlayClick={true} size={"6xl"}>
     <ModalOverlay />
       <ModalContent>
-      <Box p={6}>
+      {/* <Box p={6}>
         <Box pb={6}>
           <Image src={content.url} alt={``} w={300} h={300}/>
         </Box>
@@ -51,10 +51,9 @@ function ModalWrapper({modal, closeModal, photos}) {
               #{content.category} {content.url}
             </Text>
           </Box>
-          {/* <Button onClick={()=>closeModal()} fontWeight={500}>關閉</Button> */}
           <Divider />
         </Stack>
-      </Box>
+      </Box> */}
       </ModalContent>
   </Modal>
   );

@@ -44,17 +44,17 @@ function Layout({ children, signup, openModal }) {
     }
   }, [signup]);
 
-  useEffect(() => {
-    if(!router || !prevRoute){
-      return
-    }
+  // useEffect(() => {
+  //   if(!router || !prevRoute){
+  //     return
+  //   }
 
-    if(router.asPath !== prevRoute.asPath && router.asPath !== "/"){
-      console.log(router.asPath)
-      openModal()
-    }
+  //   if(router.asPath !== prevRoute.asPath && router.asPath !== "/"){
+  //     console.log(router.asPath)
+  //     openModal()
+  //   }
 
-  }, [router]);
+  // }, [router]);
 
   return (
     <Box>

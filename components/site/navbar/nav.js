@@ -8,13 +8,13 @@ import {
   Collapse,
   Image,
   useColorModeValue,
-  Link,
   useDisclosure
 } from '@chakra-ui/react'
 import {
   HamburgerIcon,
   CloseIcon
 } from '@chakra-ui/icons'
+import Link from 'next/link'
 import Script from 'next/script'
 import React, {useState, useEffect} from 'react'
 import { connect } from "react-redux";
@@ -106,6 +106,7 @@ const DesktopNav = () => {
     <Stack direction={'row'} spacing={4}>
       {NAV_ITEMS.map((d) => (
         <Box key={d.LABEL}>
+        <Link href={d.HREF}>
           <Box
             fontSize={'sm'}
             fontWeight={500}
@@ -118,6 +119,7 @@ const DesktopNav = () => {
           >
             {d.LABEL}
           </Box>
+          </Link>
         </Box>
       ))}
     </Stack>

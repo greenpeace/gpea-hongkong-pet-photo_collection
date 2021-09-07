@@ -249,18 +249,15 @@ const MyEnhancedForm = withFormik({
       errors.Email = formContent.invalid_email_alert;
     }
 
-    if (!values.FirstName) {
-      errors.FirstName = formContent.empty_data_alert;
-    }
-
-    if (!values.LastName) {
-      errors.LastName = formContent.empty_data_alert;
+    if (!values.Name) {
+      errors.Name = formContent.empty_data_alert;
     }
 
     return errors;
   },
 
   handleSubmit: (values, { setSubmitting, props }) => {
+    console.log(`-----`)
     // const toast = useToast()
     props.createUser();
     setTimeout(() => {

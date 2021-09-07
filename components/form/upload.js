@@ -130,7 +130,8 @@ const MyForm = (props) => {
                 <Input
                   name="Name"
                   type="text"
-                  placeholder={name}
+                  defaultValue={name}
+                  placeholder={formContent.label_name}
                   onChange={handleChange}
                 />
                 <FormErrorMessage color="red">{errors.Name}</FormErrorMessage>

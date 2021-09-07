@@ -6,16 +6,13 @@ module.exports = {
     NAV: [
       {LABEL: '本會簡介', VALUE: '', HREF: '', REF: '' },
       {LABEL: '我們的工作', VALUE: '', HREF: '', REF: '' },
-      {LABEL: '一起行動', VALUE: '', HREF: '', HREF: '', REF: '' }
+      {LABEL: '一起行動', VALUE: '', HREF: '', REF: '' },
+      {LABEL: '評審團', VALUE: 'judges', HREF: 'judges', REF: 'judges' },
+      {LABEL: '條款及守則', VALUE: 'rules', HREF: 'rules', REF: 'rules' }
     ],
     CATEGORY: [
-      {LABEL: '生物多樣性', VALUE: 'biodiversity', HREF: 'biodiversity', REF: 'biodiversity' },
-      {LABEL: '風景', VALUE: 'landscape', HREF: 'landscape', REF: 'landscape' },
-      {LABEL: '生態', VALUE: 'ecology', HREF: 'ecology', HREF: 'ecology', REF: 'ecology' },
-      {LABEL: '城市', VALUE: 'city', HREF: 'city', REF: 'city' },
-      {LABEL: '動物', VALUE: 'wildlife', HREF: 'wildlife', REF: 'wildlife' },
-      {LABEL: '植物', VALUE: 'plants', HREF: 'plants', REF: 'plants' },
-      {LABEL: '手機組', VALUE: 'mobile', HREF: 'mobile', REF: 'mobile' },
+      {LABEL: '大嶼風景', VALUE: 'LantauLandscape', HREF: 'LantauLandscape', REF: 'LantauLandscape' },
+      {LABEL: '大嶼生態', VALUE: 'LantauEcology', HREF: 'LantauEcology', REF: 'LantauEcology' },
     ],
   },
   exportPathMap: function () {
