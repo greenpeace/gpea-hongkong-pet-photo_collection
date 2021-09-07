@@ -1,27 +1,27 @@
-import * as userActions from 'store/actions/action-types/user-actions'
+import * as photoActions from 'store/actions/action-types/photo-actions'
 
 const initState = {
   data: {},
 }
 
-const userReducer = (state = initState, action) => {
+const photoReducer = (state = initState, action) => {
 
   switch (action.type) {
     
-    case userActions.SET_USER:
+    case photoActions.SET_PHOTO:
       return {
         ...state,
         lastAction: action.type
     }
 
-    case userActions.SET_USER_FAIL:
+    case photoActions.SET_PHOTO_FAIL:
       return {
         ...state,
         data: action.data,
         lastAction: action.type
     }
 
-    case userActions.SET_USER_SUCCESS:
+    case photoActions.SET_PHOTO_SUCCESS:
       return {
         ...state,
         data: action.data,
@@ -33,4 +33,4 @@ const userReducer = (state = initState, action) => {
   }
 }
 
-export default userReducer
+export default photoReducer

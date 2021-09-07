@@ -1,5 +1,5 @@
 import { FaHeart } from "react-icons/fa";
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {
   Box,
   Text,
@@ -8,15 +8,17 @@ import {
   Flex
 } from "@chakra-ui/react";
 import { connect } from "react-redux";
+import { useRouter } from 'next/router';
 import * as modalActions from 'store/actions/action-types/modal-actions'
 
 function Index({openModal, photos}) {
-  const {records} = photos
+  const router = useRouter()
+  const {records} = photos  
   return (
     <Box gridColumn={"-moz-initial"} p={4}>
         <Box className="masonry">
           {records.map((d, i) => (
-            <Box className="grid" key={i} onClick={()=>openModal()} cursor={'pointer'}>
+            <Box className="grid" key={i} onClick={()=>router.push(`/?id=${d.id}`, undefined, { shallow: true })} cursor={'pointer'}>
               <Box className="grid__body">
                 <Box className="relative">
                   <Heading className="grid__title">{d.title}</Heading>

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Wrapper from "components/site/wrapper";
 import ListItems from "components/list/items";
 import axios from "axios"
+import { useDispatch } from 'react-redux'
+import * as photoActions from 'store/actions/action-types/photo-actions'
 
 import {
   Box,
@@ -13,6 +15,10 @@ import {
 import SubNav from "components/site/navbar/subNav";
 
 export default function Index({photos}) {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch({ type: photoActions.SET_PHOTO_SUCCESS, data: photos});
+  }, []);
   return (
     <Box>
       <Box pos={'relative'} bgImage={'images/demo_1.jpeg'} bgSize={'cover'} h={{base: '240px', sm: '640px'}}>

@@ -10,7 +10,8 @@ import Modal from 'components/site/modal'
 import SignupModal from 'components/site/modal/signup'
 import Footer from 'components/site/footer/SmallWithSocial'
 import * as signupActions from 'store/actions/action-types/signup-actions'
-
+import * as modalActions from 'store/actions/action-types/modal-actions'
+import { useRouter } from 'next/router'
 
 // Hook
 function usePrevious(value) {
@@ -21,9 +22,11 @@ function usePrevious(value) {
   return ref.current;
 }
 
-function Layout({ children, signup }) {
+function Layout({ children, signup, openModal }) {
+  const router = useRouter()
   const toast = useToast()
   const prevSignup = usePrevious(signup);
+  const prevRoute = usePrevious(router);
   useEffect(() => {
     if(!signup || !prevSignup){
       return
@@ -40,6 +43,18 @@ function Layout({ children, signup }) {
       })
     }
   }, [signup]);
+
+  useEffect(() => {
+    if(!router || !prevRoute){
+      return
+    }
+
+    if(router.asPath !== prevRoute.asPath && router.asPath !== "/"){
+      console.log(router.asPath)
+      openModal()
+    }
+
+  }, [router]);
 
   return (
     <Box>
@@ -61,4 +76,15 @@ const mapStateToProps = ({signup}) => {
   return {signup};
 };
 
-export default connect(mapStateToProps)(Layout);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    closeModal: () => {
+      dispatch({ type: modalActions.CLOSE_MODAL });
+    },
+    openModal: () => {
+      dispatch({ type: modalActions.OPEN_MODAL });
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);
