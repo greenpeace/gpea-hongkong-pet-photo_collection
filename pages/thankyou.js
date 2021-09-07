@@ -15,7 +15,7 @@ export default function Index() {
       <Box pos={'relative'} bgImage={'images/demo_1.jpeg'} bgSize={'cover'} h={{base: '240px', sm: '320px'}}>
         <Center h={'100%'} maxW={`container.md`} margin={`0 auto`} zIndex={3} pos={'relative'}>
           <Stack direction={'column'} textAlign={'center'} color={'#FFF'}>
-            <Heading fontSize={{base: '4xl', sm: '6xl'}}>內頁 Thanks</Heading>
+            <Heading fontSize={{base: '4xl', sm: '6xl'}}>內頁 Thank you</Heading>
             <Text fontSize={{base: 'md', sm: 'xl'}}>內頁 sub title</Text>
           </Stack>
         </Center>
