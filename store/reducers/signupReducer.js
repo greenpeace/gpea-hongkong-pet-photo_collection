@@ -39,7 +39,6 @@ const signupReducer = (state = initState, action) => {
     }
 
     case signupActions.CREATE_USER_SUCCESS:
-      console.log(`reducer`)
       return {
         ...state,
         data: action.data,

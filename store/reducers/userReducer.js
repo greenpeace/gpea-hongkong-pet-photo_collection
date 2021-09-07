@@ -22,7 +22,6 @@ const signupReducer = (state = initState, action) => {
     }
 
     case userActions.SET_USER_SUCCESS:
-      console.log(`action.data--`,action.data)
       return {
         ...state,
         data: action.data,

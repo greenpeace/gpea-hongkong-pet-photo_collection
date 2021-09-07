@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { connect } from "react-redux";
 import formContent from "components/form/content";
+import { base64Decode } from "components/utils";
 import * as signupActions from "store/actions/action-types/signup-actions";
 import * as userActions from "store/actions/action-types/user-actions";
 import { Form, withFormik } from "formik";
-import axios from "axios"
+import axios from "axios";
 
 import {
   FormControl,
@@ -18,10 +19,15 @@ import {
   HStack,
   Checkbox,
   Textarea,
-  Select
+  Select,
+  Center,
+  Image,
 } from "@chakra-ui/react";
 
 const MyForm = (props) => {
+  const uploadRef = useRef(null);
+  const [name, setName] = useState("");
+  const [imagePreview, setImagePreview] = useState("");
   const {
     values,
     touched,
@@ -32,26 +38,38 @@ const MyForm = (props) => {
     isSubmitting,
     setSubmitting,
     submitted,
-    setFieldValue
+    setFieldValue,
   } = props;
 
   const space = 4;
-
   const labelStyle = {
     fontSize: "xs",
     color: "gray.400",
   };
 
   useEffect(() => {
-    if (submitted) {
-      setSubmitting(false);
+    const localUser =
+      typeof window !== "undefined"
+        ? JSON.parse(localStorage.getItem(`greenpeacePhotoCollection`))
+        : null;
+    setName(base64Decode(localUser.name));
+    setFieldValue("Name", base64Decode(localUser.name));
+  }, []);
+
+  const handleFileUpload = () => {
+    uploadRef.current.click();
+  };
+
+  const handleReset = () => {
+    setFieldValue("File", "");
+    setImagePreview("");
+  };
+
+  useEffect(() => {
+    if (values.File) {
+      setImagePreview(URL.createObjectURL(values.File));
     }
-  }, [submitted]);
-
-
-  const handleFileUpload = (e) => {
-    setFieldValue("File", e.target.files[0]);
-  }
+  }, [values.File]);
 
   return (
     <Box
@@ -61,40 +79,61 @@ const MyForm = (props) => {
       overflow="hidden"
     >
       <Form onSubmit={handleSubmit}>
-        <Flex direction={{ base: "column", sm: "row" }}>
-          <Box flex={1}>
-            <FormControl id="file" isInvalid={errors.File && touched.File}>
-              <Input
-                name="File"
-                type="file"
-                placeholder={formContent.label_file}
-                onChange={(event) =>{
+        <Flex direction={{ base: "column", sm: "row" }} align={`center`}>
+          <Box flex={1} px={6}>
+            {imagePreview ? (
+              <Box>
+                <Image src={imagePreview} />
+                <Box onClick={() => handleReset()}>
+                  <Text>刪除</Text>
+                </Box>
+              </Box>
+            ) : (
+              <Center
+                border={`1px dashed #d9d9d9`}
+                bgColor={`#fafafa`}
+                borderRadius={`2px`}
+                onClick={() => handleFileUpload()}
+                cursor={`pointer`}
+                _hover={{
+                  border: `1px dashed #000`,
+                }}
+                minH={`xs`}
+              >
+                <Box>
+                  <Text>上傳 +</Text>
+                </Box>
+              </Center>
+            )}
+
+            <FormControl id="File" isInvalid={errors.File && touched.File}>
+              <FormErrorMessage color="red">{errors.File}</FormErrorMessage>
+              <Box h={0} overflow={`hidden`}>
+                <Input
+                  variant={"clear"}
+                  textAlign={`center`}
+                  name="File"
+                  type="file"
+                  onChange={(event) => {
                     setFieldValue("File", event.target.files[0]);
                   }}
-              />
-              <FormErrorMessage color="red">{errors.File}</FormErrorMessage>
+                  ref={uploadRef}
+                />
+              </Box>
             </FormControl>
-            <Box></Box>
           </Box>
 
           <Box flex={1}>
-            <Box flex="1" pb={space}>
-              <FormControl
-                id="firstName"
-                isInvalid={errors.FirstName && touched.FirstName}
-              >
-                <FormLabel {...labelStyle}>
-                  {formContent.label_first_name}
-                </FormLabel>
+            <Box flex={1} pb={space}>
+              <FormControl id="Name" isInvalid={errors.Name && touched.Name}>
+                <FormLabel {...labelStyle}>{formContent.label_name}</FormLabel>
                 <Input
-                  name="FirstName"
+                  name="Name"
                   type="text"
-                  placeholder={formContent.label_first_name}
+                  placeholder={name}
                   onChange={handleChange}
                 />
-                <FormErrorMessage color="red">
-                  {errors.FirstName}
-                </FormErrorMessage>
+                <FormErrorMessage color="red">{errors.Name}</FormErrorMessage>
               </FormControl>
             </Box>
 
@@ -113,14 +152,14 @@ const MyForm = (props) => {
 
             <Box flex="1" pb={space}>
               <FormControl
-                id="description"
+                id="Description"
                 isInvalid={errors.Description && touched.Description}
               >
                 <FormLabel {...labelStyle}>
                   {formContent.label_description}
                 </FormLabel>
                 <Textarea
-                  name="Title"
+                  name="Description"
                   type="text"
                   placeholder={formContent.label_description}
                   onChange={handleChange}
@@ -131,26 +170,24 @@ const MyForm = (props) => {
               </FormControl>
             </Box>
 
-            <Box flex='1' pb={space}>
+            <Box flex="1" pb={space}>
               <FormControl
-                id='category'
+                id="category"
                 isInvalid={errors.Category && touched.Category}
               >
-                <FormLabel {...labelStyle}>
-                 {formContent.category}
-                </FormLabel>
+                <FormLabel {...labelStyle}>{formContent.category}</FormLabel>
                 <Select
                   name="Category"
                   placeholder={formContent.select}
                   onChange={handleChange}
                 >
-                {(process.env.CATEGORY || []).map((d) => (
-                      <option key={d.LABEL} value={d.VALUER}>
-                        {d.LABEL}
-                      </option>
-                    ))}
+                  {(process.env.CATEGORY || []).map((d) => (
+                    <option key={d.LABEL} value={d.VALUER}>
+                      {d.LABEL}
+                    </option>
+                  ))}
                 </Select>
-                <FormErrorMessage color='red'>
+                <FormErrorMessage color="red">
                   {errors.Category}
                 </FormErrorMessage>
               </FormControl>
@@ -181,15 +218,37 @@ const MyForm = (props) => {
 
 const MyEnhancedForm = withFormik({
   mapPropsToValues: () => ({
-    FirstName: "",
+    Name: "",
     Title: "",
     Description: "",
     File: "",
-    Category: ""
+    Category: "",
   }),
 
   validate: (values) => {
     const errors = {};
+
+    if (!values.Name) {
+      errors.Name = formContent.empty_data_alert;
+    }
+
+    if (!values.Title) {
+      errors.Title = formContent.empty_data_alert;
+    }
+
+    if (!values.Description) {
+      errors.Description = formContent.empty_data_alert;
+    }
+
+    if (!values.Category) {
+      errors.Category = formContent.empty_data_alert;
+    }
+
+    if (!values.File) {
+      errors.File = `請上傳圖片`;
+    }
+
+    console.log(`errors`, errors);
 
     return errors;
   },
@@ -197,72 +256,53 @@ const MyEnhancedForm = withFormik({
   handleSubmit: (values, { setSubmitting, props }) => {
     console.log(`values`, values);
 
-    const formData = new FormData()
+    const formData = new FormData();
     formData.append("file", values.File);
-    formData.append('upload_preset', 'quocv8wr')
-    formData.append('resource_type', 'raw')
+    formData.append("upload_preset", "quocv8wr");
+    formData.append("resource_type", "raw");
 
-    axios.post(
-      'https://api.cloudinary.com/v1_1/idt/image/upload',
-      formData,
-    ).then(async (res) => {
-      const { statusText, data } = res
+    axios
+      .post("https://api.cloudinary.com/v1_1/idt/image/upload", formData)
+      .then(async (res) => {
+        const { statusText, data } = res;
 
-      console.log(`statusText--`,statusText)
-      if (statusText === 'OK') {
-        const gSheetFormData = [{
-          timestamp: data.created_at,
-          published: false,
-          featured: false,
-          id: data.public_id,
-          title: values.Title, 
-          url: data.url,
-          description: values.Description,
-          category: values.Category,
-          author: values.FirstName,
-          votes: 0
-        }]
+        console.log(`statusText--`, statusText);
+        if (statusText === "OK") {
+          const gSheetFormData = [
+            {
+              timestamp: data.created_at,
+              published: false,
+              featured: false,
+              id: data.public_id,
+              title: values.Title,
+              url: data.url,
+              description: values.Description,
+              category: values.Category,
+              author: values.Name,
+              votes: 0,
+            },
+          ];
 
-        axios.post(process.env.G_SHEET, gSheetFormData, {headers: {
-          "content-type": "application/json"
-        }})
-        .then(function (res) {
-          const {statusText} = res
-          if(statusText === 'OK'){
-            alert(`Uploaded`)
-            setSubmitting(false)
-          }
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-
-        // if (response.statusText === 'OK') {
-        //   setSubmitting(false)
-        //   setStatus('submitted')
-        //   setValues({
-        //     ...values,
-        //     CampaignData1__c: data.url,
-        //   })
-        //   // Tracking
-        //   helper.sendPetitionTracking('rdpt')
-        // } else {
-        //   alert('Server errors')
-        // }
-      } else {
-        alert('Something errors')
-      }
-    })
-
-    // props.createUser()
-    // setTimeout(() => {
-    //   const data = {
-    //     mail: values.Email,
-    //     name: values.FirstName,
-    //     description: values.Description,
-    //   };
-    //   setSubmitting(false);
-    // }, 2000);
+          axios
+            .post(process.env.G_SHEET, gSheetFormData, {
+              headers: {
+                "content-type": "application/json",
+              },
+            })
+            .then(function (res) {
+              const { statusText } = res;
+              if (statusText === "OK") {
+                alert(`Uploaded`);
+                setSubmitting(false);
+              }
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        } else {
+          alert("Something errors");
+        }
+      });
   },
 
   displayName: "BasicForm",
