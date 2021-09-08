@@ -3,7 +3,12 @@ import * as modalActions from 'store/actions/action-types/modal-actions'
 const initState = {
   isOpen: false,
   id: '',
-  content: {}
+  content: {
+    title: "",
+    url: "",
+    description: "",
+    category: ""
+  }
 }
 
 const modalReducer = (state = initState, action) => {
