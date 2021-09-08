@@ -4,21 +4,31 @@ module.exports = {
     USER_URL: {},
     G_SHEET: `https://gsheet-toolkit.small-service.gpeastasia.org/v1/db/photo-collection`,
     NAV: [
-      {LABEL: '本會簡介', VALUE: '', HREF: '', REF: '' },
-      {LABEL: '我們的工作', VALUE: '', HREF: '', REF: '' },
-      {LABEL: '一起行動', VALUE: '', HREF: '', REF: '' },
-      {LABEL: '評審團', VALUE: 'judges', HREF: 'judges', REF: 'judges' },
-      {LABEL: '條款及守則', VALUE: 'rules', HREF: 'rules', REF: 'rules' }
+      // {LABEL: '本會簡介', VALUE: '', HREF: '', REF: '' },
+      // {LABEL: '我們的工作', VALUE: '', HREF: '', REF: '' },
+      // {LABEL: '一起行動', VALUE: '', HREF: '', REF: '' },
+      { LABEL: '比賽評審', VALUE: 'judges', HREF: 'judges', REF: 'judges' },
+      { LABEL: '比賽詳情', VALUE: 'rules', HREF: 'rules', REF: 'rules' },
     ],
     CATEGORY: [
-      {LABEL: '大嶼風景', VALUE: 'LantauLandscape', HREF: 'LantauLandscape', REF: 'LantauLandscape' },
-      {LABEL: '大嶼生態', VALUE: 'LantauEcology', HREF: 'LantauEcology', REF: 'LantauEcology' },
+      {
+        LABEL: '大嶼風景',
+        VALUE: 'LantauLandscape',
+        HREF: 'LantauLandscape',
+        REF: 'LantauLandscape',
+      },
+      {
+        LABEL: '大嶼生態',
+        VALUE: 'LantauEcology',
+        HREF: 'LantauEcology',
+        REF: 'LantauEcology',
+      },
     ],
   },
   exportPathMap: function () {
     return {
-        '/': { page: '/' }
-    }
+      '/': { page: '/' },
+    };
   },
   generateBuildId: async () => {
     if (process.env.BUILD_ID) {
@@ -27,4 +37,4 @@ module.exports = {
       return `next_${new Date().getTime()}`;
     }
   },
-}
+};
