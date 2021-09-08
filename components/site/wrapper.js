@@ -44,17 +44,17 @@ function Layout({ children, signup, openModal }) {
     }
   }, [signup]);
 
-  // useEffect(() => {
-  //   if(!router || !prevRoute){
-  //     return
-  //   }
+  useEffect(() => {
+    if(!router || !prevRoute){
+      return
+    }
 
-  //   if(router.asPath !== prevRoute.asPath && router.asPath !== "/"){
-  //     console.log(router.asPath)
-  //     openModal()
-  //   }
+    if(router.asPath !== prevRoute.asPath && router.asPath !== "/"){
+      const {id} = router.query
+      openModal(id)
+    }
 
-  // }, [router]);
+  }, [router]);
 
   return (
     <Box>
@@ -81,8 +81,8 @@ const mapDispatchToProps = (dispatch) => {
     closeModal: () => {
       dispatch({ type: modalActions.CLOSE_MODAL });
     },
-    openModal: () => {
-      dispatch({ type: modalActions.OPEN_MODAL });
+    openModal: (id) => {
+      dispatch({ type: modalActions.OPEN_MODAL, id });
     }
   };
 };

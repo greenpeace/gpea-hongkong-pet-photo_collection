@@ -4,7 +4,6 @@ import ListItems from "components/list/items";
 import axios from "axios"
 import { useDispatch } from 'react-redux'
 import * as photoActions from 'store/actions/action-types/photo-actions'
-
 import {
   Box,
   Stack,
@@ -14,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import SubNav from "components/site/navbar/subNav";
 
-export default function Index({photos}) {
+export default function Index({photos, voting}) {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch({ type: photoActions.SET_PHOTO_SUCCESS, data: photos});
@@ -43,8 +42,14 @@ export async function getStaticProps() {
     console.log(error);
   })
 
+  const voting = await axios.get(`https://gsheet-toolkit.small-service.gpeastasia.org/v1/db/photo-collection-voting`)
+  .then((response) => response.data)
+  .catch(function (error) {
+    console.log(error);
+  })
+
   return {
-    props: { photos },
+    props: { photos, voting },
   };
 }
 

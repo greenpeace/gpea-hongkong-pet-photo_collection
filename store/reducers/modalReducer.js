@@ -1,7 +1,9 @@
 import * as modalActions from 'store/actions/action-types/modal-actions'
 
 const initState = {
-  isOpen: false
+  isOpen: false,
+  id: '',
+  content: {}
 }
 
 const modalReducer = (state = initState, action) => {
@@ -12,6 +14,7 @@ const modalReducer = (state = initState, action) => {
       return {
         ...state,
         isOpen: true,
+        id: action.id,
         lastAction: action.type
     }
 

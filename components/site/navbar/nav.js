@@ -126,10 +126,7 @@ const DesktopNav = () => {
   )
 }
 
-const MobileNav = ({
-  isOpen,
-  onToggle,
-}) => {
+const MobileNav = () => {
   const NAV_ITEMS = process.env.NAV || [];
   return (
     <Stack
