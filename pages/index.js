@@ -1,20 +1,3 @@
-// import React, { useEffect } from "react";
-// import Wrapper from "components/site/wrapper";
-// import ListItems from "components/list/items";
-// import axios from "axios"
-// import { useDispatch } from 'react-redux'
-// import * as photoActions from 'store/actions/action-types/photo-actions'
-// import {
-//   Box,
-//   Stack,
-//   Center,
-//   Heading,
-//   Text
-// } from "@chakra-ui/react";
-// import SubNav from "components/site/navbar/subNav";
-
-// export default function Index({photos, voting}) {
-  // const dispatch = useDispatch()
 import React, { useEffect } from 'react';
 import Head from 'next/head';
 import Wrapper from 'components/site/wrapper';
