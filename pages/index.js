@@ -33,13 +33,20 @@ export default function Index({ photos }) {
             zIndex={3}
             pos={'relative'}
           >
-            <Stack direction={'column'} textAlign={'center'} color={'#FFF'}>
+            <Stack
+              spacing={6}
+              direction={'column'}
+              textAlign={'center'}
+              color={'#FFF'}
+            >
               <Heading fontSize={{ base: '4xl', sm: '6xl' }}>
-                2021年攝影比賽
+                山海大嶼 攝影比賽2021
               </Heading>
-              <Text fontSize={{ base: 'md', sm: 'xl' }}>
-                感謝各位提交作品，參加本年度的攝影比賽。提交期限已過，但歡迎你在
-                9 月 4日起參與「人氣大奬」的投選，給喜愛的相片投下你的一票！
+              <Heading fontSize={'2xl'}>
+                以影像訴說山海的故事：留住大嶼今昔
+              </Heading>
+              <Text fontSize={{ base: 'md' }}>
+                大嶼山坐擁山林、河溪、濕地、草地等多種生態環境，造就出香港的生物多樣性，綠色和平設立「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。
               </Text>
             </Stack>
           </Center>
@@ -68,11 +75,12 @@ export async function getStaticProps() {
       console.log(error);
     });
 
-  const voting = await axios.get(`${process.env.G_SHEET}/photo-collection-voting`)
-  .then((response) => response.data)
-  .catch(function (error) {
-    console.log(error);
-  })
+  const voting = await axios
+    .get(`${process.env.G_SHEET}/photo-collection-voting`)
+    .then((response) => response.data)
+    .catch(function (error) {
+      console.log(error);
+    });
 
   return {
     props: { photos, voting },

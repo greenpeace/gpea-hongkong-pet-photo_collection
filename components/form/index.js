@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import formContent from "components/form/content";
-import { base64Encode, saveLocalStorage, usePrevious } from "components/utils";
-import * as helper from 'components/utils/helper'
-import * as signupActions from "store/actions/action-types/signup-actions";
-import * as userActions from "store/actions/action-types/user-actions";
-import { Form, withFormik } from "formik";
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import formContent from 'components/form/content';
+import { base64Encode, saveLocalStorage, usePrevious } from 'components/utils';
+import * as helper from 'components/utils/helper';
+import * as signupActions from 'store/actions/action-types/signup-actions';
+import * as userActions from 'store/actions/action-types/user-actions';
+import { Form, withFormik } from 'formik';
 
 import {
   FormControl,
@@ -16,11 +16,13 @@ import {
   Box,
   Flex,
   Text,
+  Heading,
   HStack,
   Checkbox,
+  Stack,
   Select,
   useToast,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
 const MyForm = (props) => {
   const {
@@ -35,13 +37,13 @@ const MyForm = (props) => {
   } = props;
   const toast = useToast();
   const mobileCountryCode = [
-    { label: "+852", value: "852" },
-    { label: "+853", value: "853" },
+    { label: '+852', value: '852' },
+    { label: '+853', value: '853' },
   ];
   const space = 4;
   const labelStyle = {
-    fontSize: "xs",
-    color: "gray.400",
+    fontSize: 'xs',
+    color: 'gray.400',
   };
   const [birthDateYear, setBirthDateYear] = useState([]);
 
@@ -50,7 +52,7 @@ const MyForm = (props) => {
     async function fetchOptionYear() {
       let nowYear = new Date().getFullYear();
       let targetYear = nowYear - 110;
-      for (var i = nowYear - 20; i >= targetYear; i--) {
+      for (var i = nowYear - 18; i >= targetYear; i--) {
         await optionYear.push({ label: i, value: i.toString() });
       }
       setBirthDateYear(optionYear);
@@ -61,10 +63,18 @@ const MyForm = (props) => {
   return (
     <Box
       p={{ base: 0, sm: 6 }}
-      rounded={{ base: 0, sm: "md" }}
+      rounded={{ base: 0, sm: 'md' }}
       bg="white"
       overflow="hidden"
     >
+      <Stack mb={4}>
+        <Heading mb={2} fontSize={'xl'}>
+          參加綠色和平「山海大嶼」2021攝影比賽
+        </Heading>
+        <Text fontSize={'sm'}>
+          與世界各地的大自然愛好者一同以影像訴說山海故事。由即日起至2021年10月31日期間，你可在此上傳參賽照片。
+        </Text>
+      </Stack>
       <Form onSubmit={handleSubmit}>
         <Flex direction="column">
           <Box flex="1" pb={space}>
@@ -94,40 +104,40 @@ const MyForm = (props) => {
                 <FormErrorMessage color="red">{errors.Name}</FormErrorMessage>
               </FormControl>
             </Box> */}
-            <Box flex='1' pb={space}>
-            <FormControl
-                id='lastName'
+            <Box flex="1" pb={space}>
+              <FormControl
+                id="lastName"
                 isInvalid={errors.LastName && touched.LastName}
               >
                 <FormLabel {...labelStyle}>
                   {formContent.label_last_name}
                 </FormLabel>
                 <Input
-                  name='LastName'
-                  type='text'
+                  name="LastName"
+                  type="text"
                   placeholder={formContent.label_last_name}
                   onChange={handleChange}
                 />
-                <FormErrorMessage color='red'>
+                <FormErrorMessage color="red">
                   {errors.LastName}
                 </FormErrorMessage>
               </FormControl>
             </Box>
-            <Box flex='1' pb={space}>
+            <Box flex="1" pb={space}>
               <FormControl
-                id='firstName'
+                id="firstName"
                 isInvalid={errors.FirstName && touched.FirstName}
               >
                 <FormLabel {...labelStyle}>
                   {formContent.label_first_name}
                 </FormLabel>
                 <Input
-                  name='FirstName'
-                  type='text'
+                  name="FirstName"
+                  type="text"
                   placeholder={formContent.label_first_name}
                   onChange={handleChange}
                 />
-                <FormErrorMessage color='red'>
+                <FormErrorMessage color="red">
                   {errors.FirstName}
                 </FormErrorMessage>
               </FormControl>
@@ -143,7 +153,7 @@ const MyForm = (props) => {
           <HStack align="flex-end">
             <Box
               pb={space}
-              mb={errors.MobilePhone && touched.MobilePhone ? "28px" : 0}
+              mb={errors.MobilePhone && touched.MobilePhone ? '28px' : 0}
             >
               <FormControl id="mobileCountryCode">
                 <Select name="MobileCountryCode" onChange={handleChange}>
@@ -207,7 +217,7 @@ const MyForm = (props) => {
               color="#FFF"
               letterSpacing={4}
               bg="#ff8100"
-              _hover={{ bg: "campaign.climate" }}
+              _hover={{ bg: 'campaign.climate' }}
             >
               {formContent.submit_text}
             </Button>
@@ -215,7 +225,7 @@ const MyForm = (props) => {
 
           <Box>
             <HStack align="flex-start">
-              <Box pt={5} pb={4}>
+              <Box pt={4} pb={4}>
                 <FormControl id="optIn">
                   <Checkbox name="OptIn" defaultChecked onChange={handleChange}>
                     <Text fontSize="xs">{formContent.form_remind}</Text>
@@ -232,12 +242,12 @@ const MyForm = (props) => {
 
 const MyEnhancedForm = withFormik({
   mapPropsToValues: () => ({
-    Email: "",
+    Email: '',
     FirstName: '',
     LastName: '',
-    MobileCountryCode: "852",
-    MobilePhone: "",
-    Birthdate: "",
+    MobileCountryCode: '852',
+    MobilePhone: '',
+    Birthdate: '',
     OptIn: true,
   }),
 
@@ -284,51 +294,50 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
-    
-    const FORM_URL = helper.getPostURL()
-    const CAMPAIGN_ID = helper.getCampaignID()
+    const FORM_URL = helper.getPostURL();
+    const CAMPAIGN_ID = helper.getCampaignID();
     const getHiddenFields = document.querySelectorAll(
-      'input[value][type="hidden"]:not([value=""])',
-    )
+      'input[value][type="hidden"]:not([value=""])'
+    );
     const hiddenFormValue = [...getHiddenFields].reduce(
       (obj, e) => ({ ...obj, [e.name]: e.value }),
-      {},
-    )
+      {}
+    );
 
     const formData = {
       ...hiddenFormValue,
       ...values,
       CampaignId: `${CAMPAIGN_ID}`,
-    }
+    };
 
     const response = await fetch(`${FORM_URL}`, {
       method: 'POST',
       body: Object.keys(formData).reduce((postData, key) => {
-        postData.append(key, formData[key])
-        return postData
+        postData.append(key, formData[key]);
+        return postData;
       }, new FormData()),
-    })
-    
-    if(response.statusText === "OK"){
+    });
+
+    if (response.statusText === 'OK') {
       props.createUser();
-      const name = `${values.FirstName} ${values.LastName}`
+      const name = `${values.FirstName} ${values.LastName}`;
       const data = {
         mail: base64Encode(values.Email),
         name: base64Encode(name),
-        userId: base64Encode(name)
+        userId: base64Encode(name),
         // TODO: save?
         // mobile: `${values.MobileCountryCode} ${values.MobilePhone}`,
         // birthDate: values.Birthdate
       };
 
-        localStorage.setItem("greenpeacePhotoCollection", JSON.stringify(data));
-        setSubmitting(false);
-        props.setModal(false);
-        props.createUserSuccess(data);
+      localStorage.setItem('greenpeacePhotoCollection', JSON.stringify(data));
+      setSubmitting(false);
+      props.setModal(false);
+      props.createUserSuccess(data);
     }
   },
 
-  displayName: "BasicForm",
+  displayName: 'BasicForm',
 })(MyForm);
 
 const mapStateToProps = ({ user, signup }) => {

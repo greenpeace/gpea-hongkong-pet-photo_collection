@@ -8,23 +8,20 @@ import {
   Collapse,
   Image,
   useColorModeValue,
-  useDisclosure
-} from '@chakra-ui/react'
-import {
-  HamburgerIcon,
-  CloseIcon
-} from '@chakra-ui/icons'
-import Link from 'next/link'
-import Script from 'next/script'
-import React, {useState, useEffect} from 'react'
-import { connect } from "react-redux";
-import _ from "lodash"
-import * as signupActions from 'store/actions/action-types/signup-actions'
-import { useRouter } from 'next/router'
+  useDisclosure,
+} from '@chakra-ui/react';
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import Link from 'next/link';
+import Script from 'next/script';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import _ from 'lodash';
+import * as signupActions from 'store/actions/action-types/signup-actions';
+import { useRouter } from 'next/router';
 
-function WithSubnavigation({user, setModal}) {
-  const router = useRouter()
-  const { isOpen, onToggle } = useDisclosure()
+function WithSubnavigation({ user, setModal }) {
+  const router = useRouter();
+  const { isOpen, onToggle } = useDisclosure();
   return (
     <Box>
       <Flex
@@ -54,12 +51,12 @@ function WithSubnavigation({user, setModal}) {
             src={'https://www.greenpeace.org/global/static/img/gp-logo.svg'}
             maxW={'120px'}
             alt={``}
-            onClick={()=>router.push(`/`)}
+            onClick={() => router.push(`/`)}
             cursor={'pointer'}
           />
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-            <DesktopNav/>
+            <DesktopNav />
           </Flex>
         </Flex>
 
@@ -79,52 +76,51 @@ function WithSubnavigation({user, setModal}) {
             _hover={{
               bg: 'green.300',
             }}
-            onClick={()=> _.isEmpty(user) ? setModal(true)  : router.push('/upload')}
-            >
+            onClick={() =>
+              _.isEmpty(user) ? setModal(true) : router.push('/upload')
+            }
+          >
             上傳圖片
           </Button>
         </Stack>
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
-        <MobileNav
-          isOpen={isOpen}
-          onToggle={onToggle}
-        />
+        <MobileNav isOpen={isOpen} onToggle={onToggle} />
       </Collapse>
     </Box>
-  )
+  );
 }
 
 const DesktopNav = () => {
   const NAV_ITEMS = process.env.NAV || [];
-  const linkColor = useColorModeValue('gray.600', 'gray.200')
-  const linkHoverColor = useColorModeValue('gray.800', 'white')
-  const popoverContentBgColor = useColorModeValue('white', 'gray.800')
+  const linkColor = useColorModeValue('gray.600', 'gray.200');
+  const linkHoverColor = useColorModeValue('gray.800', 'white');
+  const popoverContentBgColor = useColorModeValue('white', 'gray.800');
 
   return (
     <Stack direction={'row'} spacing={4}>
       {NAV_ITEMS.map((d) => (
         <Box key={d.LABEL}>
-        <Link href={d.HREF}>
-          <Box
-            fontSize={'sm'}
-            fontWeight={500}
-            color={linkColor}
-            _hover={{
-              textDecoration: 'none',
-              color: linkHoverColor,
-              cursor: 'pointer',
-            }}
-          >
-            {d.LABEL}
-          </Box>
+          <Link href={d.HREF}>
+            <Box
+              fontSize={'sm'}
+              fontWeight={500}
+              color={linkColor}
+              _hover={{
+                textDecoration: 'none',
+                color: linkHoverColor,
+                cursor: 'pointer',
+              }}
+            >
+              {d.LABEL}
+            </Box>
           </Link>
         </Box>
       ))}
     </Stack>
-  )
-}
+  );
+};
 
 const MobileNav = () => {
   const NAV_ITEMS = process.env.NAV || [];
@@ -135,10 +131,7 @@ const MobileNav = () => {
       display={{ md: 'none' }}
     >
       {NAV_ITEMS.map((d) => (
-        <Stack
-          key={d.LABEL}
-          spacing={4}
-        >
+        <Stack key={d.LABEL} spacing={4}>
           <Flex
             py={2}
             justify={'space-between'}
@@ -152,8 +145,8 @@ const MobileNav = () => {
         </Stack>
       ))}
     </Stack>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ user }) => ({
   user: user.data,
@@ -162,8 +155,8 @@ const mapStateToProps = ({ user }) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     setModal: (bol) => {
-      dispatch({ type: signupActions.SET_SIGNUP_MODAL, data: bol});
-    }
+      dispatch({ type: signupActions.SET_SIGNUP_MODAL, data: bol });
+    },
   };
 };
 
