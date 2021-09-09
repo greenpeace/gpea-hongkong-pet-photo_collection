@@ -255,7 +255,6 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: (values, { setSubmitting, props }) => {
-    console.log(`router--`, props.router)
     const formData = new FormData();
     formData.append("file", values.File);
     formData.append("upload_preset", process.env.CLOUDINARY_PRESET);
@@ -265,8 +264,6 @@ const MyEnhancedForm = withFormik({
       .post(process.env.CLOUDINARY_API, formData)
       .then(async (res) => {
         const { statusText, data } = res;
-
-        console.log(`statusText--`, statusText);
         if (statusText === "OK") {
           const gSheetFormData = [
             {

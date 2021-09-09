@@ -9,7 +9,6 @@ import {
   Box,
   Img,
   Flex,
-  Divider,
   Center,
   CloseButton,
 } from "@chakra-ui/react";
@@ -18,18 +17,19 @@ import { FaHeart } from "react-icons/fa";
 import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
 import * as modalActions from "store/actions/action-types/modal-actions";
+import axios from "axios";
 
-function ModalWrapper({ modal, closeModal, photos }) {
+function ModalWrapper({ modal, closeModal, photo }) {
   const [content, setContent] = useState(modal.content);
   const router = useRouter();
 
   useEffect(async () => {
-    if (!photos) {
+    if (!photo) {
       return;
     }
 
     const { id } = modal;
-    const getPhoto = await photos.find((d) => d.id === id);
+    const getPhoto = await photo.find((d) => d.id === id);
     setContent(getPhoto);
   }, [modal.id]);
 
@@ -37,6 +37,34 @@ function ModalWrapper({ modal, closeModal, photos }) {
     closeModal();
     router.push(`/`, undefined, { shallow: true });
   };
+
+  const handleVoting = () => {
+    const localUser =
+      typeof window !== "undefined"
+        ? JSON.parse(localStorage.getItem(`greenpeacePhotoCollection`))
+        : null;
+
+    const gSheetFormData =[{
+      timestamp: content.timestamp,
+      id: content.id,
+      votes: '1',
+      userId: localUser.name || ''
+    }]
+
+    axios
+      .post(`${process.env.G_SHEET}/photo-collection-voting`, gSheetFormData, {
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+      .then(function (res) {
+        const { statusText } = res;
+        console.log(`statusText---`, statusText);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   return (
     <Modal
@@ -48,7 +76,7 @@ function ModalWrapper({ modal, closeModal, photos }) {
       trapFocus={false}
     >
       <ModalOverlay />
-      <ModalContent>
+      {content && <ModalContent>
         <Flex flexDirection={`row-reverse`}>
           <Box p={2}>
             <CloseButton size="lg" onClick={() => handleCloseModal()} />
@@ -67,7 +95,10 @@ function ModalWrapper({ modal, closeModal, photos }) {
               mb={2}
             >
               <Box>
-                <Heading className="grid__title" fontSize={{base: 16, sm: 24}}>{content.title}</Heading>
+                <Flex direction={{base: 'row'}} align={`center`}>
+                  <Heading className="grid__title" fontSize={{base: 16, sm: 24}}>{content.title}</Heading>
+                  <Button colorScheme="blue" size="sm" ml={2} onClick={()=>handleVoting()}>投票</Button>
+                </Flex>
                 <Text
                   as="span"
                   className="grid__tag"
@@ -81,14 +112,14 @@ function ModalWrapper({ modal, closeModal, photos }) {
               <Text as="p">{content.description}</Text>
             </Box>
         </Box>
-      </ModalContent>
+      </ModalContent>}
     </Modal>
   );
 }
 
 const mapStateToProps = ({ modal, photo }) => ({
   modal,
-  photos: photo.data.records,
+  photo: photo.data,
 });
 
 const mapDispatchToProps = (dispatch) => {

@@ -5,19 +5,24 @@ import {
   Text,
   Heading,
   Image,
-  Flex
+  Flex,
+  Container
 } from "@chakra-ui/react";
 import { connect } from "react-redux";
 import { useRouter } from 'next/router';
 import * as modalActions from 'store/actions/action-types/modal-actions'
 
-function Index({openModal, photos}) {
+function Index({openModal, photo}) {
   const router = useRouter()
-  const {records} = photos  
+  const {data} = photo 
+  console.log(`data---`,data)
+  if(data.length===0){
+    return <Container maxW={`container.xl`}><Box py={6} textAlign={`center`}>讀取中...</Box></Container>
+  }
   return (
     <Box gridColumn={"-moz-initial"} p={4}>
         <Box className="masonry">
-          {records.map((d, i) => (
+          {data.map((d, i) => (
             <Box className="grid" key={i} onClick={()=>router.push(`/?id=${d.id}`, undefined, { shallow: true })} cursor={'pointer'}>
               <Box className="grid__body">
                 <Box className="relative">
@@ -47,6 +52,10 @@ function Index({openModal, photos}) {
   );
 }
 
+const mapStateToProps = ({photo}) => {
+  return {photo};
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     openModal: () => {
@@ -55,4 +64,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Index);
+export default connect(mapStateToProps, mapDispatchToProps)(Index);

@@ -1,8 +1,7 @@
 import Head from 'next/head'
 import React, { useEffect, useState, useRef } from "react";
 import { connect } from "react-redux";
-import {
-  Box,
+import {Box,
   useToast
 } from "@chakra-ui/react";
 import Nav from "components/site/navbar/nav";
@@ -11,7 +10,9 @@ import SignupModal from 'components/site/modal/signup'
 import Footer from 'components/site/footer/SmallWithSocial'
 import * as signupActions from 'store/actions/action-types/signup-actions'
 import * as modalActions from 'store/actions/action-types/modal-actions'
+import * as photoActions from 'store/actions/action-types/photo-actions'
 import { useRouter } from 'next/router'
+
 
 // Hook
 function usePrevious(value) {
@@ -22,11 +23,13 @@ function usePrevious(value) {
   return ref.current;
 }
 
-function Layout({ children, signup, openModal }) {
+
+function Layout({ children, signup, openModal, setPhoto }) {
   const router = useRouter()
   const toast = useToast()
   const prevSignup = usePrevious(signup);
   const prevRoute = usePrevious(router);
+
   useEffect(() => {
     if(!signup || !prevSignup){
       return
@@ -58,6 +61,10 @@ function Layout({ children, signup, openModal }) {
 
   }, [router]);
 
+  useEffect(() => {
+    setPhoto()
+  }, []);
+
   return (
     <Box>
       <Head>
@@ -85,6 +92,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     openModal: (id) => {
       dispatch({ type: modalActions.OPEN_MODAL, id });
+    },
+    setPhoto: () => {
+      dispatch({ type: photoActions.SET_PHOTO });
     }
   };
 };

@@ -1,7 +1,8 @@
 import * as photoActions from 'store/actions/action-types/photo-actions'
 
 const initState = {
-  data: {},
+  data: [],
+  // voting: {}
 }
 
 const photoReducer = (state = initState, action) => {
@@ -25,6 +26,7 @@ const photoReducer = (state = initState, action) => {
       return {
         ...state,
         data: action.data,
+        // voting: action.voting,
         lastAction: action.type
     }
 
