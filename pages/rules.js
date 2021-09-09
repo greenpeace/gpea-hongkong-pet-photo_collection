@@ -17,7 +17,7 @@ import data from '../data';
 
 const RuleHeadline = ({ children }) => {
   return (
-    <Text fontWeight={500} fontSize={'md'} mb={4} pl={2}>
+    <Text fontWeight={500} fontSize={'xl'} mb={4}>
       {children}
     </Text>
   );
@@ -59,7 +59,9 @@ export default function Index() {
           <Box>
             <OrderedList spacing={2}>
               {data.rules.uploads.map((c) => (
-                <ListItem key={c}>{c}</ListItem>
+                <ListItem key={c}>
+                  <Text fontSize={'sm'}>{c}</Text>
+                </ListItem>
               ))}
             </OrderedList>
           </Box>
@@ -71,10 +73,10 @@ export default function Index() {
             <List>
               {data.rules.groups.map((c) => (
                 <ListItem key={c} mb={4}>
-                  <Text fontWeight={500} mb={2}>
+                  <Text fontWeight={500} mt={6} mb={2}>
                     {c.name}
                   </Text>
-                  <Text>{c.details}</Text>
+                  <Text fontSize={'sm'}>{c.details}</Text>
                 </ListItem>
               ))}
             </List>
@@ -86,7 +88,9 @@ export default function Index() {
           <Box>
             <OrderedList spacing={2}>
               {data.rules.formats.map((c) => (
-                <ListItem key={c}>{c}</ListItem>
+                <ListItem key={c}>
+                  <Text fontSize={'sm'}>{c}</Text>
+                </ListItem>
               ))}
             </OrderedList>
           </Box>
@@ -96,7 +100,7 @@ export default function Index() {
           <RuleHeadline>{data.rules.criteriaHeadline}</RuleHeadline>
           <Box>
             {data.rules.criterias.map((c) => (
-              <Text key={c} mb={2}>
+              <Text key={c} fontSize={'sm'} mb={2}>
                 {c}
               </Text>
             ))}
@@ -126,7 +130,9 @@ export default function Index() {
           <Box>
             <List spacing={2}>
               {data.rules.prizes.map((c) => (
-                <ListItem key={c}>{c}</ListItem>
+                <ListItem key={c}>
+                  <Text fontSize={'sm'}>{c}</Text>
+                </ListItem>
               ))}
             </List>
           </Box>
