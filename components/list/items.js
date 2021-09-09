@@ -15,7 +15,6 @@ import * as modalActions from 'store/actions/action-types/modal-actions'
 function Index({openModal, photo}) {
   const router = useRouter()
   const {data} = photo 
-  console.log(`data---`,data)
   if(data.length===0){
     return <Container maxW={`container.xl`}><Box py={6} textAlign={`center`}>讀取中...</Box></Container>
   }
