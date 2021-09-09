@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import formContent from "components/form/content";
 import { base64Encode, saveLocalStorage, usePrevious } from "components/utils";
+import * as helper from 'components/utils/helper'
 import * as signupActions from "store/actions/action-types/signup-actions";
 import * as userActions from "store/actions/action-types/user-actions";
 import { Form, withFormik } from "formik";
@@ -81,7 +82,7 @@ const MyForm = (props) => {
           </Box>
 
           <HStack>
-            <Box flex={1} pb={space}>
+            {/* <Box flex={1} pb={space}>
               <FormControl id="Name" isInvalid={errors.Name && touched.Name}>
                 <FormLabel {...labelStyle}>{formContent.label_name}</FormLabel>
                 <Input
@@ -92,8 +93,9 @@ const MyForm = (props) => {
                 />
                 <FormErrorMessage color="red">{errors.Name}</FormErrorMessage>
               </FormControl>
-            </Box>
-            {/* <FormControl
+            </Box> */}
+            <Box flex='1' pb={space}>
+            <FormControl
                 id='lastName'
                 isInvalid={errors.LastName && touched.LastName}
               >
@@ -129,7 +131,7 @@ const MyForm = (props) => {
                   {errors.FirstName}
                 </FormErrorMessage>
               </FormControl>
-            </Box> */}
+            </Box>
           </HStack>
 
           <FormControl>
@@ -231,7 +233,8 @@ const MyForm = (props) => {
 const MyEnhancedForm = withFormik({
   mapPropsToValues: () => ({
     Email: "",
-    Name: "",
+    FirstName: '',
+    LastName: '',
     MobileCountryCode: "852",
     MobilePhone: "",
     Birthdate: "",
@@ -249,30 +252,80 @@ const MyEnhancedForm = withFormik({
       errors.Email = formContent.invalid_email_alert;
     }
 
-    if (!values.Name) {
-      errors.Name = formContent.empty_data_alert;
+    if (!values.FirstName) {
+      errors.FirstName = formContent.empty_data_alert;
     }
+
+    if (!values.LastName) {
+      errors.LastName = formContent.empty_data_alert;
+    }
+
+    // if (
+    //   values.MobilePhone.toString().length === 8 &&
+    //   values.MobileCountryCode === "852"
+    // ) {
+    //   const regex = /^[2,3,5,6,8,9]{1}[0-9]{7}$/i;
+    //   if (!regex.test(values.MobilePhone)) {
+    //     errors.MobilePhone = formContent.invalid_format_alert;
+    //   }
+    // }
+
+    // if (
+    //   values.MobilePhone.toString().length === 8 &&
+    //   values.MobileCountryCode === "853"
+    // ) {
+    //   const regex = /^[6]{1}[0-9]{7}$/i;
+    //   if (!regex.test(values.MobilePhone)) {
+    //     errors.MobilePhone = formContent.invalid_format_alert;
+    //   }
+    // }
 
     return errors;
   },
 
-  handleSubmit: (values, { setSubmitting, props }) => {
-    console.log(`-----`)
-    // const toast = useToast()
-    props.createUser();
-    setTimeout(() => {
+  handleSubmit: async (values, { setSubmitting, props }) => {
+    
+    const FORM_URL = helper.getPostURL()
+    const CAMPAIGN_ID = helper.getCampaignID()
+    const getHiddenFields = document.querySelectorAll(
+      'input[value][type="hidden"]:not([value=""])',
+    )
+    const hiddenFormValue = [...getHiddenFields].reduce(
+      (obj, e) => ({ ...obj, [e.name]: e.value }),
+      {},
+    )
+
+    const formData = {
+      ...hiddenFormValue,
+      ...values,
+      CampaignId: `${CAMPAIGN_ID}`,
+    }
+
+    const response = await fetch(`${FORM_URL}`, {
+      method: 'POST',
+      body: Object.keys(formData).reduce((postData, key) => {
+        postData.append(key, formData[key])
+        return postData
+      }, new FormData()),
+    })
+    
+    if(response.statusText === "OK"){
+      props.createUser();
+      const name = `${values.FirstName} ${values.LastName}`
       const data = {
         mail: base64Encode(values.Email),
-        name: base64Encode(values.Name),
+        name: base64Encode(name),
+        userId: base64Encode(name)
         // TODO: save?
         // mobile: `${values.MobileCountryCode} ${values.MobilePhone}`,
         // birthDate: values.Birthdate
       };
-      localStorage.setItem("greenpeacePhotoCollection", JSON.stringify(data));
-      setSubmitting(false);
-      props.setModal(false);
-      props.createUserSuccess(data);
-    }, 1000);
+
+        localStorage.setItem("greenpeacePhotoCollection", JSON.stringify(data));
+        setSubmitting(false);
+        props.setModal(false);
+        props.createUserSuccess(data);
+    }
   },
 
   displayName: "BasicForm",

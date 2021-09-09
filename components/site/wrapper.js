@@ -45,14 +45,16 @@ function Layout({ children, signup, openModal }) {
   }, [signup]);
 
   useEffect(() => {
-    // if(!router || !prevRoute){
-    //   return
-    // }
+    if(!router || !prevRoute){
+      return
+    }
 
-    // if(router.asPath !== prevRoute.asPath && router.asPath !== "/"){
-    //   const {id} = router.query
-    //   openModal(id)
-    // }
+    if(router.asPath !== prevRoute.asPath && router.asPath !== "/"){
+      const {id} = router.query
+      if(id){
+        openModal(id)
+      }
+    }
 
   }, [router]);
 

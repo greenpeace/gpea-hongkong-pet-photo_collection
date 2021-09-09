@@ -249,14 +249,10 @@ const MyEnhancedForm = withFormik({
       errors.File = `請上傳圖片`;
     }
 
-    console.log(`errors`, errors);
-
     return errors;
   },
 
   handleSubmit: (values, { setSubmitting, props }) => {
-    console.log(`values`, values);
-
     const formData = new FormData();
     formData.append("file", values.File);
     formData.append("upload_preset", "quocv8wr");

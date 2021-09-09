@@ -62,13 +62,13 @@ export default function Index({ photos }) {
 
 export async function getStaticProps() {
   const photos = await axios
-    .get(process.env.G_SHEET)
+    .get(`${process.env.G_SHEET}/photo-collection`)
     .then((response) => response.data)
     .catch(function (error) {
       console.log(error);
     });
 
-  const voting = await axios.get(`https://gsheet-toolkit.small-service.gpeastasia.org/v1/db/photo-collection-voting`)
+  const voting = await axios.get(`${process.env.G_SHEET}/photo-collection-voting`)
   .then((response) => response.data)
   .catch(function (error) {
     console.log(error);
