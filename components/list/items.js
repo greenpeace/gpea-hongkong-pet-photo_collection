@@ -1,5 +1,6 @@
 import { FaHeart } from "react-icons/fa";
 import React, {useState, useEffect} from "react";
+import Vote from "components/list/vote"
 import {
   Box,
   Text,
@@ -27,7 +28,7 @@ function Index({openModal, photo}) {
                 <Box className="relative">
                   <Heading className="grid__title">{d.title}</Heading>
                   <Flex direction={'row'} align={'center'}>
-                    <FaHeart/>
+                    <Vote imageId={d.id}/>
                     <Box pl={2}>
                       <Text className="grid__author">{d.votes}</Text>
                     </Box>
