@@ -29,11 +29,11 @@ function Index({openModal, photos}) {
                     </Box>
                   </Flex>
                 </Box>
-                <Box className="mt-auto">
+                {d.category && <Box className="mt-auto">
                   <Text as="span" className="grid__tag" fontSize={{base: 10, sm: 12}}>
                     #{d.category}
                   </Text>
-                </Box>
+                </Box>}
               </Box>
               <Image
                 src={d.url}

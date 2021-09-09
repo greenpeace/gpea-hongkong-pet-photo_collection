@@ -2,9 +2,9 @@ module.exports = {
   env: {
     // USER_AUTH_KEY: process.env.USER_AUTH_KEY,
     USER_URL: {},
-    //  https://gsheet-toolkit.small-service.gpeastasia.org/v1/db/photo-collection-voting
-    //  https://gsheet-toolkit.small-service.gpeastasia.org/v1/db/photo-collection,
     G_SHEET: `https://gsheet-toolkit.small-service.gpeastasia.org/v1/db`,
+    CLOUDINARY_API: `https://api.cloudinary.com/v1_1/idt/image/upload`,
+    CLOUDINARY_PRESET: `quocv8wr`,
     NAV: [
       // {LABEL: '本會簡介', VALUE: '', HREF: '', REF: '' },
       // {LABEL: '我們的工作', VALUE: '', HREF: '', REF: '' },

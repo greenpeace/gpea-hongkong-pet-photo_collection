@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { connect } from "react-redux";
+import { withRouter } from 'next/router'
 import formContent from "components/form/content";
 import { base64Decode } from "components/utils";
 import * as signupActions from "store/actions/action-types/signup-actions";
@@ -54,6 +55,7 @@ const MyForm = (props) => {
         : null;
     setName(base64Decode(localUser.name));
     setFieldValue("Name", base64Decode(localUser.name));
+    setFieldValue("UserId", localUser.name);
   }, []);
 
   const handleFileUpload = () => {
@@ -170,7 +172,6 @@ const MyForm = (props) => {
                 </FormErrorMessage>
               </FormControl>
             </Box>
-
             <Box flex="1" pb={space}>
               <FormControl
                 id="category"
@@ -224,6 +225,7 @@ const MyEnhancedForm = withFormik({
     Description: "",
     File: "",
     Category: "",
+    UserId: ""
   }),
 
   validate: (values) => {
@@ -253,13 +255,14 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: (values, { setSubmitting, props }) => {
+    console.log(`router--`, props.router)
     const formData = new FormData();
     formData.append("file", values.File);
-    formData.append("upload_preset", "quocv8wr");
+    formData.append("upload_preset", process.env.CLOUDINARY_PRESET);
     formData.append("resource_type", "raw");
 
     axios
-      .post("https://api.cloudinary.com/v1_1/idt/image/upload", formData)
+      .post(process.env.CLOUDINARY_API, formData)
       .then(async (res) => {
         const { statusText, data } = res;
 
@@ -277,11 +280,12 @@ const MyEnhancedForm = withFormik({
               category: values.Category,
               author: values.Name,
               votes: 0,
+              userId: values.UserId
             },
           ];
 
           axios
-            .post(process.env.G_SHEET, gSheetFormData, {
+            .post(`${process.env.G_SHEET}/photo-collection`, gSheetFormData, {
               headers: {
                 "content-type": "application/json",
               },
@@ -289,7 +293,7 @@ const MyEnhancedForm = withFormik({
             .then(function (res) {
               const { statusText } = res;
               if (statusText === "OK") {
-                alert(`Uploaded`);
+                props.router.push('/thankyou');
                 setSubmitting(false);
               }
             })
@@ -325,4 +329,4 @@ const mapDispatchToProps = (dispatch) => {
 
 connect(null, mapDispatchToProps)(MyForm);
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyEnhancedForm);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MyEnhancedForm));
