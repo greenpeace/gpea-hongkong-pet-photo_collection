@@ -13,15 +13,19 @@ import {
   CloseButton,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { FaHeart } from "react-icons/fa";
 import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
 import * as modalActions from "store/actions/action-types/modal-actions";
-import axios from "axios";
+import * as votingActions from "store/actions/action-types/voting-actions";
 
-function ModalWrapper({ modal, closeModal, photo }) {
+function ModalWrapper({ modal, closeModal, photo, vote }) {
   const [content, setContent] = useState(modal.content);
   const router = useRouter();
+
+  const localUser =
+  typeof window !== "undefined"
+    ? JSON.parse(localStorage.getItem(`greenpeacePhotoCollection`))
+    : null;
 
   useEffect(async () => {
     if (!photo) {
@@ -39,32 +43,27 @@ function ModalWrapper({ modal, closeModal, photo }) {
   };
 
   const handleVoting = () => {
-    const localUser =
-      typeof window !== "undefined"
-        ? JSON.parse(localStorage.getItem(`greenpeacePhotoCollection`))
-        : null;
+    if(localUser){
+      const gSheetFormData =[{
+        timestamp: content.timestamp,
+        id: content.id,
+        votes: '1',
+        userId: localUser.name || ''
+      }]
 
-    const gSheetFormData =[{
-      timestamp: content.timestamp,
-      id: content.id,
-      votes: '1',
-      userId: localUser.name || ''
-    }]
-
-    axios
-      .post(`${process.env.G_SHEET}/photo-collection-voting`, gSheetFormData, {
-        headers: {
-          "content-type": "application/json",
-        },
-      })
-      .then(function (res) {
-        const { statusText } = res;
-        console.log(`statusText---`, statusText);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      vote(gSheetFormData)
+    }
   }
+
+  // const checkVoteAble = () => {
+  //   if(localUser){
+  //     console.log(`localUser.userId --`,localUser.userId )
+  //     console.log(`content.id--`,content.id)
+  //     return localUser.userId !== content.id
+  //   } else {
+  //     return false
+  //   }
+  // }
 
   return (
     <Modal
@@ -97,7 +96,7 @@ function ModalWrapper({ modal, closeModal, photo }) {
               <Box>
                 <Flex direction={{base: 'row'}} align={`center`}>
                   <Heading className="grid__title" fontSize={{base: 16, sm: 24}}>{content.title}</Heading>
-                  <Button colorScheme="blue" size="sm" ml={2} onClick={()=>handleVoting()}>投票</Button>
+                  <Button colorScheme="blue" size="sm" ml={2} onClick={()=>handleVoting()}>{localUser ? `投票` : `先註冊`}</Button>
                 </Flex>
                 <Text
                   as="span"
@@ -117,9 +116,10 @@ function ModalWrapper({ modal, closeModal, photo }) {
   );
 }
 
-const mapStateToProps = ({ modal, photo }) => ({
+const mapStateToProps = ({ modal, photo, voting }) => ({
   modal,
   photo: photo.data,
+  voting: voting.data
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -129,6 +129,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     openModal: () => {
       dispatch({ type: modalActions.OPEN_MODAL });
+    },
+    vote: (data) => {
+      dispatch({ type: votingActions.ADD_VOTING, data });
     },
   };
 };

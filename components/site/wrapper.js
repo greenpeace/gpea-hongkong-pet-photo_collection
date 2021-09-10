@@ -12,8 +12,8 @@ import Footer from 'components/site/footer/SmallWithSocial'
 import * as signupActions from 'store/actions/action-types/signup-actions'
 import * as modalActions from 'store/actions/action-types/modal-actions'
 import * as photoActions from 'store/actions/action-types/photo-actions'
+import * as votingActions from 'store/actions/action-types/voting-actions'
 import { useRouter } from 'next/router'
-
 
 // Hook
 function usePrevious(value) {
@@ -25,10 +25,11 @@ function usePrevious(value) {
 }
 
 
-function Layout({ children, signup, openModal, setPhoto }) {
+function Layout({ children, signup, openModal, setPhoto, voting }) {
   const router = useRouter()
   const toast = useToast()
   const prevSignup = usePrevious(signup);
+  const prevVoting = usePrevious(voting);
   const prevRoute = usePrevious(router);
 
   useEffect(() => {
@@ -47,6 +48,23 @@ function Layout({ children, signup, openModal, setPhoto }) {
       })
     }
   }, [signup]);
+
+  useEffect(() => {
+    if(!voting || !prevVoting){
+      return
+    }
+
+    if(voting.lastAction !== prevVoting.lastAction && voting.lastAction === votingActions.ADD_VOTING_SUCCESS){
+      toast({
+        title: "感謝您的投票",
+        description: "其他內容(Demo)",
+        status: "success",
+        duration: 6000,
+        isClosable: true,
+        position: "top"
+      })
+    }
+  }, [voting]);
 
   useEffect(() => {
     if(!router || !prevRoute){
@@ -85,8 +103,8 @@ function Layout({ children, signup, openModal, setPhoto }) {
   );
 }
 
-const mapStateToProps = ({signup}) => {
-  return {signup};
+const mapStateToProps = ({signup, voting}) => {
+  return {signup, voting};
 };
 
 const mapDispatchToProps = (dispatch) => {

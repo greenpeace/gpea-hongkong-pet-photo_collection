@@ -1,3 +1,7 @@
 export const SET_VOTING = 'SET_VOTING';
 export const SET_VOTING_SUCCESS = 'SET_VOTING_SUCCESS';
 export const SET_VOTING_FAIL = 'SET_VOTING_FAIL';
+
+export const ADD_VOTING = 'ADD_VOTING';
+export const ADD_VOTING_SUCCESS = 'ADD_VOTING_SUCCESS';
+export const ADD_VOTING_FAIL = 'ADD_VOTING_FAIL';

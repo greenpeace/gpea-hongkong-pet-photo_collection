@@ -4,14 +4,9 @@ import {
   Heading,
   ModalOverlay,
   ModalContent,
-  Button,
-  Stack,
   Box,
-  Image,
   Flex,
-  Divider,
 } from '@chakra-ui/react';
-import { FaHeart } from 'react-icons/fa';
 import { connect } from 'react-redux';
 import SignupForm from 'components/form';
 import * as signupActions from 'store/actions/action-types/signup-actions';
