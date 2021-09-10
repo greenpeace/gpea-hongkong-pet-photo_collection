@@ -26,30 +26,27 @@ class NextDocument extends Document {
             {`
               var dataLayer = (window.dataLayer = window.dataLayer || []);
               dataLayer.push({
-                gCampaign: "oceans",
-                gBasket: "sanctuaries",
+                gCampaign: "general",
+                gBasket: "photo-collection",
               });
             `}
           </script>
           {/* title */}
           <meta
             property="og:title"
-            content="守護海洋，攜手成立全球海洋保護區！ - Greenpeace 綠色和平 | 香港"
+            content="山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 | 香港"
           />
           {/* description */}
           <meta
             name="description"
-            content="海洋的面積占地球71%，是世界最大的供氧來源，也孕育豐富的生物多樣性，包含鯨魚、海豚、海龜、珊瑚等美妙海洋生物。然而，海洋現在卻因塑膠污染、非法捕魚、氣候變遷等面臨前所未有的重大生態危機。我們需要更多人一起站出來聯署加入，並捐款資助綠色和平！"
+            content="大嶼山坐擁山林、河溪、濕地、草地等多種生態環境，造就出香港的生物多樣性，綠色和平設立「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。"
           />
           <meta
             property="og:description"
-            content="海洋的面積占地球71%，是世界最大的供氧來源，也孕育豐富的生物多樣性，包含鯨魚、海豚、海龜、珊瑚等美妙海洋生物。然而，海洋現在卻因塑膠污染、非法捕魚、氣候變遷等面臨前所未有的重大生態危機。我們需要更多人一起站出來聯署加入，並捐款資助綠色和平！"
+            content="大嶼山坐擁山林、河溪、濕地、草地等多種生態環境，造就出香港的生物多樣性，綠色和平設立「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。"
           />
           {/* meta image */}
-          <meta
-            property="og:image"
-            content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/03/26435735-og-petition.jpeg"
-          />
+          <meta property="og:image" content="" />
           {/* Load google fonts */}
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link

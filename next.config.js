@@ -11,6 +11,12 @@ module.exports = {
       // {LABEL: '一起行動', VALUE: '', HREF: '', REF: '' },
       { LABEL: '比賽評審', VALUE: 'judges', HREF: 'judges', REF: 'judges' },
       { LABEL: '比賽詳情', VALUE: 'rules', HREF: 'rules', REF: 'rules' },
+      {
+        LABEL: 'Photowalk',
+        VALUE: 'photowalk',
+        HREF: 'photowalk',
+        REF: 'photowalk',
+      },
     ],
     CATEGORY: [
       {
