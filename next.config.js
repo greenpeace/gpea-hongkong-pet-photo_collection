@@ -10,12 +10,12 @@ module.exports = {
       // {LABEL: '我們的工作', VALUE: '', HREF: '', REF: '' },
       // {LABEL: '一起行動', VALUE: '', HREF: '', REF: '' },
       { LABEL: '主頁', VALUE: '/', HREF: '/', REF: '/' },
-      { LABEL: '比賽評審', VALUE: 'judges', HREF: 'judges', REF: 'judges' },
-      { LABEL: '比賽詳情', VALUE: 'rules', HREF: 'rules', REF: 'rules' },
+      { LABEL: '比賽評審', VALUE: 'judges', HREF: '/judges', REF: 'judges' },
+      { LABEL: '比賽詳情', VALUE: 'rules', HREF: '/rules', REF: 'rules' },
       {
         LABEL: 'Photowalk',
         VALUE: 'photowalk',
-        HREF: 'photowalk',
+        HREF: '/photowalk',
         REF: 'photowalk',
       },
     ],
@@ -43,9 +43,9 @@ module.exports = {
   // },
   generateBuildId: async () => {
     if (process.env.BUILD_ID) {
-      return `${process.env.BUILD_ID}_${new Date().getTime()}`;
+      return `${process.env.BUILD_ID}_${new Date().getTime()}`
     } else {
-      return `next_${new Date().getTime()}`;
+      return `next_${new Date().getTime()}`
     }
   },
-};
+}

@@ -8,9 +8,9 @@ import {
   Divider,
   useColorModeValue,
   Input,
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
-const CATEGORY = process.env.CATEGORY || [];
+const CATEGORY = process.env.CATEGORY || []
 
 const NavLink = ({ children }) => (
   <Link
@@ -27,7 +27,7 @@ const NavLink = ({ children }) => (
   >
     {children}
   </Link>
-);
+)
 
 export default function WithAction() {
   return (
@@ -45,8 +45,8 @@ export default function WithAction() {
                   {d.LABEL}
                 </NavLink>
               ))}
-              <Center height="20px">
-                <Divider orientation="vertical" />
+              <Center height='20px'>
+                <Divider orientation='vertical' />
               </Center>
             </HStack>
           </HStack>
@@ -55,8 +55,9 @@ export default function WithAction() {
               h={8}
               borderRadius={8}
               bgColor={'gray.200'}
-              placeholder="搜尋字眼"
+              placeholder='搜尋字眼'
               style={{ fontSize: '14px' }}
+              disabled
             />
           </Box>
           <Flex alignItems={'center'}>
@@ -67,5 +68,5 @@ export default function WithAction() {
         </Flex>
       </Box>
     </>
-  );
+  )
 }

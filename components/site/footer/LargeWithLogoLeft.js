@@ -52,7 +52,7 @@ export default function LargeWithLogoLeft() {
               <Image
                 htmlWidth='200px'
                 src='https://www.greenpeace.org/hongkong/wp-content/themes/planet4-child-theme-hongkong/static/images/logo_zh_gp_w%20footer.svg'
-                alt='logo'
+                alt='Greenpeace 綠色和平'
               />
             </Box>
             <Text fontSize={'sm'} maxWidth={'480px'}>
@@ -62,7 +62,7 @@ export default function LargeWithLogoLeft() {
           </Stack>
           <Stack align={'flex-start'} spacing={2}>
             <ListHeader>關於綠色和平</ListHeader>
-            <Link href={'http://www.greenpeace.org/hongkong/'}>首頁</Link>
+            <Link href={'https://www.greenpeace.org/hongkong/'}>首頁</Link>
             <Link
               href={
                 'https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/'
