@@ -1,12 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Wrapper from 'components/site/wrapper';
-import UploadForm from 'components/form/upload';
-import { Box, Stack, Center, Heading, Text, Container } from '@chakra-ui/react';
+import {
+  Box,
+  Stack,
+  Center,
+  Heading,
+  Image,
+  Text,
+  Container,
+} from '@chakra-ui/react';
+
+import data from '../data';
 
 export default function Index() {
-  useEffect(() => {
-    // Check logged In
-  }, []);
   return (
     <Box>
       <Box
@@ -23,10 +29,7 @@ export default function Index() {
           pos={'relative'}
         >
           <Stack direction={'column'} textAlign={'center'} color={'#FFF'}>
-            <Heading fontSize={{ base: '4xl', sm: '6xl' }}>
-              上傳圖片頁面
-            </Heading>
-            <Text fontSize={{ base: 'md', sm: 'xl' }}>內容說明</Text>
+            <Heading fontSize={{ base: '4xl', sm: '6xl' }}>Photowalk</Heading>
           </Stack>
         </Center>
         <Box
@@ -40,9 +43,7 @@ export default function Index() {
         />
       </Box>
       <Box py={12}>
-        <Container maxW={'container.xl'}>
-          <UploadForm />
-        </Container>
+        <Container maxW={'container.xl'}></Container>
       </Box>
     </Box>
   );
