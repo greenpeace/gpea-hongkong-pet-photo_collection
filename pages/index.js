@@ -5,9 +5,7 @@ import ListItems from 'components/list/items';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import * as photoActions from 'store/actions/action-types/photo-actions';
-
-import { Box, Stack, Center, Heading, Text } from '@chakra-ui/react';
-import SubNav from 'components/site/navbar/subNav';
+import { Box, Stack, Center, Heading, Text, Container } from '@chakra-ui/react';
 
 export default function Index() {
   return (
@@ -56,7 +54,6 @@ export default function Index() {
             opacity={0.6}
           />
         </Box>
-        <SubNav />
         <ListItems />
       </Box>
     </>

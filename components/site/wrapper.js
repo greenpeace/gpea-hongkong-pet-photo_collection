@@ -5,6 +5,7 @@ import {Box,
   useToast
 } from "@chakra-ui/react";
 import Nav from "components/site/navbar/nav";
+import SubNav from 'components/site/navbar/subNav';
 import Modal from 'components/site/modal'
 import SignupModal from 'components/site/modal/signup'
 import Footer from 'components/site/footer/SmallWithSocial'
@@ -73,6 +74,9 @@ function Layout({ children, signup, openModal, setPhoto }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Nav/>
+      <Box sx={{ position: '-webkit-sticky', /* Safari */ position: 'sticky', top: '0', zIndex: 99, bgColor: '#FFF' }}>
+        <SubNav />
+      </Box>
       {children}
       <Footer/>
       <Modal/>
