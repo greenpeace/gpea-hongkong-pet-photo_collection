@@ -67,7 +67,6 @@ export default function Index() {
       </Box>
       <Box py={12}>
         <Container maxW={'container.xl'}>
-          <Heading>比賽評審</Heading>
           <Masonry
             className="masonryGrid"
             options={masonryOptions} // default {}

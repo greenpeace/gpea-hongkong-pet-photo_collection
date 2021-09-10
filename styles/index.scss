@@ -36,20 +36,23 @@ a {
 
 .masonry {
   columns: 4;
-  column-gap: 16px;
-  @media (max-width: 1200px) {
+  column-gap: 20px;
+  @media (max-width: 1399.98px) {
     columns: 3;
   }
-  @media (max-width: 992px) {
+  @media (max-width: 767.98px) {
+    columns: 2;
+  }
+  @media (max-width: 575.98px) {
     columns: 1;
   }
-  //@media (max-width: 768px) {columns: 1;}
   .grid {
     display: inline-block;
-    margin-bottom: 16px;
     position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
     &:before {
-      border-radius: 5px;
+      border-radius: 4px;
       content: '';
       position: absolute;
       top: 0;
@@ -58,18 +61,33 @@ a {
       left: 0;
       background-color: rgba(0, 0, 0, 0.2);
     }
+    &:hover {
+      &:before {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    }
     img {
       width: 100%;
-      border-radius: 5px;
+      border-radius: 4px;
+    }
+    &__body {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      padding: 20px 12px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
     }
     &__title {
-      font-size: 28px;
+      font-size: 24px;
       font-weight: bold;
       margin: 0px 0px 10px 0px;
     }
     &__author {
       font-size: 14px;
-      font-weight: 300;
     }
     &__link {
       position: absolute;
@@ -78,23 +96,15 @@ a {
       top: 0;
       bottom: 0;
     }
-    &__body {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      padding: 30px 30px;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-    }
+
     &__tag {
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0.9);
       color: #333;
-      border-radius: 5px;
-      padding: 5px 15px;
-      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 4px;
+      padding: 4px 12px;
+      margin-bottom: 4px;
     }
   }
 }

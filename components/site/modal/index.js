@@ -1,4 +1,5 @@
 import {
+  Divider,
   Modal,
   Text,
   Heading,
@@ -11,21 +12,21 @@ import {
   Flex,
   Center,
   CloseButton,
-} from "@chakra-ui/react";
-import { useRouter } from "next/router";
-import { connect } from "react-redux";
-import React, { useEffect, useState } from "react";
-import * as modalActions from "store/actions/action-types/modal-actions";
-import * as votingActions from "store/actions/action-types/voting-actions";
+} from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import { connect } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import * as modalActions from 'store/actions/action-types/modal-actions';
+import * as votingActions from 'store/actions/action-types/voting-actions';
 
 function ModalWrapper({ modal, closeModal, photo, vote }) {
   const [content, setContent] = useState(modal.content);
   const router = useRouter();
 
   const localUser =
-  typeof window !== "undefined"
-    ? JSON.parse(localStorage.getItem(`greenpeacePhotoCollection`))
-    : null;
+    typeof window !== 'undefined'
+      ? JSON.parse(localStorage.getItem(`greenpeacePhotoCollection`))
+      : null;
 
   useEffect(async () => {
     if (!photo) {
@@ -43,27 +44,29 @@ function ModalWrapper({ modal, closeModal, photo, vote }) {
   };
 
   const handleVoting = () => {
-    if(localUser){
-      const gSheetFormData =[{
-        timestamp: content.timestamp,
-        id: content.id,
-        votes: '1',
-        userId: localUser.name || ''
-      }]
+    if (localUser) {
+      const gSheetFormData = [
+        {
+          timestamp: content.timestamp,
+          id: content.id,
+          votes: '1',
+          userId: localUser.name || '',
+        },
+      ];
 
-      vote(gSheetFormData)
+      vote(gSheetFormData);
     }
-  }
+  };
 
   const checkVoteAble = () => {
-    if(localUser){
-      console.log(`localUser.userId --`,localUser.userId )
-      console.log(`content.id--`,content.id)
-      return localUser.userId !== content.id
+    if (localUser) {
+      console.log(`localUser.userId --`, localUser.userId);
+      console.log(`content.id--`, content.id);
+      return localUser.userId !== content.id;
     } else {
-      return false
+      return false;
     }
-  }
+  };
 
   return (
     <Modal
@@ -71,47 +74,52 @@ function ModalWrapper({ modal, closeModal, photo, vote }) {
       isOpen={modal.isOpen}
       onClose={() => handleCloseModal()}
       closeOnOverlayClick={true}
-      size={"6xl"}
+      size={'6xl'}
       trapFocus={false}
     >
       <ModalOverlay />
-      {content && <ModalContent>
-        <Flex flexDirection={`row-reverse`}>
-          <Box p={2}>
-            <CloseButton size="lg" onClick={() => handleCloseModal()} />
-          </Box>
-        </Flex>
-        <Box p={8}>
-            <Center pb={4}>
-              {/** https://github.com/chakra-ui/chakra-ui/issues/2815 */}
-              <Img src={content.url} alt={content.title} maxH={`100vh`}/>
-            </Center>
-            <Stack
-              direction={"column"}
-              borderBottom={`1px solid`}
-              borderBottomColor={`gray.200`}
-              pb={2}
-              mb={2}
-            >
-              <Box>
-                <Flex direction={{base: 'row'}} align={`center`}>
-                  <Heading className="grid__title" fontSize={{base: 16, sm: 24}}>{content.title}</Heading>
-                  <Button colorScheme="blue" size="sm" ml={2} onClick={()=>handleVoting()} disabled={checkVoteAble()}>{checkVoteAble() ? `先註冊` : `投票`}</Button>
-                </Flex>
-                <Text
-                  as="span"
-                  className="grid__tag"
-                  fontSize={{ base: 10, sm: 12 }}
-                >
-                  #{content.category}
-                </Text>
-              </Box>
-            </Stack>
-            <Box pb={2}>
-              <Text as="p">{content.description}</Text>
+      {content && (
+        <ModalContent>
+          <Flex flexDirection={`row-reverse`}>
+            <Box p={2}>
+              <CloseButton size="lg" onClick={() => handleCloseModal()} />
             </Box>
-        </Box>
-      </ModalContent>}
+          </Flex>
+          <Stack spacing={6}>
+            <Center>
+              <Img src={content.url} alt={content.title} maxH={`75vh`} />
+            </Center>
+            <Stack direction={'column'} p={6}>
+              <Flex direction={{ base: 'row' }} align={`center`}>
+                <Heading
+                  className="grid__title"
+                  fontSize={{ base: 16, sm: 24 }}
+                >
+                  {content.title}
+                </Heading>
+                <Button
+                  colorScheme="blue"
+                  size="sm"
+                  ml={2}
+                  onClick={() => handleVoting()}
+                  disabled={checkVoteAble()}
+                >
+                  {checkVoteAble() ? `請先註冊` : `投票`}
+                </Button>
+              </Flex>
+              <Text
+                as="span"
+                className="grid__tag"
+                fontSize={{ base: 10, sm: 12 }}
+              >
+                #{content.category}
+              </Text>
+              <Divider />
+              <Text as="p">{content.description}</Text>
+            </Stack>
+          </Stack>
+        </ModalContent>
+      )}
     </Modal>
   );
 }
@@ -119,7 +127,7 @@ function ModalWrapper({ modal, closeModal, photo, vote }) {
 const mapStateToProps = ({ modal, photo, voting }) => ({
   modal,
   photo: photo.data,
-  voting: voting.data
+  voting: voting.data,
 });
 
 const mapDispatchToProps = (dispatch) => {

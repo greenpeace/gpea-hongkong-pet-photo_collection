@@ -26,7 +26,6 @@ export default function Index() {
             <Heading fontSize={{ base: '4xl', sm: '6xl' }}>
               上傳圖片頁面
             </Heading>
-            <Text fontSize={{ base: 'md', sm: 'xl' }}>內容說明</Text>
           </Stack>
         </Center>
         <Box

@@ -34,11 +34,13 @@ module.exports = {
       },
     ],
   },
-  exportPathMap: function () {
-    return {
-      '/': { page: '/' },
-    };
-  },
+  basePath:
+    process.env.NODE_ENV === 'production' ? '/app/photo-collection' : '',
+  // exportPathMap: function () {
+  //   return {
+  //     '/': { page: '/' },
+  //   };
+  // },
   generateBuildId: async () => {
     if (process.env.BUILD_ID) {
       return `${process.env.BUILD_ID}_${new Date().getTime()}`;

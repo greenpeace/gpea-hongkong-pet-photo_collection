@@ -16,7 +16,7 @@ export default function Index() {
           pos={'relative'}
           bgImage={'images/demo_1.jpeg'}
           bgSize={'cover'}
-          h={{ base: '240px', sm: '640px' }}
+          h={{ base: '240px', sm: '480px' }}
         >
           <Center
             h={'100%'}

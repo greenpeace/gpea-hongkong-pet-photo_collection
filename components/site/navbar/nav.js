@@ -50,8 +50,10 @@ function WithSubnavigation({ user, setModal }) {
           <Image
             src={'https://www.greenpeace.org/global/static/img/gp-logo.svg'}
             maxW={'120px'}
-            alt={``}
-            onClick={() => router.push(`/`)}
+            alt={'Greenpeace 綠色和平'}
+            onClick={() => {
+              router.push(`/`);
+            }}
             cursor={'pointer'}
           />
 
@@ -86,7 +88,7 @@ function WithSubnavigation({ user, setModal }) {
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
-        <MobileNav isOpen={isOpen} onToggle={onToggle} />
+        <MobileNav isOpen={isOpen} />
       </Collapse>
     </Box>
   );
@@ -99,17 +101,15 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue('white', 'gray.800');
 
   return (
-    <Stack direction={'row'} spacing={4}>
+    <Stack direction={'row'} spacing={6}>
       {NAV_ITEMS.map((d) => (
         <Box key={d.LABEL}>
-          <Link href={d.HREF}>
+          <Link href={d.HREF} passHref>
             <Box
               fontSize={'sm'}
               fontWeight={500}
-              color={linkColor}
               _hover={{
                 textDecoration: 'none',
-                color: linkHoverColor,
                 cursor: 'pointer',
               }}
             >
@@ -140,7 +140,18 @@ const MobileNav = () => {
               textDecoration: 'none',
             }}
           >
-            <Text fontWeight={600}>{d.LABEL}</Text>
+            <Link href={d.HREF} passHref>
+              <Box
+                fontSize={'sm'}
+                fontWeight={500}
+                _hover={{
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                }}
+              >
+                <Text>{d.LABEL}</Text>
+              </Box>
+            </Link>
           </Flex>
         </Stack>
       ))}

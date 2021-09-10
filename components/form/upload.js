@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useRef } from "react";
-import { connect } from "react-redux";
-import { withRouter } from 'next/router'
-import formContent from "components/form/content";
-import { base64Decode } from "components/utils";
-import * as signupActions from "store/actions/action-types/signup-actions";
-import * as userActions from "store/actions/action-types/user-actions";
-import { Form, withFormik } from "formik";
-import axios from "axios";
+import React, { useEffect, useState, useRef } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
+import formContent from 'components/form/content';
+import { base64Decode } from 'components/utils';
+import * as signupActions from 'store/actions/action-types/signup-actions';
+import * as userActions from 'store/actions/action-types/user-actions';
+import { Form, withFormik } from 'formik';
+import axios from 'axios';
 
 import {
   FormControl,
@@ -17,18 +17,23 @@ import {
   Box,
   Flex,
   Text,
+  Heading,
   HStack,
   Checkbox,
   Textarea,
   Select,
+  Stack,
   Center,
   Image,
-} from "@chakra-ui/react";
+  Icon,
+} from '@chakra-ui/react';
+
+import { AiOutlineCloudUpload } from 'react-icons/ai';
 
 const MyForm = (props) => {
   const uploadRef = useRef(null);
-  const [name, setName] = useState("");
-  const [imagePreview, setImagePreview] = useState("");
+  const [name, setName] = useState('');
+  const [imagePreview, setImagePreview] = useState('');
   const {
     values,
     touched,
@@ -44,18 +49,18 @@ const MyForm = (props) => {
 
   const space = 4;
   const labelStyle = {
-    fontSize: "xs",
-    color: "gray.400",
+    fontSize: 'xs',
+    color: 'gray.400',
   };
 
   useEffect(() => {
     const localUser =
-      typeof window !== "undefined"
+      typeof window !== 'undefined'
         ? JSON.parse(localStorage.getItem(`greenpeacePhotoCollection`))
         : null;
     setName(base64Decode(localUser.name));
-    setFieldValue("Name", base64Decode(localUser.name));
-    setFieldValue("UserId", localUser.name);
+    setFieldValue('Name', base64Decode(localUser.name));
+    setFieldValue('UserId', localUser.name);
   }, []);
 
   const handleFileUpload = () => {
@@ -63,8 +68,8 @@ const MyForm = (props) => {
   };
 
   const handleReset = () => {
-    setFieldValue("File", "");
-    setImagePreview("");
+    setFieldValue('File', '');
+    setImagePreview('');
   };
 
   useEffect(() => {
@@ -76,48 +81,61 @@ const MyForm = (props) => {
   return (
     <Box
       p={{ base: 0, sm: 6 }}
-      rounded={{ base: 0, sm: "md" }}
+      rounded={{ base: 0, sm: 'md' }}
       bg="white"
       overflow="hidden"
     >
       <Form onSubmit={handleSubmit}>
-        <Flex direction={{ base: "column", sm: "row" }} align={`center`}>
+        <Flex direction={{ base: 'column', sm: 'row' }} align={`flex-start`}>
           <Box flex={1} px={6}>
             {imagePreview ? (
               <Box>
-                <Image src={imagePreview} />
-                <Box onClick={() => handleReset()}>
-                  <Text>刪除</Text>
-                </Box>
+                <Image src={imagePreview} alt="Image" />
+                <Button onClick={() => handleReset()} mt={4}>
+                  刪除
+                </Button>
               </Box>
             ) : (
-              <Center
-                border={`1px dashed #d9d9d9`}
-                bgColor={`#fafafa`}
-                borderRadius={`2px`}
-                onClick={() => handleFileUpload()}
-                cursor={`pointer`}
-                _hover={{
-                  border: `1px dashed #000`,
-                }}
-                minH={`xs`}
-              >
-                <Box>
-                  <Text>上傳 +</Text>
-                </Box>
-              </Center>
+              <Box>
+                <Stack spacing={4} mb={4}>
+                  <Heading>上傳作品</Heading>
+                  <Text>
+                    請仔細輸入你的資料；一經提交即視為最終確認。
+                    <br />
+                    如對比賽詳情有任何疑問或查詢，請電郵至
+                    lantauphoto2021@greenpeace.org。
+                  </Text>
+                </Stack>
+                <Center
+                  border={`1px dashed #d9d9d9`}
+                  bgColor={`#fafafa`}
+                  borderRadius={`2px`}
+                  onClick={() => handleFileUpload()}
+                  cursor={`pointer`}
+                  _hover={{
+                    border: `1px dashed #000`,
+                  }}
+                  minH={`xs`}
+                >
+                  <Stack justifyContent={'center'} alignItems={'center'}>
+                    <Icon as={AiOutlineCloudUpload} w={8} h={8} />
+                    <Text>將照片拖動到此處，或選擇要上傳的檔案。</Text>
+                  </Stack>
+                </Center>
+              </Box>
             )}
 
             <FormControl id="File" isInvalid={errors.File && touched.File}>
               <FormErrorMessage color="red">{errors.File}</FormErrorMessage>
-              <Box h={0} overflow={`hidden`}>
+              <Box className="upload-btn-wrapper" h={0} overflow={`hidden`}>
+                <Button>Upload a file</Button>
                 <Input
-                  variant={"clear"}
+                  variant={'clear'}
                   textAlign={`center`}
                   name="File"
                   type="file"
                   onChange={(event) => {
-                    setFieldValue("File", event.target.files[0]);
+                    setFieldValue('File', event.target.files[0]);
                   }}
                   ref={uploadRef}
                 />
@@ -206,7 +224,7 @@ const MyForm = (props) => {
                 color="#FFF"
                 letterSpacing={4}
                 bg="#ff8100"
-                _hover={{ bg: "campaign.climate" }}
+                _hover={{ bg: 'campaign.climate' }}
               >
                 {formContent.upload_text}
               </Button>
@@ -220,12 +238,12 @@ const MyForm = (props) => {
 
 const MyEnhancedForm = withFormik({
   mapPropsToValues: () => ({
-    Name: "",
-    Title: "",
-    Description: "",
-    File: "",
-    Category: "",
-    UserId: ""
+    Name: '',
+    Title: '',
+    Description: '',
+    File: '',
+    Category: '',
+    UserId: '',
   }),
 
   validate: (values) => {
@@ -256,54 +274,52 @@ const MyEnhancedForm = withFormik({
 
   handleSubmit: (values, { setSubmitting, props }) => {
     const formData = new FormData();
-    formData.append("file", values.File);
-    formData.append("upload_preset", process.env.CLOUDINARY_PRESET);
-    formData.append("resource_type", "raw");
+    formData.append('file', values.File);
+    formData.append('upload_preset', process.env.CLOUDINARY_PRESET);
+    formData.append('resource_type', 'raw');
 
-    axios
-      .post(process.env.CLOUDINARY_API, formData)
-      .then(async (res) => {
-        const { statusText, data } = res;
-        if (statusText === "OK") {
-          const gSheetFormData = [
-            {
-              timestamp: data.created_at,
-              published: false,
-              featured: false,
-              id: data.public_id,
-              title: values.Title,
-              url: data.url,
-              description: values.Description,
-              category: values.Category,
-              author: values.Name,
-              votes: 0,
-              userId: values.UserId
+    axios.post(process.env.CLOUDINARY_API, formData).then(async (res) => {
+      const { statusText, data } = res;
+      if (statusText === 'OK') {
+        const gSheetFormData = [
+          {
+            timestamp: data.created_at,
+            published: false,
+            featured: false,
+            id: data.public_id,
+            title: values.Title,
+            url: data.url,
+            description: values.Description,
+            category: values.Category,
+            author: values.Name,
+            votes: 0,
+            userId: values.UserId,
+          },
+        ];
+
+        axios
+          .post(`${process.env.G_SHEET}/photo-collection`, gSheetFormData, {
+            headers: {
+              'content-type': 'application/json',
             },
-          ];
-
-          axios
-            .post(`${process.env.G_SHEET}/photo-collection`, gSheetFormData, {
-              headers: {
-                "content-type": "application/json",
-              },
-            })
-            .then(function (res) {
-              const { statusText } = res;
-              if (statusText === "OK") {
-                props.router.push('/thankyou');
-                setSubmitting(false);
-              }
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-        } else {
-          alert("Something errors");
-        }
-      });
+          })
+          .then(function (res) {
+            const { statusText } = res;
+            if (statusText === 'OK') {
+              props.router.push('/thankyou');
+              setSubmitting(false);
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      } else {
+        alert('Something errors');
+      }
+    });
   },
 
-  displayName: "BasicForm",
+  displayName: 'BasicForm',
 })(MyForm);
 
 const mapStateToProps = () => {
@@ -326,4 +342,7 @@ const mapDispatchToProps = (dispatch) => {
 
 connect(null, mapDispatchToProps)(MyForm);
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MyEnhancedForm));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(MyEnhancedForm));
