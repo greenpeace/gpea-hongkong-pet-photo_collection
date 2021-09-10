@@ -322,7 +322,7 @@ const MyEnhancedForm = withFormik({
       props.createUser();
       const name = `${values.FirstName} ${values.LastName}`;
       const data = {
-        mail: base64Encode(values.Email),
+        // mail: base64Encode(values.Email),
         name: base64Encode(name),
         userId: base64Encode(name),
         // TODO: save?

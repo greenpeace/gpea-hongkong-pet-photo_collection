@@ -55,15 +55,15 @@ function ModalWrapper({ modal, closeModal, photo, vote }) {
     }
   }
 
-  // const checkVoteAble = () => {
-  //   if(localUser){
-  //     console.log(`localUser.userId --`,localUser.userId )
-  //     console.log(`content.id--`,content.id)
-  //     return localUser.userId !== content.id
-  //   } else {
-  //     return false
-  //   }
-  // }
+  const checkVoteAble = () => {
+    if(localUser){
+      console.log(`localUser.userId --`,localUser.userId )
+      console.log(`content.id--`,content.id)
+      return localUser.userId !== content.id
+    } else {
+      return false
+    }
+  }
 
   return (
     <Modal
@@ -96,7 +96,7 @@ function ModalWrapper({ modal, closeModal, photo, vote }) {
               <Box>
                 <Flex direction={{base: 'row'}} align={`center`}>
                   <Heading className="grid__title" fontSize={{base: 16, sm: 24}}>{content.title}</Heading>
-                  <Button colorScheme="blue" size="sm" ml={2} onClick={()=>handleVoting()}>{localUser ? `投票` : `先註冊`}</Button>
+                  <Button colorScheme="blue" size="sm" ml={2} onClick={()=>handleVoting()} disabled={checkVoteAble()}>{checkVoteAble() ? `先註冊` : `投票`}</Button>
                 </Flex>
                 <Text
                   as="span"

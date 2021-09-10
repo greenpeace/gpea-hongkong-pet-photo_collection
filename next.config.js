@@ -9,6 +9,7 @@ module.exports = {
       // {LABEL: '本會簡介', VALUE: '', HREF: '', REF: '' },
       // {LABEL: '我們的工作', VALUE: '', HREF: '', REF: '' },
       // {LABEL: '一起行動', VALUE: '', HREF: '', REF: '' },
+      { LABEL: '主頁', VALUE: '/', HREF: '/', REF: '/' },
       { LABEL: '比賽評審', VALUE: 'judges', HREF: 'judges', REF: 'judges' },
       { LABEL: '比賽詳情', VALUE: 'rules', HREF: 'rules', REF: 'rules' },
     ],
