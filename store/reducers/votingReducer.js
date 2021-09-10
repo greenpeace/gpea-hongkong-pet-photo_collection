@@ -1,32 +1,30 @@
-import * as photoActions from 'store/actions/action-types/photo-actions'
+import * as votingActions from 'store/actions/action-types/voting-actions'
 
 const initState = {
   data: [],
-  // voting: {}
 }
 
-const photoReducer = (state = initState, action) => {
+const votingReducer = (state = initState, action) => {
 
   switch (action.type) {
     
-    case photoActions.SET_PHOTO:
+    case votingActions.SET_VOTING:
       return {
         ...state,
         lastAction: action.type
     }
 
-    case photoActions.SET_PHOTO_FAIL:
+    case votingActions.SET_VOTING_FAIL:
       return {
         ...state,
         data: action.data,
         lastAction: action.type
     }
 
-    case photoActions.SET_PHOTO_SUCCESS:
+    case votingActions.SET_VOTING_SUCCESS:
       return {
         ...state,
         data: action.data,
-        // voting: action.voting,
         lastAction: action.type
     }
 
@@ -35,4 +33,4 @@ const photoReducer = (state = initState, action) => {
   }
 }
 
-export default photoReducer
+export default votingReducer

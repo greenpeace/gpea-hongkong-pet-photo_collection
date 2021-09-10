@@ -1,17 +1,19 @@
 import Head from 'next/head'
 import React, { useEffect, useState, useRef } from "react";
 import { connect } from "react-redux";
-import {
-  Box,
+import {Box,
   useToast
 } from "@chakra-ui/react";
 import Nav from "components/site/navbar/nav";
+import SubNav from 'components/site/navbar/subNav';
 import Modal from 'components/site/modal'
 import SignupModal from 'components/site/modal/signup'
 import Footer from 'components/site/footer/SmallWithSocial'
 import * as signupActions from 'store/actions/action-types/signup-actions'
 import * as modalActions from 'store/actions/action-types/modal-actions'
+import * as photoActions from 'store/actions/action-types/photo-actions'
 import { useRouter } from 'next/router'
+
 
 // Hook
 function usePrevious(value) {
@@ -22,11 +24,13 @@ function usePrevious(value) {
   return ref.current;
 }
 
-function Layout({ children, signup, openModal }) {
+
+function Layout({ children, signup, openModal, setPhoto }) {
   const router = useRouter()
   const toast = useToast()
   const prevSignup = usePrevious(signup);
   const prevRoute = usePrevious(router);
+
   useEffect(() => {
     if(!signup || !prevSignup){
       return
@@ -58,6 +62,10 @@ function Layout({ children, signup, openModal }) {
 
   }, [router]);
 
+  useEffect(() => {
+    setPhoto()
+  }, []);
+
   return (
     <Box>
       <Head>
@@ -66,6 +74,9 @@ function Layout({ children, signup, openModal }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Nav/>
+      <Box sx={{ position: '-webkit-sticky', /* Safari */ position: 'sticky', top: '0', zIndex: 99, bgColor: '#FFF' }}>
+        <SubNav />
+      </Box>
       {children}
       <Footer/>
       <Modal/>
@@ -85,6 +96,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     openModal: (id) => {
       dispatch({ type: modalActions.OPEN_MODAL, id });
+    },
+    setPhoto: () => {
+      dispatch({ type: photoActions.SET_PHOTO });
     }
   };
 };

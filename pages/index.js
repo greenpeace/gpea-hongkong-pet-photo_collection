@@ -5,15 +5,9 @@ import ListItems from 'components/list/items';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import * as photoActions from 'store/actions/action-types/photo-actions';
+import { Box, Stack, Center, Heading, Text, Container } from '@chakra-ui/react';
 
-import { Box, Stack, Center, Heading, Text } from '@chakra-ui/react';
-import SubNav from 'components/site/navbar/subNav';
-
-export default function Index({ photos }) {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch({ type: photoActions.SET_PHOTO_SUCCESS, data: photos });
-  }, []);
+export default function Index() {
   return (
     <>
       <Head>
@@ -60,31 +54,10 @@ export default function Index({ photos }) {
             opacity={0.6}
           />
         </Box>
-        <SubNav />
-        <ListItems photos={photos} />
+        <ListItems />
       </Box>
     </>
   );
-}
-
-export async function getStaticProps() {
-  const photos = await axios
-    .get(`${process.env.G_SHEET}/photo-collection`)
-    .then((response) => response.data)
-    .catch(function (error) {
-      console.log(error);
-    });
-
-  const voting = await axios
-    .get(`${process.env.G_SHEET}/photo-collection-voting`)
-    .then((response) => response.data)
-    .catch(function (error) {
-      console.log(error);
-    });
-
-  return {
-    props: { photos, voting },
-  };
 }
 
 Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
