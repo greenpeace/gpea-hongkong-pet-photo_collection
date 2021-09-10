@@ -74,8 +74,6 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
-  margin-top: 3rem;
 }
 
 .card {
@@ -118,4 +116,10 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.masonryGrid {
+  width: 90%;
+  list-style: none;
+  margin: 20px auto;
 }
