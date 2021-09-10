@@ -55,6 +55,19 @@ export default function Index() {
       </Box>
       <Box py={12}>
         <Container maxW={'container.lg'}>
+          <RuleHeadline>{data.rules.timelineHeadline}</RuleHeadline>
+          <Box>
+            <OrderedList spacing={2}>
+              {data.rules.timelines.map((c) => (
+                <ListItem key={c}>
+                  <Text fontSize={'sm'}>{c}</Text>
+                </ListItem>
+              ))}
+            </OrderedList>
+          </Box>
+
+          <Divider my={4} />
+
           <RuleHeadline>{data.rules.uploadHeadline}</RuleHeadline>
           <Box>
             <OrderedList spacing={2}>

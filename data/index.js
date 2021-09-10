@@ -1,8 +1,10 @@
+import demo from '../public/images/demo_1.jpeg';
+
 const data = {
   judges: [
     {
       id: 1,
-      pic: '',
+      pic: demo,
       name: '鄭振揚 Tugo Cheng',
       designation: '香港風景攝影師',
       profile:
@@ -12,7 +14,7 @@ const data = {
     },
     {
       id: 2,
-      pic: '',
+      pic: demo,
       name: '馮漢城',
       designation: '生態攝影師及紀錄片製作人',
       profile:
@@ -22,7 +24,7 @@ const data = {
     },
     {
       id: 3,
-      pic: '',
+      pic: demo,
       name: '黃遂心 Daphne Wong',
       designation: '生態攝影師及紀錄片製作人',
       profile:
@@ -30,17 +32,14 @@ const data = {
       ig: 'daphnewongphoto',
       fb: 'Daphne Wong - Photographer & Filmmaker',
     },
-    // {
-    //   id: 4,
-    //   pic: '',
-    //   name: '',
-    //   designation: '香港風景攝影師',
-    //   profile: '',
-    //   ig: '',
-    //   fb: '',
-    // },
   ],
   rules: {
+    timelineHeadline: '重要日子',
+    timelines: [
+      '31/10 作品截止遞交日期',
+      '14/11 比賽結果公佈',
+      'TBC Photowalk 日期',
+    ],
     uploadHeadline: '相片上載',
     uploads: [
       '所有參加者必須確保作品質素符合比賽規則的標準。',

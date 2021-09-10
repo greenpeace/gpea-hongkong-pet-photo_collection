@@ -9,8 +9,30 @@ import {
   Text,
   Container,
 } from '@chakra-ui/react';
+import styled from 'styled-components';
+import Masonry from 'react-masonry-component';
 
 import data from '../data';
+
+const MasonryItem = styled.div`
+  width: 50%;
+  margin-top: 40px;
+  padding-left: 30px;
+  padding-right: 30px;
+  @media only screen and (max-width: 768px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  @media only screen and (max-width: 624px) {
+    width: 100%;
+  }
+`;
+
+const masonryOptions = {
+  transitionDuration: 0,
+};
+
+const imagesLoadedOptions = { background: '.my-bg-image-el' };
 
 export default function Index() {
   return (
@@ -46,41 +68,43 @@ export default function Index() {
       <Box py={12}>
         <Container maxW={'container.xl'}>
           <Heading>比賽評審</Heading>
-          <Stack
-            direction={{ base: 'column', md: 'row' }}
-            spacing={{ base: 10, md: 4, lg: 10 }}
+          <Masonry
+            className="masonryGrid"
+            options={masonryOptions} // default {}
+            disableImagesLoaded={false} // default false
+            updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
+            imagesLoadedOptions={imagesLoadedOptions} // default {}
           >
             {data.judges.map((judge, index) => (
-              <Center key={index}>
+              <MasonryItem key={index}>
                 <Box
-                  maxW={'270px'}
                   w={'full'}
                   boxShadow={'2xl'}
                   rounded={'md'}
                   overflow={'hidden'}
                 >
-                  <Image
-                    h={'150px'}
-                    w={'full'}
-                    src={
-                      'https://images.unsplash.com/photo-1612865547334-09cb8cb455da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
-                    }
-                    alt={judge.name}
-                    objectFit={'cover'}
-                  />
                   <Stack p={4}>
-                    <Heading fontSize={'2xl'} fontWeight={500}>
+                    <Image
+                      h={'150px'}
+                      w={'full'}
+                      objectFit={'cover'}
+                      src={judge.pic}
+                      alt={judge.name}
+                    />
+                    <Heading as="h3" fontSize={'2xl'} fontWeight={500}>
                       {judge.name}
                     </Heading>
                     <Text fontSize={'sm'} color={'gray.500'}>
                       {judge.designation}
                     </Text>
-                    <Text color={'gray.500'}>{judge.profile}</Text>
+                    <Text fontSize={'sm'} color={'gray.500'}>
+                      {judge.profile}
+                    </Text>
                   </Stack>
                 </Box>
-              </Center>
+              </MasonryItem>
             ))}
-          </Stack>
+          </Masonry>
         </Container>
       </Box>
     </Box>

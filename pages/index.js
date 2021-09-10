@@ -10,9 +10,7 @@ import { Box, Stack, Center, Heading, Text, Container } from '@chakra-ui/react';
 export default function Index() {
   return (
     <>
-      <Head>
-        <title>INDEX</title>
-      </Head>
+      <Head></Head>
       <Box>
         <Box
           pos={'relative'}
