@@ -61,8 +61,7 @@ function Index({ openModal, photo }) {
             <LazyLoad
               once={i.once}
               key={i}
-              height='6rem'
-              offset={[-200, 0]}
+              height='8rem'
               placeholder={
                 <PhotoItem className='grid'>
                   <Skeleton height='6rem' />
@@ -89,12 +88,8 @@ function Index({ openModal, photo }) {
                   </Box>
                   {d.category && (
                     <Box className='mt-auto'>
-                      <Text
-                        as='span'
-                        className='grid__tag'
-                        fontSize={{ base: 10, sm: 12 }}
-                      >
-                        # {d.category}
+                      <Text as='span' className='grid__tag' fontSize={'sm'}>
+                        #{d.category}
                       </Text>
                     </Box>
                   )}

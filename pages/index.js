@@ -36,7 +36,7 @@ export default function Index() {
               textAlign={'center'}
               color={'#FFF'}
             >
-              <Heading fontSize={{ base: '4xl', md: '6xl' }}>
+              <Heading fontSize={{ base: '3xl', md: '6xl' }}>
                 山海大嶼 攝影比賽2021
               </Heading>
               <Heading fontSize={'xl'}>
