@@ -12,11 +12,13 @@ export default function Index() {
     <>
       <Head></Head>
       <Box>
-        <Box
+        <Stack
           pos={'relative'}
           bgImage={'images/demo_1.jpeg'}
           bgSize={'cover'}
-          h={{ base: '240px', sm: '480px' }}
+          minH={{ base: '240px', sm: '480px' }}
+          alignItems={'center'}
+          justifyContent={'center'}
         >
           <Center
             h={'100%'}
@@ -26,10 +28,11 @@ export default function Index() {
             pos={'relative'}
           >
             <Stack
-              py={6}
+              py={10}
               px={4}
               spacing={6}
               direction={'column'}
+              alignItems={'center'}
               textAlign={'center'}
               color={'#FFF'}
             >
@@ -53,7 +56,7 @@ export default function Index() {
             w={'100%'}
             opacity={0.6}
           />
-        </Box>
+        </Stack>
         <ListItems />
       </Box>
     </>
