@@ -9,19 +9,19 @@ import {
   Image,
   useColorModeValue,
   useDisclosure,
-} from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
-import Link from 'next/link';
-import Script from 'next/script';
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import _ from 'lodash';
-import * as signupActions from 'store/actions/action-types/signup-actions';
-import { useRouter } from 'next/router';
+} from '@chakra-ui/react'
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
+import Link from 'next/link'
+import Script from 'next/script'
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+import _ from 'lodash'
+import * as signupActions from 'store/actions/action-types/signup-actions'
+import { useRouter } from 'next/router'
 
 function WithSubnavigation({ user, setModal }) {
-  const router = useRouter();
-  const { isOpen, onToggle } = useDisclosure();
+  const router = useRouter()
+  const { isOpen, onToggle } = useDisclosure()
   return (
     <Box>
       <Flex
@@ -52,7 +52,7 @@ function WithSubnavigation({ user, setModal }) {
             maxW={'120px'}
             alt={'Greenpeace 綠色和平'}
             onClick={() => {
-              router.push(`/`);
+              router.push(`/`)
             }}
             cursor={'pointer'}
           />
@@ -69,9 +69,9 @@ function WithSubnavigation({ user, setModal }) {
           spacing={6}
         >
           <Button
-            display={{ base: 'none', md: 'inline-flex' }}
+            display={'inline-flex'}
             fontSize={'sm'}
-            fontWeight={600}
+            fontWeight={'bold'}
             color={'white'}
             bg={'#66cc00'}
             href={'#'}
@@ -91,14 +91,14 @@ function WithSubnavigation({ user, setModal }) {
         <MobileNav isOpen={isOpen} />
       </Collapse>
     </Box>
-  );
+  )
 }
 
 const DesktopNav = () => {
-  const NAV_ITEMS = process.env.NAV || [];
-  const linkColor = useColorModeValue('gray.600', 'gray.200');
-  const linkHoverColor = useColorModeValue('gray.800', 'white');
-  const popoverContentBgColor = useColorModeValue('white', 'gray.800');
+  const NAV_ITEMS = process.env.NAV || []
+  const linkColor = useColorModeValue('gray.600', 'gray.200')
+  const linkHoverColor = useColorModeValue('gray.800', 'white')
+  const popoverContentBgColor = useColorModeValue('white', 'gray.800')
 
   return (
     <Stack direction={'row'} spacing={6}>
@@ -119,11 +119,11 @@ const DesktopNav = () => {
         </Box>
       ))}
     </Stack>
-  );
-};
+  )
+}
 
 const MobileNav = () => {
-  const NAV_ITEMS = process.env.NAV || [];
+  const NAV_ITEMS = process.env.NAV || []
   return (
     <Stack
       bg={useColorModeValue('white', 'gray.800')}
@@ -156,19 +156,19 @@ const MobileNav = () => {
         </Stack>
       ))}
     </Stack>
-  );
-};
+  )
+}
 
 const mapStateToProps = ({ user }) => ({
   user: user.data,
-});
+})
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setModal: (bol) => {
-      dispatch({ type: signupActions.SET_SIGNUP_MODAL, data: bol });
+      dispatch({ type: signupActions.SET_SIGNUP_MODAL, data: bol })
     },
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(WithSubnavigation);
+export default connect(mapStateToProps, mapDispatchToProps)(WithSubnavigation)

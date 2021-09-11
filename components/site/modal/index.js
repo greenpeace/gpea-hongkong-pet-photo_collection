@@ -10,6 +10,7 @@ import {
   Box,
   Img,
   Flex,
+  Fade,
   Center,
   CloseButton,
 } from '@chakra-ui/react'
@@ -73,7 +74,7 @@ function ModalWrapper({ modal, closeModal, photo, vote }) {
 
   return (
     <Modal
-      blockScrollOnMount={false}
+      blockScrollOnMount={true}
       isOpen={modal.isOpen}
       onClose={() => handleCloseModal()}
       closeOnOverlayClick={true}
@@ -82,46 +83,60 @@ function ModalWrapper({ modal, closeModal, photo, vote }) {
     >
       <ModalOverlay />
       {content && (
-        <ModalContent>
-          <Flex flexDirection={`row-reverse`}>
-            <Box p={2}>
-              <CloseButton size='lg' onClick={() => handleCloseModal()} />
-            </Box>
-          </Flex>
-          <Stack maxW={'1200px'} spacing={4}>
-            <Center>
-              <Img src={content.url} alt={content.title} maxH={`75vh`} />
-            </Center>
-            <Stack direction={'column'} spacing={6} p={4}>
-              <Flex direction={{ base: 'row' }} align={`center`}>
-                <Heading className='grid__title' fontSize={'xl'}>
-                  {content.title}
-                </Heading>
-                <Button
-                  size='sm'
-                  mx={2}
-                  onClick={() => handleVoting()}
-                  disabled={checkVoteAble()}
-                >
-                  {checkVoteAble() ? `請先註冊` : `投票`}
-                </Button>
-                <IconButton
-                  alignSelf={'flex-end'}
-                  aria-label='Share 分享'
-                  isRound
-                  icon={<AiOutlineShareAlt />}
-                />
-              </Flex>
+        <Fade in={modal.isOpen}>
+          <ModalContent>
+            <Stack maxW={'1200px'} spacing={4}>
+              <Box>
+                <Flex flexDirection={`row-reverse`}>
+                  <Box p={2}>
+                    <CloseButton size='lg' onClick={() => handleCloseModal()} />
+                  </Box>
+                </Flex>
+                <Center>
+                  <Img
+                    src={content.url}
+                    alt={content.title}
+                    maxH={`75vh`}
+                    loading='lazy'
+                  />
+                </Center>
+              </Box>
+              <Stack direction={'column'} spacing={6} px={4} py={6}>
+                <Flex direction={{ base: 'row' }} align={`center`}>
+                  <Heading className='grid__title' fontSize={'xl'}>
+                    {content.title}
+                  </Heading>
+                  <Button
+                    size='sm'
+                    mx={2}
+                    onClick={() => handleVoting()}
+                    disabled={checkVoteAble()}
+                  >
+                    {checkVoteAble() ? `請先註冊` : `投票`}
+                  </Button>
+                  <IconButton
+                    alignSelf={'flex-end'}
+                    aria-label='Share 分享'
+                    isRound
+                    icon={<AiOutlineShareAlt />}
+                  />
+                </Flex>
 
-              <Divider my={4} />
+                <Text as='p'>{content.description}</Text>
+                <Text as='span' className='grid__tag'>
+                  #{content.category}
+                </Text>
 
-              <Text as='p'>{content.description}</Text>
-              <Text as='span' className='grid__tag'>
-                #{content.category}
-              </Text>
+                <Divider my={4} />
+
+                <Text fontSize='sm' pb={6}>
+                  「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。獲選佳作更有機會展出及刊登於綠色和平2022年〈山海大嶼〉年曆中，參加者亦可優先獲得參加大嶼Photo
+                  walk（詳情容後公佈）的機會。
+                </Text>
+              </Stack>
             </Stack>
-          </Stack>
-        </ModalContent>
+          </ModalContent>
+        </Fade>
       )}
     </Modal>
   )

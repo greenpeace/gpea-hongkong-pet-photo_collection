@@ -1,9 +1,11 @@
-import React from 'react';
-import Wrapper from 'components/site/wrapper';
-import { Box, Stack, Center, Heading, Text, Container } from '@chakra-ui/react';
+import React from 'react'
+import Wrapper from 'components/site/wrapper'
+import { Box, Stack, Center, Heading, Text, Container } from '@chakra-ui/react'
 
-import data from 'data/index';
-import MiniDonateForm from 'components/donate/miniDonateForm';
+import ContentContainer from '@/components/site/container/contentContainer'
+import MiniDonateForm from 'components/donate/miniDonateForm'
+
+import data from 'data/index'
 
 export default function Index() {
   return (
@@ -37,18 +39,16 @@ export default function Index() {
           opacity={0.6}
         />
       </Box>
-      <Box py={12}>
-        <Container maxW={'container.md'}>
-          <Stack spacing={4}>
-            <Heading>{data.thankyouMessage.headLine}</Heading>
-            <Text>{data.thankyouMessage.firstLine}</Text>
-            <Text>{data.thankyouMessage.secondLine}</Text>
-            <MiniDonateForm />
-          </Stack>
-        </Container>
-      </Box>
+      <ContentContainer>
+        <Stack spacing={4}>
+          <Heading>{data.thankyouMessage.headLine}</Heading>
+          <Text>{data.thankyouMessage.firstLine}</Text>
+          <Text>{data.thankyouMessage.secondLine}</Text>
+          <MiniDonateForm />
+        </Stack>
+      </ContentContainer>
     </Box>
-  );
+  )
 }
 
-Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
+Index.getLayout = (page) => <Wrapper>{page}</Wrapper>

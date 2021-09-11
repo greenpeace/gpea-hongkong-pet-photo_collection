@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
-import Wrapper from 'components/site/wrapper';
-import UploadForm from 'components/form/upload';
-import { Box, Stack, Center, Heading, Text, Container } from '@chakra-ui/react';
+import React, { useEffect } from 'react'
+import Wrapper from 'components/site/wrapper'
+import UploadForm from 'components/form/upload'
+import { Box, Stack, Center, Heading, Text, Container } from '@chakra-ui/react'
+
+import ContentContainer from '@/components/site/container/contentContainer'
 
 export default function Index() {
   useEffect(() => {
     // Check logged In
-  }, []);
+  }, [])
   return (
     <Box>
       <Box
@@ -38,13 +40,11 @@ export default function Index() {
           opacity={0.6}
         />
       </Box>
-      <Box py={12}>
-        <Container maxW={'container.xl'}>
-          <UploadForm />
-        </Container>
-      </Box>
+      <ContentContainer>
+        <UploadForm />
+      </ContentContainer>
     </Box>
-  );
+  )
 }
 
-Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
+Index.getLayout = (page) => <Wrapper>{page}</Wrapper>

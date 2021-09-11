@@ -1,5 +1,5 @@
-import React from 'react';
-import Wrapper from 'components/site/wrapper';
+import React from 'react'
+import Wrapper from 'components/site/wrapper'
 import {
   Box,
   Stack,
@@ -8,9 +8,11 @@ import {
   Image,
   Text,
   Container,
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
-import data from '../data';
+import ContentContainer from '@/components/site/container/contentContainer'
+
+import data from '../data'
 
 export default function Index() {
   return (
@@ -42,11 +44,9 @@ export default function Index() {
           opacity={0.6}
         />
       </Box>
-      <Box py={12}>
-        <Container maxW={'container.xl'}></Container>
-      </Box>
+      <ContentContainer></ContentContainer>
     </Box>
-  );
+  )
 }
 
-Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
+Index.getLayout = (page) => <Wrapper>{page}</Wrapper>

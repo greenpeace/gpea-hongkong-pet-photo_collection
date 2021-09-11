@@ -12,17 +12,20 @@ import {
 import styled from 'styled-components'
 import Masonry from 'react-masonry-component'
 
+import ContentContainer from '@/components/site/container/contentContainer'
+
 import data from '../data'
 
 const MasonryItem = styled.li`
-  width: 480px;
+  width: 90%;
+  max-width: 380px;
 `
 
 // Masory Options
 const masonryOptions = {
-  originTop: false,
+  originTop: true,
   fitWidth: false,
-  gutter: 30,
+  gutter: 20,
   itemSelector: '.photo-item',
 }
 
@@ -58,59 +61,59 @@ export default function Index() {
           opacity={0.6}
         />
       </Box>
-      <Box py={12}>
-        <Container maxW={'container.xl'}>
-          <Masonry
-            className='masonryGrid'
-            elementType={'ul'}
-            options={masonryOptions}
-            disableImagesLoaded={false}
-            updateOnEachImageLoad={false}
-          >
-            {data.judges.map((judge, index) => (
-              <MasonryItem className={'photo-item'} key={index}>
-                <Box
-                  w={'full'}
-                  bg={'white'}
-                  boxShadow={'2xl'}
-                  rounded={'md'}
-                  p={6}
-                  overflow={'hidden'}
-                >
-                  <Stack p={4} spacing={6}>
-                    <Image
-                      h={'200px'}
-                      w={'full'}
-                      objectFit={'cover'}
-                      src={judge.pic}
-                      alt={judge.name}
-                    />
-                    <Box>
-                      <Heading as='h3' fontSize={'2xl'} mb={2} fontWeight={500}>
-                        {judge.name}
-                      </Heading>
-                      <Text
-                        fontSize={'sm'}
-                        letterSpacing={'2px'}
-                        color={'gray.900'}
-                      >
-                        {judge.designation}
-                      </Text>
-                    </Box>
+      <ContentContainer>
+        <Masonry
+          className='masonryGrid'
+          elementType={'ul'}
+          options={masonryOptions}
+          disableImagesLoaded={false}
+          updateOnEachImageLoad={false}
+        >
+          {data.judges.map((judge, index) => (
+            <MasonryItem className={'photo-item'} key={index}>
+              <Box
+                w={'full'}
+                bg={'white'}
+                boxShadow={'2xl'}
+                rounded={'md'}
+                py={6}
+                px={4}
+                overflow={'hidden'}
+              >
+                <Stack p={4} spacing={6}>
+                  <Image
+                    h={'200px'}
+                    w={'full'}
+                    objectFit={'cover'}
+                    src={judge.pic}
+                    alt={judge.name}
+                    loading='lazy'
+                  />
+                  <Box>
+                    <Heading as='h3' fontSize={'2xl'} mb={2} fontWeight={500}>
+                      {judge.name}
+                    </Heading>
                     <Text
                       fontSize={'sm'}
                       letterSpacing={'2px'}
-                      color={'gray.700'}
+                      color={'gray.900'}
                     >
-                      {judge.profile}
+                      {judge.designation}
                     </Text>
-                  </Stack>
-                </Box>
-              </MasonryItem>
-            ))}
-          </Masonry>
-        </Container>
-      </Box>
+                  </Box>
+                  <Text
+                    fontSize={'sm'}
+                    letterSpacing={'2px'}
+                    color={'gray.700'}
+                  >
+                    {judge.profile}
+                  </Text>
+                </Stack>
+              </Box>
+            </MasonryItem>
+          ))}
+        </Masonry>
+      </ContentContainer>
     </Box>
   )
 }

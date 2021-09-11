@@ -50,7 +50,7 @@ a {
     height: 100%;
     display: inline-block;
     position: relative;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
     cursor: pointer;
     &:before {
       border-radius: 4px;
@@ -77,10 +77,13 @@ a {
       right: 0;
       top: 0;
       bottom: 0;
-      padding: 20px 12px;
+      padding: 20px 16px;
       color: #fff;
       display: flex;
       flex-direction: column;
+      @media (max-width: 575.98px) {
+        padding: 20px 12px;
+      }
     }
     &__title {
       font-size: 24px;
@@ -97,7 +100,6 @@ a {
       top: 0;
       bottom: 0;
     }
-
     &__tag {
       background-color: rgba(0, 0, 0, 0.85);
       color: rgba(255, 255, 255, 0.9);
@@ -135,4 +137,10 @@ img {
   50% {
     opacity: 0.3;
   }
+}
+
+.masonryGrid {
+  width: 90%;
+  list-style: none;
+  margin: 20px auto;
 }

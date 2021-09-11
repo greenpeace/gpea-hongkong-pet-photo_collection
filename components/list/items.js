@@ -19,7 +19,19 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import LazyLoad from 'react-lazyload'
 
-const PhotoItem = styled.div``
+import ContentContainer from '@/components/site/container/contentContainer'
+
+const PhotoItem = styled.div`
+  width: 100%;
+`
+
+const Placeholder = () => {
+  return (
+    <PhotoItem className='grid'>
+      <Skeleton height='6rem' />
+    </PhotoItem>
+  )
+}
 
 function Index({ openModal, photo }) {
   const router = useRouter()
@@ -31,95 +43,102 @@ function Index({ openModal, photo }) {
     setImageLoading(false)
     setTimeout(() => setPulsing(false), 400)
   }
-  // if (data.length === 0) {
-  //   return (
-  //     <Container maxW={`container.2xl`}>
-  //       <Box py={12} textAlign={`center`}>
-  //         {/* 讀取中... */}
-  //         <Stack
-  //           direction='row'
-  //           alignItems={'center'}
-  //           justifyContent={'center'}
-  //           spacing={4}
-  //         >
-  //           <Button isLoading variant='solid'></Button>
-  //         </Stack>
-  //         {/* <Box className='masonry'>
-  //           <Skeleton />
-  //           <Skeleton />
-  //           <Skeleton />
-  //         </Box> */}
-  //       </Box>
-  //     </Container>
-  //   )
-  // }
+  if (data.length === 0) {
+    return (
+      <ContentContainer>
+        <Skeleton height='6rem' />
+        {/* 讀取中... */}
+        {/* <Stack
+            direction='row'
+            alignItems={'center'}
+            justifyContent={'center'}
+            spacing={4}
+          >
+            <Button isLoading variant='solid'></Button>
+          </Stack> */}
+        {/* <Box
+          gridColumn={'-moz-initial'}
+          className='masonry'
+          py={{ base: 6, md: 8 }}
+          px={{ base: 0, md: 4 }}
+        >
+          <Placeholder />
+        </Box> */}
+      </ContentContainer>
+    )
+  }
   return (
-    <Container maxW={`container.2xl`}>
-      <Box gridColumn={'-moz-initial'} py={8} px={4}>
-        <Box className='masonry'>
-          {data.map((d, i) => (
-            <LazyLoad
-              once={i.once}
-              key={i}
-              height='8rem'
-              placeholder={
-                <PhotoItem className='grid'>
-                  <Skeleton height='6rem' />
-                </PhotoItem>
+    <ContentContainer>
+      <Box
+        gridColumn={'-moz-initial'}
+        className='masonry'
+        py={{ base: 6, md: 8 }}
+        px={{ base: 0, md: 4 }}
+      >
+        {data.map((d, i) => (
+          <LazyLoad
+            // once={i.once}
+            once
+            offset={100}
+            key={i}
+            height='8rem'
+            placeholder={<Placeholder />}
+            debounce={500}
+          >
+            <PhotoItem
+              className='grid'
+              onClick={() =>
+                router.push(`/?id=${d.id}`, undefined, { shallow: true })
               }
-              debounce={500}
+              cursor={'pointer'}
             >
-              <PhotoItem
-                className='grid'
-                onClick={() =>
-                  router.push(`/?id=${d.id}`, undefined, { shallow: true })
-                }
-                cursor={'pointer'}
-              >
-                <Box className='grid__body'>
-                  <Box className='relative'>
-                    <Heading className='grid__title'>{d.title}</Heading>
-                    <Flex direction={'row'} align={'center'}>
-                      <Vote imageId={d.id} />
-                      <Box>
-                        <Text className='grid__author'>{d.votes}</Text>
-                      </Box>
-                    </Flex>
-                  </Box>
-                  {d.category && (
-                    <Box className='mt-auto'>
-                      <Text as='span' className='grid__tag' fontSize={'sm'}>
-                        #{d.category}
-                      </Text>
+              <Box className='grid__body'>
+                <Box className='relative'>
+                  <Flex>
+                    <Heading className='grid__title' flex={'1'}>
+                      {d.title}
+                    </Heading>
+                    <Vote imageId={d.id} alignSelf={'flex-end'} />
+                  </Flex>
+                  <Flex direction={'row'} align={'center'}>
+                    <Box>
+                      <Text className='grid__author'>{d.votes}</Text>
                     </Box>
-                  )}
+                  </Flex>
                 </Box>
-                <Box className={`${pulsing ? 'pulse' : ''} loadable`}>
-                  <motion.img
-                    initial={{ height: '6rem', opacity: 0 }}
-                    animate={{
-                      height: imageLoading ? '6rem' : 'auto',
-                      opacity: imageLoading ? 0 : 1,
-                    }}
-                    transition={
-                      ({ height: { delay: 0, duration: 0.4 } },
-                      { opacity: { delay: 0.5, duration: 0.4 } })
-                    }
-                    onLoad={imageLoaded}
-                    width='100%'
-                    src={d.url}
-                    alt={d.title}
-                    _hover={{ opacity: 0.8 }}
-                    loading='lazy'
-                  />
-                  {/* <Image src={d.url} alt={d.title} _hover={{ opacity: 0.8 }} /> */}
-                </Box>
-              </PhotoItem>
-            </LazyLoad>
-          ))}
-        </Box>
+                {d.category && (
+                  <Box className='mt-auto'>
+                    <Text as='span' className='grid__tag' fontSize={'sm'}>
+                      #{d.category}
+                    </Text>
+                  </Box>
+                )}
+              </Box>
+              <Box className={`${pulsing ? 'pulse' : ''} loadable`}>
+                <motion.img
+                  initial={{ height: '6rem', opacity: 0 }}
+                  animate={{
+                    height: imageLoading ? '6rem' : 'auto',
+                    opacity: imageLoading ? 0 : 1,
+                  }}
+                  transition={
+                    ({ height: { delay: 0, duration: 0.4 } },
+                    { opacity: { delay: 0.5, duration: 0.4 } })
+                  }
+                  onLoad={imageLoaded}
+                  width='100%'
+                  src={d.url}
+                  alt={d.title}
+                  _hover={{ opacity: 0.8 }}
+                  loading='lazy'
+                />
+                {/* <Image src={d.url} alt={d.title} _hover={{ opacity: 0.8 }} /> */}
+              </Box>
+            </PhotoItem>
+          </LazyLoad>
+        ))}
       </Box>
-    </Container>
+    </ContentContainer>
   )
 }
 

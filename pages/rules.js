@@ -1,5 +1,5 @@
-import React from 'react';
-import Wrapper from 'components/site/wrapper';
+import React from 'react'
+import Wrapper from 'components/site/wrapper'
 import {
   Box,
   Stack,
@@ -11,17 +11,19 @@ import {
   Heading,
   Text,
   Container,
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
-import data from '../data';
+import ContentContainer from '@/components/site/container/contentContainer'
+
+import data from '../data'
 
 const RuleHeadline = ({ children }) => {
   return (
     <Text fontWeight={500} fontSize={'xl'} mb={4}>
       {children}
     </Text>
-  );
-};
+  )
+}
 
 export default function Index() {
   return (
@@ -53,106 +55,104 @@ export default function Index() {
           opacity={0.6}
         />
       </Box>
-      <Box py={12}>
-        <Container maxW={'container.lg'}>
-          <RuleHeadline>{data.rules.timelineHeadline}</RuleHeadline>
-          <Box>
-            <OrderedList spacing={2}>
-              {data.rules.timelines.map((c) => (
-                <ListItem key={c}>
-                  <Text fontSize={'sm'}>{c}</Text>
-                </ListItem>
-              ))}
-            </OrderedList>
-          </Box>
-
-          <Divider my={4} />
-
-          <RuleHeadline>{data.rules.uploadHeadline}</RuleHeadline>
-          <Box>
-            <OrderedList spacing={2}>
-              {data.rules.uploads.map((c) => (
-                <ListItem key={c}>
-                  <Text fontSize={'sm'}>{c}</Text>
-                </ListItem>
-              ))}
-            </OrderedList>
-          </Box>
-
-          <Divider my={4} />
-
-          <RuleHeadline>{data.rules.groupHeadline}</RuleHeadline>
-          <Box>
-            <List>
-              {data.rules.groups.map((c) => (
-                <ListItem key={c} mb={4}>
-                  <Text fontWeight={500} mt={6} mb={2}>
-                    {c.name}
-                  </Text>
-                  <Text fontSize={'sm'}>{c.details}</Text>
-                </ListItem>
-              ))}
-            </List>
-          </Box>
-
-          <Divider my={4} />
-
-          <RuleHeadline>{data.rules.formatHeadline}</RuleHeadline>
-          <Box>
-            <OrderedList spacing={2}>
-              {data.rules.formats.map((c) => (
-                <ListItem key={c}>
-                  <Text fontSize={'sm'}>{c}</Text>
-                </ListItem>
-              ))}
-            </OrderedList>
-          </Box>
-
-          <Divider my={4} />
-
-          <RuleHeadline>{data.rules.criteriaHeadline}</RuleHeadline>
-          <Box>
-            {data.rules.criterias.map((c) => (
-              <Text key={c} fontSize={'sm'} mb={2}>
-                {c}
-              </Text>
+      <ContentContainer>
+        <RuleHeadline>{data.rules.timelineHeadline}</RuleHeadline>
+        <Box>
+          <OrderedList spacing={2}>
+            {data.rules.timelines.map((c) => (
+              <ListItem key={c}>
+                <Text fontSize={'sm'}>{c}</Text>
+              </ListItem>
             ))}
-          </Box>
+          </OrderedList>
+        </Box>
 
-          <Divider my={4} />
+        <Divider my={4} />
 
-          <RuleHeadline>{data.rules.specificationHeadline}</RuleHeadline>
-          <Box>
-            <OrderedList spacing={2}>
-              {data.rules.specifications.map((c) => (
-                <ListItem key={c}>
-                  <Text fontSize={'sm'}>{c}</Text>
-                </ListItem>
-              ))}
-            </OrderedList>
-          </Box>
+        <RuleHeadline>{data.rules.uploadHeadline}</RuleHeadline>
+        <Box>
+          <OrderedList spacing={2}>
+            {data.rules.uploads.map((c) => (
+              <ListItem key={c}>
+                <Text fontSize={'sm'}>{c}</Text>
+              </ListItem>
+            ))}
+          </OrderedList>
+        </Box>
 
-          <Divider my={4} />
+        <Divider my={4} />
 
-          <RuleHeadline>{data.rules.dateHeadline}</RuleHeadline>
-          <Text>{data.rules.date}</Text>
+        <RuleHeadline>{data.rules.groupHeadline}</RuleHeadline>
+        <Box>
+          <List>
+            {data.rules.groups.map((c) => (
+              <ListItem key={c} mb={4}>
+                <Text fontWeight={500} mt={6} mb={2}>
+                  {c.name}
+                </Text>
+                <Text fontSize={'sm'}>{c.details}</Text>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
 
-          <Divider my={4} />
+        <Divider my={4} />
 
-          <RuleHeadline>{data.rules.prizeHeadline}</RuleHeadline>
-          <Box>
-            <List spacing={2}>
-              {data.rules.prizes.map((c) => (
-                <ListItem key={c}>
-                  <Text fontSize={'sm'}>{c}</Text>
-                </ListItem>
-              ))}
-            </List>
-          </Box>
-        </Container>
-      </Box>
+        <RuleHeadline>{data.rules.formatHeadline}</RuleHeadline>
+        <Box>
+          <OrderedList spacing={2}>
+            {data.rules.formats.map((c) => (
+              <ListItem key={c}>
+                <Text fontSize={'sm'}>{c}</Text>
+              </ListItem>
+            ))}
+          </OrderedList>
+        </Box>
+
+        <Divider my={4} />
+
+        <RuleHeadline>{data.rules.criteriaHeadline}</RuleHeadline>
+        <Box>
+          {data.rules.criterias.map((c) => (
+            <Text key={c} fontSize={'sm'} mb={2}>
+              {c}
+            </Text>
+          ))}
+        </Box>
+
+        <Divider my={4} />
+
+        <RuleHeadline>{data.rules.specificationHeadline}</RuleHeadline>
+        <Box>
+          <OrderedList spacing={2}>
+            {data.rules.specifications.map((c) => (
+              <ListItem key={c}>
+                <Text fontSize={'sm'}>{c}</Text>
+              </ListItem>
+            ))}
+          </OrderedList>
+        </Box>
+
+        <Divider my={4} />
+
+        <RuleHeadline>{data.rules.dateHeadline}</RuleHeadline>
+        <Text>{data.rules.date}</Text>
+
+        <Divider my={4} />
+
+        <RuleHeadline>{data.rules.prizeHeadline}</RuleHeadline>
+        <Box>
+          <List spacing={2}>
+            {data.rules.prizes.map((c) => (
+              <ListItem key={c}>
+                <Text fontSize={'sm'}>{c}</Text>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      </ContentContainer>
     </Box>
-  );
+  )
 }
 
-Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
+Index.getLayout = (page) => <Wrapper>{page}</Wrapper>
