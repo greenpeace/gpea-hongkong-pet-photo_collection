@@ -24,12 +24,9 @@ function SignupModal({ signup, setModal }) {
       <ModalOverlay />
       <ModalContent>
         <Fade in={signup.signupModal}>
-          <Box p={6}>
-            <Flex
-              direction={{ base: `column-reverse`, sm: `row` }}
-              align={`center`}
-            >
-              <Box flex={1} px={2}>
+          <Box px={4} py={8}>
+            <Flex direction={{ base: `column`, sm: `row` }} align={`center`}>
+              <Box mb={6}>
                 <Heading mb={2}>Most in demand on _</Heading>
                 <Text as='p' mb={2}>
                   The following trends have had the highest increase in search
@@ -41,7 +38,7 @@ function SignupModal({ signup, setModal }) {
                   lantauphoto2021@greenpeace.org
                 </Text>
               </Box>
-              <Box flex={1} px={2}>
+              <Box>
                 <SignupForm />
               </Box>
             </Flex>

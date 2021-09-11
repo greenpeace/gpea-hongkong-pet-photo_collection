@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'next/router';
-import formContent from 'components/form/content';
-import { base64Decode } from 'components/utils';
-import * as signupActions from 'store/actions/action-types/signup-actions';
-import * as userActions from 'store/actions/action-types/user-actions';
-import { Form, withFormik } from 'formik';
-import axios from 'axios';
+import React, { useEffect, useState, useRef } from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'next/router'
+import formContent from 'components/form/content'
+import { base64Decode } from 'components/utils'
+import * as signupActions from 'store/actions/action-types/signup-actions'
+import * as userActions from 'store/actions/action-types/user-actions'
+import { Form, withFormik } from 'formik'
+import axios from 'axios'
 
 import {
   FormControl,
@@ -15,10 +15,10 @@ import {
   Input,
   Button,
   Box,
+  Container,
   Flex,
   Text,
   Heading,
-  HStack,
   Checkbox,
   Textarea,
   Select,
@@ -26,14 +26,14 @@ import {
   Center,
   Image,
   Icon,
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
-import { AiOutlineCloudUpload } from 'react-icons/ai';
+import { AiOutlineCloudUpload } from 'react-icons/ai'
 
 const MyForm = (props) => {
-  const uploadRef = useRef(null);
-  const [name, setName] = useState('');
-  const [imagePreview, setImagePreview] = useState('');
+  const uploadRef = useRef(null)
+  const [name, setName] = useState('')
+  const [imagePreview, setImagePreview] = useState('')
   const {
     values,
     touched,
@@ -45,52 +45,47 @@ const MyForm = (props) => {
     setSubmitting,
     submitted,
     setFieldValue,
-  } = props;
+  } = props
 
-  const space = 4;
+  const space = 4
   const labelStyle = {
     fontSize: 'xs',
     color: 'gray.400',
-  };
+  }
 
   useEffect(() => {
     const localUser =
       typeof window !== 'undefined'
         ? JSON.parse(localStorage.getItem(`greenpeacePhotoCollection`))
-        : null;
-    setName(base64Decode(localUser.name));
-    setFieldValue('Name', base64Decode(localUser.name));
-    setFieldValue('UserId', localUser.name);
-  }, []);
+        : null
+    setName(base64Decode(localUser.name))
+    setFieldValue('Name', base64Decode(localUser.name))
+    setFieldValue('UserId', localUser.name)
+  }, [])
 
   const handleFileUpload = () => {
-    uploadRef.current.click();
-  };
+    uploadRef.current.click()
+  }
 
   const handleReset = () => {
-    setFieldValue('File', '');
-    setImagePreview('');
-  };
+    setFieldValue('File', '')
+    setImagePreview('')
+  }
 
   useEffect(() => {
     if (values.File) {
-      setImagePreview(URL.createObjectURL(values.File));
+      setImagePreview(URL.createObjectURL(values.File))
     }
-  }, [values.File]);
+  }, [values.File])
 
   return (
-    <Box
-      p={{ base: 0, sm: 6 }}
-      rounded={{ base: 0, sm: 'md' }}
-      bg="white"
-      overflow="hidden"
-    >
+    <Container rounded={{ base: 0, sm: 'md' }} bg='white'>
       <Form onSubmit={handleSubmit}>
         <Flex direction={{ base: 'column', sm: 'row' }} align={`flex-start`}>
-          <Box flex={1} px={6}>
+          <Box flex={1} mb={6}>
             {imagePreview ? (
               <Box>
-                <Image src={imagePreview} alt="Image" />
+                <Image src={imagePreview} alt='Image' />
                 <Button onClick={() => handleReset()} mt={4}>
                   刪除
                 </Button>
@@ -125,17 +120,17 @@ const MyForm = (props) => {
               </Box>
             )}
 
-            <FormControl id="File" isInvalid={errors.File && touched.File}>
-              <FormErrorMessage color="red">{errors.File}</FormErrorMessage>
-              <Box className="upload-btn-wrapper" h={0} overflow={`hidden`}>
+            <FormControl id='File' isInvalid={errors.File && touched.File}>
+              <FormErrorMessage color='red'>{errors.File}</FormErrorMessage>
+              <Box className='upload-btn-wrapper' h={0} overflow={`hidden`}>
                 <Button>Upload a file</Button>
                 <Input
                   variant={'clear'}
                   textAlign={`center`}
-                  name="File"
-                  type="file"
+                  name='File'
+                  type='file'
                   onChange={(event) => {
-                    setFieldValue('File', event.target.files[0]);
+                    setFieldValue('File', event.target.files[0])
                   }}
                   ref={uploadRef}
                 />
@@ -143,61 +138,61 @@ const MyForm = (props) => {
             </FormControl>
           </Box>
 
-          <Box flex={1}>
+          <Box flex={1} width={'100%'}>
             <Box flex={1} pb={space}>
-              <FormControl id="Name" isInvalid={errors.Name && touched.Name}>
+              <FormControl id='Name' isInvalid={errors.Name && touched.Name}>
                 <FormLabel {...labelStyle}>{formContent.label_name}</FormLabel>
                 <Input
-                  name="Name"
-                  type="text"
+                  name='Name'
+                  type='text'
                   defaultValue={name}
                   placeholder={formContent.label_name}
                   onChange={handleChange}
                 />
-                <FormErrorMessage color="red">{errors.Name}</FormErrorMessage>
+                <FormErrorMessage color='red'>{errors.Name}</FormErrorMessage>
               </FormControl>
             </Box>
 
-            <Box flex="1" pb={space}>
-              <FormControl id="title" isInvalid={errors.Title && touched.Title}>
+            <Box flex={1} pb={space}>
+              <FormControl id='title' isInvalid={errors.Title && touched.Title}>
                 <FormLabel {...labelStyle}>{formContent.label_title}</FormLabel>
                 <Input
-                  name="Title"
-                  type="text"
+                  name='Title'
+                  type='text'
                   placeholder={formContent.label_title}
                   onChange={handleChange}
                 />
-                <FormErrorMessage color="red">{errors.Title}</FormErrorMessage>
+                <FormErrorMessage color='red'>{errors.Title}</FormErrorMessage>
               </FormControl>
             </Box>
 
-            <Box flex="1" pb={space}>
+            <Box flex={1} pb={space}>
               <FormControl
-                id="Description"
+                id='Description'
                 isInvalid={errors.Description && touched.Description}
               >
                 <FormLabel {...labelStyle}>
                   {formContent.label_description}
                 </FormLabel>
                 <Textarea
-                  name="Description"
-                  type="text"
+                  name='Description'
+                  type='text'
                   placeholder={formContent.label_description}
                   onChange={handleChange}
                 />
-                <FormErrorMessage color="red">
+                <FormErrorMessage color='red'>
                   {errors.Description}
                 </FormErrorMessage>
               </FormControl>
             </Box>
-            <Box flex="1" pb={space}>
+            <Box flex={1} pb={space}>
               <FormControl
-                id="category"
+                id='category'
                 isInvalid={errors.Category && touched.Category}
               >
                 <FormLabel {...labelStyle}>{formContent.category}</FormLabel>
                 <Select
-                  name="Category"
+                  name='Category'
                   placeholder={formContent.select}
                   onChange={handleChange}
                 >
@@ -207,23 +202,23 @@ const MyForm = (props) => {
                     </option>
                   ))}
                 </Select>
-                <FormErrorMessage color="red">
+                <FormErrorMessage color='red'>
                   {errors.Category}
                 </FormErrorMessage>
               </FormControl>
             </Box>
 
-            <Box flex="1" pt={3} pb={3}>
+            <Box flex={1} pt={3} pb={3}>
               <Button
-                w="100%"
+                w='100%'
                 isLoading={isSubmitting}
-                type="submit"
-                height="48px"
-                borderRadius="8"
-                fontSize="xl"
-                color="#FFF"
+                type='submit'
+                height='48px'
+                borderRadius='8'
+                fontSize='xl'
+                color='#FFF'
                 letterSpacing={4}
-                bg="#ff8100"
+                bg='#ff8100'
                 _hover={{ bg: 'campaign.climate' }}
               >
                 {formContent.upload_text}
@@ -232,9 +227,9 @@ const MyForm = (props) => {
           </Box>
         </Flex>
       </Form>
-    </Box>
-  );
-};
+    </Container>
+  )
+}
 
 const MyEnhancedForm = withFormik({
   mapPropsToValues: () => ({
@@ -247,39 +242,39 @@ const MyEnhancedForm = withFormik({
   }),
 
   validate: (values) => {
-    const errors = {};
+    const errors = {}
 
     if (!values.Name) {
-      errors.Name = formContent.empty_data_alert;
+      errors.Name = formContent.empty_data_alert
     }
 
     if (!values.Title) {
-      errors.Title = formContent.empty_data_alert;
+      errors.Title = formContent.empty_data_alert
     }
 
     if (!values.Description) {
-      errors.Description = formContent.empty_data_alert;
+      errors.Description = formContent.empty_data_alert
     }
 
     if (!values.Category) {
-      errors.Category = formContent.empty_data_alert;
+      errors.Category = formContent.empty_data_alert
     }
 
     if (!values.File) {
-      errors.File = `請上傳圖片`;
+      errors.File = `請上傳圖片`
     }
 
-    return errors;
+    return errors
   },
 
   handleSubmit: (values, { setSubmitting, props }) => {
-    const formData = new FormData();
-    formData.append('file', values.File);
-    formData.append('upload_preset', process.env.CLOUDINARY_PRESET);
-    formData.append('resource_type', 'raw');
+    const formData = new FormData()
+    formData.append('file', values.File)
+    formData.append('upload_preset', process.env.CLOUDINARY_PRESET)
+    formData.append('resource_type', 'raw')
 
     axios.post(process.env.CLOUDINARY_API, formData).then(async (res) => {
-      const { statusText, data } = res;
+      const { statusText, data } = res
       if (statusText === 'OK') {
         const gSheetFormData = [
           {
@@ -295,7 +290,7 @@ const MyEnhancedForm = withFormik({
             votes: 0,
             userId: values.UserId,
           },
-        ];
+        ]
 
         axios
           .post(`${process.env.G_SHEET}/photo-collection`, gSheetFormData, {
@@ -304,45 +299,45 @@ const MyEnhancedForm = withFormik({
             },
           })
           .then(function (res) {
-            const { statusText } = res;
+            const { statusText } = res
             if (statusText === 'OK') {
-              props.router.push('/thankyou');
-              setSubmitting(false);
+              props.router.push('/thankyou')
+              setSubmitting(false)
             }
           })
           .catch(function (error) {
-            console.log(error);
-          });
+            console.log(error)
+          })
       } else {
-        alert('Something errors');
+        alert('Something errors')
       }
-    });
+    })
   },
 
   displayName: 'BasicForm',
-})(MyForm);
+})(MyForm)
 
 const mapStateToProps = () => {
-  return {};
-};
+  return {}
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setModal: (bol) => {
-      dispatch({ type: signupActions.SET_SIGNUP_MODAL, data: bol });
+      dispatch({ type: signupActions.SET_SIGNUP_MODAL, data: bol })
     },
     createUser: () => {
-      dispatch({ type: signupActions.CREATE_USER });
+      dispatch({ type: signupActions.CREATE_USER })
     },
     createUserSuccess: (data) => {
-      dispatch({ type: userActions.SET_USER_SUCCESS, data });
+      dispatch({ type: userActions.SET_USER_SUCCESS, data })
     },
-  };
-};
+  }
+}
 
-connect(null, mapDispatchToProps)(MyForm);
+connect(null, mapDispatchToProps)(MyForm)
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(MyEnhancedForm));
+)(withRouter(MyEnhancedForm))

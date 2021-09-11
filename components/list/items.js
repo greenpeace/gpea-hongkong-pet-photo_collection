@@ -51,7 +51,6 @@ function Index({ openModal, photo }) {
   if (data.length === 0) {
     return (
       <ContentContainer>
-        <Skeleton height='6rem' />
         {/* 讀取中... */}
         {/* <Stack
             direction='row'
@@ -61,14 +60,11 @@ function Index({ openModal, photo }) {
           >
             <Button isLoading variant='solid'></Button>
           </Stack> */}
-        {/* <Box
-          gridColumn={'-moz-initial'}
-          className='masonry'
-          py={{ base: 6, md: 8 }}
-          px={{ base: 0, md: 4 }}
-        >
+        <Box gridColumn={'-moz-initial'} className='masonry'>
           <Placeholder />
-        </Box> */}
+          <Placeholder />
+          <Placeholder />
+        </Box>
       </ContentContainer>
     )
   }
@@ -85,10 +81,9 @@ function Index({ openModal, photo }) {
         {data.map((d, i) => (
           <LazyLoad
             once={i.once}
-            offset={200}
+            offset={100}
             key={i}
-            height='8rem'
-            placeholder={<Placeholder />}
+            // placeholder={<Placeholder />}
             debounce={500}
           >
             <PhotoItem

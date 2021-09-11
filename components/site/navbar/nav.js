@@ -70,7 +70,7 @@ function WithSubnavigation({ user, setModal }) {
         >
           <Button
             display={'inline-flex'}
-            fontSize={'sm'}
+            fontSize={'md'}
             fontWeight={'bold'}
             color={'white'}
             bg={'#66cc00'}
@@ -82,7 +82,7 @@ function WithSubnavigation({ user, setModal }) {
               _.isEmpty(user) ? setModal(true) : router.push('/upload')
             }
           >
-            上傳圖片
+            {_.isEmpty(user) ? '立即登記' : '上傳圖片'}
           </Button>
         </Stack>
       </Flex>

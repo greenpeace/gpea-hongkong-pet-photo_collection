@@ -28,7 +28,7 @@ export default function Index() {
             pos={'relative'}
           >
             <Stack
-              py={10}
+              py={12}
               px={4}
               spacing={6}
               direction={'column'}
