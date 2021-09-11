@@ -16,14 +16,19 @@ import { connect } from 'react-redux'
 import { useRouter } from 'next/router'
 import * as modalActions from 'store/actions/action-types/modal-actions'
 import styled from 'styled-components'
+import Masonry from 'react-masonry-component'
 import { motion } from 'framer-motion'
 import LazyLoad from 'react-lazyload'
 
 import ContentContainer from '@/components/site/container/contentContainer'
 
-const PhotoItem = styled.div`
-  width: 100%;
-`
+// Masory Options
+const masonryOptions = {
+  transitionDuration: 0,
+  gutter: 20,
+}
+
+const PhotoItem = styled.div``
 
 const Placeholder = () => {
   return (
@@ -69,17 +74,18 @@ function Index({ openModal, photo }) {
   }
   return (
     <ContentContainer>
-      <Box
-        gridColumn={'-moz-initial'}
-        className='masonry'
-        py={{ base: 6, md: 8 }}
-        px={{ base: 0, md: 4 }}
-      >
+      <Box gridColumn={'-moz-initial'} className='masonry'>
+        {/* <Masonry
+        className='masonryGrid'
+        elementType={'ul'}
+        options={masonryOptions}
+        disableImagesLoaded={false}
+        updateOnEachImageLoad={false}
+      > */}
         {data.map((d, i) => (
           <LazyLoad
-            // once={i.once}
-            once
-            offset={100}
+            once={i.once}
+            offset={200}
             key={i}
             height='8rem'
             placeholder={<Placeholder />}
@@ -137,6 +143,7 @@ function Index({ openModal, photo }) {
             </PhotoItem>
           </LazyLoad>
         ))}
+        {/* </Masonry> */}
       </Box>
     </ContentContainer>
   )

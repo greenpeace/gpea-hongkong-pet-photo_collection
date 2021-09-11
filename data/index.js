@@ -1,4 +1,4 @@
-import demo from '../public/images/demo_1.jpeg';
+import demo from '../assets/images/1.jpg'
 
 const data = {
   judges: [
@@ -104,6 +104,6 @@ const data = {
     SecondLine:
       '守護大嶼！我們需要您的支持為環境堅持努力。綠色和平不接受政府、企業捐款，請立刻加入我們的1%會員計畫，以您的1%收入，支持我們的100%財政獨立。',
   },
-};
+}
 
-export default data;
+export default data

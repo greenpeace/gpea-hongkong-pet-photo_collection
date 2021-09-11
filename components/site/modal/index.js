@@ -92,16 +92,20 @@ function ModalWrapper({ modal, closeModal, photo, vote }) {
                     <CloseButton size='lg' onClick={() => handleCloseModal()} />
                   </Box>
                 </Flex>
-                <Center>
-                  <Img
-                    src={content.url}
-                    alt={content.title}
-                    maxH={`75vh`}
-                    loading='lazy'
-                  />
-                </Center>
+                <Img
+                  src={content.url}
+                  alt={content.title}
+                  maxH={`75vh`}
+                  loading='lazy'
+                />
               </Box>
-              <Stack direction={'column'} spacing={6} px={4} py={6}>
+              <Stack
+                direction={'column'}
+                alignItems={'flex-start'}
+                spacing={6}
+                px={4}
+                py={6}
+              >
                 <Flex direction={{ base: 'row' }} align={`center`}>
                   <Heading className='grid__title' fontSize={'xl'}>
                     {content.title}
@@ -122,14 +126,16 @@ function ModalWrapper({ modal, closeModal, photo, vote }) {
                   />
                 </Flex>
 
-                <Text as='p'>{content.description}</Text>
+                <Text as='p' fontSzie='sm'>
+                  {content.description}
+                </Text>
                 <Text as='span' className='grid__tag'>
                   #{content.category}
                 </Text>
 
                 <Divider my={4} />
 
-                <Text fontSize='sm' pb={6}>
+                <Text fontSize='sm' color={'gray.700'} pb={6}>
                   「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。獲選佳作更有機會展出及刊登於綠色和平2022年〈山海大嶼〉年曆中，參加者亦可優先獲得參加大嶼Photo
                   walk（詳情容後公佈）的機會。
                 </Text>

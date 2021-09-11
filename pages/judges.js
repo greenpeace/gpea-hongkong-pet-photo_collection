@@ -24,7 +24,6 @@ const MasonryItem = styled.li`
 // Masory Options
 const masonryOptions = {
   originTop: true,
-  fitWidth: false,
   gutter: 20,
   itemSelector: '.photo-item',
 }
