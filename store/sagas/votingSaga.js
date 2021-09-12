@@ -13,9 +13,13 @@ export function* getVoting() {
       console.log(error);
     }));
 
+    console.log(`voting-`,voting)
+
     const count = _(voting)
     .groupBy('id')
-    .map((items, name) => ({ name, count: items.length }))
+    .map((items, name) => {
+      return ({ name, count: items.length })
+    })
     .value();
 
     yield put({ type: votingActions.SET_VOTING_SUCCESS, data: count});

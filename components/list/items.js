@@ -43,7 +43,7 @@ const Placeholder = () => {
   )
 }
 
-function Index({ openModal, photo }) {
+function Index({ openModal, photo, voting }) {
   const router = useRouter()
   const { data } = photo
   const [imageLoading, setImageLoading] = useState(true)
@@ -82,7 +82,11 @@ function Index({ openModal, photo }) {
         disableImagesLoaded={false}
         updateOnEachImageLoad={false}
       >
-        {data.map((d, i) => (
+        {data.map((d, i) => {
+          {/* const votes = voting.find(d=>d.name === d.id)
+          console.log(`votes--`,votes) */}
+          {/* console.log(`d.id--`, d.id) */}
+          return (
           <LazyLoad
             once={i.once}
             offset={100}
@@ -148,14 +152,14 @@ function Index({ openModal, photo }) {
               </Box>
             </PhotoItem>
           </LazyLoad>
-        ))}
+        )})}
       </Masonry>
     </ContentContainer>
   )
 }
 
-const mapStateToProps = ({ photo }) => {
-  return { photo }
+const mapStateToProps = ({ photo, voting }) => {
+  return { photo, voting: voting.data }
 }
 
 const mapDispatchToProps = (dispatch) => {

@@ -17,13 +17,13 @@ import {
 import { useRouter } from 'next/router'
 import { connect } from 'react-redux'
 import React, { useEffect, useState } from 'react'
+import _ from "lodash"
 import * as modalActions from 'store/actions/action-types/modal-actions'
 import * as votingActions from 'store/actions/action-types/voting-actions'
-
 import { IconButton } from '@chakra-ui/react'
 import { AiOutlineShareAlt, AiOutlineCloudUpload } from 'react-icons/ai'
 
-function ModalWrapper({ modal, closeModal, photo, vote }) {
+function ModalWrapper({ modal, closeModal, photo, vote, voting }) {
   const [content, setContent] = useState(modal.content)
   const router = useRouter()
 
@@ -64,9 +64,13 @@ function ModalWrapper({ modal, closeModal, photo, vote }) {
 
   const checkVoteAble = () => {
     if (localUser) {
+      console.log(`content`, content)
+      console.log(`voting`, voting)
+      console.log(`localUser.userId-`,localUser.userId)
+      // console.log('a', _.findIndex(voting, { 'name': localUser.userId }))
       // console.log(`localUser.userId --`, localUser.userId)
       // console.log(`content.id--`, content.id)
-      return localUser.userId !== content.id
+      return _.findIndex(voting, { 'name': localUser.userId });
     } else {
       return false
     }
@@ -120,9 +124,10 @@ function ModalWrapper({ modal, closeModal, photo, vote }) {
                     size='sm'
                     mx={2}
                     onClick={() => handleVoting()}
-                    disabled={checkVoteAble()}
+                    // disabled={checkVoteAble()}
                   >
-                    {checkVoteAble() ? `請先註冊` : `投票`}
+                  投票
+                    {/* {checkVoteAble() ? `請先註冊` : `投票`} */}
                   </Button>
                   <IconButton
                     alignSelf={'flex-end'}
