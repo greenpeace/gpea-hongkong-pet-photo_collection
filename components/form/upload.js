@@ -53,6 +53,43 @@ const MyForm = (props) => {
     color: 'gray.400',
   }
 
+  const handleFileUpload = () => {
+    uploadRef.current.click()
+  }
+
+  const handleReset = () => {
+    setFieldValue('File', '')
+    setImagePreview('')
+  }
+
+  const handleDragEnter = e => {
+    console.log(`handleDragEnter-`)
+    e.preventDefault();
+    e.stopPropagation();
+  };
+  const handleDragLeave = e => {
+    console.log(`handleDragLeave-`)
+    e.preventDefault();
+    e.stopPropagation();
+  };
+  const handleDragOver = e => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDrop = e => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log(`e.dataTransfer.files=`,e.dataTransfer.files)
+
+    const files = e.dataTransfer.files
+    if(files){
+      setFieldValue('File', files[0])
+    }
+    // e.preventDefault();
+    // e.stopPropagation();
+  };
+
   useEffect(() => {
     const localUser =
       typeof window !== 'undefined'
@@ -63,15 +100,6 @@ const MyForm = (props) => {
     setFieldValue('UserId', localUser.name)
   }, [])
 
-  const handleFileUpload = () => {
-    uploadRef.current.click()
-  }
-
-  const handleReset = () => {
-    setFieldValue('File', '')
-    setImagePreview('')
-  }
-
   useEffect(() => {
     if (values.File) {
       setImagePreview(URL.createObjectURL(values.File))
@@ -79,9 +107,9 @@ const MyForm = (props) => {
   }, [values.File])
 
   return (
-    <Container rounded={{ base: 0, sm: 'md' }} bg='white'>
+    <Container rounded={{ base: 0, sm: 'md' }} bg='white' maxW={`container.lg`}>
       <Form onSubmit={handleSubmit}>
-        <Flex direction={{ base: 'column', sm: 'row' }} align={`flex-start`}>
+        <Stack direction={{ base: 'column', sm: 'row' }} spacing={12}>
           <Box flex={1} mb={6}>
             {imagePreview ? (
               <Box>
@@ -106,6 +134,10 @@ const MyForm = (props) => {
                   bgColor={`#fafafa`}
                   borderRadius={`2px`}
                   onClick={() => handleFileUpload()}
+                  onDrop={e => handleDrop(e)}
+                  onDragOver={e => handleDragOver(e)}
+                  onDragEnter={e => handleDragEnter(e)}
+                  onDragLeave={e => handleDragLeave(e)}
                   cursor={`pointer`}
                   _hover={{
                     border: `1px dashed #000`,
@@ -225,7 +257,7 @@ const MyForm = (props) => {
               </Button>
             </Box>
           </Box>
-        </Flex>
+        </Stack>
       </Form>
     </Container>
   )
