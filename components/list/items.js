@@ -28,7 +28,10 @@ const masonryOptions = {
   gutter: 20,
 }
 
-const PhotoItem = styled.div``
+const PhotoItem = styled.div`
+  width: 100%;
+  max-width: 480px;
+`
 
 const Placeholder = () => {
   return (
@@ -61,6 +64,7 @@ function Index({ openModal, photo }) {
             <Button isLoading variant='solid'></Button>
           </Stack> */}
         <Box gridColumn={'-moz-initial'} className='masonry'>
+          <Placeholder />
           <Placeholder />
           <Placeholder />
           <Placeholder />

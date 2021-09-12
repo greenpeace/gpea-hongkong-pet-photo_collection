@@ -49,8 +49,6 @@ a {
 .grid {
   height: auto;
   width: 100%;
-  max-width: 500px;
-  display: inline-block;
   position: relative;
   margin-bottom: 20px;
   cursor: pointer;
@@ -90,7 +88,6 @@ a {
   &__title {
     font-size: 24px;
     font-weight: bold;
-    margin: 0px 0px 10px 0px;
   }
   &__author {
     font-size: 14px;

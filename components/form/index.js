@@ -61,33 +61,24 @@ const MyForm = (props) => {
   }, [])
 
   return (
-    <Box p={{ base: 0, sm: 6 }} rounded={{ base: 0, sm: 'md' }} bg='white'>
-      <Stack mb={4}>
-        <Heading mb={2} fontSize={'xl'}>
-          參加綠色和平「山海大嶼」2021攝影比賽
-        </Heading>
-        <Text fontSize={'sm'}>
-          與世界各地的大自然愛好者一同以影像訴說山海故事。由即日起至2021年10月31日期間，你可在此上傳參賽照片。
-        </Text>
-      </Stack>
-      <Form onSubmit={handleSubmit}>
-        <Flex direction='column'>
-          <Box flex='1' pb={space}>
-            <FormControl id='email' isInvalid={errors.Email && touched.Email}>
-              <FormLabel {...labelStyle}>{formContent.label_email}</FormLabel>
-              <Input
-                name='Email'
-                type='email'
-                placeholder={formContent.label_email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-              <FormErrorMessage color='red'>{errors.Email}</FormErrorMessage>
-            </FormControl>
-          </Box>
+    <Form onSubmit={handleSubmit}>
+      <Flex direction='column'>
+        <Box flex='1' pb={space}>
+          <FormControl id='email' isInvalid={errors.Email && touched.Email}>
+            <FormLabel {...labelStyle}>{formContent.label_email}</FormLabel>
+            <Input
+              name='Email'
+              type='email'
+              placeholder={formContent.label_email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            <FormErrorMessage color='red'>{errors.Email}</FormErrorMessage>
+          </FormControl>
+        </Box>
 
-          <HStack>
-            {/* <Box flex={1} pb={space}>
+        <HStack>
+          {/* <Box flex={1} pb={space}>
               <FormControl id="Name" isInvalid={errors.Name && touched.Name}>
                 <FormLabel {...labelStyle}>{formContent.label_name}</FormLabel>
                 <Input
@@ -99,146 +90,141 @@ const MyForm = (props) => {
                 <FormErrorMessage color="red">{errors.Name}</FormErrorMessage>
               </FormControl>
             </Box> */}
-            <Box flex='1' pb={space}>
-              <FormControl
-                id='lastName'
-                isInvalid={errors.LastName && touched.LastName}
-              >
-                <FormLabel {...labelStyle}>
-                  {formContent.label_last_name}
-                </FormLabel>
-                <Input
-                  name='LastName'
-                  type='text'
-                  placeholder={formContent.label_last_name}
-                  onChange={handleChange}
-                />
-                <FormErrorMessage color='red'>
-                  {errors.LastName}
-                </FormErrorMessage>
-              </FormControl>
-            </Box>
-            <Box flex='1' pb={space}>
-              <FormControl
-                id='firstName'
-                isInvalid={errors.FirstName && touched.FirstName}
-              >
-                <FormLabel {...labelStyle}>
-                  {formContent.label_first_name}
-                </FormLabel>
-                <Input
-                  name='FirstName'
-                  type='text'
-                  placeholder={formContent.label_first_name}
-                  onChange={handleChange}
-                />
-                <FormErrorMessage color='red'>
-                  {errors.FirstName}
-                </FormErrorMessage>
-              </FormControl>
-            </Box>
-          </HStack>
-
-          <FormControl>
-            <FormLabel {...labelStyle}>
-              {formContent.label_phone_optional}
-            </FormLabel>
-          </FormControl>
-
-          <HStack align='flex-end'>
-            <Box
-              pb={space}
-              mb={errors.MobilePhone && touched.MobilePhone ? '28px' : 0}
-            >
-              <FormControl id='mobileCountryCode'>
-                <Select name='MobileCountryCode' onChange={handleChange}>
-                  {mobileCountryCode &&
-                    mobileCountryCode.map((d) => (
-                      <option key={d.value} value={d.value}>
-                        {d.label}
-                      </option>
-                    ))}
-                </Select>
-              </FormControl>
-            </Box>
-            <Box flex='1' pb={space}>
-              <FormControl
-                id='mobilePhone'
-                isInvalid={errors.MobilePhone && touched.MobilePhone}
-              >
-                <Input
-                  type='number'
-                  name='MobilePhone'
-                  placeholder={formContent.label_phone}
-                  onChange={handleChange}
-                />
-                <FormErrorMessage color='red'>
-                  {errors.MobilePhone}
-                </FormErrorMessage>
-              </FormControl>
-            </Box>
-          </HStack>
-
           <Box flex='1' pb={space}>
             <FormControl
-              id='Birthdate'
-              isInvalid={errors.Birthdate && touched.Birthdate}
+              id='lastName'
+              isInvalid={errors.LastName && touched.LastName}
             >
               <FormLabel {...labelStyle}>
-                {formContent.label_year_of_birth_optional}
+                {formContent.label_last_name}
               </FormLabel>
-              <Select placeholder={formContent.select} onChange={handleChange}>
-                {birthDateYear &&
-                  birthDateYear.map((d) => (
-                    <option key={d.value} value={d.value}>
-                      {d.value}
-                    </option>
-                  ))}
-              </Select>
+              <Input
+                name='LastName'
+                type='text'
+                placeholder={formContent.label_last_name}
+                onChange={handleChange}
+              />
+              <FormErrorMessage color='red'>{errors.LastName}</FormErrorMessage>
+            </FormControl>
+          </Box>
+          <Box flex='1' pb={space}>
+            <FormControl
+              id='firstName'
+              isInvalid={errors.FirstName && touched.FirstName}
+            >
+              <FormLabel {...labelStyle}>
+                {formContent.label_first_name}
+              </FormLabel>
+              <Input
+                name='FirstName'
+                type='text'
+                placeholder={formContent.label_first_name}
+                onChange={handleChange}
+              />
               <FormErrorMessage color='red'>
-                {errors.Birthdate}
+                {errors.FirstName}
               </FormErrorMessage>
             </FormControl>
           </Box>
+        </HStack>
 
-          <Box flex='1' pt={3} pb={3}>
-            <Button
-              w='100%'
-              isLoading={isSubmitting}
-              type='submit'
-              height='48px'
-              borderRadius='8'
-              fontSize='xl'
-              color='#FFF'
-              letterSpacing={4}
-              bg='#ff8100'
-              _hover={{ bg: 'campaign.climate' }}
+        <FormControl>
+          <FormLabel {...labelStyle}>
+            {formContent.label_phone_optional}
+          </FormLabel>
+        </FormControl>
+
+        <HStack align='flex-end'>
+          <Box
+            pb={space}
+            mb={errors.MobilePhone && touched.MobilePhone ? '28px' : 0}
+          >
+            <FormControl id='mobileCountryCode'>
+              <Select name='MobileCountryCode' onChange={handleChange}>
+                {mobileCountryCode &&
+                  mobileCountryCode.map((d) => (
+                    <option key={d.value} value={d.value}>
+                      {d.label}
+                    </option>
+                  ))}
+              </Select>
+            </FormControl>
+          </Box>
+          <Box flex='1' pb={space}>
+            <FormControl
+              id='mobilePhone'
+              isInvalid={errors.MobilePhone && touched.MobilePhone}
             >
-              {formContent.submit_text}
-            </Button>
+              <Input
+                type='number'
+                name='MobilePhone'
+                placeholder={formContent.label_phone}
+                onChange={handleChange}
+              />
+              <FormErrorMessage color='red'>
+                {errors.MobilePhone}
+              </FormErrorMessage>
+            </FormControl>
           </Box>
+        </HStack>
 
-          <Box>
-            <HStack align='flex-start'>
-              <Box pt={4} pb={4}>
-                <FormControl id='optIn'>
-                  <Checkbox
-                    name='OptIn'
-                    defaultChecked
-                    onChange={handleChange}
-                    alignItems={'flex-start'}
-                  >
-                    <Text fontSize='xs' color={'gray.900'}>
-                      {formContent.form_remind}
-                    </Text>
-                  </Checkbox>
-                </FormControl>
-              </Box>
-            </HStack>
-          </Box>
-        </Flex>
-      </Form>
-    </Box>
+        <Box flex='1' pb={space}>
+          <FormControl
+            id='Birthdate'
+            isInvalid={errors.Birthdate && touched.Birthdate}
+          >
+            <FormLabel {...labelStyle}>
+              {formContent.label_year_of_birth_optional}
+            </FormLabel>
+            <Select placeholder={formContent.select} onChange={handleChange}>
+              {birthDateYear &&
+                birthDateYear.map((d) => (
+                  <option key={d.value} value={d.value}>
+                    {d.value}
+                  </option>
+                ))}
+            </Select>
+            <FormErrorMessage color='red'>{errors.Birthdate}</FormErrorMessage>
+          </FormControl>
+        </Box>
+
+        <Box flex='1' pt={3} pb={3}>
+          <Button
+            w='100%'
+            isLoading={isSubmitting}
+            type='submit'
+            height='48px'
+            borderRadius='8'
+            fontSize='xl'
+            color='#FFF'
+            letterSpacing={4}
+            bg='#ff8100'
+            _hover={{ bg: 'campaign.climate' }}
+          >
+            {formContent.submit_text}
+          </Button>
+        </Box>
+
+        <Box>
+          <HStack align='flex-start'>
+            <Box pt={4} pb={4}>
+              <FormControl id='optIn'>
+                <Checkbox
+                  name='OptIn'
+                  defaultChecked
+                  onChange={handleChange}
+                  alignItems={'flex-start'}
+                >
+                  <Text fontSize='xs' color={'gray.900'}>
+                    {formContent.form_remind}
+                  </Text>
+                </Checkbox>
+              </FormControl>
+            </Box>
+          </HStack>
+        </Box>
+      </Flex>
+    </Form>
   )
 }
 

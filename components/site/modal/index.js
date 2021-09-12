@@ -92,22 +92,28 @@ function ModalWrapper({ modal, closeModal, photo, vote }) {
                     <CloseButton size='lg' onClick={() => handleCloseModal()} />
                   </Box>
                 </Flex>
-                <Img
-                  src={content.url}
-                  alt={content.title}
-                  maxH={`75vh`}
-                  loading='lazy'
-                />
+                <Flex alignItems={'center'} justifyContent={'center'}>
+                  <Img
+                    src={content.url}
+                    alt={content.title}
+                    maxH={`75vh`}
+                    loading='lazy'
+                  />
+                </Flex>
               </Box>
               <Stack
                 direction={'column'}
                 alignItems={'flex-start'}
                 spacing={6}
                 px={4}
-                py={6}
+                py={4}
               >
-                <Flex direction={{ base: 'row' }} align={`center`}>
-                  <Heading className='grid__title' fontSize={'xl'}>
+                <Stack
+                  direction={{ base: 'row' }}
+                  alignItems={'center'}
+                  spacing={6}
+                >
+                  <Heading className='grid__title' fontSize={'2xl'}>
                     {content.title}
                   </Heading>
                   <Button
@@ -124,7 +130,7 @@ function ModalWrapper({ modal, closeModal, photo, vote }) {
                     isRound
                     icon={<AiOutlineShareAlt />}
                   />
-                </Flex>
+                </Stack>
 
                 <Text as='p' fontSzie='sm'>
                   {content.description}
