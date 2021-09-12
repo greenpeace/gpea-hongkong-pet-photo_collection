@@ -1,3 +1,4 @@
+import 'styles/masonry.css'
 import React, { useEffect } from 'react';
 import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 import { wrapper } from 'store/configureStore';

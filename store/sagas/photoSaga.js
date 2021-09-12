@@ -6,7 +6,9 @@ import * as photoActions from 'store/actions/action-types/photo-actions'
 export function* getPhoto() {
   try {
     const photos = yield call(() => axios.get(`${process.env.G_SHEET}/photo-collection`)
-    .then((response) => response.data)
+    .then((response) => {
+      return response.data
+    })
     .catch(function (error) {
       console.log(error);
     }));

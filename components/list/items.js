@@ -16,21 +16,23 @@ import { connect } from 'react-redux'
 import { useRouter } from 'next/router'
 import * as modalActions from 'store/actions/action-types/modal-actions'
 import styled from 'styled-components'
-import Masonry from 'react-masonry-component'
+
 import { motion } from 'framer-motion'
 import LazyLoad from 'react-lazyload'
-
+import Masonry from 'react-masonry-component'
 import ContentContainer from '@/components/site/container/contentContainer'
 
 // Masory Options
 const masonryOptions = {
-  transitionDuration: 0,
+  fitWidth: false,
   gutter: 20,
+  itemSelector: '.photo-item',
 }
 
 const PhotoItem = styled.div`
   width: 100%;
-  max-width: 480px;
+  max-width: calc(25% - 20px);
+  margin-bottom: 20px;
 `
 
 const Placeholder = () => {
@@ -74,14 +76,12 @@ function Index({ openModal, photo }) {
   }
   return (
     <ContentContainer>
-      <Box gridColumn={'-moz-initial'} className='masonry'>
-        {/* <Masonry
-        className='masonryGrid'
-        elementType={'ul'}
+      <Masonry
+        className={'photo-list'}
         options={masonryOptions}
         disableImagesLoaded={false}
         updateOnEachImageLoad={false}
-      > */}
+      >
         {data.map((d, i) => (
           <LazyLoad
             once={i.once}
@@ -91,45 +91,53 @@ function Index({ openModal, photo }) {
             debounce={500}
           >
             <PhotoItem
-              className='grid'
+              className={`photo-item`}
               onClick={() =>
                 router.push(`/?id=${d.id}`, undefined, { shallow: true })
               }
               cursor={'pointer'}
             >
-              <Box className='grid__body'>
-                <Box className='relative'>
-                  <Flex>
-                    <Heading className='grid__title' flex={'1'}>
-                      {d.title}
-                    </Heading>
+              <Box pos={`absolute`} top={6} left={6} right={6}>
+                <Box>
+                  <Flex
+                    align={`center`}
+                    color={`#FFF`}
+                    justifyContent={`space-around`}
+                  >
+                    <Box flex={1}>
+                      <Heading flex={'1'} fontSize={{ base: 12, sm: 16 }}>
+                        {d.title}
+                      </Heading>
+                    </Box>
                     <Vote imageId={d.id} alignSelf={'flex-end'} />
                   </Flex>
                   <Flex direction={'row'} align={'center'}>
                     <Box>
-                      <Text className='grid__author'>{d.votes}</Text>
+                      <Text>{d.votes}</Text>
                     </Box>
                   </Flex>
                 </Box>
-                {d.category && (
-                  <Box className='mt-auto'>
-                    <Text as='span' className='grid__tag' fontSize={'sm'}>
+              </Box>
+
+
+              {d.category && (
+                <Box pos={`absolute`} bottom={6} left={6}>
+                  <Box bgColor={`rgba(255, 255, 255, 0.8)`} px={2} pb={1} borderRadius={8}>
+                    <Text as='span' fontSize={'xs'}>
                       #{d.category}
                     </Text>
                   </Box>
+                </Box>
                 )}
-              </Box>
+
+
               <Box className={`${pulsing ? 'pulse' : ''} loadable`}>
                 <motion.img
-                  initial={{ height: '6rem', opacity: 0 }}
-                  animate={{
-                    height: imageLoading ? '6rem' : 'auto',
-                    opacity: imageLoading ? 0 : 1,
-                  }}
                   transition={
                     ({ height: { delay: 0, duration: 0.4 } },
                     { opacity: { delay: 0.5, duration: 0.4 } })
                   }
+                  borderRadius={`8px`}
                   onLoad={imageLoaded}
                   width='100%'
                   src={d.url}
@@ -137,13 +145,11 @@ function Index({ openModal, photo }) {
                   _hover={{ opacity: 0.8 }}
                   loading='lazy'
                 />
-                {/* <Image src={d.url} alt={d.title} _hover={{ opacity: 0.8 }} /> */}
               </Box>
             </PhotoItem>
           </LazyLoad>
         ))}
-        {/* </Masonry> */}
-      </Box>
+      </Masonry>
     </ContentContainer>
   )
 }

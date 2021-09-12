@@ -64,8 +64,8 @@ function ModalWrapper({ modal, closeModal, photo, vote }) {
 
   const checkVoteAble = () => {
     if (localUser) {
-      console.log(`localUser.userId --`, localUser.userId)
-      console.log(`content.id--`, content.id)
+      // console.log(`localUser.userId --`, localUser.userId)
+      // console.log(`content.id--`, content.id)
       return localUser.userId !== content.id
     } else {
       return false
@@ -132,7 +132,7 @@ function ModalWrapper({ modal, closeModal, photo, vote }) {
                   />
                 </Stack>
 
-                <Text as='p' fontSzie='sm'>
+                <Text as='p' fontSize='sm'>
                   {content.description}
                 </Text>
                 <Text as='span' className='grid__tag'>
