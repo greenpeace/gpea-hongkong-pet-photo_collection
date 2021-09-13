@@ -22,8 +22,10 @@ const MyApp = ({ Component, pageProps }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const data = auth();
-    dispatch({ type: userActions.SET_USER_SUCCESS, data: JSON.parse(data) });
+    setTimeout(() => {
+      const data = auth();
+      dispatch({ type: userActions.SET_USER_SUCCESS, data: JSON.parse(data) });
+    }, 1000);
   }, []);
 
   const getLayout = Component.getLayout || ((page) => page);

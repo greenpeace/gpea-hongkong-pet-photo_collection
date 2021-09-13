@@ -9,13 +9,7 @@ export function usePrevious(value) {
 }
 
 export function auth(){
-  const localUser = localStorage.getItem('greenpeacePhotoCollection')
-  if(localUser){
-    const getData = JSON.parse(localUser)
-    return getData.signed
-  }
-  return false
-  // return typeof window !== 'undefined' ? localStorage.getItem('greenpeacePhotoCollection') : undefined
+  return typeof window !== 'undefined' ? localStorage.getItem('greenpeacePhotoCollection') : undefined
 }
 
 export function base64Encode(value) {
