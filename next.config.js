@@ -33,7 +33,7 @@ module.exports = {
   },
   basePath:
     process.env.NODE_ENV === 'production' ? '/app/photo-collection' : '',
-  exportTrailingSlash: true,
+  trailingSlash: true,
   exportPathMap: async () => ({
     '/': { page: '/' },
     '/judges': { page: '/judges' },
