@@ -54,7 +54,7 @@ function ModalWrapper({ modal, closeModal, photo, vote, voting }) {
           timestamp: content.timestamp,
           id: content.id,
           votes: '1',
-          userId: localUser.name || '',
+          userId: localUser.userId || '',
         },
       ]
 

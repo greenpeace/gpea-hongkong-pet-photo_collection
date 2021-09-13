@@ -22,6 +22,7 @@ import { useRouter } from 'next/router'
 function WithSubnavigation({ user, setModal }) {
   const router = useRouter()
   const { isOpen, onToggle } = useDisclosure()
+  console.log(`user--`,user)
   return (
     <Box>
       <Flex
@@ -79,10 +80,10 @@ function WithSubnavigation({ user, setModal }) {
               bg: 'green.300',
             }}
             onClick={() =>
-              _.isEmpty(user) ? setModal(true) : router.push('/upload')
+              user.signed ? router.push('/upload') : setModal(true)
             }
           >
-            {_.isEmpty(user) ? '立即登記' : '上傳圖片'}
+            { user.signed ? '上傳圖片' : '立即登記'}
           </Button>
         </Stack>
       </Flex>

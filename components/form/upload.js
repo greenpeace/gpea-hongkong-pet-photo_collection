@@ -311,7 +311,7 @@ const MyEnhancedForm = withFormik({
             featured: false,
             id: data.public_id,
             title: values.Title,
-            url: data.url,
+            url: data.url.substring(data.url.indexOf('/') + 1),
             description: values.Description,
             category: values.Category,
             author: values.Name,
