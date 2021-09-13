@@ -50,11 +50,11 @@ function WithSubnavigation({ user, setModal }) {
             src={'https://www.greenpeace.org/global/static/img/gp-logo.svg'}
             maxW={'120px'}
             alt={'Greenpeace 綠色和平'}
+            cursor={'pointer'}
+            loading='eager'
             onClick={() => {
               router.push(`/`)
             }}
-            cursor={'pointer'}
-            loading='lazy'
           />
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>

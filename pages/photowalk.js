@@ -16,41 +16,18 @@ import PageContainer from '@/components/site/container/pageContainer'
 import ContentContainer from '@/components/site/container/contentContainer'
 
 import data from '../data'
+import TopBanner from '@/components/site/banner/banner'
 
 export default function Index() {
   return (
-    <Flex h={'full'} direction={'column'}>
-      <Box
-        pos={'relative'}
-        bgImage={'images/demo_1.jpeg'}
-        bgSize={'cover'}
-        h={{ base: '240px', sm: '320px' }}
-      >
-        <Center
-          h={'100%'}
-          maxW={`container.md`}
-          margin={`0 auto`}
-          zIndex={3}
-          pos={'relative'}
-        >
-          <Stack direction={'column'} textAlign={'center'} color={'#FFF'}>
-            <Heading fontSize={{ base: '3xl', sm: '6xl' }}>
-              「與大師同攝」
-              <br />
-              大嶼Photowalk
-            </Heading>
-          </Stack>
-        </Center>
-        <Box
-          bgColor={'#000'}
-          pos={'absolute'}
-          zIndex={2}
-          top={0}
-          bottom={0}
-          w={'100%'}
-          opacity={0.6}
-        />
-      </Box>
+    <>
+      <TopBanner>
+        <Heading fontSize={{ base: '3xl', sm: '5xl' }}>
+          「與大師同攝」
+          <br />
+          大嶼Photowalk
+        </Heading>
+      </TopBanner>
       <PageContainer>
         <ContentContainer>
           <Stack spacing={4}>
@@ -67,7 +44,7 @@ export default function Index() {
           </Stack>
         </ContentContainer>
       </PageContainer>
-    </Flex>
+    </>
   )
 }
 

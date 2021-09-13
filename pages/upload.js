@@ -15,6 +15,7 @@ import {
 
 import PageContainer from '@/components/site/container/pageContainer'
 import ContentContainer from '@/components/site/container/contentContainer'
+import TopBanner from '@/components/site/banner/banner'
 
 import data from '../data'
 
@@ -24,35 +25,9 @@ export default function Index() {
   }, [])
   return (
     <Box>
-      <Box
-        pos={'relative'}
-        bgImage={'images/demo_1.jpeg'}
-        bgSize={'cover'}
-        h={{ base: '240px', sm: '320px' }}
-      >
-        <Center
-          h={'100%'}
-          maxW={`container.md`}
-          margin={`0 auto`}
-          zIndex={3}
-          pos={'relative'}
-        >
-          <Stack direction={'column'} textAlign={'center'} color={'#FFF'}>
-            <Heading fontSize={{ base: '4xl', sm: '6xl' }}>
-              上傳圖片頁面
-            </Heading>
-          </Stack>
-        </Center>
-        <Box
-          bgColor={'#000'}
-          pos={'absolute'}
-          zIndex={2}
-          top={0}
-          bottom={0}
-          w={'100%'}
-          opacity={0.6}
-        />
-      </Box>
+      <TopBanner>
+        <Heading fontSize={{ base: '4xl', sm: '6xl' }}>上傳圖片頁面</Heading>
+      </TopBanner>
       <PageContainer>
         <Container
           rounded={{ base: 0, sm: 'md' }}
