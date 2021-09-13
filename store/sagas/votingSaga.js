@@ -13,8 +13,6 @@ export function* getVoting() {
       console.log(error);
     }));
 
-    console.log(`voting-`,voting)
-
     const count = _(voting)
     .groupBy('id')
     .map((items, name) => {

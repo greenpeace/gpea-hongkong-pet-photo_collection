@@ -2,6 +2,7 @@ import Head from 'next/head'
 import React, { useEffect, useState, useRef } from 'react'
 import { connect } from 'react-redux'
 import { Box, useToast } from '@chakra-ui/react'
+import _ from "lodash";
 import Nav from 'components/site/navbar/nav'
 import SubNav from 'components/site/navbar/subNav'
 import Modal from 'components/site/modal'
@@ -22,7 +23,7 @@ function usePrevious(value) {
   return ref.current
 }
 
-function Layout({ children, signup, openModal, setPhoto, voting }) {
+function Layout({ children, signup, openModal, setPhoto, voting, photo }) {
   const router = useRouter()
   const toast = useToast()
   const prevSignup = usePrevious(signup)
@@ -70,17 +71,13 @@ function Layout({ children, signup, openModal, setPhoto, voting }) {
   }, [voting])
 
   useEffect(() => {
-    if (!router || !prevRoute) {
-      return
-    }
-
-    if (router.asPath !== prevRoute.asPath && router.asPath !== '/') {
+    if (router.query && !_.isEmpty(photo)) {
       const { id } = router.query
       if (id) {
         openModal(id)
       }
     }
-  }, [router])
+  }, [router, photo])
 
   useEffect(() => {
     setPhoto()
@@ -109,8 +106,8 @@ function Layout({ children, signup, openModal, setPhoto, voting }) {
   )
 }
 
-const mapStateToProps = ({ signup, voting }) => {
-  return { signup, voting }
+const mapStateToProps = ({ signup, voting, photo }) => {
+  return { signup, voting, photo: photo.data }
 }
 
 const mapDispatchToProps = (dispatch) => {

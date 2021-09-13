@@ -137,7 +137,7 @@ function ModalWrapper({ modal, closeModal, photo, vote, voting }) {
                   />
                 </Stack>
 
-                <Text as='p' fontSzie='sm'>
+                <Text as='p' fontSize='sm'>
                   {content.description}
                 </Text>
                 <Text as='span' className='grid__tag'>
