@@ -7,17 +7,11 @@ const TopBanner = ({ children }) => {
       pos={'relative'}
       bgImage={'images/demo_1.jpeg'}
       bgSize={'cover'}
-      minH={{ base: '240px', sm: '480px' }}
+      minH={{ base: '240px', lg: '360px' }}
       alignItems={'center'}
       justifyContent={'center'}
     >
-      <Center
-        h={'100%'}
-        maxW={`container.md`}
-        margin={`0 auto`}
-        zIndex={1}
-        pos={'relative'}
-      >
+      <Center h={'100%'} maxW={`container.md`} margin={`0 auto`} zIndex={1}>
         <Stack
           py={12}
           px={4}
