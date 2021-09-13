@@ -14,9 +14,9 @@ const makeStore = context => {
   const isClient = typeof window !== 'undefined'
 
   const persistConfig = {
-    key: 'root',
+    key: 'primary',
     storage,
-    whitelist: [''],
+    whitelist: ['storeVoting'],
   }
 
   if(isClient){

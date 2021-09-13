@@ -11,7 +11,6 @@ import {
   Img,
   Flex,
   Fade,
-  Center,
   CloseButton,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
@@ -20,10 +19,11 @@ import React, { useEffect, useState } from 'react'
 import _ from 'lodash'
 import * as modalActions from 'store/actions/action-types/modal-actions'
 import * as votingActions from 'store/actions/action-types/voting-actions'
+import * as storeVotingActions from 'store/actions/action-types/store-voting-actions'
 import { IconButton } from '@chakra-ui/react'
 import { AiOutlineShareAlt, AiOutlineCloudUpload } from 'react-icons/ai'
 
-function ModalWrapper({ modal, closeModal, photo, vote, voting }) {
+function ModalWrapper({ modal, closeModal, photo, vote, voting, storeVoting, storeUserVotes }) {
   const [content, setContent] = useState(modal.content)
   const router = useRouter()
 
@@ -57,23 +57,11 @@ function ModalWrapper({ modal, closeModal, photo, vote, voting }) {
           userId: localUser.userId || '',
         },
       ]
-
+      const storeData = [...storeVoting, content.id]
       vote(gSheetFormData)
+      storeUserVotes(storeData)
     }
-  }
 
-  const checkVoteAble = () => {
-    if (localUser) {
-      console.log(`content`, content)
-      console.log(`voting`, voting)
-      console.log(`localUser.userId-`, localUser.userId)
-      // console.log('a', _.findIndex(voting, { 'name': localUser.userId }))
-      // console.log(`localUser.userId --`, localUser.userId)
-      // console.log(`content.id--`, content.id)
-      return _.findIndex(voting, { name: localUser.userId })
-    } else {
-      return false
-    }
   }
 
   return (
@@ -124,10 +112,9 @@ function ModalWrapper({ modal, closeModal, photo, vote, voting }) {
                     size='sm'
                     mx={2}
                     onClick={() => handleVoting()}
-                    // disabled={checkVoteAble()}
+                    disabled={storeVoting.indexOf(content.id) !== -1}
                   >
-                    投票
-                    {/* {checkVoteAble() ? `請先註冊` : `投票`} */}
+                    {storeVoting.indexOf(content.id) !== -1? `已投票` : `投票`}
                   </Button>
                   <IconButton
                     alignSelf={'flex-end'}
@@ -159,10 +146,11 @@ function ModalWrapper({ modal, closeModal, photo, vote, voting }) {
   )
 }
 
-const mapStateToProps = ({ modal, photo, voting }) => ({
+const mapStateToProps = ({ modal, photo, voting, storeVoting }) => ({
   modal,
   photo: photo.data,
   voting: voting.data,
+  storeVoting: storeVoting.data
 })
 
 const mapDispatchToProps = (dispatch) => {
@@ -175,6 +163,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     vote: (data) => {
       dispatch({ type: votingActions.ADD_VOTING, data })
+    },
+    storeUserVotes: (data) => {
+      dispatch({ type: storeVotingActions.STORE_VOTING, data })
     },
   }
 }

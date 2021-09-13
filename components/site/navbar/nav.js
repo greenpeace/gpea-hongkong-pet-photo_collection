@@ -22,7 +22,6 @@ import { useRouter } from 'next/router'
 function WithSubnavigation({ user, setModal }) {
   const router = useRouter()
   const { isOpen, onToggle } = useDisclosure()
-  console.log(`user--`,user)
   return (
     <Box>
       <Flex
