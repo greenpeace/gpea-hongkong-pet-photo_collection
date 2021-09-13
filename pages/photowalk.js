@@ -10,6 +10,7 @@ import {
   Container,
 } from '@chakra-ui/react'
 
+import PageContainer from '@/components/site/container/pageContainer'
 import ContentContainer from '@/components/site/container/contentContainer'
 
 import data from '../data'
@@ -44,7 +45,9 @@ export default function Index() {
           opacity={0.6}
         />
       </Box>
-      <ContentContainer></ContentContainer>
+      <PageContainer>
+        <ContentContainer>PhotoWalk Content here</ContentContainer>
+      </PageContainer>
     </Box>
   )
 }

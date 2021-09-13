@@ -1,9 +1,22 @@
 import React, { useEffect } from 'react'
 import Wrapper from 'components/site/wrapper'
 import UploadForm from 'components/form/upload'
-import { Box, Stack, Center, Heading, Text, Container } from '@chakra-ui/react'
+import {
+  Box,
+  Stack,
+  Center,
+  Divider,
+  Heading,
+  Text,
+  Container,
+  OrderedList,
+  ListItem,
+} from '@chakra-ui/react'
 
+import PageContainer from '@/components/site/container/pageContainer'
 import ContentContainer from '@/components/site/container/contentContainer'
+
+import data from '../data'
 
 export default function Index() {
   useEffect(() => {
@@ -40,9 +53,26 @@ export default function Index() {
           opacity={0.6}
         />
       </Box>
-      <ContentContainer>
-        <UploadForm />
-      </ContentContainer>
+      <PageContainer>
+        <Container
+          rounded={{ base: 0, sm: 'md' }}
+          bg='white'
+          maxW={`container.lg`}
+        >
+          <UploadForm />
+          <Divider my={4} />
+          <Box>
+            <Text mb={4}>作品格式</Text>
+            <OrderedList spacing={2}>
+              {data.rules.formats.map((c) => (
+                <ListItem key={c}>
+                  <Text fontSize={'sm'}>{c}</Text>
+                </ListItem>
+              ))}
+            </OrderedList>
+          </Box>
+        </Container>
+      </PageContainer>
     </Box>
   )
 }

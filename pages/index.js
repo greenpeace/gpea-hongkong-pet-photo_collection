@@ -5,13 +5,14 @@ import ListItems from 'components/list/items'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import * as photoActions from 'store/actions/action-types/photo-actions'
-import { Box, Stack, Center, Heading, Text, Container } from '@chakra-ui/react'
+import { Box, Stack, Center, Heading, Text, Flex } from '@chakra-ui/react'
+
+import PageContainer from '@/components/site/container/pageContainer'
 
 export default function Index() {
   return (
     <>
-      <Head></Head>
-      <Box>
+      <Flex direction={'column'}>
         <Stack
           pos={'relative'}
           bgImage={'images/demo_1.jpeg'}
@@ -57,8 +58,10 @@ export default function Index() {
             opacity={0.6}
           />
         </Stack>
-        <ListItems />
-      </Box>
+        <PageContainer>
+          <ListItems />
+        </PageContainer>
+      </Flex>
     </>
   )
 }

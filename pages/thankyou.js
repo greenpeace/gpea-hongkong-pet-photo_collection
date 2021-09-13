@@ -2,7 +2,9 @@ import React from 'react'
 import Wrapper from 'components/site/wrapper'
 import { Box, Stack, Center, Heading, Text, Container } from '@chakra-ui/react'
 
+import PageContainer from '@/components/site/container/pageContainer'
 import ContentContainer from '@/components/site/container/contentContainer'
+
 import MiniDonateForm from 'components/donate/miniDonateForm'
 
 import data from 'data/index'
@@ -39,14 +41,16 @@ export default function Index() {
           opacity={0.6}
         />
       </Box>
-      <ContentContainer>
-        <Stack spacing={4}>
-          <Heading>{data.thankyouMessage.headLine}</Heading>
-          <Text>{data.thankyouMessage.firstLine}</Text>
-          <Text>{data.thankyouMessage.secondLine}</Text>
-          <MiniDonateForm />
-        </Stack>
-      </ContentContainer>
+      <PageContainer>
+        <ContentContainer>
+          <Stack spacing={4}>
+            <Heading>{data.thankyouMessage.headLine}</Heading>
+            <Text>{data.thankyouMessage.firstLine}</Text>
+            <Text>{data.thankyouMessage.secondLine}</Text>
+            <MiniDonateForm />
+          </Stack>
+        </ContentContainer>
+      </PageContainer>
     </Box>
   )
 }

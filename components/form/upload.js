@@ -62,33 +62,33 @@ const MyForm = (props) => {
     setImagePreview('')
   }
 
-  const handleDragEnter = e => {
+  const handleDragEnter = (e) => {
     console.log(`handleDragEnter-`)
-    e.preventDefault();
-    e.stopPropagation();
-  };
-  const handleDragLeave = e => {
+    e.preventDefault()
+    e.stopPropagation()
+  }
+  const handleDragLeave = (e) => {
     console.log(`handleDragLeave-`)
-    e.preventDefault();
-    e.stopPropagation();
-  };
-  const handleDragOver = e => {
-    e.preventDefault();
-    e.stopPropagation();
-  };
+    e.preventDefault()
+    e.stopPropagation()
+  }
+  const handleDragOver = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+  }
 
-  const handleDrop = e => {
-    e.preventDefault();
-    e.stopPropagation();
-    console.log(`e.dataTransfer.files=`,e.dataTransfer.files)
+  const handleDrop = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    console.log(`e.dataTransfer.files=`, e.dataTransfer.files)
 
     const files = e.dataTransfer.files
-    if(files){
+    if (files) {
       setFieldValue('File', files[0])
     }
     // e.preventDefault();
     // e.stopPropagation();
-  };
+  }
 
   useEffect(() => {
     const localUser =
@@ -107,159 +107,155 @@ const MyForm = (props) => {
   }, [values.File])
 
   return (
-    <Container rounded={{ base: 0, sm: 'md' }} bg='white' maxW={`container.lg`}>
-      <Form onSubmit={handleSubmit}>
-        <Stack direction={{ base: 'column', sm: 'row' }} spacing={12}>
-          <Box flex={1} mb={6}>
-            {imagePreview ? (
-              <Box>
-                <Image src={imagePreview} alt='Image' />
-                <Button onClick={() => handleReset()} mt={4}>
-                  刪除
-                </Button>
-              </Box>
-            ) : (
-              <Box>
-                <Stack spacing={4} mb={4}>
-                  <Heading>上傳作品</Heading>
-                  <Text>
-                    請仔細輸入你的資料；一經提交即視為最終確認。
-                    <br />
-                    如對比賽詳情有任何疑問或查詢，請電郵至
-                    lantauphoto2021@greenpeace.org。
-                  </Text>
+    <Form onSubmit={handleSubmit}>
+      <Stack direction={{ base: 'column', sm: 'row' }} spacing={12}>
+        <Box flex={1} mb={6}>
+          {imagePreview ? (
+            <Box>
+              <Image src={imagePreview} alt='Image' />
+              <Button onClick={() => handleReset()} mt={4}>
+                刪除
+              </Button>
+            </Box>
+          ) : (
+            <Box>
+              <Stack spacing={4} mb={4}>
+                <Heading>上傳作品</Heading>
+                <Text>
+                  請仔細輸入你的資料；一經提交即視為最終確認。
+                  <br />
+                  如對比賽詳情有任何疑問或查詢，請電郵至
+                  lantauphoto2021@greenpeace.org。
+                </Text>
+              </Stack>
+              <Center
+                border={`1px dashed #d9d9d9`}
+                bgColor={`#fafafa`}
+                borderRadius={`2px`}
+                onClick={() => handleFileUpload()}
+                onDrop={(e) => handleDrop(e)}
+                onDragOver={(e) => handleDragOver(e)}
+                onDragEnter={(e) => handleDragEnter(e)}
+                onDragLeave={(e) => handleDragLeave(e)}
+                cursor={`pointer`}
+                _hover={{
+                  border: `1px dashed #000`,
+                }}
+                minH={`xs`}
+              >
+                <Stack justifyContent={'center'} alignItems={'center'}>
+                  <Icon as={AiOutlineCloudUpload} w={8} h={8} />
+                  <Text>將照片拖動到此處，或選擇要上傳的檔案。</Text>
                 </Stack>
-                <Center
-                  border={`1px dashed #d9d9d9`}
-                  bgColor={`#fafafa`}
-                  borderRadius={`2px`}
-                  onClick={() => handleFileUpload()}
-                  onDrop={e => handleDrop(e)}
-                  onDragOver={e => handleDragOver(e)}
-                  onDragEnter={e => handleDragEnter(e)}
-                  onDragLeave={e => handleDragLeave(e)}
-                  cursor={`pointer`}
-                  _hover={{
-                    border: `1px dashed #000`,
-                  }}
-                  minH={`xs`}
-                >
-                  <Stack justifyContent={'center'} alignItems={'center'}>
-                    <Icon as={AiOutlineCloudUpload} w={8} h={8} />
-                    <Text>將照片拖動到此處，或選擇要上傳的檔案。</Text>
-                  </Stack>
-                </Center>
-              </Box>
-            )}
+              </Center>
+            </Box>
+          )}
 
-            <FormControl id='File' isInvalid={errors.File && touched.File}>
-              <FormErrorMessage color='red'>{errors.File}</FormErrorMessage>
-              <Box className='upload-btn-wrapper' h={0} overflow={`hidden`}>
-                <Button>Upload a file</Button>
-                <Input
-                  variant={'clear'}
-                  textAlign={`center`}
-                  name='File'
-                  type='file'
-                  onChange={(event) => {
-                    setFieldValue('File', event.target.files[0])
-                  }}
-                  ref={uploadRef}
-                />
-              </Box>
+          <FormControl id='File' isInvalid={errors.File && touched.File}>
+            <FormErrorMessage color='red'>{errors.File}</FormErrorMessage>
+            <Box className='upload-btn-wrapper' h={0} overflow={`hidden`}>
+              <Button>Upload a file</Button>
+              <Input
+                variant={'clear'}
+                textAlign={`center`}
+                name='File'
+                type='file'
+                onChange={(event) => {
+                  setFieldValue('File', event.target.files[0])
+                }}
+                ref={uploadRef}
+              />
+            </Box>
+          </FormControl>
+        </Box>
+
+        <Box flex={1} width={'100%'}>
+          <Box flex={1} pb={space}>
+            <FormControl id='Name' isInvalid={errors.Name && touched.Name}>
+              <FormLabel {...labelStyle}>{formContent.label_name}</FormLabel>
+              <Input
+                name='Name'
+                type='text'
+                defaultValue={name}
+                placeholder={formContent.label_name}
+                onChange={handleChange}
+              />
+              <FormErrorMessage color='red'>{errors.Name}</FormErrorMessage>
             </FormControl>
           </Box>
 
-          <Box flex={1} width={'100%'}>
-            <Box flex={1} pb={space}>
-              <FormControl id='Name' isInvalid={errors.Name && touched.Name}>
-                <FormLabel {...labelStyle}>{formContent.label_name}</FormLabel>
-                <Input
-                  name='Name'
-                  type='text'
-                  defaultValue={name}
-                  placeholder={formContent.label_name}
-                  onChange={handleChange}
-                />
-                <FormErrorMessage color='red'>{errors.Name}</FormErrorMessage>
-              </FormControl>
-            </Box>
-
-            <Box flex={1} pb={space}>
-              <FormControl id='title' isInvalid={errors.Title && touched.Title}>
-                <FormLabel {...labelStyle}>{formContent.label_title}</FormLabel>
-                <Input
-                  name='Title'
-                  type='text'
-                  placeholder={formContent.label_title}
-                  onChange={handleChange}
-                />
-                <FormErrorMessage color='red'>{errors.Title}</FormErrorMessage>
-              </FormControl>
-            </Box>
-
-            <Box flex={1} pb={space}>
-              <FormControl
-                id='Description'
-                isInvalid={errors.Description && touched.Description}
-              >
-                <FormLabel {...labelStyle}>
-                  {formContent.label_description}
-                </FormLabel>
-                <Textarea
-                  name='Description'
-                  type='text'
-                  placeholder={formContent.label_description}
-                  onChange={handleChange}
-                />
-                <FormErrorMessage color='red'>
-                  {errors.Description}
-                </FormErrorMessage>
-              </FormControl>
-            </Box>
-            <Box flex={1} pb={space}>
-              <FormControl
-                id='category'
-                isInvalid={errors.Category && touched.Category}
-              >
-                <FormLabel {...labelStyle}>{formContent.category}</FormLabel>
-                <Select
-                  name='Category'
-                  placeholder={formContent.select}
-                  onChange={handleChange}
-                >
-                  {(process.env.CATEGORY || []).map((d) => (
-                    <option key={d.LABEL} value={d.VALUER}>
-                      {d.LABEL}
-                    </option>
-                  ))}
-                </Select>
-                <FormErrorMessage color='red'>
-                  {errors.Category}
-                </FormErrorMessage>
-              </FormControl>
-            </Box>
-
-            <Box flex={1} pt={3} pb={3}>
-              <Button
-                w='100%'
-                isLoading={isSubmitting}
-                type='submit'
-                height='48px'
-                borderRadius='8'
-                fontSize='xl'
-                color='#FFF'
-                letterSpacing={4}
-                bg='#ff8100'
-                _hover={{ bg: 'campaign.climate' }}
-              >
-                {formContent.upload_text}
-              </Button>
-            </Box>
+          <Box flex={1} pb={space}>
+            <FormControl id='title' isInvalid={errors.Title && touched.Title}>
+              <FormLabel {...labelStyle}>{formContent.label_title}</FormLabel>
+              <Input
+                name='Title'
+                type='text'
+                placeholder={formContent.label_title}
+                onChange={handleChange}
+              />
+              <FormErrorMessage color='red'>{errors.Title}</FormErrorMessage>
+            </FormControl>
           </Box>
-        </Stack>
-      </Form>
-    </Container>
+
+          <Box flex={1} pb={space}>
+            <FormControl
+              id='Description'
+              isInvalid={errors.Description && touched.Description}
+            >
+              <FormLabel {...labelStyle}>
+                {formContent.label_description}
+              </FormLabel>
+              <Textarea
+                name='Description'
+                type='text'
+                placeholder={formContent.label_description}
+                onChange={handleChange}
+              />
+              <FormErrorMessage color='red'>
+                {errors.Description}
+              </FormErrorMessage>
+            </FormControl>
+          </Box>
+          <Box flex={1} pb={space}>
+            <FormControl
+              id='category'
+              isInvalid={errors.Category && touched.Category}
+            >
+              <FormLabel {...labelStyle}>{formContent.category}</FormLabel>
+              <Select
+                name='Category'
+                placeholder={formContent.select}
+                onChange={handleChange}
+              >
+                {(process.env.CATEGORY || []).map((d) => (
+                  <option key={d.LABEL} value={d.VALUER}>
+                    {d.LABEL}
+                  </option>
+                ))}
+              </Select>
+              <FormErrorMessage color='red'>{errors.Category}</FormErrorMessage>
+            </FormControl>
+          </Box>
+
+          <Box flex={1} pt={3} pb={3}>
+            <Button
+              w='100%'
+              isLoading={isSubmitting}
+              type='submit'
+              height='48px'
+              borderRadius='8'
+              fontSize='xl'
+              color='#FFF'
+              letterSpacing={4}
+              bg='#ff8100'
+              _hover={{ bg: 'campaign.climate' }}
+            >
+              {formContent.upload_text}
+            </Button>
+          </Box>
+        </Box>
+      </Stack>
+    </Form>
   )
 }
 

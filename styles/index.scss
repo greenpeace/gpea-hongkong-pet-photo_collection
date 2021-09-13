@@ -60,11 +60,12 @@ a {
     right: 0;
     bottom: 0;
     left: 0;
+    transition: background-color 0.4 ease;
     background-color: rgba(0, 0, 0, 0.4);
   }
   &:hover {
     &:before {
-      background-color: rgba(0, 0, 0, 0.05);
+      background-color: rgba(0, 0, 0, 0.1);
     }
   }
   img {
@@ -84,13 +85,6 @@ a {
     @media (max-width: 575.98px) {
       padding: 20px 12px;
     }
-  }
-  &__title {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  &__author {
-    font-size: 14px;
   }
   &__link {
     position: absolute;

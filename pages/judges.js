@@ -12,6 +12,7 @@ import {
 import styled from 'styled-components'
 import Masonry from 'react-masonry-component'
 
+import PageContainer from '@/components/site/container/pageContainer'
 import ContentContainer from '@/components/site/container/contentContainer'
 
 import data from '../data'
@@ -60,7 +61,7 @@ export default function Index() {
           opacity={0.6}
         />
       </Box>
-      <ContentContainer>
+      <PageContainer>
         <Masonry
           className='masonryGrid'
           elementType={'ul'}
@@ -112,7 +113,7 @@ export default function Index() {
             </MasonryItem>
           ))}
         </Masonry>
-      </ContentContainer>
+      </PageContainer>
     </Box>
   )
 }
