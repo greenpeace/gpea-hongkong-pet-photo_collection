@@ -282,6 +282,7 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
+    const getData = JSON.parse(localStorage.getItem('greenpeacePhotoCollection'))
     const FORM_URL = helper.getPostURL()
     const CAMPAIGN_ID = helper.getCampaignID()
     const getHiddenFields = document.querySelectorAll(
@@ -308,11 +309,13 @@ const MyEnhancedForm = withFormik({
 
     if (response.statusText === 'OK') {
       props.createUser()
+      const getData = JSON.parse(localStorage.getItem('greenpeacePhotoCollection'))
       const name = `${values.FirstName} ${values.LastName}`
       const data = {
         // mail: base64Encode(values.Email),
         name: base64Encode(name),
-        userId: base64Encode(name),
+        userId: getData.userId,
+        signed: true
         // TODO: save?
         // mobile: `${values.MobileCountryCode} ${values.MobilePhone}`,
         // birthDate: values.Birthdate

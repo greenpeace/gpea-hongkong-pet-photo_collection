@@ -81,6 +81,14 @@ function Layout({ children, signup, openModal, setPhoto, voting, photo }) {
 
   useEffect(() => {
     setPhoto()
+    const localUser =
+      typeof window !== 'undefined'
+        ? JSON.parse(localStorage.getItem(`greenpeacePhotoCollection`))
+        : null
+    if(_.isEmpty(localUser)){
+      const randomCharacters = [...Array(10)].map(i=>(~~(Math.random()*36)).toString(36)).join('')
+      localStorage.setItem('greenpeacePhotoCollection', JSON.stringify({userId: randomCharacters, signed: false}))
+    }
   }, [])
 
   return (
