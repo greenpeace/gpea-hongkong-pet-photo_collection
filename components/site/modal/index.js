@@ -12,6 +12,7 @@ import {
   Flex,
   Fade,
   CloseButton,
+  Wrap,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { connect } from 'react-redux'
@@ -22,8 +23,31 @@ import * as votingActions from 'store/actions/action-types/voting-actions'
 import * as storeVotingActions from 'store/actions/action-types/store-voting-actions'
 import { IconButton } from '@chakra-ui/react'
 import { AiOutlineShareAlt, AiOutlineCloudUpload } from 'react-icons/ai'
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  LineShareButton,
+  LinkedinShareButton,
+  MailruShareButton,
+  PinterestShareButton,
+  TelegramShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  WhatsappIcon,
+} from 'react-share'
 
-function ModalWrapper({ modal, closeModal, photo, vote, voting, storeVoting, storeUserVotes }) {
+function ModalWrapper({
+  modal,
+  closeModal,
+  photo,
+  vote,
+  voting,
+  storeVoting,
+  storeUserVotes,
+}) {
+  const [shareUrl, setShareUrl] = useState()
   const [content, setContent] = useState(modal.content)
   const router = useRouter()
 
@@ -31,6 +55,11 @@ function ModalWrapper({ modal, closeModal, photo, vote, voting, storeVoting, sto
     typeof window !== 'undefined'
       ? JSON.parse(localStorage.getItem(`greenpeacePhotoCollection`))
       : null
+
+  useEffect(() => {
+    setShareUrl(document.location.href)
+    console.log(shareUrl)
+  })
 
   useEffect(async () => {
     if (!photo) {
@@ -61,7 +90,21 @@ function ModalWrapper({ modal, closeModal, photo, vote, voting, storeVoting, sto
       vote(gSheetFormData)
       storeUserVotes(storeData)
     }
+  }
 
+  const NavigatorShare = (title, text, url) => {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: title.value,
+          text: text.value,
+          url: url.value,
+        })
+        .then(() => console.log('Successful share'))
+        .catch((error) => console.log('Error sharing', error))
+    } else {
+      console.log('Web Share API is not supported in your browser.')
+    }
   }
 
   return (
@@ -101,27 +144,48 @@ function ModalWrapper({ modal, closeModal, photo, vote, voting, storeVoting, sto
                 py={4}
               >
                 <Stack
-                  direction={{ base: 'row' }}
-                  alignItems={'center'}
-                  spacing={6}
+                  w={'full'}
+                  direction={{ base: 'column', md: 'row' }}
+                  alignItems={{ base: 'flex-start', md: 'center' }}
+                  justifyContent={'space-between'}
+                  spacing={8}
                 >
                   <Heading className='grid__title' fontSize={'2xl'}>
                     {content.title}
                   </Heading>
-                  <Button
-                    size='sm'
-                    mx={2}
-                    onClick={() => handleVoting()}
-                    disabled={storeVoting.indexOf(content.id) !== -1}
-                  >
-                    {storeVoting.indexOf(content.id) !== -1? `已投票` : `投票`}
-                  </Button>
-                  <IconButton
-                    alignSelf={'flex-end'}
-                    aria-label='Share 分享'
-                    isRound
-                    icon={<AiOutlineShareAlt />}
-                  />
+                  <Wrap align='center' my={2} py={2} spacing={4}>
+                    <Button
+                      size='md'
+                      mx={2}
+                      onClick={() => handleVoting()}
+                      disabled={storeVoting.indexOf(content.id) !== -1}
+                    >
+                      {storeVoting.indexOf(content.id) !== -1
+                        ? `已投票`
+                        : `投票`}
+                    </Button>
+                    <IconButton
+                      aria-label='Share 分享'
+                      isRound
+                      icon={<AiOutlineShareAlt />}
+                      onClick={() =>
+                        NavigatorShare(
+                          content.title,
+                          content.description,
+                          shareUrl
+                        )
+                      }
+                    />
+                    <FacebookShareButton url={shareUrl} quote={content.title}>
+                      <FacebookIcon size={32} round />
+                    </FacebookShareButton>
+                    <TwitterShareButton url={shareUrl} title={content.title}>
+                      <TwitterIcon size={32} round />
+                    </TwitterShareButton>
+                    <WhatsappShareButton url={shareUrl} title={content.title}>
+                      <WhatsappIcon size={32} round />
+                    </WhatsappShareButton>
+                  </Wrap>
                 </Stack>
 
                 <Text as='p' fontSize='sm'>
@@ -150,7 +214,7 @@ const mapStateToProps = ({ modal, photo, voting, storeVoting }) => ({
   modal,
   photo: photo.data,
   voting: voting.data,
-  storeVoting: storeVoting.data
+  storeVoting: storeVoting.data,
 })
 
 const mapDispatchToProps = (dispatch) => {

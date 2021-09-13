@@ -55,14 +55,8 @@ function Index({ openModal, photo, voting }) {
     return (
       <Box gridColumn={'-moz-initial'} className='masonry'>
         {/* 讀取中... */}
-        {/* <Stack
-            direction='row'
-            alignItems={'center'}
-            justifyContent={'center'}
-            spacing={4}
-          >
-            <Button isLoading variant='solid'></Button>
-          </Stack> */}
+        <Placeholder />
+        <Placeholder />
         <Placeholder />
         <Placeholder />
         <Placeholder />

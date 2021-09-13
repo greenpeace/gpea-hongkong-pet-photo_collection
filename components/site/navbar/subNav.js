@@ -1,14 +1,4 @@
-import {
-  Box,
-  Flex,
-  Text,
-  Center,
-  HStack,
-  Link,
-  Divider,
-  useColorModeValue,
-  Input,
-} from '@chakra-ui/react'
+import { Box, Flex, Text, HStack, Link, Input } from '@chakra-ui/react'
 
 const CATEGORY = process.env.CATEGORY || []
 
@@ -34,30 +24,29 @@ export default function WithAction() {
     <>
       <Box bg={'gray.100'} px={4}>
         <Flex h={12} alignItems={'center'} justifyContent={'space-between'}>
-          <HStack flex={1} spacing={8} alignItems={'center'}>
-            <HStack
-              as={'nav'}
-              spacing={4}
-              display={{ base: 'flex', md: 'flex' }}
-            >
-              {CATEGORY.map((d) => (
-                <NavLink key={d.LABEL} href={d.HREF}>
-                  {d.LABEL}
-                </NavLink>
-              ))}
-            </HStack>
+          <HStack
+            flex={1}
+            as={'nav'}
+            display={{ base: 'flex', md: 'flex' }}
+            alignItems={'center'}
+          >
+            {CATEGORY.map((d) => (
+              <NavLink key={d.LABEL} href={d.HREF}>
+                {d.LABEL}
+              </NavLink>
+            ))}
           </HStack>
           <Box flex={1} px={4}>
             <Input
               h={8}
               backgroundColor={'white'}
               borderRadius={8}
-              placeholder='搜尋字眼'
+              placeholder='搜尋...'
             />
           </Box>
           <Flex alignItems={'center'}>
             <Text color={'gray.900'} fontSize={14}>
-              搜尋全部
+              搜尋
             </Text>
           </Flex>
         </Flex>

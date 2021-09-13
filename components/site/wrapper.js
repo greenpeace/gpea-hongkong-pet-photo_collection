@@ -2,7 +2,7 @@ import Head from 'next/head'
 import React, { useEffect, useState, useRef } from 'react'
 import { connect } from 'react-redux'
 import { Box, useToast } from '@chakra-ui/react'
-import _ from "lodash";
+import _ from 'lodash'
 import Nav from 'components/site/navbar/nav'
 import SubNav from 'components/site/navbar/subNav'
 import Modal from 'components/site/modal'
@@ -85,16 +85,19 @@ function Layout({ children, signup, openModal, setPhoto, voting, photo }) {
       typeof window !== 'undefined'
         ? JSON.parse(localStorage.getItem(`greenpeacePhotoCollection`))
         : null
-    if(_.isEmpty(localUser)){
-      const randomCharacters = [...Array(10)].map(i=>(~~(Math.random()*36)).toString(36)).join('')
-      localStorage.setItem('greenpeacePhotoCollection', JSON.stringify({userId: randomCharacters, signed: false}))
+    if (_.isEmpty(localUser)) {
+      const randomCharacters = [...Array(10)]
+        .map((i) => (~~(Math.random() * 36)).toString(36))
+        .join('')
+      localStorage.setItem(
+        'greenpeacePhotoCollection',
+        JSON.stringify({ userId: randomCharacters, signed: false })
+      )
     }
   }, [])
 
   return (
     <Box>
-      <Head></Head>
-      <Nav />
       <Box
         sx={{
           position: '-webkit-sticky',
@@ -104,6 +107,7 @@ function Layout({ children, signup, openModal, setPhoto, voting, photo }) {
           bgColor: '#FFF',
         }}
       >
+        <Nav />
         <SubNav />
       </Box>
       {children}

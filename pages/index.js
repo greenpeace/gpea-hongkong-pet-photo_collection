@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Wrapper from 'components/site/wrapper'
 import ListItems from 'components/list/items'
@@ -13,10 +13,13 @@ import {
   Center,
   Heading,
   Text,
+  IconButton,
   Flex,
   Wrap,
   WrapItem,
 } from '@chakra-ui/react'
+
+import { BsGrid1X2Fill, BsGrid1X2, BsGridFill, BsGrid } from 'react-icons/bs'
 
 import UploadButton from '@/components/site/button/uploadButton'
 import PageContainer from '@/components/site/container/pageContainer'
@@ -24,6 +27,7 @@ import PageContainer from '@/components/site/container/pageContainer'
 import data from '../data'
 
 export default function Index() {
+  const [isMulti, setIsMulti] = useState(false)
   return (
     <>
       <Flex direction={'column'}>
@@ -54,7 +58,7 @@ export default function Index() {
               <Heading fontSize={{ base: '3xl', md: '5xl' }}>
                 山海大嶼 攝影比賽2021
               </Heading>
-              <Heading fontSize={'2xl'}>
+              <Heading fontSize={{ base: 'lg', md: 'xl' }}>
                 以影像訴說山海的故事：留住大嶼今昔
               </Heading>
               <Text fontSize={{ base: 'sm', md: 'md' }}>
@@ -87,6 +91,18 @@ export default function Index() {
           />
         </Stack>
         <PageContainer>
+          {/* <Flex mt={-8} py={4} justifyContent={'flex-end'}>
+            <Wrap>
+              <IconButton
+                onClick={() => {
+                  setIsMulti(isMulti)
+                }}
+                icon={isMulti ? <BsGrid1X2 /> : <BsGrid />}
+                aria-label={'Toggle Multi'}
+                bg={'white'}
+              />
+            </Wrap>
+          </Flex> */}
           <ListItems />
         </PageContainer>
       </Flex>
