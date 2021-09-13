@@ -1,20 +1,22 @@
-import demo from '../assets/images/1.jpg'
+// import demo1 from '../assets/images/1.jpg'
+const demo =
+  'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/08/fdc48d59-gp0stupjr_high_res.jpg'
 
 const data = {
   judges: [
     {
       id: 1,
-      pic: demo,
+      pic: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/d602f416-tugo-avatar.png',
       name: '鄭振揚 Tugo Cheng',
       designation: '香港風景攝影師',
       profile:
-        '鄭振揚（Tugo），本地建築師和藝術攝影師，作品屢奪國際殊榮，2017年獲選為「Perspective亞太區40位年輕藝術家」之一。受其建築學背景影響，他的作品構圖特別著重線條和韻律，曾於香港和世界各地展出，並被CNN、BBC、SCMP、Guardian和Wallpaper*等刊載，國家地理雜誌更以其相片作封面。鄭曾擔任Canon Photo Marathon、會德豐攝影大賽和不同專業學會比賽的評審。',
+        '鄭振揚（Tugo），本地建築師和藝術攝影師，作品屢奪國際殊榮，2017年獲選為「Perspective亞太區40位年輕藝術家」之一。受其建築學背景影響，他的作品構圖特別著重線條和韻律，曾於香港和世界各地展出，並被CNN、BBC、SCMP、Guardian和Wallpaper * 等刊載，國家地理雜誌更以其相片作封面。鄭曾擔任Canon Photo Marathon、會德豐攝影大賽和不同專業學會比賽的評審。',
       ig: 'tcycheng',
       fb: 'TUGO CHENG Photography',
     },
     {
       id: 2,
-      pic: demo,
+      pic: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/3d57c8bf-shing-avatar.png',
       name: '馮漢城',
       designation: '生態攝影師及紀錄片製作人',
       profile:
@@ -24,13 +26,23 @@ const data = {
     },
     {
       id: 3,
-      pic: demo,
+      pic: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/6f962855-daphne-avatar.png',
       name: '黃遂心 Daphne Wong',
       designation: '生態攝影師及紀錄片製作人',
       profile:
-        '黃遂心（Daphne）是一名生態攝影師及生態紀錄片製作人，致力拍出寫實而精彩的生態故事。大學時就讀海洋與自然歷史攝影，畢業作品《白海豚失樂園》紀錄中華白海豚在香港水域的生存狀況，探討保護香港獨特自然生態的重要性，此片獲美國WorldFest Houston International Film Festival「海洋學/海洋生物學」紀錄片金奬及入圍美國Jackson Wild Media Awards 特別評審團：外語片。回港後繼續執拍本地生態紀錄片，包括香港電台《大自然大不同》系列節目。',
+        '黃遂心（Daphne）是一名生態攝影師及生態紀錄片製作人，致力拍出寫實而精彩的生態故事。大學時就讀海洋與自然歷史攝影，畢業作品《白海豚失樂園》紀錄中華白海豚在香港水域的生存狀況，探討保護香港獨特自然生態的重要性，此片獲美國 WorldFest Houston International Film Festival「海洋學/海洋生物學」紀錄片金奬及入圍美國 Jackson Wild Media Awards 特別評審團：外語片。回港後繼續執拍本地生態紀錄片，包括香港電台《大自然大不同》系列節目。',
       ig: 'daphnewongphoto',
       fb: 'Daphne Wong - Photographer & Filmmaker',
+    },
+    {
+      id: 4,
+      pic: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/4f6f4ae1-sion-avatar.png',
+      name: '陳可淳 Chan Hall Sion',
+      designation: '綠色和平守護大嶼項目主任',
+      profile:
+        '陳可淳（阿淳）一直關注公民社會，參與過的議題包括社區營造、公平貿易及塑膠污染等，目前是綠色和平城市發展的項目主任。無論是因工作需要到戶外考察，還是在工餘享受戶外風光，都經常到訪不同部份的香港郊野。希望更多香港人，可以加入我們一起守護大嶼，堅守香港。',
+      ig: '',
+      fb: '',
     },
   ],
   rules: {
@@ -91,11 +103,9 @@ const data = {
     date: '香港時間2021年9月13日起至10月31日23:59:59止。',
     prizeHeadline: '獎品',
     prizes: [
-      '捕捉大嶼獨有光景，立即上載你的作品，贏取參與攝影大師班的機會，各組別優勝作品將有機會刊登於綠色和平2022年〈山海大嶼〉年曆，並於綠色和平網上平台發佈，與香港20萬讀者分享。',
-      '冠軍（每組1名）「堅守大嶼」旗幟一面、綠色和平2022年〈山海大嶼〉年曆一個、優先參加會員活動',
-      '亞軍（每組1名）「堅守大嶼」旗幟一面、綠色和平2022年〈山海大嶼〉年曆一個、優先參加會員活動',
-      '季軍（每組1名）「堅守大嶼」旗幟一面、綠色和平2022年〈山海大嶼〉年曆一個、優先參加會員活動',
-      '優異獎（每組5名）綠色和平2022年〈一刻大嶼〉年曆一個',
+      '捕捉大嶼獨有光景，立即上載你的作品，贏取參與「與大師同行」大嶼Photowalk的機會，各組別優勝作品將有機會刊登於綠色和平2022年〈山海大嶼〉年曆，並於綠色和平網上平台發佈，與香港20萬讀者分享。',
+      '佳作獎（每組3名）「堅守大嶼」旗幟一面、綠色和平2022年〈山海大嶼〉年曆、優先參與大嶼Photowalk的資格',
+      '入圍獎（每組5名）綠色和平2022年〈一刻大嶼〉年曆一個、優先參與大嶼Photowalk的資格',
     ],
   },
   thankyouMessage: {

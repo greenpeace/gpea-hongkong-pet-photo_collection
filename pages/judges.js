@@ -1,6 +1,7 @@
 import React from 'react'
 import Wrapper from 'components/site/wrapper'
 import {
+  Avatar,
   Box,
   Stack,
   Center,
@@ -8,9 +9,14 @@ import {
   Image,
   Text,
   Container,
+  Grid,
+  GridItem,
+  Flex,
+  Link,
 } from '@chakra-ui/react'
 import styled from 'styled-components'
 import Masonry from 'react-masonry-component'
+import { FaTwitter, FaYoutube, FaInstagram, FaFacebook } from 'react-icons/fa'
 
 import PageContainer from '@/components/site/container/pageContainer'
 import ContentContainer from '@/components/site/container/contentContainer'
@@ -62,15 +68,23 @@ export default function Index() {
         />
       </Box>
       <PageContainer>
-        <Masonry
+        {/* <Masonry
           className='masonryGrid'
           elementType={'ul'}
           options={masonryOptions}
           disableImagesLoaded={false}
           updateOnEachImageLoad={false}
+        > */}
+        <Grid
+          templateColumns={{
+            base: 'repeat(1, 1fr)',
+            md: 'repeat(2, 1fr)',
+            xl: 'repeat(4, 1fr)',
+          }}
+          gap={6}
         >
           {data.judges.map((judge, index) => (
-            <MasonryItem className={'photo-item'} key={index}>
+            <GridItem key={index}>
               <Box
                 w={'full'}
                 bg={'white'}
@@ -78,19 +92,28 @@ export default function Index() {
                 rounded={'md'}
                 py={6}
                 px={4}
-                overflow={'hidden'}
+                mt={12}
               >
-                <Stack p={4} spacing={6}>
-                  <Image
-                    h={'200px'}
-                    w={'full'}
-                    objectFit={'cover'}
+                <Center mt={-16}>
+                  <Avatar
+                    size='2xl'
+                    name={judge.name}
                     src={judge.pic}
-                    alt={judge.name}
                     loading='lazy'
+                    bg='transparent'
                   />
-                  <Box>
-                    <Heading as='h3' fontSize={'2xl'} mb={2} fontWeight={500}>
+                </Center>
+                {/* <Image
+                  h={'200px'}
+                  w={'full'}
+                  objectFit={'cover'}
+                  src={judge.pic}
+                  alt={judge.name}
+                  loading='lazy'
+                /> */}
+                <Stack spacing={6}>
+                  <Box mt={4}>
+                    <Heading as='h3' fontSize={'xl'} mb={2} fontWeight={500}>
                       {judge.name}
                     </Heading>
                     <Text
@@ -108,11 +131,42 @@ export default function Index() {
                   >
                     {judge.profile}
                   </Text>
+                  {judge.ig && judge.fb && (
+                    <Stack w={'100%'} direction={'column'} spacing={4}>
+                      <Link isExternal>
+                        <Flex alignItems={'center'}>
+                          <FaFacebook />
+                          <Text
+                            as='span'
+                            fontSize={'sm'}
+                            color={'gray.700'}
+                            mx={2}
+                          >
+                            {judge.fb}
+                          </Text>
+                        </Flex>
+                      </Link>
+                      <Link isExternal>
+                        <Flex alignItems={'center'}>
+                          <FaInstagram w='8' />
+                          <Text
+                            as='span'
+                            fontSize={'sm'}
+                            color={'gray.700'}
+                            mx={2}
+                          >
+                            {judge.ig}
+                          </Text>
+                        </Flex>
+                      </Link>
+                    </Stack>
+                  )}
                 </Stack>
               </Box>
-            </MasonryItem>
+            </GridItem>
           ))}
-        </Masonry>
+        </Grid>
+        {/* </Masonry> */}
       </PageContainer>
     </Box>
   )

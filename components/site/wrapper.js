@@ -41,7 +41,7 @@ function Layout({ children, signup, openModal, setPhoto, voting, photo }) {
     ) {
       toast({
         title: '成功註冊',
-        description: '您現在可以上傳精彩的圖片 (Demo)',
+        description: '您現在可以開始上傳您的大嶼相片。',
         status: 'success',
         duration: 6000,
         isClosable: true,
