@@ -54,6 +54,7 @@ function WithSubnavigation({ user, setModal }) {
               router.push(`/`)
             }}
             cursor={'pointer'}
+            loading='lazy'
           />
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -81,7 +82,7 @@ function WithSubnavigation({ user, setModal }) {
               user.signed ? router.push('/upload') : setModal(true)
             }
           >
-            { user.signed ? '上傳圖片' : '立即登記'}
+            {user.signed ? '上傳圖片' : '立即登記'}
           </Button>
         </Stack>
       </Flex>

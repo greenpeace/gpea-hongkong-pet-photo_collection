@@ -33,11 +33,14 @@ module.exports = {
   },
   basePath:
     process.env.NODE_ENV === 'production' ? '/app/photo-collection' : '',
-  // exportPathMap: function () {
-  //   return {
-  //     '/': { page: '/' },
-  //   };
-  // },
+  exportTrailingSlash: true,
+  exportPathMap: async () => ({
+    '/': { page: '/' },
+    '/judges': { page: '/judges' },
+    '/photowalk': { page: '/photowalk' },
+    '/rules': { page: '/rules' },
+    '/upload': { page: '/upload' },
+  }),
   generateBuildId: async () => {
     if (process.env.BUILD_ID) {
       return `${process.env.BUILD_ID}_${new Date().getTime()}`
