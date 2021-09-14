@@ -40,7 +40,7 @@ export default function Index() {
         <Text fontSize={{ base: 'sm', md: 'md' }}>
           大嶼山坐擁山林、河溪、濕地、草地等多種生態環境，造就出香港的生物多樣性，綠色和平設立「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。
         </Text>
-        <Button>上傳圖片</Button>
+        <UploadButton/>
         <Wrap pt={4} spacing={6}>
           {data.judges.map((judge, index) => (
             <WrapItem key={index}>

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import * as signupActions from 'store/actions/action-types/signup-actions'
 import _ from 'lodash'
 
-const UploadButton = () => {
+const UploadButton = ({setModal, user}) => {
   const router = useRouter()
   return (
     <Button

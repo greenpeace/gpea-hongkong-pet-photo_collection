@@ -12,15 +12,34 @@ import {
 } from '@chakra-ui/react'
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import Link from 'next/link'
-import React from 'react'
+import React, {useRef, useEffect} from 'react'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 import * as signupActions from 'store/actions/action-types/signup-actions'
 import { useRouter } from 'next/router'
 
+// Hook
+function usePrevious(value) {
+  const ref = useRef()
+  useEffect(() => {
+    ref.current = value
+  }, [value])
+  return ref.current
+}
+
 function WithSubnavigation({ user, setModal }) {
   const router = useRouter()
+  const prevRoute = usePrevious(router)
   const { isOpen, onToggle } = useDisclosure()
+  useEffect(() => {
+    if(!router || !prevRoute){
+      return
+    }
+
+    if (router.pathname !== prevRoute.pathname && isOpen) {
+      onToggle()
+    }
+  }, [router])
   return (
     <Box>
       <Flex
