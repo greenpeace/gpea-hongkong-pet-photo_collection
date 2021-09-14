@@ -128,14 +128,17 @@ function ModalWrapper({
                   </Box>
                 </Flex>
                 <Flex alignItems={'center'} justifyContent={'center'}>
-                  <Box position='relative'>
+                  <Box className='photo-wrapper'>
                     <Img
+                      className='photo'
                       src={content.url}
                       alt={content.title}
                       maxH={`75vh`}
                       loading='lazy'
                     />
-                    <Box position='absolute'>{content.author}</Box>
+                    <Box className='photo-credit' py={1} px={2}>
+                      <Text fontSize={'sm'}>©{content.author}</Text>
+                    </Box>
                   </Box>
                 </Flex>
               </Box>
@@ -155,6 +158,18 @@ function ModalWrapper({
                 >
                   <Heading className='grid__title' fontSize={'2xl'}>
                     {content.title}
+                    <Text
+                      as={'span'}
+                      ml={4}
+                      px={2}
+                      fontSize={'sm'}
+                      color={'gray.700'}
+                    >
+                      {content.author}
+                    </Text>
+                    <Text as={'span'} px={2} fontSize={'sm'} color={'gray.700'}>
+                      {new Date(content.timestamp).toLocaleDateString()}
+                    </Text>
                   </Heading>
                   <Wrap align='center' my={2} py={2} spacing={4}>
                     <Button

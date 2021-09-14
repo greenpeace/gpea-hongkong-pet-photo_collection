@@ -44,7 +44,7 @@ export default function Index() {
       </Head>
       <TopBanner>
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>
-          「與大師同攝」
+          與大師同攝
           <br />
           大嶼Photowalk
         </Heading>

@@ -10,7 +10,7 @@ module.exports = {
       { LABEL: '比賽評審', VALUE: 'judges', HREF: '/judges', REF: 'judges' },
       { LABEL: '比賽詳情', VALUE: 'rules', HREF: '/rules', REF: 'rules' },
       {
-        LABEL: 'Photowalk',
+        LABEL: '與大師同攝',
         VALUE: 'photowalk',
         HREF: '/photowalk',
         REF: 'photowalk',
