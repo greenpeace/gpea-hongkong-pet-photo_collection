@@ -9,9 +9,9 @@ import {
   Divider,
   Heading,
   Flex,
+  Grid,
   GridItem,
   SimpleGrid,
-  Image,
   Text,
   OrderedList,
   List,
@@ -43,7 +43,7 @@ export default function Index() {
         </title>
       </Head>
       <TopBanner>
-        <Heading fontSize={{ base: '3xl', sm: '5xl' }}>
+        <Heading fontSize={{ base: '3xl', md: '5xl' }}>
           「與大師同攝」
           <br />
           大嶼Photowalk
@@ -55,13 +55,14 @@ export default function Index() {
           spacing={6}
           position={'relative'}
         >
-          <Stack spacing={4}>
-            <Heading as='h2' fontSize={'3xl'} my={4}>
+          <Stack spacing={8}>
+            <Heading as='h2' fontSize={'3xl'}>
               「與大師同攝」延伸活動
             </Heading>
             <Text>
-              參加者亦可優先獲得參加大嶼Photo
-              walk的資格，在11月中獲得附活動優先報名表電郵。
+              參加者亦可優先獲得參加大嶼Photo walk的資格，
+              <br />
+              在11月中獲得附活動優先報名表電郵。
             </Text>
             <Text>
               兩場大嶼Photowalk會分別由比賽評審藝術風景攝影師鄭振揚Tugo
@@ -97,89 +98,87 @@ export default function Index() {
               <ListItem>講者：馮漢城、黃遂心、郭子祈</ListItem>
             </List>
           </Stack>
-          <Box>
+          <Grid gap={6}>
             {data.judges
               .filter((judge) => {
-                return judge.id === 1
+                return judge.id <= 3
               })
               .map((judge, index) => (
-                <Fragment key={index}>
-                  <GridItem>
-                    <Box
-                      w={'full'}
-                      bg={'white'}
-                      boxShadow={'2xl'}
-                      rounded={'md'}
-                      py={6}
-                      px={4}
-                      mt={12}
-                    >
-                      <Center mt={-16}>
-                        <Avatar
-                          size='2xl'
-                          name={judge.name}
-                          src={judge.pic}
-                          loading='lazy'
-                          bg='transparent'
-                        />
-                      </Center>
-                      <Stack spacing={6}>
-                        <Box mt={4}>
-                          <Heading
-                            as='h3'
-                            fontSize={'xl'}
-                            mb={2}
-                            fontWeight={500}
-                          >
-                            {judge.name}
-                          </Heading>
-                          <Text
-                            fontSize={'sm'}
-                            letterSpacing={'2px'}
-                            color={'gray.900'}
-                          >
-                            {judge.designation}
-                          </Text>
-                        </Box>
+                <GridItem key={index} maxW={'440px'} mx={'auto'}>
+                  <Box
+                    w={'full'}
+                    bg={'white'}
+                    boxShadow={'2xl'}
+                    rounded={'md'}
+                    py={6}
+                    px={4}
+                    mt={12}
+                  >
+                    <Center mt={-16}>
+                      <Avatar
+                        size='2xl'
+                        name={judge.name}
+                        src={judge.pic}
+                        loading='lazy'
+                        bg='transparent'
+                      />
+                    </Center>
+                    <Stack spacing={6}>
+                      <Box mt={4}>
+                        <Heading
+                          as='h3'
+                          fontSize={'xl'}
+                          mb={2}
+                          fontWeight={500}
+                        >
+                          {judge.name}
+                        </Heading>
                         <Text
                           fontSize={'sm'}
                           letterSpacing={'2px'}
-                          color={'gray.700'}
+                          color={'gray.900'}
                         >
-                          {judge.profile}
+                          {judge.designation}
                         </Text>
-                        {judge.ig && judge.fb && (
-                          <Stack w={'100%'} direction={'column'} spacing={4}>
-                            <Flex alignItems={'center'}>
-                              <FaFacebook />
-                              <Text
-                                as='span'
-                                fontSize={'sm'}
-                                color={'gray.700'}
-                                mx={2}
-                              >
-                                {judge.fb}
-                              </Text>
-                            </Flex>
-                            <Flex alignItems={'center'}>
-                              <FaInstagram w='8' />
-                              <Text
-                                as='span'
-                                fontSize={'sm'}
-                                color={'gray.700'}
-                                mx={2}
-                              >
-                                {judge.ig}
-                              </Text>
-                            </Flex>
-                          </Stack>
-                        )}
-                      </Stack>
-                    </Box>
-                  </GridItem>
-                </Fragment>
+                      </Box>
+                      <Text
+                        fontSize={'sm'}
+                        letterSpacing={'2px'}
+                        color={'gray.700'}
+                      >
+                        {judge.profile}
+                      </Text>
+                      {judge.ig && judge.fb && (
+                        <Stack w={'100%'} direction={'column'} spacing={4}>
+                          <Flex alignItems={'center'}>
+                            <FaFacebook />
+                            <Text
+                              as='span'
+                              fontSize={'sm'}
+                              color={'gray.700'}
+                              mx={2}
+                            >
+                              {judge.fb}
+                            </Text>
+                          </Flex>
+                          <Flex alignItems={'center'}>
+                            <FaInstagram w='8' />
+                            <Text
+                              as='span'
+                              fontSize={'sm'}
+                              color={'gray.700'}
+                              mx={2}
+                            >
+                              {judge.ig}
+                            </Text>
+                          </Flex>
+                        </Stack>
+                      )}
+                    </Stack>
+                  </Box>
+                </GridItem>
               ))}
-          </Box>
+          </Grid>
         </SimpleGrid>
         <ContentContainer>
           <Box py={8}>

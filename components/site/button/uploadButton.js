@@ -16,10 +16,10 @@ const UploadButton = ({ setModal, user }) => {
       rounded={'lg'}
       fontWeight={'bold'}
       color={'white'}
-      bg={'#66cc00'}
+      bg={'brand.500'}
       href={'#'}
       _hover={{
-        bg: 'green.300',
+        bg: 'brand.700',
       }}
       onClick={() =>
         _.isEmpty(user) ? setModal(true) : router.push('/upload')

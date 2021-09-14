@@ -53,15 +53,23 @@ function Index({ openModal, photo, voting }) {
   }
   if (data.length === 0) {
     return (
-      <Box gridColumn={'-moz-initial'} className='masonry'>
-        {/* 讀取中... */}
-        <Placeholder />
-        <Placeholder />
-        <Placeholder />
-        <Placeholder />
-        <Placeholder />
-        <Placeholder />
-      </Box>
+      <Stack spacing={4}>
+        <Skeleton height='6rem' />
+        <Skeleton height='6rem' />
+        <Skeleton height='6rem' />
+      </Stack>
+      // <Box gridColumn={'-moz-initial'} className='masonry'>
+      //   {/* 讀取中... */}
+      //   <Placeholder />
+      //   <Placeholder />
+      //   <Placeholder />
+      //   <Placeholder />
+      //   <Placeholder />
+      //   <Placeholder />
+      //   <Placeholder />
+      //   <Placeholder />
+      //   <Placeholder />
+      // </Box>
     )
   }
   return (
@@ -74,13 +82,7 @@ function Index({ openModal, photo, voting }) {
         updateOnEachImageLoad={false}
       > */}
       {data.map((d, i) => (
-        <LazyLoad
-          once={i.once}
-          offset={100}
-          key={i}
-          // placeholder={<Placeholder />}
-          debounce={500}
-        >
+        <LazyLoad once={i.once} offset={100} key={i} debounce={500}>
           <PhotoItem
             className='grid'
             onClick={() =>
@@ -120,7 +122,8 @@ function Index({ openModal, photo, voting }) {
                   opacity: imageLoading ? 0 : 1,
                 }}
                 transition={
-                  ({ height: { delay: 0, duration: 0.4 } },
+                  ({ transform: { delay: 0, duration: 0.3 } },
+                  { height: { delay: 0, duration: 0.4 } },
                   { opacity: { delay: 0.5, duration: 0.4 } })
                 }
                 onLoad={imageLoaded}

@@ -157,24 +157,29 @@ function ModalWrapper({
                     <Button
                       size='md'
                       mx={2}
+                      px={8}
+                      py={4}
+                      colorScheme='green'
                       onClick={() => handleVoting()}
                       disabled={storeVoting.indexOf(content.id) !== -1}
                     >
                       {storeVoting.indexOf(content.id) !== -1
-                        ? `已投票`
+                        ? `感謝您的投票`
                         : `投票`}
                     </Button>
                     <IconButton
                       aria-label='Share 分享'
                       isRound
+                      w={'28px'}
+                      variant='outline'
                       icon={<AiOutlineShareAlt />}
-                      onClick={() =>
+                      onClick={() => {
                         NavigatorShare(
                           content.title,
                           content.description,
                           shareUrl
                         )
-                      }
+                      }}
                     />
                     <FacebookShareButton url={shareUrl} quote={content.title}>
                       <FacebookIcon size={32} round />
@@ -188,12 +193,17 @@ function ModalWrapper({
                   </Wrap>
                 </Stack>
 
-                <Text as='p' fontSize='sm'>
-                  {content.description}
-                </Text>
-                <Text as='span' className='grid__tag'>
-                  #{content.category}
-                </Text>
+                <Box py={4}>
+                  <Text as='p' lineHeight={'2'} fontSize='sm'>
+                    {content.description}
+                  </Text>
+                </Box>
+
+                <Box>
+                  <Text as='span' className='grid__tag'>
+                    #{content.category}
+                  </Text>
+                </Box>
 
                 <Divider my={4} />
 

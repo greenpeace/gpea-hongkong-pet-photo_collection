@@ -13,7 +13,7 @@ const TopBanner = ({ children }) => {
     >
       <Center h={'100%'} maxW={`container.md`} margin={`0 auto`} zIndex={1}>
         <Stack
-          py={12}
+          py={14}
           px={4}
           spacing={6}
           direction={'column'}

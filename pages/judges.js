@@ -48,7 +48,7 @@ export default function Index() {
         </title>
       </Head>
       <TopBanner>
-        <Heading fontSize={{ base: '3xl', sm: '5xl' }}>比賽評審</Heading>
+        <Heading fontSize={{ base: '3xl', md: '5xl' }}>比賽評審</Heading>
       </TopBanner>
       <PageContainer>
         {/* <Masonry

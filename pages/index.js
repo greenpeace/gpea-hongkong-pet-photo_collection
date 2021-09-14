@@ -40,7 +40,7 @@ export default function Index() {
         <Heading fontSize={{ base: 'lg', md: 'xl' }}>
           以影像訴說山海的故事：留住大嶼今昔
         </Heading>
-        <Text lineHeight={'2'} fontSize={{ base: 'sm', md: 'md' }}>
+        <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
           大嶼山坐擁山林、河溪、濕地、草地等多種生態環境，造就出香港的生物多樣性，
           綠色和平設立「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。
         </Text>

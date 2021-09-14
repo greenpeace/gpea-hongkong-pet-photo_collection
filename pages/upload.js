@@ -4,12 +4,9 @@ import Wrapper from 'components/site/wrapper'
 import UploadForm from 'components/form/upload'
 import {
   Box,
-  Stack,
-  Center,
   Divider,
   Heading,
   Text,
-  Container,
   OrderedList,
   ListItem,
 } from '@chakra-ui/react'
@@ -32,14 +29,10 @@ export default function Index() {
         </title>
       </Head>
       <TopBanner>
-        <Heading fontSize={{ base: '3xl', sm: '5xl' }}>立即上傳作品</Heading>
+        <Heading fontSize={{ base: '3xl', md: '5xl' }}>立即上傳作品</Heading>
       </TopBanner>
       <PageContainer>
-        <Container
-          rounded={{ base: 0, sm: 'md' }}
-          bg='white'
-          maxW={`container.lg`}
-        >
+        <ContentContainer>
           <UploadForm />
           <Divider my={4} />
           <Box>
@@ -52,7 +45,7 @@ export default function Index() {
               ))}
             </OrderedList>
           </Box>
-        </Container>
+        </ContentContainer>
       </PageContainer>
     </>
   )

@@ -20,7 +20,7 @@ export default function Index() {
         </title>
       </Head>
       <TopBanner>
-        <Heading fontSize={{ base: '3xl', sm: '5xl' }}>
+        <Heading fontSize={{ base: '3xl', md: '5xl' }}>
           {data.thankyouMessage.headLine}
         </Heading>
       </TopBanner>
