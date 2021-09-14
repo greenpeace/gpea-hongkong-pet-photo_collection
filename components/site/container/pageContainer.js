@@ -5,7 +5,7 @@ const PageContainer = ({ children }) => {
   return (
     <Container
       flex={1}
-      maxW={'1400px'}
+      maxW={'1200px'}
       py={{ base: 6, md: 8 }}
       px={{ base: 4, lg: 6 }}
     >

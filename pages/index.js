@@ -5,7 +5,17 @@ import ListItems from 'components/list/items'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import * as photoActions from 'store/actions/action-types/photo-actions'
-import { Avatar, Button, Heading, Text, Wrap, WrapItem } from '@chakra-ui/react'
+import {
+  Avatar,
+  Button,
+  Heading,
+  Text,
+  Tooltip,
+  Wrap,
+  WrapItem,
+} from '@chakra-ui/react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import { BsGrid1X2Fill, BsGrid1X2, BsGridFill, BsGrid } from 'react-icons/bs'
 
@@ -16,6 +26,7 @@ import TopBanner from '@/components/site/banner/banner'
 import data from '../data'
 
 export default function Index() {
+  const router = useRouter()
   const [isMulti, setIsMulti] = useState(false)
   return (
     <>
@@ -30,16 +41,22 @@ export default function Index() {
           大嶼山坐擁山林、河溪、濕地、草地等多種生態環境，造就出香港的生物多樣性，綠色和平設立「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。
         </Text>
         <Button>上傳圖片</Button>
-        <Wrap pt={4}>
+        <Wrap pt={4} spacing={6}>
           {data.judges.map((judge, index) => (
             <WrapItem key={index}>
-              <Avatar
-                size='lg'
-                name={judge.name}
-                src={judge.pic}
-                loading='lazy'
-                bg='transparent'
-              />
+              <Tooltip label={judge.name} fontSize={'md'} placement='top-start'>
+                <Avatar
+                  size='lg'
+                  name={judge.name}
+                  src={judge.pic}
+                  loading='lazy'
+                  bg='transparent'
+                  cursor='pointer'
+                  onClick={() => {
+                    router.push('/judges')
+                  }}
+                />
+              </Tooltip>
             </WrapItem>
           ))}
         </Wrap>

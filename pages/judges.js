@@ -56,7 +56,7 @@ export default function Index() {
           templateColumns={{
             base: 'repeat(1, 1fr)',
             md: 'repeat(2, 1fr)',
-            xl: 'repeat(4, 1fr)',
+            // xl: 'repeat(4, 1fr)',
           }}
           gap={6}
         >
@@ -80,14 +80,6 @@ export default function Index() {
                     bg='transparent'
                   />
                 </Center>
-                {/* <Image
-                  h={'200px'}
-                  w={'full'}
-                  objectFit={'cover'}
-                  src={judge.pic}
-                  alt={judge.name}
-                  loading='lazy'
-                /> */}
                 <Stack spacing={6}>
                   <Box mt={4}>
                     <Heading as='h3' fontSize={'xl'} mb={2} fontWeight={500}>
