@@ -5,12 +5,15 @@ import { connect } from 'react-redux'
 import * as signupActions from 'store/actions/action-types/signup-actions'
 import _ from 'lodash'
 
-const UploadButton = ({setModal, user}) => {
+const UploadButton = ({ setModal, user }) => {
   const router = useRouter()
   return (
     <Button
       display={'inline-flex'}
+      px={'14'}
+      py={'6'}
       fontSize={'md'}
+      rounded={'lg'}
       fontWeight={'bold'}
       color={'white'}
       bg={'#66cc00'}

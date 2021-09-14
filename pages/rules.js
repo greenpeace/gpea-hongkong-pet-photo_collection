@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import Wrapper from 'components/site/wrapper'
 import {
   Box,
@@ -30,6 +31,11 @@ const RuleHeadline = ({ children }) => {
 export default function Index() {
   return (
     <>
+      <Head>
+        <title>
+          比賽詳情 - 山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 | 香港
+        </title>
+      </Head>
       <TopBanner>
         <Heading fontSize={{ base: '3xl', sm: '5xl' }}>比賽詳情</Heading>
       </TopBanner>

@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import Head from 'next/head'
 import Wrapper from 'components/site/wrapper'
 import {
   Avatar,
@@ -35,6 +36,12 @@ const RuleHeadline = ({ children }) => {
 export default function Index() {
   return (
     <>
+      <Head>
+        <title>
+          「與大師同攝」大嶼Photowalk - 山海大嶼 攝影比賽2021 - Greenpeace
+          綠色和平 | 香港
+        </title>
+      </Head>
       <TopBanner>
         <Heading fontSize={{ base: '3xl', sm: '5xl' }}>
           「與大師同攝」

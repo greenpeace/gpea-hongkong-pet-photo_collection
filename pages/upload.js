@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import Head from 'next/head'
 import Wrapper from 'components/site/wrapper'
 import UploadForm from 'components/form/upload'
 import {
@@ -24,9 +25,14 @@ export default function Index() {
     // Check logged In
   }, [])
   return (
-    <Box>
+    <>
+      <Head>
+        <title>
+          立即上傳作品 - 山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 | 香港
+        </title>
+      </Head>
       <TopBanner>
-        <Heading fontSize={{ base: '4xl', sm: '6xl' }}>上傳圖片頁面</Heading>
+        <Heading fontSize={{ base: '3xl', sm: '5xl' }}>立即上傳作品</Heading>
       </TopBanner>
       <PageContainer>
         <Container
@@ -48,7 +54,7 @@ export default function Index() {
           </Box>
         </Container>
       </PageContainer>
-    </Box>
+    </>
   )
 }
 

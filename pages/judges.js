@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import Wrapper from 'components/site/wrapper'
 import {
   Avatar,
@@ -41,6 +42,11 @@ const imagesLoadedOptions = { background: '.my-bg-image-el' }
 export default function Index() {
   return (
     <>
+      <Head>
+        <title>
+          比賽評審 - 山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 | 香港
+        </title>
+      </Head>
       <TopBanner>
         <Heading fontSize={{ base: '3xl', sm: '5xl' }}>比賽評審</Heading>
       </TopBanner>
