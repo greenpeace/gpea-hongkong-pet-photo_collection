@@ -22,6 +22,7 @@ import { FaTwitter, FaYoutube, FaInstagram, FaFacebook } from 'react-icons/fa'
 import PageContainer from '@/components/site/container/pageContainer'
 import ContentContainer from '@/components/site/container/contentContainer'
 import TopBanner from '@/components/site/banner/banner'
+import UploadButton from '@/components/site/button/uploadButton'
 
 import data from '../data'
 
@@ -49,6 +50,9 @@ export default function Index() {
       </Head>
       <TopBanner>
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>比賽評審</Heading>
+        <Box py={6}>
+          <UploadButton />
+        </Box>
       </TopBanner>
       <PageContainer>
         {/* <Masonry

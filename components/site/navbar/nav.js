@@ -12,11 +12,13 @@ import {
 } from '@chakra-ui/react'
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import Link from 'next/link'
-import React, {useRef, useEffect} from 'react'
+import React, { useRef, useEffect } from 'react'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 import * as signupActions from 'store/actions/action-types/signup-actions'
 import { useRouter } from 'next/router'
+
+import UploadButton from '@/components/site/button/uploadButton'
 
 // Hook
 function usePrevious(value) {
@@ -32,7 +34,7 @@ function WithSubnavigation({ user, setModal }) {
   const prevRoute = usePrevious(router)
   const { isOpen, onToggle } = useDisclosure()
   useEffect(() => {
-    if(!router || !prevRoute){
+    if (!router || !prevRoute) {
       return
     }
 
@@ -87,22 +89,7 @@ function WithSubnavigation({ user, setModal }) {
           direction={'row'}
           spacing={6}
         >
-          <Button
-            display={'inline-flex'}
-            fontSize={'md'}
-            fontWeight={'bold'}
-            color={'white'}
-            bg={'#66cc00'}
-            href={'#'}
-            _hover={{
-              bg: 'green.300',
-            }}
-            onClick={() =>
-              user.signed ? router.push('/upload') : setModal(true)
-            }
-          >
-            {user.signed ? '上傳圖片' : '立即登記'}
-          </Button>
+          <UploadButton />
         </Stack>
       </Flex>
 

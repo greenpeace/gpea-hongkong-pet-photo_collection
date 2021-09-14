@@ -47,15 +47,19 @@ export default function Index() {
         <Box py={6}>
           <UploadButton />
         </Box>
-        <Wrap spacing={4}>
+        <Wrap spacing={{ base: 4, md: 6 }}>
           {data.judges.map((judge, index) => (
             <WrapItem key={index}>
-              <Tooltip label={judge.name} fontSize={'md'} placement='top-start'>
+              <Tooltip
+                label={`${judge.name}  |  ${judge.designation}`}
+                fontSize={'md'}
+                placement='top-start'
+              >
                 <Avatar
-                  size='lg'
+                  size='xl'
                   name={judge.name}
                   src={judge.pic}
-                  loading='lazy'
+                  loading='eager'
                   bg='transparent'
                   cursor='pointer'
                   onClick={() => {

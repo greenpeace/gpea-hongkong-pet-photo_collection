@@ -5,7 +5,7 @@ const TopBanner = ({ children }) => {
   return (
     <Stack
       pos={'relative'}
-      bgImage={'images/demo_1.jpeg'}
+      bgImage={'images/DJI_0409.jpg'}
       bgSize={'cover'}
       minH={{ base: '240px', lg: '360px' }}
       alignItems={'center'}
