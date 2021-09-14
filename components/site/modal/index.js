@@ -128,12 +128,15 @@ function ModalWrapper({
                   </Box>
                 </Flex>
                 <Flex alignItems={'center'} justifyContent={'center'}>
-                  <Img
-                    src={content.url}
-                    alt={content.title}
-                    maxH={`75vh`}
-                    loading='lazy'
-                  />
+                  <Box position='relative'>
+                    <Img
+                      src={content.url}
+                      alt={content.title}
+                      maxH={`75vh`}
+                      loading='lazy'
+                    />
+                    <Box position='absolute'>{content.author}</Box>
+                  </Box>
                 </Flex>
               </Box>
               <Stack
