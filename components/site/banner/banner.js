@@ -20,6 +20,7 @@ const TopBanner = ({ children }) => {
           alignItems={'center'}
           textAlign={'center'}
           color={'white'}
+          letterSpacing={'2px'}
         >
           {children}
         </Stack>
