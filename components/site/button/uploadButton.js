@@ -7,6 +7,7 @@ import _ from 'lodash'
 
 const UploadButton = ({ setModal, user }) => {
   const router = useRouter()
+  const {signed} = user
   return (
     <Button
       display={'inline-flex'}
@@ -22,10 +23,10 @@ const UploadButton = ({ setModal, user }) => {
         bg: 'brand.700',
       }}
       onClick={() =>
-        _.isEmpty(user) ? setModal(true) : router.push('/upload')
+        signed ?  router.push('/upload') : setModal(true)
       }
     >
-      {_.isEmpty(user) ? '立即登記' : '上傳圖片'}
+      {signed ? '上傳圖片' : '立即登記'}
     </Button>
   )
 }
