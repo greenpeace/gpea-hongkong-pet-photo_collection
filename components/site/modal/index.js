@@ -156,20 +156,9 @@ function ModalWrapper({
                   justifyContent={'space-between'}
                   spacing={8}
                 >
-                  <Heading className='grid__title' fontSize={'2xl'}>
+                  <Heading fontSize={'2xl'}>
                     {content.title}
-                    <Text
-                      as={'span'}
-                      ml={4}
-                      px={2}
-                      fontSize={'sm'}
-                      color={'gray.700'}
-                    >
-                      {content.author}
-                    </Text>
-                    <Text as={'span'} px={2} fontSize={'sm'} color={'gray.700'}>
-                      {new Date(content.timestamp).toLocaleDateString()}
-                    </Text>
+                    <br />
                   </Heading>
                   <Wrap align='center' my={2} py={2} spacing={4}>
                     <Button
@@ -185,6 +174,7 @@ function ModalWrapper({
                         ? `感謝您的投票`
                         : `投票`}
                     </Button>
+
                     <IconButton
                       aria-label='Share 分享'
                       isRound
@@ -209,6 +199,16 @@ function ModalWrapper({
                       <WhatsappIcon size={32} round />
                     </WhatsappShareButton>
                   </Wrap>
+                </Stack>
+
+                <Stack direction='row' spacing={4}>
+                  <Text as={'span'} fontSize={'sm'} color={'gray.700'}>
+                    作者：
+                    {content.author}
+                  </Text>
+                  <Text as={'span'} fontSize={'sm'} color={'gray.700'}>
+                    於 {new Date(content.timestamp).toLocaleDateString()} 上載
+                  </Text>
                 </Stack>
 
                 <Box py={4}>

@@ -91,28 +91,36 @@ function Index({ openModal, photo, voting }) {
             cursor={'pointer'}
           >
             <Box className='grid__body'>
-              <Box className='relative'>
-                <Flex>
-                  <Heading className='grid__title' fontSize={'2xl'} flex={'1'}>
-                    {d.title}
-                  </Heading>
-                  <Vote imageId={d.id} alignSelf={'flex-end'} />
-                </Flex>
-                <Flex direction={'row'} align={'center'}>
-                  <Box>
-                    <Text className='grid__author' fontSize={'md'}>
-                      {d.votes}
-                    </Text>
-                  </Box>
-                </Flex>
-              </Box>
-              {d.category && (
-                <Box className='mt-auto'>
+              <Heading
+                className='grid__title'
+                py={2}
+                fontSize={{ base: 'xl', md: '2xl' }}
+              >
+                {d.title}
+              </Heading>
+
+              {/* <Flex direction={'row'} align={'center'}>
+                <Box>
+                  <Text className='grid__author' fontSize={'md'}>
+                    {d.votes}
+                  </Text>
+                </Box>
+              </Flex> */}
+              <Flex
+                mt={'auto'}
+                w={'100%'}
+                alignItems={'center'}
+                justifyContent={'space-between'}
+              >
+                {d.category && (
                   <Text as='span' className='grid__tag' fontSize={'sm'}>
                     #{d.category}
                   </Text>
+                )}
+                <Box className='grid__vote' align-self={'flex-end'}>
+                  <Vote imageId={d.id} />
                 </Box>
-              )}
+              </Flex>
             </Box>
             <Box className={`${pulsing ? 'pulse' : ''} loadable`}>
               <motion.img

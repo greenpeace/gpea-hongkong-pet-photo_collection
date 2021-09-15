@@ -11,6 +11,7 @@ import {
   Heading,
   Text,
   Tooltip,
+  Flex,
   Wrap,
   WrapItem,
 } from '@chakra-ui/react'
@@ -44,18 +45,28 @@ export default function Index() {
           大嶼山坐擁山林、河溪、濕地、草地等多種生態環境，造就出香港的生物多樣性，
           綠色和平設立「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。
         </Text>
-        <Box py={6}>
+        <Flex
+          py={6}
+          w={'100%'}
+          maxW={'280px'}
+          alignItems={'center'}
+          justifyContent={'stretch'}
+        >
           <UploadButton />
-        </Box>
-        <Wrap spacing={4}>
+        </Flex>
+        <Wrap spacing={{ base: 4, md: 6 }}>
           {data.judges.map((judge, index) => (
             <WrapItem key={index}>
-              <Tooltip label={judge.name} fontSize={'md'} placement='top-start'>
+              <Tooltip
+                label={`${judge.name}  |  ${judge.designation}`}
+                fontSize={'md'}
+                placement='top-start'
+              >
                 <Avatar
                   size='lg'
                   name={judge.name}
                   src={judge.pic}
-                  loading='lazy'
+                  loading='eager'
                   bg='transparent'
                   cursor='pointer'
                   onClick={() => {

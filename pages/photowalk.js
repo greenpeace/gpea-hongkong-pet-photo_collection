@@ -21,9 +21,11 @@ import { FaInstagram, FaFacebook } from 'react-icons/fa'
 
 import PageContainer from '@/components/site/container/pageContainer'
 import ContentContainer from '@/components/site/container/contentContainer'
+import TopBanner from '@/components/site/banner/banner'
+import UploadButton from '@/components/site/button/uploadButton'
+import Judge from '@/components/Judge'
 
 import data from '../data'
-import TopBanner from '@/components/site/banner/banner'
 
 const RuleHeadline = ({ children }) => {
   return (
@@ -38,16 +40,20 @@ export default function Index() {
     <>
       <Head>
         <title>
-          「與大師同攝」大嶼Photowalk - 山海大嶼 攝影比賽2021 - Greenpeace
-          綠色和平 | 香港
+          「與大師同攝」延伸活動 - 山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 |
+          香港
         </title>
       </Head>
       <TopBanner>
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>
-          與大師同攝
-          <br />
-          大嶼Photowalk
+          「與大師同攝」延伸活動
         </Heading>
+        <Box py={4}>
+          <UploadButton />
+          <Text mt={8} fontSize={'sm'}>
+            * 參加者優先獲得參加資格
+          </Text>
+        </Box>
       </TopBanner>
       <PageContainer>
         <SimpleGrid
@@ -60,18 +66,20 @@ export default function Index() {
               「與大師同攝」延伸活動
             </Heading>
             <Text>
-              參加者亦可優先獲得參加大嶼Photo walk的資格，
-              <br />
-              在11月中獲得附活動優先報名表電郵。
+              「山海大嶼」攝影比賽2021參加者可優先獲得參加「與大師同攝」延伸活動的資格，活動詳情及優先報名表將於在11月中以電郵通知。
             </Text>
             <Text>
-              兩場大嶼Photowalk會分別由比賽評審藝術風景攝影師鄭振揚Tugo
-              Cheng，生態攝影師馮漢城、生態紀錄片製片人黃遂心和生態攝影師郭子祈主辦、綠色和平全力支持，將由帶領參加者走進大嶼實地拍攝，分享風景攝影、生態攝影和攝錄心得，以觀察者的角度分別探索並記錄大嶼周邊區域的風景及生態光影，尋找屬於你的大嶼山海故事！
+              綠色和平主辦兩場「與大師同攝」延伸活動會由比賽評審藝術風景攝影師鄭振揚，生態攝影師馮漢城、生態紀錄片製片人黃遂心和生態攝影師郭子祈主講，將帶領參加者走進大嶼實地拍攝，分享風景攝影、生態攝影和攝錄心得，以觀察者的角度分別探索並記錄大嶼周邊區域的風景及生態光影，尋找屬於你的大嶼山海故事！
             </Text>
-            <Text>參加者會在11月中獲得附活動優先報名表電郵。</Text>
+            <Box py={4}>
+              <UploadButton />
+              <Text mt={8} fontSize={'sm'}>
+                * 參加者優先獲得參加資格
+              </Text>
+            </Box>
             <Divider />
             <Heading as='h3' fontSize={'2xl'} my={4}>
-              「與大師同攝」大嶼Photowalk
+              一.「與大師同攝」大嶼Photowalk
             </Heading>
             <List spacing={4}>
               <ListItem>日期：2021年11月下旬</ListItem>
@@ -85,7 +93,7 @@ export default function Index() {
             </List>
             <Divider />
             <Heading as='h3' fontSize={'2xl'} my={4}>
-              「與大師同攝」大嶼生態攝影工作坊
+              二.「與大師同攝」大嶼生態攝影工作坊
             </Heading>
             <List spacing={4}>
               <ListItem>日期：2021年11月下旬</ListItem>
@@ -97,6 +105,12 @@ export default function Index() {
               <ListItem>費用：免費</ListItem>
               <ListItem>講者：馮漢城、黃遂心、郭子祈</ListItem>
             </List>
+            <Box py={4}>
+              <UploadButton />
+              <Text mt={8} fontSize={'sm'}>
+                * 參加者優先獲得參加資格
+              </Text>
+            </Box>
           </Stack>
           <Grid gap={6}>
             {data.judges
@@ -105,77 +119,7 @@ export default function Index() {
               })
               .map((judge, index) => (
                 <GridItem key={index} maxW={'440px'} mx={'auto'}>
-                  <Box
-                    w={'full'}
-                    bg={'white'}
-                    boxShadow={'2xl'}
-                    rounded={'md'}
-                    py={6}
-                    px={4}
-                    mt={12}
-                  >
-                    <Center mt={-16}>
-                      <Avatar
-                        size='2xl'
-                        name={judge.name}
-                        src={judge.pic}
-                        loading='lazy'
-                        bg='transparent'
-                      />
-                    </Center>
-                    <Stack spacing={6}>
-                      <Box mt={4}>
-                        <Heading
-                          as='h3'
-                          fontSize={'xl'}
-                          mb={2}
-                          fontWeight={500}
-                        >
-                          {judge.name}
-                        </Heading>
-                        <Text
-                          fontSize={'sm'}
-                          letterSpacing={'2px'}
-                          color={'gray.900'}
-                        >
-                          {judge.designation}
-                        </Text>
-                      </Box>
-                      <Text
-                        fontSize={'sm'}
-                        letterSpacing={'2px'}
-                        color={'gray.700'}
-                      >
-                        {judge.profile}
-                      </Text>
-                      {judge.ig && judge.fb && (
-                        <Stack w={'100%'} direction={'column'} spacing={4}>
-                          <Flex alignItems={'center'}>
-                            <FaFacebook />
-                            <Text
-                              as='span'
-                              fontSize={'sm'}
-                              color={'gray.700'}
-                              mx={2}
-                            >
-                              {judge.fb}
-                            </Text>
-                          </Flex>
-                          <Flex alignItems={'center'}>
-                            <FaInstagram w='8' />
-                            <Text
-                              as='span'
-                              fontSize={'sm'}
-                              color={'gray.700'}
-                              mx={2}
-                            >
-                              {judge.ig}
-                            </Text>
-                          </Flex>
-                        </Stack>
-                      )}
-                    </Stack>
-                  </Box>
+                  <Judge judge={judge} />
                 </GridItem>
               ))}
           </Grid>

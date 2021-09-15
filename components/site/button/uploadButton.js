@@ -7,26 +7,24 @@ import _ from 'lodash'
 
 const UploadButton = ({ setModal, user }) => {
   const router = useRouter()
-  const {signed} = user
+  const { signed } = user
   return (
     <Button
-      display={'inline-flex'}
-      px={'14'}
-      py={'6'}
-      fontSize={'md'}
-      rounded={'lg'}
+      w={'100%'}
+      px={'4'}
+      py={'4'}
+      mx={'auto'}
+      rounded={'md'}
       fontWeight={'bold'}
       color={'white'}
-      bg={'brand.500'}
+      bg={'#ff8100'}
       href={'#'}
       _hover={{
-        bg: 'brand.700',
+        bg: 'orange',
       }}
-      onClick={() =>
-        signed ?  router.push('/upload') : setModal(true)
-      }
+      onClick={() => (signed ? router.push('/upload') : setModal(true))}
     >
-      {signed ? '上傳圖片' : '立即登記'}
+      {signed ? '上載圖片' : '立即參加'}
     </Button>
   )
 }

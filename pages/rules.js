@@ -17,6 +17,7 @@ import {
 import PageContainer from '@/components/site/container/pageContainer'
 import ContentContainer from '@/components/site/container/contentContainer'
 import TopBanner from '@/components/site/banner/banner'
+import UploadButton from '@/components/site/button/uploadButton'
 
 import data from '../data'
 
@@ -38,6 +39,9 @@ export default function Index() {
       </Head>
       <TopBanner>
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>比賽詳情</Heading>
+        <Box py={4}>
+          <UploadButton />
+        </Box>
       </TopBanner>
       <PageContainer>
         <ContentContainer>
@@ -127,10 +131,10 @@ export default function Index() {
 
           <RuleHeadline>{data.rules.prizeHeadline}</RuleHeadline>
           <Box>
-            <List spacing={2}>
+            <List spacing={4}>
               {data.rules.prizes.map((c) => (
                 <ListItem key={c}>
-                  <Text fontSize={'sm'}>{c}</Text>
+                  <Text fontSize={'md'}>{c}</Text>
                 </ListItem>
               ))}
             </List>

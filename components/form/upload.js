@@ -120,7 +120,7 @@ const MyForm = (props) => {
           ) : (
             <Box>
               <Stack spacing={4} mb={4}>
-                <Heading>上傳作品</Heading>
+                <Heading>上載作品</Heading>
                 <Text>
                   請仔細輸入你的資料；一經提交即視為最終確認。
                   <br />
@@ -145,7 +145,7 @@ const MyForm = (props) => {
               >
                 <Stack justifyContent={'center'} alignItems={'center'}>
                   <Icon as={AiOutlineCloudUpload} w={8} h={8} />
-                  <Text>將照片拖動到此處，或選擇要上傳的檔案。</Text>
+                  <Text>將照片拖動到此處，或選擇要上載的檔案。</Text>
                 </Stack>
               </Center>
             </Box>
@@ -289,7 +289,7 @@ const MyEnhancedForm = withFormik({
     }
 
     if (!values.File) {
-      errors.File = `請上傳圖片`
+      errors.File = `請上載圖片`
     }
 
     return errors
