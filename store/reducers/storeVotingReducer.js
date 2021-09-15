@@ -10,7 +10,6 @@ const votingReducer = (state = initState, action) => {
   switch (action.type) {
     
     case storeVotingActions.STORE_VOTING:
-      console.log(`action.data--`, action.data)
       return {
         ...state,
         data: action.data,

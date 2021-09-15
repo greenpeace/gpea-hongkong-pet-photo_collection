@@ -26,7 +26,6 @@ export function* getVoting() {
 }
 
 export function* addVoting(action) {
-  console.log(`demo voting`)
   try {
     const addVotingResult = yield call(() => axios
     .post(`${process.env.G_SHEET}/photo-collection-voting`, action.data, {
