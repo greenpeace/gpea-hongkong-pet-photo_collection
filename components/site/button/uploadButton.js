@@ -10,10 +10,10 @@ const UploadButton = ({ setModal, user }) => {
   const { signed } = user
   return (
     <Button
-      display={'inline-flex'}
-      px={'12'}
+      w={'100%'}
+      px={'4'}
       py={'4'}
-      fontSize={'md'}
+      mx={'auto'}
       rounded={'md'}
       fontWeight={'bold'}
       color={'white'}

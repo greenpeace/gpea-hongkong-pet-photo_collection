@@ -21,10 +21,11 @@ import { FaInstagram, FaFacebook } from 'react-icons/fa'
 
 import PageContainer from '@/components/site/container/pageContainer'
 import ContentContainer from '@/components/site/container/contentContainer'
+import TopBanner from '@/components/site/banner/banner'
 import UploadButton from '@/components/site/button/uploadButton'
+import Judge from '@/components/Judge'
 
 import data from '../data'
-import TopBanner from '@/components/site/banner/banner'
 
 const RuleHeadline = ({ children }) => {
   return (
@@ -39,8 +40,8 @@ export default function Index() {
     <>
       <Head>
         <title>
-        「與大師同攝」延伸活動 - 山海大嶼 攝影比賽2021 - Greenpeace
-          綠色和平 | 香港
+          「與大師同攝」延伸活動 - 山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 |
+          香港
         </title>
       </Head>
       <TopBanner>
@@ -118,77 +119,7 @@ export default function Index() {
               })
               .map((judge, index) => (
                 <GridItem key={index} maxW={'440px'} mx={'auto'}>
-                  <Box
-                    w={'full'}
-                    bg={'white'}
-                    boxShadow={'2xl'}
-                    rounded={'md'}
-                    py={6}
-                    px={4}
-                    mt={12}
-                  >
-                    <Center mt={-16}>
-                      <Avatar
-                        size='2xl'
-                        name={judge.name}
-                        src={judge.pic}
-                        loading='lazy'
-                        bg='transparent'
-                      />
-                    </Center>
-                    <Stack spacing={6}>
-                      <Box mt={4}>
-                        <Heading
-                          as='h3'
-                          fontSize={'xl'}
-                          mb={2}
-                          fontWeight={500}
-                        >
-                          {judge.name}
-                        </Heading>
-                        <Text
-                          fontSize={'sm'}
-                          letterSpacing={'2px'}
-                          color={'gray.900'}
-                        >
-                          {judge.designation}
-                        </Text>
-                      </Box>
-                      <Text
-                        fontSize={'sm'}
-                        letterSpacing={'2px'}
-                        color={'gray.700'}
-                      >
-                        {judge.profile}
-                      </Text>
-                      {judge.ig && judge.fb && (
-                        <Stack w={'100%'} direction={'column'} spacing={4}>
-                          <Flex alignItems={'center'}>
-                            <FaFacebook />
-                            <Text
-                              as='span'
-                              fontSize={'sm'}
-                              color={'gray.700'}
-                              mx={2}
-                            >
-                              {judge.fb}
-                            </Text>
-                          </Flex>
-                          <Flex alignItems={'center'}>
-                            <FaInstagram w='8' />
-                            <Text
-                              as='span'
-                              fontSize={'sm'}
-                              color={'gray.700'}
-                              mx={2}
-                            >
-                              {judge.ig}
-                            </Text>
-                          </Flex>
-                        </Stack>
-                      )}
-                    </Stack>
-                  </Box>
+                  <Judge judge={judge} />
                 </GridItem>
               ))}
           </Grid>

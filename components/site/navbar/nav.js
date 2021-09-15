@@ -52,11 +52,7 @@ function WithSubnavigation({ user, setModal }) {
         px={{ base: 4 }}
         align={'center'}
       >
-        <Flex
-          flex={{ base: 1, md: 'auto' }}
-          ml={{ base: -2 }}
-          display={{ base: 'flex', md: 'none' }}
-        >
+        <Flex flex={1} ml={{ base: -2 }} display={{ base: 'flex', md: 'none' }}>
           <IconButton
             onClick={onToggle}
             icon={
@@ -66,7 +62,8 @@ function WithSubnavigation({ user, setModal }) {
             aria-label={'Toggle Navigation'}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
+
+        <Flex flex={2} justify={{ base: 'center', md: 'start' }}>
           <Image
             src={'https://www.greenpeace.org/global/static/img/gp-logo.svg'}
             maxW={'120px'}
@@ -78,19 +75,14 @@ function WithSubnavigation({ user, setModal }) {
             }}
           />
 
-          <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+          <Flex px={6} display={{ base: 'none', md: 'flex' }}>
             <DesktopNav />
           </Flex>
         </Flex>
 
-        <Stack
-          flex={{ base: 1, md: 0 }}
-          justify={'flex-end'}
-          direction={'row'}
-          spacing={6}
-        >
+        <Flex flex={1} justify={'flex-end'} direction={'row'}>
           <UploadButton />
-        </Stack>
+        </Flex>
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
