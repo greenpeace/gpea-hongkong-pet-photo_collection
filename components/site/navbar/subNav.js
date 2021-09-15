@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Box, Flex, HStack, Link } from '@chakra-ui/react'
+import { Box, Flex, HStack } from '@chakra-ui/react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import * as filterActions from 'store/actions/action-types/filter-actions'
 
@@ -8,20 +9,12 @@ const CATEGORY = process.env.CATEGORY || []
 
 const NavLink = ({ children, href, active }) => {
   return (
-  <Link
-    px={2}
-    py={2}
-    rounded={'md'}
-    _hover={{
-      textDecoration: 'none',
-      bg: 'gray.200',
-    }}
-    fontSize={14}
-    fontWeight={active ? 900 : 300}
-    color={'gray.700'}
-    href={href}
-  >
-    {children}
+  <Link color={'gray.700'} href={href}>
+    <a style={{
+      fontWeight: active ? 900 : 300,
+      fontSize: `14px`,
+      paddingRight: `5px`
+    }}>{children}</a>
   </Link>
 )}
 
@@ -31,6 +24,7 @@ function WithAction({setFilter}) {
   // slug = slug ? slug : `all`
 
   useEffect(() => {
+    console.log(`slug-`,slug)
     if(slug){
       setFilter(slug)
     }

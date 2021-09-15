@@ -40,9 +40,7 @@ function Index({ data, filter }) {
   useEffect(async () => {
     if(filter !== 'all' && filter !== undefined){
       setFilterCate(CATES[filter])
-      setTimeout(() => {
-        setPhoto(data.filter(d=>d.category === filterCate))
-      }, 500);
+      await setPhoto(data.filter(d=>d.category === CATES[filter]))
       return
     } 
     setPhoto(data)
