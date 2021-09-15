@@ -80,7 +80,7 @@ function WithSubnavigation({ user, setModal }) {
           </Flex>
         </Flex>
 
-        <Flex flex={1} justify={'flex-end'} direction={'row'}>
+        <Flex flex={1} justify={'flex-end'} direction={'row'} maxW={'140px'}>
           <UploadButton />
         </Flex>
       </Flex>

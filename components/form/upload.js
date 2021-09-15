@@ -15,8 +15,6 @@ import {
   Input,
   Button,
   Box,
-  Container,
-  Flex,
   Text,
   Heading,
   Checkbox,
@@ -49,8 +47,8 @@ const MyForm = (props) => {
 
   const space = 4
   const labelStyle = {
-    fontSize: 'xs',
-    color: 'gray.400',
+    fontSize: 'sm',
+    color: 'gray.500',
   }
 
   const handleFileUpload = () => {
@@ -108,22 +106,23 @@ const MyForm = (props) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Stack direction={{ base: 'column', sm: 'row' }} spacing={12}>
-        <Box flex={1} mb={6}>
+      <Stack direction={{ base: 'column', sm: 'row' }} spacing={8}>
+        <Box flex={1}>
           {imagePreview ? (
             <Box>
               <Image src={imagePreview} alt='Image' />
-              <Button onClick={() => handleReset()} mt={4}>
-                刪除
-              </Button>
+              <Center my={4}>
+                <Button onClick={() => handleReset()} px={8} py={4}>
+                  刪除
+                </Button>
+              </Center>
             </Box>
           ) : (
             <Box>
               <Stack spacing={4} mb={4}>
                 <Heading>上載作品</Heading>
+                <Text>請仔細輸入你的資料；一經提交即視為最終確認。</Text>
                 <Text>
-                  請仔細輸入你的資料；一經提交即視為最終確認。
-                  <br />
                   如對比賽詳情有任何疑問或查詢，請電郵至
                   lantauphoto2021@greenpeace.org。
                 </Text>
@@ -168,7 +167,6 @@ const MyForm = (props) => {
             </Box>
           </FormControl>
         </Box>
-
         <Box flex={1} width={'100%'}>
           <Box flex={1} pb={space}>
             <FormControl id='Name' isInvalid={errors.Name && touched.Name}>
@@ -208,7 +206,7 @@ const MyForm = (props) => {
               <Textarea
                 name='Description'
                 type='text'
-                placeholder={formContent.label_description}
+                placeholder={formContent.placeholder_description}
                 onChange={handleChange}
               />
               <FormErrorMessage color='red'>
@@ -216,6 +214,20 @@ const MyForm = (props) => {
               </FormErrorMessage>
             </FormControl>
           </Box>
+
+          <Box flex={1} pb={space}>
+            <FormControl id='Story' isInvalid={errors.Story && touched.Story}>
+              <FormLabel {...labelStyle}>{formContent.label_story}</FormLabel>
+              <Textarea
+                name='Story'
+                type='text'
+                placeholder={formContent.placeholder_story}
+                onChange={handleChange}
+              />
+              <FormErrorMessage color='red'>{errors.Story}</FormErrorMessage>
+            </FormControl>
+          </Box>
+
           <Box flex={1} pb={space}>
             <FormControl
               id='category'
@@ -237,7 +249,7 @@ const MyForm = (props) => {
             </FormControl>
           </Box>
 
-          <Box flex={1} pt={3} pb={3}>
+          <Box flex={1} pt={4} pb={4}>
             <Button
               w='100%'
               isLoading={isSubmitting}
@@ -264,6 +276,7 @@ const MyEnhancedForm = withFormik({
     Name: '',
     Title: '',
     Description: '',
+    Story: '',
     File: '',
     Category: '',
     UserId: '',
@@ -282,6 +295,10 @@ const MyEnhancedForm = withFormik({
 
     if (!values.Description) {
       errors.Description = formContent.empty_data_alert
+    }
+
+    if (!values.Story) {
+      errors.Story = formContent.empty_data_alert
     }
 
     if (!values.Category) {
@@ -313,6 +330,7 @@ const MyEnhancedForm = withFormik({
             title: values.Title,
             url: data.secure_url,
             description: values.Description,
+            story: values.Story,
             category: values.Category,
             author: values.Name,
             votes: 0,

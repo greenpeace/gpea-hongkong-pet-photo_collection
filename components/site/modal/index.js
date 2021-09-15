@@ -156,10 +156,7 @@ function ModalWrapper({
                   justifyContent={'space-between'}
                   spacing={8}
                 >
-                  <Heading fontSize={'2xl'}>
-                    {content.title}
-                    <br />
-                  </Heading>
+                  <Heading fontSize={'2xl'}>{content.title}</Heading>
                   <Wrap align='center' my={2} py={2} spacing={4}>
                     <Button
                       size='md'
@@ -211,11 +208,22 @@ function ModalWrapper({
                   </Text>
                 </Stack>
 
-                <Box py={4}>
-                  <Text as='p' lineHeight={'2'} fontSize='sm'>
-                    {content.description}
-                  </Text>
-                </Box>
+                <Stack py={4}>
+                  {content.description && (
+                    <Box>
+                      <Text as='p' lineHeight={'2'} fontSize='sm'>
+                        {content.description}
+                      </Text>
+                    </Box>
+                  )}
+                  {content.story && (
+                    <Box>
+                      <Text as='p' lineHeight={'2'} fontSize='sm'>
+                        {content.story}
+                      </Text>
+                    </Box>
+                  )}
+                </Stack>
 
                 <Box>
                   <Text as='span' className='grid__tag'>
