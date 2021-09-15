@@ -39,6 +39,22 @@ module.exports = {
         REF: 'LantauEcology',
       },
     ],
+    UPLOAD_CATEGORY: [
+      {
+        LABEL: '大嶼風景',
+        VALUE: '大嶼風景',
+        HREF: 'lantauLandscape',
+        SLUG: 'lantauLandscape',
+        REF: 'LantauLandscape',
+      },
+      {
+        LABEL: '大嶼生態',
+        VALUE: '大嶼生態',
+        HREF: 'lantauEcology',
+        SLUG: 'lantauEcology',
+        REF: 'LantauEcology',
+      },
+    ],
   },
   basePath:
     process.env.NODE_ENV === 'production' ? '/app/photo-collection' : '',

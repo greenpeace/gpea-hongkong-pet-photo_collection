@@ -21,10 +21,8 @@ const NavLink = ({ children, href, active }) => {
 function WithAction({setFilter}) {
   const router = useRouter()
   let {slug} = router.query
-  // slug = slug ? slug : `all`
 
   useEffect(() => {
-    console.log(`slug-`,slug)
     if(slug){
       setFilter(slug)
     }
