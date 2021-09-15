@@ -18,15 +18,24 @@ module.exports = {
     ],
     CATEGORY: [
       {
+        LABEL: '全部',
+        VALUE: 'All',
+        HREF: '/tag/all',
+        SLUG: 'all',
+        REF: 'All',
+      },
+      {
         LABEL: '大嶼風景',
-        VALUE: 'LantauLandscape',
-        HREF: 'LantauLandscape',
+        VALUE: '大嶼風景',
+        HREF: '/tag/lantauLandscape',
+        SLUG: 'lantauLandscape',
         REF: 'LantauLandscape',
       },
       {
         LABEL: '大嶼生態',
-        VALUE: 'LantauEcology',
-        HREF: 'LantauEcology',
+        VALUE: '大嶼生態',
+        HREF: '/tag/lantauEcology',
+        SLUG: 'lantauEcology',
         REF: 'LantauEcology',
       },
     ],

@@ -58,7 +58,7 @@ function ModalWrapper({
 
   useEffect(() => {
     setShareUrl(document.location.href)
-    console.log(shareUrl)
+    // console.log(shareUrl)
   })
 
   useEffect(async () => {

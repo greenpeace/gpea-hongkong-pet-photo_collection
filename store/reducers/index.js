@@ -7,6 +7,7 @@ import modal from 'store/reducers/modalReducer';
 import photo from 'store/reducers/photoReducer';
 import voting from 'store/reducers/votingReducer';
 import storeVoting from 'store/reducers/storeVotingReducer';
+import filter from 'store/reducers/filterReducer';
 
 // Redux: Root Reducer
 const rootReducer = combineReducers({
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   user,
   photo,
   voting,
-  storeVoting
+  storeVoting,
+  filter
 });
 
 // Exports

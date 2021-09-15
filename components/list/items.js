@@ -1,32 +1,19 @@
-import { FaHeart } from 'react-icons/fa'
 import React, { useState, useEffect } from 'react'
 import Vote from 'components/list/vote'
 import {
   Box,
   Text,
   Heading,
-  Image,
   Flex,
-  Container,
   Skeleton,
   Stack,
-  Button,
 } from '@chakra-ui/react'
 import { connect } from 'react-redux'
 import { useRouter } from 'next/router'
 import * as modalActions from 'store/actions/action-types/modal-actions'
 import styled from 'styled-components'
-import Masonry from 'react-masonry-component'
 import { motion } from 'framer-motion'
 import LazyLoad from 'react-lazyload'
-
-import ContentContainer from '@/components/site/container/contentContainer'
-
-// Masory Options
-const masonryOptions = {
-  transitionDuration: 0,
-  gutter: 20,
-}
 
 const PhotoItem = styled.div`
   width: 100%;
@@ -41,17 +28,31 @@ const Placeholder = () => {
   )
 }
 
-function Index({ openModal, photo, voting }) {
+const CATES = {all:`全部`, lantauLandscape: `大嶼風景`, lantauEcology: '大嶼生態'}
+
+function Index({ data, filter }) {
   const router = useRouter()
-  const { data } = photo
   const [imageLoading, setImageLoading] = useState(true)
   const [pulsing, setPulsing] = useState(true)
+  const [filterCate, setFilterCate] = useState("")
+  const [photo, setPhoto] = useState([])
+
+  useEffect(async () => {
+    if(filter !== 'all' && filter !== undefined){
+      setFilterCate(CATES[filter])
+      setTimeout(() => {
+        setPhoto(data.filter(d=>d.category === filterCate))
+      }, 500);
+      return
+    } 
+    setPhoto(data)
+  }, [filter, data])
 
   const imageLoaded = () => {
     setImageLoading(false)
     setTimeout(() => setPulsing(false), 400)
   }
-  if (data.length === 0) {
+  if (photo.length === 0) {
     return (
       <Stack spacing={4}>
         <Skeleton height='6rem' />
@@ -74,14 +75,7 @@ function Index({ openModal, photo, voting }) {
   }
   return (
     <Box gridColumn={'-moz-initial'} className='masonry'>
-      {/* <Masonry
-        className='masonryGrid'
-        elementType={'ul'}
-        options={masonryOptions}
-        disableImagesLoaded={false}
-        updateOnEachImageLoad={false}
-      > */}
-      {data.map((d, i) => (
+      {photo.map((d, i) => (
         <LazyLoad once={i.once} offset={100} key={i} debounce={500}>
           <PhotoItem
             className='grid'
@@ -140,18 +134,16 @@ function Index({ openModal, photo, voting }) {
                 alt={d.title}
                 loading='lazy'
               />
-              {/* <Image src={d.url} alt={d.title} _hover={{ opacity: 0.8 }} /> */}
             </Box>
           </PhotoItem>
         </LazyLoad>
       ))}
-      {/* </Masonry> */}
     </Box>
   )
 }
 
-const mapStateToProps = ({ photo, voting }) => {
-  return { photo, voting: voting.data }
+const mapStateToProps = ({ photo, voting, filter }) => {
+  return { data: photo.data, voting: voting.data, filter: filter.data }
 }
 
 const mapDispatchToProps = (dispatch) => {

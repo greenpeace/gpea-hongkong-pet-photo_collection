@@ -9,7 +9,7 @@ export default function Index() {
     <>
       <TopSection/>
       <PageContainer>
-        <ListItems />
+        <ListItems/>
       </PageContainer>
     </>
   )

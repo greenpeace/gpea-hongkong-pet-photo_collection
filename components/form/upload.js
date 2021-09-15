@@ -63,12 +63,10 @@ const MyForm = (props) => {
   }
 
   const handleDragEnter = (e) => {
-    console.log(`handleDragEnter-`)
     e.preventDefault()
     e.stopPropagation()
   }
   const handleDragLeave = (e) => {
-    console.log(`handleDragLeave-`)
     e.preventDefault()
     e.stopPropagation()
   }
@@ -80,7 +78,6 @@ const MyForm = (props) => {
   const handleDrop = (e) => {
     e.preventDefault()
     e.stopPropagation()
-    console.log(`e.dataTransfer.files=`, e.dataTransfer.files)
 
     const files = e.dataTransfer.files
     if (files) {
