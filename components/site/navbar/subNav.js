@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Box, Flex, HStack } from '@chakra-ui/react'
+import { Box, Flex, HStack, Select } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import * as filterActions from 'store/actions/action-types/filter-actions'
@@ -39,6 +39,7 @@ function WithAction({setFilter}) {
             alignItems={'center'}
           >
             {CATEGORY.map((d) => {
+              slug = slug ? slug : 'all' 
               return (
                 <NavLink key={d.LABEL} href={d.HREF} active={slug === d.SLUG}>
                 {d.LABEL}
@@ -46,6 +47,12 @@ function WithAction({setFilter}) {
               )
             })}
           </HStack>
+          <Box>
+          <Select placeholder="Select option">
+            <option value="date">按日期排序</option>
+            <option value="votes">按投票排序</option>
+          </Select>
+          </Box>
           {/* <Box flex={1} px={4}>
             <Input
               h={8}
