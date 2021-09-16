@@ -61,7 +61,7 @@ function Layout({ children, signup, openModal, setPhoto, voting, photo }) {
     ) {
       toast({
         title: '感謝您的投票',
-        description: '其他內容(Demo)',
+        description: '',
         status: 'success',
         duration: 6000,
         isClosable: true,

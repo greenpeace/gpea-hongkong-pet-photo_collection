@@ -1,9 +1,9 @@
-import { FaHeart } from 'react-icons/fa';
+import { AiFillHeart, AiOutlineHeart  } from "react-icons/ai";
 import React, { useEffect, useState } from 'react';
 import { Flex, Box, Text } from '@chakra-ui/react';
 import { connect } from 'react-redux';
 
-function Index({ imageId, voting }) {
+function Index({ imageId, voting, storeVoting }) {
   const [voteNumber, setVoteNumber] = useState(0);
   useEffect(() => {
     const getVote = voting.find((d) => d.name === imageId);
@@ -14,7 +14,7 @@ function Index({ imageId, voting }) {
 
   return (
     <Flex direction={{ base: 'row' }} align={`center`}>
-      <FaHeart />
+      {storeVoting.indexOf(imageId) !== -1 ? <AiFillHeart /> : <AiOutlineHeart/>}
       <Box px={2}>
         <Text fontWeight={700}>{voteNumber}</Text>
       </Box>
@@ -22,8 +22,8 @@ function Index({ imageId, voting }) {
   );
 }
 
-const mapStateToProps = ({ voting }) => {
-  return { voting: voting.data };
+const mapStateToProps = ({ voting, storeVoting }) => {
+  return { voting: voting.data, storeVoting: storeVoting.data };
 };
 
 const mapDispatchToProps = (dispatch) => {

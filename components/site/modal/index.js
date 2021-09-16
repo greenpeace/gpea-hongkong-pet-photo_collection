@@ -45,7 +45,7 @@ function ModalWrapper({
   vote,
   voting,
   storeVoting,
-  storeUserVotes,
+  storeUserVotes
 }) {
   const [shareUrl, setShareUrl] = useState()
   const [content, setContent] = useState(modal.content)

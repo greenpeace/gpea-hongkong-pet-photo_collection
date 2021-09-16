@@ -42,6 +42,7 @@ export function* addVoting(action) {
 
     if(addVotingResult.statusText === "OK"){
       yield put({ type: votingActions.ADD_VOTING_SUCCESS});
+      yield put({ type: votingActions.SET_VOTING});
     }
 
   } catch (e) {

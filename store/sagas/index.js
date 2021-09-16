@@ -10,6 +10,7 @@ function* rootSaga() {
   yield all([
     takeLatest(photoActions.SET_PHOTO, photo.getPhoto),
     takeLatest(photoActions.SET_PHOTO_SUCCESS, voting.getVoting),
+    takeLatest(votingActions.SET_VOTING, voting.getVoting),
     takeLatest(votingActions.ADD_VOTING, voting.addVoting),
   ])
 }
