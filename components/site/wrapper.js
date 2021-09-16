@@ -71,7 +71,7 @@ function Layout({ children, signup, openModal, setPhoto, voting, photo }) {
   }, [voting])
 
   useEffect(() => {
-    if (router.query && !_.isEmpty(photo) && prevRoute.asPath !== router.asPath) {
+    if (router.query && !_.isEmpty(photo)) {
       const { id } = router.query
       if (id) {
         openModal(id)
