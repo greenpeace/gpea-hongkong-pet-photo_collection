@@ -73,7 +73,7 @@ function ModalWrapper({
 
   const handleCloseModal = () => {
     closeModal()
-    router.push(`/`, undefined, { shallow: true })
+    router.back()
   }
 
   const handleVoting = () => {

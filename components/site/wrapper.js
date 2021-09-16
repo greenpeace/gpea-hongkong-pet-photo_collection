@@ -41,7 +41,7 @@ function Layout({ children, signup, openModal, setPhoto, voting, photo }) {
     ) {
       toast({
         title: '成功註冊',
-        description: '現在可以開始上載您的大嶼相片。',
+        description: '您現在可以開始上載您的大嶼相片。',
         status: 'success',
         duration: 6000,
         isClosable: true,
@@ -61,7 +61,7 @@ function Layout({ children, signup, openModal, setPhoto, voting, photo }) {
     ) {
       toast({
         title: '感謝您的投票',
-        description: '你亦可以繼續瀏覽其他作品',
+        description: '其他內容(Demo)',
         status: 'success',
         duration: 6000,
         isClosable: true,
@@ -71,11 +71,7 @@ function Layout({ children, signup, openModal, setPhoto, voting, photo }) {
   }, [voting])
 
   useEffect(() => {
-    if (
-      router.query &&
-      !_.isEmpty(photo) &&
-      prevRoute.asPath !== router.asPath
-    ) {
+    if (router.query && !_.isEmpty(photo) && prevRoute.asPath !== router.asPath) {
       const { id } = router.query
       if (id) {
         openModal(id)

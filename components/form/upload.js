@@ -236,7 +236,7 @@ const MyForm = (props) => {
                 placeholder={formContent.select}
                 onChange={handleChange}
               >
-                {(process.env.CATEGORY || []).map((d) => (
+                {(process.env.UPLOAD_CATEGORY || []).map((d) => (
                   <option key={d.LABEL} value={d.VALUER}>
                     {d.LABEL}
                   </option>

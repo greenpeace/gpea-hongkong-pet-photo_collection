@@ -78,7 +78,7 @@ function Index({ data, filter }) {
           <PhotoItem
             className='grid'
             onClick={() =>
-              router.push(`/?id=${d.id}`, undefined, { shallow: true })
+              router.push(`${router.asPath}?id=${d.id}`, undefined, { shallow: true })
             }
             cursor={'pointer'}
           >
