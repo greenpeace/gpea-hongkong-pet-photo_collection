@@ -71,15 +71,11 @@ function Layout({ children, signup, openModal, setPhoto, voting, photo }) {
   }, [voting])
 
   useEffect(() => {
-<<<<<<< Updated upstream
-    if (router.query && !_.isEmpty(photo)) {
-=======
     if (
       router.query &&
       !_.isEmpty(photo) &&
       prevRoute.asPath !== router.asPath
     ) {
->>>>>>> Stashed changes
       const { id } = router.query
       if (id) {
         openModal(id)
