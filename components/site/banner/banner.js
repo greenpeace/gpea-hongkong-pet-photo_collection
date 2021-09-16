@@ -5,7 +5,9 @@ const TopBanner = ({ children }) => {
   return (
     <Stack
       pos={'relative'}
-      bgImage={'/images/DJI_0409.jpg'}
+      bgImage={
+        'https://www.greenpeace.org/static/planet4-hongkong-stateless/2019/06/efc1d3c2-dji_0409.jpg'
+      }
       bgSize={'cover'}
       minH={{ base: '240px', lg: '360px' }}
       alignItems={'center'}
