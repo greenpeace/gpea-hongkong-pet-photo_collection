@@ -53,7 +53,6 @@ function Index({ data, filter }) {
   }
 
   const handleModal = (id) => {
-    const {query} = router
     router.push(`${router.asPath}${router.asPath.indexOf(`?`) === -1 ? `?` : `&`}id=${id}`, undefined, { shallow: true })
   }
 
@@ -78,10 +77,13 @@ function Index({ data, filter }) {
       // </Box>
     )
   }
+
+  const sortBy = _.orderBy(photo, ['count'],['desc']);
   
   return (
     <Box gridColumn={'-moz-initial'} className='masonry'>
-      {photo.map((d, i) => (
+      {photo
+      .map((d, i) => (
         <LazyLoad once={i.once} offset={100} key={i} debounce={500}>
           <PhotoItem
             className='grid'
@@ -118,7 +120,7 @@ function Index({ data, filter }) {
                   </Text>
                 )}
                 <Box className='grid__vote' align-self={'flex-end'}>
-                  <Vote imageId={d.id} />
+                  <Vote imageId={d.id} count={d.count}/>
                 </Box>
               </Flex>
             </Box>

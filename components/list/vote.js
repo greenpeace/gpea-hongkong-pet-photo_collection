@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Flex, Box, Text } from '@chakra-ui/react';
 import { connect } from 'react-redux';
 
-function Index({ imageId, voting, storeVoting }) {
+function Index({ imageId, voting, storeVoting, count }) {
   const [voteNumber, setVoteNumber] = useState(0);
   useEffect(() => {
     const getVote = voting.find((d) => d.name === imageId);
@@ -16,7 +16,7 @@ function Index({ imageId, voting, storeVoting }) {
     <Flex direction={{ base: 'row' }} align={`center`}>
       {storeVoting.indexOf(imageId) !== -1 ? <AiFillHeart /> : <AiOutlineHeart/>}
       <Box px={2}>
-        <Text fontWeight={700}>{voteNumber}</Text>
+        <Text fontWeight={700}>{count ? count : 0}</Text>
       </Box>
     </Flex>
   );

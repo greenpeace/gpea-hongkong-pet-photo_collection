@@ -1,8 +1,7 @@
 import * as photoActions from 'store/actions/action-types/photo-actions'
 
 const initState = {
-  data: [],
-  // voting: {}
+  data: []
 }
 
 const photoReducer = (state = initState, action) => {
@@ -29,6 +28,15 @@ const photoReducer = (state = initState, action) => {
         // voting: action.voting,
         lastAction: action.type
     }
+
+    case photoActions.MERGE_PHOTO_DATA:
+      return {
+        ...state,
+        data: action.data,
+        lastAction: action.type
+    }
+
+
 
     default:
       return state
