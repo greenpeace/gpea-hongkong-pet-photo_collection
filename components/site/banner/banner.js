@@ -30,9 +30,7 @@ const TopBanner = ({ children }) => {
           w={'100%'}
           h={'100%'}
           objectFit={'cover'}
-          src={
-            'https://www.greenpeace.org/static/planet4-hongkong-stateless/2019/06/efc1d3c2-dji_0409.jpg'
-          }
+          src={'https://via.placeholder.com/1920x800.jpg'}
           alt={'Banner'}
         />
         <Box
