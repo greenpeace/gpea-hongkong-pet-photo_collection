@@ -73,7 +73,17 @@ function ModalWrapper({
 
   const handleCloseModal = () => {
     closeModal()
-    router.back()
+    const {slug} = router.query
+    if(slug){
+      router.push({
+        pathname: router.pathname,
+        query: { slug: slug }
+      }, undefined ,{ shallow: true })
+    } else {
+      router.push({
+        pathname: router.pathname
+      }, undefined ,{ shallow: true })
+    }
   }
 
   const handleVoting = () => {
