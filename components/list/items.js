@@ -12,6 +12,7 @@ import { connect } from 'react-redux'
 import { useRouter } from 'next/router'
 import * as modalActions from 'store/actions/action-types/modal-actions'
 import styled from 'styled-components'
+import _ from "lodash"
 import { motion } from 'framer-motion'
 import LazyLoad from 'react-lazyload'
 
@@ -50,6 +51,12 @@ function Index({ data, filter }) {
     setImageLoading(false)
     setTimeout(() => setPulsing(false), 400)
   }
+
+  const handleModal = (id) => {
+    const {query} = router
+    router.push(`${router.asPath}${router.asPath.indexOf(`?`) === -1 ? `?` : `&`}id=${id}`, undefined, { shallow: true })
+  }
+
   if (photo.length === 0) {
     return (
       <Stack spacing={4}>
@@ -71,6 +78,7 @@ function Index({ data, filter }) {
       // </Box>
     )
   }
+  
   return (
     <Box gridColumn={'-moz-initial'} className='masonry'>
       {photo.map((d, i) => (
@@ -78,7 +86,7 @@ function Index({ data, filter }) {
           <PhotoItem
             className='grid'
             onClick={() =>
-              router.push(`${router.asPath}?id=${d.id}`, undefined, { shallow: true })
+              handleModal(d.id)
             }
             cursor={'pointer'}
           >

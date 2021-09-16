@@ -8,6 +8,7 @@ import photo from 'store/reducers/photoReducer';
 import voting from 'store/reducers/votingReducer';
 import storeVoting from 'store/reducers/storeVotingReducer';
 import filter from 'store/reducers/filterReducer';
+import hiddenForm from 'store/reducers/hiddenFormReducer'
 
 // Redux: Root Reducer
 const rootReducer = combineReducers({
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   photo,
   voting,
   storeVoting,
-  filter
+  filter,
+  hiddenForm
 });
 
 // Exports

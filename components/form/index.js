@@ -282,7 +282,6 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
-    const getData = JSON.parse(localStorage.getItem('greenpeacePhotoCollection'))
     const FORM_URL = helper.getPostURL()
     const CAMPAIGN_ID = helper.getCampaignID()
     const getHiddenFields = document.querySelectorAll(
@@ -295,6 +294,7 @@ const MyEnhancedForm = withFormik({
 
     const formData = {
       ...hiddenFormValue,
+      ...props.hiddenForm.data,
       ...values,
       CampaignId: `${CAMPAIGN_ID}`,
     }
@@ -331,8 +331,8 @@ const MyEnhancedForm = withFormik({
   displayName: 'BasicForm',
 })(MyForm)
 
-const mapStateToProps = ({ user, signup }) => {
-  return { user, signup }
+const mapStateToProps = ({ user, signup, hiddenForm }) => {
+  return { user, signup, hiddenForm }
 }
 
 const mapDispatchToProps = (dispatch) => {

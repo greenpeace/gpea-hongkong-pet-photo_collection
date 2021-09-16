@@ -142,11 +142,11 @@ class NextDocument extends Document {
               name='CampaignId'
               defaultValue='7012u000000P8kwAAC'
             />
-            <input type='hidden' name='UtmMedium' defaultValue='' />
-            <input type='hidden' name='UtmSource' defaultValue='' />
-            <input type='hidden' name='UtmCampaign' defaultValue='' />
-            <input type='hidden' name='UtmContent' defaultValue='' />
-            <input type='hidden' name='UtmTerm' defaultValue='' />
+            <input type='hidden' name='UtmMedium' id='UtmMedium' defaultValue='' />
+            <input type='hidden' name='UtmSource' id='UtmSource' defaultValue='' />
+            <input type='hidden' name='UtmCampaign' id='UtmCampaign' defaultValue='' />
+            <input type='hidden' name='UtmContent' id='UtmContent' defaultValue='' />
+            <input type='hidden' name='UtmTerm' id='UtmTerm' defaultValue='' />
             <input type='hidden' name='CampaignData1__c' defaultValue='' />
             <input type='hidden' name='CampaignData2__c' defaultValue='' />
             <input type='hidden' name='CampaignData3__c' defaultValue='' />

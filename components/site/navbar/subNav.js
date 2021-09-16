@@ -47,12 +47,12 @@ function WithAction({setFilter}) {
               )
             })}
           </HStack>
-          <Box>
+          {/* <Box>
           <Select placeholder="Select option">
             <option value="date">按日期排序</option>
             <option value="votes">按投票排序</option>
           </Select>
-          </Box>
+          </Box> */}
           {/* <Box flex={1} px={4}>
             <Input
               h={8}
