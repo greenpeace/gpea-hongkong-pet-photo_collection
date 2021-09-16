@@ -33,7 +33,7 @@ export default function Index() {
           大嶼山坐擁山林、河溪、濕地、草地等多種生態環境，造就出香港的生物多樣性，
           綠色和平設立「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。
         </Text>
-        <Box py={6}>
+        <Box py={4} w={'100%'} maxW={'240px'}>
           <UploadButton />
         </Box>
         <Wrap spacing={4}>

@@ -1,31 +1,40 @@
 import React from 'react'
-import { Box, Stack, Center, Flex } from '@chakra-ui/react'
+import { Box, Stack, Center, Image } from '@chakra-ui/react'
 
 const TopBanner = ({ children }) => {
   return (
     <Stack
       pos={'relative'}
-      bgImage={
-        'https://www.greenpeace.org/static/planet4-hongkong-stateless/2019/06/efc1d3c2-dji_0409.jpg'
-      }
       bgSize={'cover'}
-      minH={{ base: '240px', lg: '360px' }}
       alignItems={'center'}
       justifyContent={'center'}
     >
-      <Center h={'100%'} maxW={`container.md`} margin={`0 auto`} zIndex={1}>
+      <Center h={'100%'} maxW={`container.md`}>
         <Stack
-          py={14}
+          py={12}
           px={4}
           spacing={6}
           direction={'column'}
           alignItems={'center'}
           textAlign={'center'}
           color={'white'}
-          letterSpacing={'2px'}
+          letterSpacing={'1px'}
         >
           {children}
         </Stack>
+        <Image
+          pos={'absolute'}
+          zIndex={-1}
+          top={0}
+          bottom={0}
+          w={'100%'}
+          h={'100%'}
+          objectFit={'cover'}
+          src={
+            'https://www.greenpeace.org/static/planet4-hongkong-stateless/2019/06/efc1d3c2-dji_0409.jpg'
+          }
+          alt={'Banner'}
+        />
         <Box
           bgColor={'#000'}
           pos={'absolute'}
@@ -33,7 +42,7 @@ const TopBanner = ({ children }) => {
           top={0}
           bottom={0}
           w={'100%'}
-          opacity={0.6}
+          opacity={0.45}
         />
       </Center>
     </Stack>
