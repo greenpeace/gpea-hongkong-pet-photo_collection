@@ -1,0 +1,3 @@
+export const SET_PHOTO = 'SET_PHOTO';
+export const SET_PHOTO_SUCCESS = 'SET_PHOTO_SUCCESS';
+export const SET_PHOTO_FAIL = 'SET_PHOTO_FAIL';

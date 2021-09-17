@@ -1,0 +1,42 @@
+{
+  "label_name": "稱謂",
+  "label_first_name": "名字",
+  "label_last_name": "姓氏",
+  "label_title": "主題",
+  "label_email": "電郵地址",
+  "label_phone": "手提號碼",
+  "label_phone_optional": "手提號碼（選填）",
+  "label_year_of_birth": "出生年份",
+  "label_year_of_birth_optional": "出生年份（選填）",
+  "label_description": "作品標題",
+  "placeholder_description": "作品標題（可包括拍攝地點、時間及其他相關資訊）",
+  "label_story": "作品說明",
+  "placeholder_story": "作品說明（可包括您堅守大嶼的原因）",
+  "label_file": "圖片",
+  "select": "請選擇",
+  "category": "分類",
+
+  "empty_data_alert": "請填寫資料",
+  "empty_select_data_alert": "請選擇",
+  "invalid_email_alert": "請填上有效電郵地址",
+  "invalid_format_alert": "請輸入有效格式",
+  "minimum_8_characters": "請輸入8位數字",
+
+  "form_header": "",
+  "form_description": "",
+  "form_remind": "我同意綠色和平「山海大嶼」2021攝影比賽的官方比賽守則，並明白一旦點擊「提交」按鈕，即表示確認報名資料，不可更改。我同意收取電子郵件，以確認我的照片提交紀錄。我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考私隱政策。",
+
+  "submit_text": "立即參加",
+  "upload_text": "上載作品",
+
+  "thanks_title": "",
+  "thanks_ask": "",
+  "thanks_content": "",
+  "share_button": "分享出去",
+  "donate_button": "捐助支持",
+  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/donation-new?language=zh_HK&campaign=fukushima&ref=fukushima-thankyou",
+  "shareMessage": "立即聯署與綠色和平一起敦促其長期、妥善地存置這批危害生態和人體的廢水，使大家的海洋免於進一步的破壞。👉 ",
+  "fbURL": "https://act.gp/3bLDMwF",
+  "mainURL": "https://act.gp/3uK2A0S",
+  "whatsappURL": "https://act.gp/3kzJzsY"
+}
