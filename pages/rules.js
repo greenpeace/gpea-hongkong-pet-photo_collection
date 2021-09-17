@@ -36,9 +36,16 @@ export default function Index() {
         <title>
           比賽詳情 - 山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 | 香港
         </title>
+        <meta
+          name='description'
+          content='捕捉大嶼獨有光景，立即上載你的作品，贏取參與「與大師同攝」延伸活動的機會，各組別優勝作品將有機會刊登於綠色和平年曆，並於綠色和平網上平台發佈，與香港20萬讀者分享。'
+        />
       </Head>
       <TopBanner>
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>比賽詳情</Heading>
+        <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
+          捕捉大嶼獨有光景，立即上載你的作品，贏取參與「與大師同攝」延伸活動的機會，各組別優勝作品將有機會刊登於綠色和平年曆，並於綠色和平網上平台發佈，與香港20萬讀者分享。
+        </Text>
         <Box py={4}>
           <UploadButton />
         </Box>

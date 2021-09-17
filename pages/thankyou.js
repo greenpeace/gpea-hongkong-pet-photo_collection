@@ -28,6 +28,7 @@ export default function Index() {
         <ContentContainer>
           <Stack spacing={4}>
             <Heading>{data.thankyouMessage.headLine}</Heading>
+            <Text>{data.thankyouMessage.zeroLine}</Text>
             <Text>{data.thankyouMessage.firstLine}</Text>
             <Text>{data.thankyouMessage.secondLine}</Text>
             <MiniDonateForm />

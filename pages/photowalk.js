@@ -48,6 +48,9 @@ export default function Index() {
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>
           「與大師同攝」延伸活動
         </Heading>
+        <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
+          比賽參加者可優先獲得參加延伸活動的資格
+        </Text>
         <Box py={4}>
           <UploadButton />
           <Text mt={8} fontSize={'sm'}>
@@ -69,7 +72,7 @@ export default function Index() {
               「山海大嶼」攝影比賽2021參加者可優先獲得參加「與大師同攝」延伸活動的資格，活動詳情及優先報名表將於在11月中以電郵通知。
             </Text>
             <Text>
-              綠色和平主辦兩場「與大師同攝」延伸活動會由比賽評審藝術風景攝影師鄭振揚，生態攝影師馮漢城、生態紀錄片製片人黃遂心和生態攝影師郭子祈主講，將帶領參加者走進大嶼實地拍攝，分享風景攝影、生態攝影和攝錄心得，以觀察者的角度分別探索並記錄大嶼周邊區域的風景及生態光影，尋找屬於你的大嶼山海故事！
+              綠色和平主辦兩場「與大師同攝」延伸活動會由比賽評審風景攝影師鄭振揚，生態攝影師馮漢城、生態紀錄片製片人黃遂心和生態攝影師郭子祈主講，將帶領參加者走進大嶼實地拍攝，分享風景攝影、生態攝影和攝錄心得，以觀察者的角度分別探索並記錄大嶼周邊區域的風景及生態光影，尋找屬於你的大嶼山海故事！
             </Text>
             <Box py={4}>
               <UploadButton />
@@ -83,11 +86,10 @@ export default function Index() {
             </Heading>
             <List spacing={4}>
               <ListItem>日期：2021年11月下旬</ListItem>
-              <ListItem>時間：TBC</ListItem>
+              <ListItem>時間：稍後公佈</ListItem>
               <ListItem>地點：大嶼山</ListItem>
-              <ListItem>對象：比賽參加者</ListItem>
+              <ListItem>對象：「山海大嶼」攝影比賽2021參加者</ListItem>
               <ListItem>語言：廣東話</ListItem>
-              <ListItem>名額：30人（名額有限，額滿即止）</ListItem>
               <ListItem>費用：免費</ListItem>
               <ListItem>講者：鄭振揚</ListItem>
             </List>
@@ -97,13 +99,20 @@ export default function Index() {
             </Heading>
             <List spacing={4}>
               <ListItem>日期：2021年11月下旬</ListItem>
-              <ListItem>時間：TBC</ListItem>
-              <ListItem>地點：大嶼山</ListItem>
-              <ListItem>對象：比賽參加者</ListItem>
+              <ListItem>活動時間：下午2：30 - 5：30</ListItem>
+              <ListItem>活動地點：大嶼山貝澳</ListItem>
+              <ListItem>對象：「山海大嶼」攝影比賽2021參加者</ListItem>
               <ListItem>語言：廣東話</ListItem>
-              <ListItem>名額：30人（名額有限，額滿即止）</ListItem>
               <ListItem>費用：免費</ListItem>
               <ListItem>講者：馮漢城、黃遂心、郭子祈</ListItem>
+              <ListItem>
+                活動焦點：
+                <List spacing={2}>
+                  <ListItem>活動焦點：濕地：水牛與雀鳥</ListItem>
+                  <ListItem>海岸：招潮蟹、沙白蜆與雀鳥</ListItem>
+                  <ListItem>紅樹林：招潮蟹</ListItem>
+                </List>
+              </ListItem>
             </List>
             <Box py={4}>
               <UploadButton />
