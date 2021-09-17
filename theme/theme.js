@@ -1,5 +1,5 @@
-import { extendTheme } from '@chakra-ui/react';
-import { appTheme } from './app';
+import { extendTheme } from '@chakra-ui/react'
+import { appTheme } from './app'
 
 const theme = extendTheme({
   initialColorMode: 'light',
@@ -21,7 +21,11 @@ const theme = extendTheme({
       700: '#495057',
       900: '#212529',
     },
-    front: {},
+    orange: {
+      100: '#ffdda3',
+      300: '#ffb452',
+      500: '#ff8100', // Default CTA
+    },
   },
   fonts: {},
   fontSizes: {},
@@ -29,6 +33,6 @@ const theme = extendTheme({
   layerStyles: {},
   components: {},
   appTheme,
-});
+})
 
-export default theme;
+export default theme

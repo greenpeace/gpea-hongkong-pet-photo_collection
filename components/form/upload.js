@@ -256,7 +256,7 @@ const MyForm = (props) => {
               fontSize='xl'
               color='#FFF'
               letterSpacing={4}
-              bg='#ff8100'
+              bg='orange.500'
               _hover={{ bg: 'campaign.climate' }}
             >
               {formContent.upload_text}

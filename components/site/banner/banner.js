@@ -8,6 +8,7 @@ const TopBanner = ({ children }) => {
       bgSize={'cover'}
       alignItems={'center'}
       justifyContent={'center'}
+      minH={{ base: '240px', md: '360px' }}
     >
       <Center h={'100%'} maxW={`container.md`}>
         <Stack
