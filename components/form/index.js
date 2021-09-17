@@ -282,6 +282,8 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
+    const fallbackValue = (d) => d ? d : ''
+    const hiddenFormData = props.hiddenForm.data
     const FORM_URL = helper.getPostURL()
     const CAMPAIGN_ID =  process.env.NODE_ENV === 'production' ? helper.getCampaignID() : "7012u000000OxDYAA0"
     const getHiddenFields = document.querySelectorAll(
@@ -294,14 +296,13 @@ const MyEnhancedForm = withFormik({
 
     const formData = {
       ...hiddenFormValue,
-      ...props.hiddenForm.data,
       ...values,
       // TODO: Match values from hidden from
-      UtmSource: '',
-      UtmSource: '',
-      UtmCampaign: '',
-      UtmContent: '',
-      UtmTerm: '',
+      UtmMedium: fallbackValue(hiddenFormData.utm_medium),
+      UtmSource: fallbackValue(hiddenFormData.utm_source),
+      UtmCampaign: fallbackValue(hiddenFormData.utm_campaign),
+      UtmContent: fallbackValue(hiddenFormData.utm_content),
+      UtmTerm: fallbackValue(hiddenFormData.utm_term),
       CampaignId: `${CAMPAIGN_ID}`,
     }
 
