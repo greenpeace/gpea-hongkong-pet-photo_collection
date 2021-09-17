@@ -45,7 +45,7 @@ function ModalWrapper({
   vote,
   voting,
   storeVoting,
-  storeUserVotes
+  storeUserVotes,
 }) {
   const [shareUrl, setShareUrl] = useState()
   const [content, setContent] = useState(modal.content)
@@ -73,16 +73,24 @@ function ModalWrapper({
 
   const handleCloseModal = () => {
     closeModal()
-    const {slug} = router.query
-    if(slug){
-      router.push({
-        pathname: router.pathname,
-        query: { slug: slug }
-      }, undefined ,{ shallow: true })
+    const { slug } = router.query
+    if (slug) {
+      router.push(
+        {
+          pathname: router.pathname,
+          query: { slug: slug },
+        },
+        undefined,
+        { shallow: true }
+      )
     } else {
-      router.push({
-        pathname: router.pathname
-      }, undefined ,{ shallow: true })
+      router.push(
+        {
+          pathname: router.pathname,
+        },
+        undefined,
+        { shallow: true }
+      )
     }
   }
 
@@ -167,7 +175,7 @@ function ModalWrapper({
                   spacing={8}
                 >
                   <Heading fontSize={'2xl'}>{content.title}</Heading>
-                  <Wrap align='center' my={2} py={2} spacing={4}>
+                  <Wrap align='center' my={4} py={2} spacing={4}>
                     <Button
                       size='md'
                       mx={2}
@@ -181,30 +189,31 @@ function ModalWrapper({
                         ? `感謝您的投票`
                         : `投票`}
                     </Button>
-
-                    <IconButton
-                      aria-label='Share 分享'
-                      isRound
-                      w={'28px'}
-                      variant='outline'
-                      icon={<AiOutlineShareAlt />}
-                      onClick={() => {
-                        NavigatorShare(
-                          content.title,
-                          content.description,
-                          shareUrl
-                        )
-                      }}
-                    />
-                    <FacebookShareButton url={shareUrl} quote={content.title}>
-                      <FacebookIcon size={32} round />
-                    </FacebookShareButton>
-                    <TwitterShareButton url={shareUrl} title={content.title}>
-                      <TwitterIcon size={32} round />
-                    </TwitterShareButton>
-                    <WhatsappShareButton url={shareUrl} title={content.title}>
-                      <WhatsappIcon size={32} round />
-                    </WhatsappShareButton>
+                    <Wrap spacing={4}>
+                      <IconButton
+                        aria-label='Share 分享'
+                        isRound
+                        w={'28px'}
+                        variant='outline'
+                        icon={<AiOutlineShareAlt />}
+                        onClick={() => {
+                          NavigatorShare(
+                            content.title,
+                            content.description,
+                            shareUrl
+                          )
+                        }}
+                      />
+                      <FacebookShareButton url={shareUrl} quote={content.title}>
+                        <FacebookIcon size={32} round />
+                      </FacebookShareButton>
+                      <TwitterShareButton url={shareUrl} title={content.title}>
+                        <TwitterIcon size={32} round />
+                      </TwitterShareButton>
+                      <WhatsappShareButton url={shareUrl} title={content.title}>
+                        <WhatsappIcon size={32} round />
+                      </WhatsappShareButton>
+                    </Wrap>
                   </Wrap>
                 </Stack>
 
