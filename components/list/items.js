@@ -78,7 +78,7 @@ function Index({ data, filter }) {
     )
   }
 
-  const sortBy = _.orderBy(photo, ['count'],['desc']);
+  // const sortBy = _.orderBy(photo, ['count'],['desc']);
   
   return (
     <Box gridColumn={'-moz-initial'} className='masonry'>
