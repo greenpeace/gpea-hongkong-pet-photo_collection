@@ -7,6 +7,12 @@ module.exports = {
     CLOUDINARY_PRESET: `wugp5bjn`,
     NAV: [
       { LABEL: '主頁', VALUE: '/', HREF: '/', REF: '/' },
+      {
+        LABEL: '序言',
+        VALUE: 'introduction',
+        HREF: '/introduction',
+        REF: 'introduction',
+      },
       { LABEL: '比賽評審', VALUE: 'judges', HREF: '/judges', REF: 'judges' },
       { LABEL: '比賽詳情', VALUE: 'rules', HREF: '/rules', REF: 'rules' },
       {
@@ -61,6 +67,7 @@ module.exports = {
   trailingSlash: true,
   exportPathMap: async () => ({
     '/': { page: '/' },
+    '/introduction': { page: '/introductino' },
     '/judges': { page: '/judges' },
     '/photowalk': { page: '/photowalk' },
     '/rules': { page: '/rules' },
