@@ -179,7 +179,7 @@ const MyForm = (props) => {
             <Select placeholder={formContent.select} onChange={handleChange}>
               {birthDateYear &&
                 birthDateYear.map((d) => (
-                  <option key={d.value} value={d.value}>
+                  <option key={d.value} value={`${d.value}-01-01`}>
                     {d.value}
                   </option>
                 ))}
@@ -284,6 +284,7 @@ const MyEnhancedForm = withFormik({
   handleSubmit: async (values, { setSubmitting, props }) => {
     const fallbackValue = (d) => (d ? d : '')
     const hiddenFormData = props.hiddenForm.data
+    // let birthdateValue = values.Birthdate ? `${values.Birthdate}-01-01` : ''
     const FORM_URL = helper.getPostURL()
     const CAMPAIGN_ID =
       process.env.NODE_ENV === 'production'
