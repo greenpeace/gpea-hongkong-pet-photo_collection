@@ -11,8 +11,8 @@ const filterReducer = (state = initState, action) => {
     
     case filterActions.INIT_FILTER:
       return {
+        ...state,
         data: 'all',
-        sortBy: 'default',
         lastAction: action.type
     }
 
@@ -20,6 +20,20 @@ const filterReducer = (state = initState, action) => {
       return {
         ...state,
         data: action.data,
+        lastAction: action.type
+    }
+
+    case filterActions.INIT_SORTING:
+      return {
+        ...state,
+        sortBy: 'default',
+        lastAction: action.type
+    }
+
+    case filterActions.SET_SORTING:
+      return {
+        ...state,
+        sortBy: action.data,
         lastAction: action.type
     }
 

@@ -28,7 +28,7 @@ const CATES = {
   lantauEcology: '大嶼生態',
 }
 
-function Index({ data, filter, grid }) {
+function Index({ data, filter, grid, sorting }) {
   const router = useRouter()
   const [imageLoading, setImageLoading] = useState(true)
   const [pulsing, setPulsing] = useState(true)
@@ -43,6 +43,22 @@ function Index({ data, filter, grid }) {
     }
     setPhoto(data)
   }, [filter, data])
+
+  useEffect(async () => {
+
+    if(sorting === 'votes'){
+      setPhoto(_.orderBy(photo, ['count'],['desc']))
+    } else {
+      if (filter !== 'all' && filter !== undefined) {
+        setFilterCate(CATES[filter])
+        await setPhoto(data.filter((d) => d.category === CATES[filter]))
+        return
+      } else {
+        setPhoto(data)
+      }
+    }
+
+  }, [sorting])
 
   const imageLoaded = () => {
     setImageLoading(false)
@@ -80,8 +96,6 @@ function Index({ data, filter, grid }) {
       // </Box>
     )
   }
-
-  // const sortBy = _.orderBy(photo, ['count'],['desc']);
 
   return (
     <Box
@@ -154,13 +168,8 @@ function Index({ data, filter, grid }) {
   )
 }
 
-const mapStateToProps = ({ photo, voting, filter, grid }) => {
-  return {
-    data: photo.data,
-    voting: voting.data,
-    filter: filter.data,
-    grid: grid.data,
-  }
+const mapStateToProps = ({ photo, voting, filter, grid, sorting }) => {
+  return { data: photo.data, voting: voting.data, filter: filter.data, grid: grid.data, sorting: filter.sortBy }
 }
 
 const mapDispatchToProps = (dispatch) => {

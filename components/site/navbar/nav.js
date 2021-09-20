@@ -14,6 +14,7 @@ import Link from 'next/link'
 import React, { useRef, useEffect } from 'react'
 import { connect } from 'react-redux'
 import _ from 'lodash'
+import * as filterActions from 'store/actions/action-types/filter-actions'
 import * as signupActions from 'store/actions/action-types/signup-actions'
 import { useRouter } from 'next/router'
 
@@ -28,7 +29,7 @@ function usePrevious(value) {
   return ref.current
 }
 
-function WithSubnavigation({ user, setModal }) {
+function WithSubnavigation({ user, setModal, setSorting }) {
   const router = useRouter()
   const prevRoute = usePrevious(router)
   const { isOpen, onToggle } = useDisclosure()
@@ -39,6 +40,10 @@ function WithSubnavigation({ user, setModal }) {
 
     if (router.pathname !== prevRoute.pathname && isOpen) {
       onToggle()
+    }
+
+    if (router.asPath !== prevRoute.asPath) {
+      setSorting('default')
     }
   }, [router])
   return (
@@ -164,6 +169,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setModal: (bol) => {
       dispatch({ type: signupActions.SET_SIGNUP_MODAL, data: bol })
+    },
+    setSorting: (data) => {
+      dispatch({ type: filterActions.SET_SORTING, data })
     },
   }
 }
