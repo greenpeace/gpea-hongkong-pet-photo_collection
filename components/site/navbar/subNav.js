@@ -25,7 +25,7 @@ const NavLink = ({ children, href, active }) => {
   )
 }
 
-function WithAction({ setFilter, setGrid, grid }) {
+function WithAction({setFilter, setSorting, setGrid, grid, sorting}) {
   const router = useRouter()
   let { slug } = router.query
 
@@ -55,49 +55,34 @@ function WithAction({ setFilter, setGrid, grid }) {
               )
             })}
           </HStack>
-          <Stack d={{ base: 'flex', md: 'none' }}>
-            <Box>
-              {grid === 'multi' ? (
-                <BsGrid1X2Fill onClick={() => setGrid('normal')} />
-              ) : (
-                <BsGrid1X2 onClick={() => setGrid('multi')} />
-              )}
-            </Box>
+          <Box>
+            <Select size="sm" onChange={(e)=>setSorting(e.target.value)} value={sorting}>
+              <option value="default">按日期排序</option>
+              <option value="votes">按投票排序</option>
+            </Select>
+          </Box>
+          <Stack d={{base: 'flex', md: 'none'}} pl={4}>
+            <Box>{grid === 'multi' ? <BsGrid1X2Fill onClick={()=>setGrid('normal')}/> : <BsGrid1X2 onClick={()=>setGrid('multi')}/> }</Box>
           </Stack>
 
-          {/* <Box>
-          <Select placeholder="預設">
-            <option value="date">按日期排序</option>
-            <option value="votes">按投票排序</option>
-          </Select>
-          </Box> */}
-          {/* <Box flex={1} px={4}>
-            <Input
-              h={8}
-              backgroundColor={'white'}
-              borderRadius={8}
-              placeholder='搜尋...'
-            />
-          </Box>
-          <Flex alignItems={'center'}>
-            <Text color={'gray.900'} fontSize={14}>
-              搜尋
-            </Text>
-          </Flex> */}
         </Flex>
       </Box>
     </>
   )
 }
 
-const mapStateToProps = ({ filter, grid }) => {
-  return { filter, grid: grid.data }
+
+const mapStateToProps = ({filter, grid}) => {
+  return { filter, grid: grid.data, sorting: filter.sortBy }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setFilter: (data) => {
       dispatch({ type: filterActions.SET_FILTER, data })
+    },
+    setSorting: (data) => {
+      dispatch({ type: filterActions.SET_SORTING, data })
     },
     setGrid: (data) => {
       dispatch({ type: gridActions.SET_GRID, data })
