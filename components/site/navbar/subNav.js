@@ -1,31 +1,36 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Box, Flex, HStack, Select, Stack } from '@chakra-ui/react'
+import { Box, Flex, HStack, Select, Text, Stack } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import * as filterActions from 'store/actions/action-types/filter-actions'
 import * as gridActions from 'store/actions/action-types/grid-actions'
-import { BsGrid1X2Fill, BsGrid1X2 } from "react-icons/bs";
+import { BsGrid1X2Fill, BsGrid1X2 } from 'react-icons/bs'
 
 const CATEGORY = process.env.CATEGORY || []
 
 const NavLink = ({ children, href, active }) => {
   return (
-  <Link color={'gray.700'} href={href}>
-    <a style={{
-      fontWeight: active ? 900 : 300,
-      fontSize: `14px`,
-      paddingRight: `5px`
-    }}>{children}</a>
-  </Link>
-)}
+    <Link color={'gray.700'} href={href} passHref>
+      <Text
+        cursor='pointer'
+        style={{
+          fontWeight: active ? 900 : 300,
+          fontSize: `14px`,
+        }}
+      >
+        {children}
+      </Text>
+    </Link>
+  )
+}
 
-function WithAction({setFilter, setGrid, grid}) {
+function WithAction({ setFilter, setGrid, grid }) {
   const router = useRouter()
-  let {slug} = router.query
+  let { slug } = router.query
 
   useEffect(() => {
-    if(slug){
+    if (slug) {
       setFilter(slug)
     }
   }, [slug])
@@ -39,18 +44,25 @@ function WithAction({setFilter, setGrid, grid}) {
             as={'nav'}
             display={{ base: 'flex', md: 'flex' }}
             alignItems={'center'}
+            spacing={6}
           >
             {CATEGORY.map((d) => {
-              slug = slug ? slug : 'all' 
+              slug = slug ? slug : 'all'
               return (
                 <NavLink key={d.LABEL} href={d.HREF} active={slug === d.SLUG}>
-                {d.LABEL}
-              </NavLink>
+                  {d.LABEL}
+                </NavLink>
               )
             })}
           </HStack>
-          <Stack d={{base: 'flex', md: 'none'}}>
-            <Box>{grid === 'multi' ? <BsGrid1X2Fill onClick={()=>setGrid('normal')}/> : <BsGrid1X2 onClick={()=>setGrid('multi')}/> }</Box>
+          <Stack d={{ base: 'flex', md: 'none' }}>
+            <Box>
+              {grid === 'multi' ? (
+                <BsGrid1X2Fill onClick={() => setGrid('normal')} />
+              ) : (
+                <BsGrid1X2 onClick={() => setGrid('multi')} />
+              )}
+            </Box>
           </Stack>
 
           {/* <Box>
@@ -78,8 +90,7 @@ function WithAction({setFilter, setGrid, grid}) {
   )
 }
 
-
-const mapStateToProps = ({filter, grid}) => {
+const mapStateToProps = ({ filter, grid }) => {
   return { filter, grid: grid.data }
 }
 
