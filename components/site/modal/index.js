@@ -138,24 +138,24 @@ function ModalWrapper({
       {content && (
         <Fade in={modal.isOpen}>
           <ModalContent>
-            <Stack maxW={'1400px'}>
-              <Box pos='relative'>
-                <Flex
-                  pos='sticky'
+            <Stack pos='relative' maxW={'1400px'}>
+              <Flex
+                pos='sticky'
+                zIndex={'1'}
+                top='0'
+                flexDirection={`row-reverse`}
+              >
+                <Box
+                  m={2}
+                  pos='relative'
                   zIndex={'1'}
-                  top='0'
-                  flexDirection={`row-reverse`}
+                  rounded={'full'}
+                  backgroundColor={'white'}
                 >
-                  <Box
-                    m={2}
-                    pos='relative'
-                    zIndex={'1'}
-                    rounded={'full'}
-                    backgroundColor={'white'}
-                  >
-                    <CloseButton size='lg' onClick={() => handleCloseModal()} />
-                  </Box>
-                </Flex>
+                  <CloseButton size='lg' onClick={() => handleCloseModal()} />
+                </Box>
+              </Flex>
+              <Box>
                 <Flex
                   className='photo-container'
                   p={4}

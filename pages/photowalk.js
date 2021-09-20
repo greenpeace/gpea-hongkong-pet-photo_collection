@@ -27,6 +27,19 @@ import Judge from '@/components/Judge'
 
 import data from '../data'
 
+import jamesPic from '../assets/images/james-avatar.png'
+const james = {
+  id: 'james',
+  avatar: jamesPic,
+  pic: '',
+  name: '郭子祈 James Kwok',
+  designation: '生態攝影師',
+  profile:
+    '生態攝影師James 從小開始觀察及拍攝本地生態。在大學修讀環境科學，令他更有專業地發掘及記錄本地豐富的生態，最近James更憑着一幅環頸鴴覓食的相片榮獲 East Asia-Australasian Flyway Partnership 的水鳥攝影比賽2019成人組冠軍。James拍攝生態的題材廣泛，不只限於雀鳥，James亦曾在本地兩棲爬行類動物攝影比賽裏面獲得成人組冠軍！',
+  ig: 'jameskwok_wildlife',
+  fb: '',
+}
+
 const RuleHeadline = ({ children }) => {
   return (
     <Text fontWeight={500} fontSize={'xl'} my={4}>
@@ -45,7 +58,7 @@ export default function Index() {
         </title>
       </Head>
       <TopBanner>
-        <Heading fontSize={{ base: '3xl', md: '5xl' }}>「與大師同攝」</Heading>
+        <Heading fontSize={{ base: '3xl', md: '5xl' }}>與大師同攝</Heading>
         <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
           「山海大嶼」攝影比賽2021參加者可優先獲得參加「與大師同攝」延伸活動的資格，活動詳情及優先報名表將於在11月中以電郵通知。
         </Text>
@@ -80,7 +93,7 @@ export default function Index() {
             </Box>
             <Divider />
             <Heading as='h3' fontSize={'2xl'} my={4}>
-              一.「與大師同攝」大嶼Photowalk
+              一.「與大師同攝」大嶼 Photowalk
             </Heading>
             <List spacing={4}>
               <ListItem>日期：2021年11月下旬</ListItem>
@@ -129,6 +142,10 @@ export default function Index() {
                   <Judge judge={judge} />
                 </GridItem>
               ))}
+            {/* one more */}
+            <GridItem maxW={'440px'} mx={'auto'}>
+              <Judge judge={james} />
+            </GridItem>
           </Grid>
         </SimpleGrid>
         <ContentContainer>

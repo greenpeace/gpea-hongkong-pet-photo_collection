@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Wrapper from 'components/site/wrapper'
-import { Avatar, Box, Heading, Grid, GridItem } from '@chakra-ui/react'
+import { Box, Heading, Text, Grid, GridItem } from '@chakra-ui/react'
 import styled from 'styled-components'
 import Masonry from 'react-masonry-component'
 import { FaTwitter, FaYoutube, FaInstagram, FaFacebook } from 'react-icons/fa'
@@ -34,6 +34,9 @@ export default function Index() {
       </Head>
       <TopBanner>
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>比賽評審</Heading>
+        <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
+          評審團將由資深攝影師、紀錄片製作人及綠色和平代表組成
+        </Text>
         <Box py={6} width={'100%'} maxWidth={'240px'}>
           <UploadButton />
         </Box>
