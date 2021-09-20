@@ -28,7 +28,7 @@ const CATES = {
   lantauEcology: '大嶼生態',
 }
 
-function Index({ data, filter }) {
+function Index({ data, filter, grid }) {
   const router = useRouter()
   const [imageLoading, setImageLoading] = useState(true)
   const [pulsing, setPulsing] = useState(true)
@@ -84,15 +84,10 @@ function Index({ data, filter }) {
   // const sortBy = _.orderBy(photo, ['count'],['desc']);
 
   return (
-    <Box gridColumn={'-moz-initial'} className='masonry'>
-      {photo.map((d, i) => (
-        <LazyLoad
-          once={d.once}
-          key={i}
-          offset={[-200, 0]}
-          placeholder={<Placeholder />}
-          debounce={500}
-        >
+    <Box gridColumn={'-moz-initial'} className={`masonry ${grid===`multi` ? `multi` : ``}`}>
+      {photo
+      .map((d, i) => (
+        <LazyLoad once={i.once} offset={100} key={i} debounce={500}>
           <PhotoItem
             className='grid'
             onClick={() => handleModal(d.id)}
@@ -103,6 +98,7 @@ function Index({ data, filter }) {
                 className='grid__title'
                 py={2}
                 fontSize={{ base: 'xl', md: '2xl' }}
+                noOfLines={2}
               >
                 {d.title}
               </Heading>
@@ -156,8 +152,8 @@ function Index({ data, filter }) {
   )
 }
 
-const mapStateToProps = ({ photo, voting, filter }) => {
-  return { data: photo.data, voting: voting.data, filter: filter.data }
+const mapStateToProps = ({ photo, voting, filter, grid }) => {
+  return { data: photo.data, voting: voting.data, filter: filter.data, grid: grid.data }
 }
 
 const mapDispatchToProps = (dispatch) => {

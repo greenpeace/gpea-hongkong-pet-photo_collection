@@ -11,7 +11,6 @@ export default function Index() {
       <PageContainer>
         <ListItems/>
       </PageContainer>
-      <div>ver.0.0.1</div>
     </>
   )
 }

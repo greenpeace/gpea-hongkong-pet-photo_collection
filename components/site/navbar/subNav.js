@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Box, Flex, HStack, Select } from '@chakra-ui/react'
+import { Box, Flex, HStack, Select, Stack } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import * as filterActions from 'store/actions/action-types/filter-actions'
+import * as gridActions from 'store/actions/action-types/grid-actions'
+import { BsGrid1X2Fill, BsGrid1X2 } from "react-icons/bs";
 
 const CATEGORY = process.env.CATEGORY || []
 
@@ -18,7 +20,7 @@ const NavLink = ({ children, href, active }) => {
   </Link>
 )}
 
-function WithAction({setFilter}) {
+function WithAction({setFilter, setGrid, grid}) {
   const router = useRouter()
   let {slug} = router.query
 
@@ -47,6 +49,10 @@ function WithAction({setFilter}) {
               )
             })}
           </HStack>
+          <Stack d={{base: 'flex', md: 'none'}}>
+            <Box>{grid === 'multi' ? <BsGrid1X2Fill onClick={()=>setGrid('normal')}/> : <BsGrid1X2 onClick={()=>setGrid('multi')}/> }</Box>
+          </Stack>
+
           {/* <Box>
           <Select placeholder="預設">
             <option value="date">按日期排序</option>
@@ -73,14 +79,17 @@ function WithAction({setFilter}) {
 }
 
 
-const mapStateToProps = ({filter}) => {
-  return { filter }
+const mapStateToProps = ({filter, grid}) => {
+  return { filter, grid: grid.data }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setFilter: (data) => {
       dispatch({ type: filterActions.SET_FILTER, data })
+    },
+    setGrid: (data) => {
+      dispatch({ type: gridActions.SET_GRID, data })
     },
   }
 }

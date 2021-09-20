@@ -9,6 +9,7 @@ import voting from 'store/reducers/votingReducer';
 import storeVoting from 'store/reducers/storeVotingReducer';
 import filter from 'store/reducers/filterReducer';
 import hiddenForm from 'store/reducers/hiddenFormReducer'
+import grid from 'store/reducers/gridReducer'
 
 // Redux: Root Reducer
 const rootReducer = combineReducers({
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
   voting,
   storeVoting,
   filter,
-  hiddenForm
+  hiddenForm,
+  grid
 });
 
 // Exports
