@@ -23,6 +23,7 @@ const Judge = ({ judge }) => {
       py={6}
       px={4}
       mt={12}
+      id={judge.id}
     >
       <Center mt={-16}>
         <Avatar

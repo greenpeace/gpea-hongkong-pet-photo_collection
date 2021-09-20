@@ -5,7 +5,7 @@ const demo =
 const data = {
   judges: [
     {
-      id: 1,
+      id: 'tugocheng',
       pic: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/d602f416-tugo-avatar.png',
       name: '鄭振揚 Tugo Cheng',
       designation: '風景攝影師',
@@ -15,7 +15,7 @@ const data = {
       fb: 'TUGO CHENG Photography',
     },
     {
-      id: 2,
+      id: 'shing',
       pic: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/3d57c8bf-shing-avatar.png',
       name: '馮漢城',
       designation: '生態攝影師及紀錄片製作人',
@@ -25,7 +25,7 @@ const data = {
       fb: 'FHS Wildlife',
     },
     {
-      id: 3,
+      id: 'daphnewong',
       pic: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/6f962855-daphne-avatar.png',
       name: '黃遂心 Daphne Wong',
       designation: '生態攝影師及紀錄片製作人',
@@ -35,14 +35,14 @@ const data = {
       fb: 'Daphne Wong - Photographer & Filmmaker',
     },
     {
-      id: 4,
+      id: 'sionchan',
       pic: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/4f6f4ae1-sion-avatar.png',
       name: '陳可淳 Chan Hall Sion',
       designation: '綠色和平守護大嶼項目主任',
       profile:
         '陳可淳（阿淳）一直關注公民社會，參與過的議題包括社區營造、公平貿易及塑膠污染等，目前是綠色和平守護大嶼的項目主任。無論是因工作需要到戶外考察，還是在工餘享受戶外風光，都經常到訪不同部份的香港郊野。希望更多香港人，可以加入我們一起守護大嶼，堅守香港。',
-      ig: '',
-      fb: '',
+      ig: '綠色和平Greenpeace Hong Kong',
+      fb: 'Greenpeace 綠色和平 - 香港',
     },
   ],
   rules: {

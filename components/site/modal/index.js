@@ -138,14 +138,31 @@ function ModalWrapper({
       {content && (
         <Fade in={modal.isOpen}>
           <ModalContent>
-            <Stack maxW={'1200px'} spacing={4}>
-              <Box>
-                <Flex flexDirection={`row-reverse`}>
-                  <Box p={2}>
+            <Stack maxW={'1200px'}>
+              <Box pos='relative'>
+                <Flex
+                  pos='sticky'
+                  zIndex={'1'}
+                  top='0'
+                  flexDirection={`row-reverse`}
+                >
+                  <Box
+                    m={2}
+                    pos='relative'
+                    zIndex={'1'}
+                    rounded={'full'}
+                    backgroundColor={'white'}
+                  >
                     <CloseButton size='lg' onClick={() => handleCloseModal()} />
                   </Box>
                 </Flex>
-                <Flex alignItems={'center'} justifyContent={'center'}>
+                <Flex
+                  className='photo-container'
+                  py={4}
+                  alignItems={'center'}
+                  justifyContent={'center'}
+                  backgroundColor={'black'}
+                >
                   <Box className='photo-wrapper'>
                     <Img
                       className='photo'
@@ -216,7 +233,7 @@ function ModalWrapper({
                   </Wrap>
                 </Stack>
 
-                <Stack direction='row' spacing={4}>
+                <Stack direction='row' spacing={2}>
                   <Text as={'span'} fontSize={'sm'} color={'gray.700'}>
                     作者：
                     {content.author}
