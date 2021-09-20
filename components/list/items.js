@@ -84,9 +84,11 @@ function Index({ data, filter, grid }) {
   // const sortBy = _.orderBy(photo, ['count'],['desc']);
 
   return (
-    <Box gridColumn={'-moz-initial'} className={`masonry ${grid===`multi` ? `multi` : ``}`}>
-      {photo
-      .map((d, i) => (
+    <Box
+      gridColumn={'-moz-initial'}
+      className={`masonry ${grid === `multi` ? `multi` : ``}`}
+    >
+      {photo.map((d, i) => (
         <LazyLoad once={i.once} offset={100} key={i} debounce={500}>
           <PhotoItem
             className='grid'
@@ -153,7 +155,12 @@ function Index({ data, filter, grid }) {
 }
 
 const mapStateToProps = ({ photo, voting, filter, grid }) => {
-  return { data: photo.data, voting: voting.data, filter: filter.data, grid: grid.data }
+  return {
+    data: photo.data,
+    voting: voting.data,
+    filter: filter.data,
+    grid: grid.data,
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {

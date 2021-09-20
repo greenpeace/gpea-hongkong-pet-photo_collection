@@ -138,7 +138,7 @@ function ModalWrapper({
       {content && (
         <Fade in={modal.isOpen}>
           <ModalContent>
-            <Stack maxW={'1200px'}>
+            <Stack maxW={'1400px'}>
               <Box pos='relative'>
                 <Flex
                   pos='sticky'
@@ -158,7 +158,7 @@ function ModalWrapper({
                 </Flex>
                 <Flex
                   className='photo-container'
-                  py={4}
+                  p={4}
                   alignItems={'center'}
                   justifyContent={'center'}
                   backgroundColor={'black'}
@@ -190,7 +190,7 @@ function ModalWrapper({
                   alignItems={{ base: 'flex-start' }}
                   justifyContent={'space-between'}
                 >
-                  <Wrap flex={1} align='center' my={4} py={2} spacing={4}>
+                  <Wrap flex={1} align='center' py={2} spacing={4}>
                     <Heading fontSize={'2xl'}>{content.title}</Heading>
                     <Button
                       size='md'
@@ -233,12 +233,12 @@ function ModalWrapper({
                   </Wrap>
                 </Stack>
 
-                <Stack direction='row' spacing={2}>
-                  <Text as={'span'} fontSize={'sm'} color={'gray.700'}>
+                <Stack direction='row' pt={4} spacing={2} color={'gray.700'}>
+                  <Text as={'span'} fontSize={'sm'}>
                     作者：
                     {content.author}
                   </Text>
-                  <Text as={'span'} fontSize={'sm'} color={'gray.700'}>
+                  <Text as={'span'} fontSize={'sm'}>
                     於 {new Date(content.timestamp).toLocaleDateString()} 上載
                   </Text>
                 </Stack>
@@ -269,8 +269,8 @@ function ModalWrapper({
                 <Divider my={4} />
 
                 <Text fontSize='sm' color={'gray.700'} pb={6}>
-                  「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。獲選佳作更有機會展出及刊登於綠色和平2022年〈山海大嶼〉年曆中，參加者亦可優先獲得參加大嶼Photo
-                  walk（詳情容後公佈）的機會。
+                  大嶼山坐擁山林、河溪、濕地、草地等多種生態環境，造就出香港的生物多樣性，
+                  綠色和平設立「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。
                 </Text>
               </Stack>
             </Stack>

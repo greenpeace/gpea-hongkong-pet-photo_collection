@@ -98,7 +98,7 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue('white', 'gray.800')
 
   return (
-    <Stack direction={'row'} spacing={6}>
+    <Stack direction={'row'} spacing={8}>
       {NAV_ITEMS.map((d) => (
         <Box key={d.LABEL}>
           <Link href={d.HREF} passHref>

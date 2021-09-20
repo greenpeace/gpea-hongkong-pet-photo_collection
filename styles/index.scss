@@ -57,12 +57,26 @@ a {
   @media (max-width: 575.98px) {
     columns: 1;
   }
-  &.multi {
-    @media (max-width: 575.98px) {
-      columns: 2;
+}
+
+// 2 columns masonry
+.masonry.multi {
+  @media (max-width: 575.98px) {
+    column-gap: 12px;
+    columns: 2;
+    .grid {
+      border-radius: 4px;
+      margin-bottom: 12px;
+      &:before {
+        display: none;
+      }
+      &__body {
+        visibility: hidden;
+      }
     }
   }
 }
+
 .grid {
   height: auto;
   width: 100%;
