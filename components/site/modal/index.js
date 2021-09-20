@@ -24,13 +24,7 @@ import * as storeVotingActions from 'store/actions/action-types/store-voting-act
 import { IconButton } from '@chakra-ui/react'
 import { AiOutlineShareAlt, AiOutlineCloudUpload } from 'react-icons/ai'
 import {
-  EmailShareButton,
   FacebookShareButton,
-  LineShareButton,
-  LinkedinShareButton,
-  MailruShareButton,
-  PinterestShareButton,
-  TelegramShareButton,
   TwitterShareButton,
   WhatsappShareButton,
   FacebookIcon,
@@ -138,7 +132,7 @@ function ModalWrapper({
       {content && (
         <Fade in={modal.isOpen}>
           <ModalContent>
-            <Stack pos='relative' maxW={'1400px'}>
+            <Stack pos='relative' maxW={'1200px'}>
               <Flex
                 pos='sticky'
                 zIndex={'1'}
@@ -158,7 +152,6 @@ function ModalWrapper({
               <Box>
                 <Flex
                   className='photo-container'
-                  p={4}
                   alignItems={'center'}
                   justifyContent={'center'}
                   backgroundColor={'black'}

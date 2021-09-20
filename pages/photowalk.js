@@ -1,14 +1,11 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Head from 'next/head'
 import Wrapper from 'components/site/wrapper'
 import {
-  Avatar,
   Box,
-  Center,
   Stack,
   Divider,
   Heading,
-  Flex,
   Grid,
   GridItem,
   SimpleGrid,
@@ -17,7 +14,8 @@ import {
   List,
   ListItem,
 } from '@chakra-ui/react'
-import { FaInstagram, FaFacebook } from 'react-icons/fa'
+import Image from 'next/image'
+import styled from 'styled-components'
 
 import PageContainer from '@/components/site/container/pageContainer'
 import ContentContainer from '@/components/site/container/contentContainer'
@@ -26,6 +24,11 @@ import UploadButton from '@/components/site/button/uploadButton'
 import Judge from '@/components/Judge'
 
 import data from '../data'
+
+import v1 from '../assets/images/IMG_4114.jpeg'
+import v2 from '../assets/images/Lantau for Green Peace-selections (1).jpg'
+import v3 from '../assets/images/121A0671_full.jpg'
+import v4 from '../assets/images/1W4A3779 1_resized.jpg'
 
 import jamesPic from '../assets/images/james-avatar.png'
 const james = {
@@ -75,7 +78,7 @@ export default function Index() {
           spacing={6}
           position={'relative'}
         >
-          <Stack spacing={8}>
+          <Stack spacing={6}>
             <Heading as='h2' fontSize={'3xl'}>
               「與大師同攝」延伸活動
             </Heading>
@@ -104,6 +107,18 @@ export default function Index() {
               <ListItem>費用：免費</ListItem>
               <ListItem>講者：鄭振揚</ListItem>
             </List>
+            <Box py={4}>
+              <UploadButton />
+              <Text mt={8} fontSize={'sm'}>
+                * 參加者優先獲得參加資格
+              </Text>
+            </Box>
+            <Box>
+              <Image src={v1} alt={'v1'} />
+            </Box>
+            <Box>
+              <Image src={v2} alt={'v2'} />
+            </Box>
             <Divider />
             <Heading as='h3' fontSize={'2xl'} my={4}>
               二.「與大師同攝」大嶼生態攝影工作坊
@@ -131,18 +146,25 @@ export default function Index() {
                 * 參加者優先獲得參加資格
               </Text>
             </Box>
+            <Box rounded={'md'}>
+              <Image src={v3} alt={'v3'} />
+            </Box>
+            <Box>
+              <Image src={v4} alt={'v4'} />
+            </Box>
+            <Divider />
           </Stack>
-          <Grid gap={6}>
+          <Grid>
             {data.judges
-              .filter((judge) => {
-                return judge.id <= 3
+              .filter((judge, index) => {
+                return index <= 3
               })
               .map((judge, index) => (
                 <GridItem key={index} maxW={'440px'} mx={'auto'}>
                   <Judge judge={judge} />
                 </GridItem>
               ))}
-            {/* one more */}
+
             <GridItem maxW={'440px'} mx={'auto'}>
               <Judge judge={james} />
             </GridItem>

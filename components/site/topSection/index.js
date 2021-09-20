@@ -24,8 +24,11 @@ export default function Index() {
         <title>山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 | 香港</title>
       </Head>
       <TopBanner>
-        <Heading fontSize={{ base: '3xl', md: '5xl' }}>
-          山海大嶼 攝影比賽2021
+        <Heading fontWeight={'700'} fontSize={{ base: '3xl', md: '5xl' }}>
+          <Text as='span' fontWeight={'900'}>
+            山海大嶼
+          </Text>{' '}
+          攝影比賽 2021
         </Heading>
         <Heading fontSize={{ base: 'lg', md: 'xl' }}>
           以影像訴說山海的故事：留住大嶼今昔

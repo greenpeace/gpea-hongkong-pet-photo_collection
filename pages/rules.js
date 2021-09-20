@@ -23,6 +23,8 @@ import UploadButton from '@/components/site/button/uploadButton'
 
 import data from '../data'
 
+import banner from '../assets/images/GP1SUL6W_High_res.jpg'
+
 const RuleHeadline = ({ children }) => {
   return (
     <Text fontWeight={500} fontSize={'xl'} mb={4}>
@@ -43,7 +45,7 @@ export default function Index() {
           content='捕捉大嶼獨有光景，立即上載你的作品，贏取參與「與大師同攝」延伸活動的機會，各組別優勝作品將有機會刊登於綠色和平年曆，並於綠色和平網上平台發佈，與香港20萬讀者分享。'
         />
       </Head>
-      <TopBanner>
+      <TopBanner src={banner.src}>
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>比賽詳情</Heading>
         <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
           捕捉大嶼獨有光景，立即上載你的作品，贏取參與「與大師同攝」延伸活動的機會，各組別優勝作品將有機會刊登於綠色和平年曆，並於綠色和平網上平台發佈，與香港20萬讀者分享。
