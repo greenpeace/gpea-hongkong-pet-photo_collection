@@ -1,14 +1,16 @@
 import React from 'react'
 import { Box, Stack, Center, Flex } from '@chakra-ui/react'
 
-const TopBanner = ({ children }) => {
+const TopBanner = ({
+  src = 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2019/06/efc1d3c2-dji_0409.jpg',
+  children,
+}) => {
   return (
     <Stack
       pos={'relative'}
-      bgImage={
-        'https://www.greenpeace.org/static/planet4-hongkong-stateless/2019/06/efc1d3c2-dji_0409.jpg'
-      }
+      bgImage={src}
       bgSize={'cover'}
+      bgPosition={'center'}
       minH={{ base: '240px', lg: '360px' }}
       alignItems={'center'}
       justifyContent={'center'}
@@ -33,7 +35,7 @@ const TopBanner = ({ children }) => {
           top={0}
           bottom={0}
           w={'100%'}
-          opacity={0.6}
+          opacity={0.5}
         />
       </Center>
     </Stack>

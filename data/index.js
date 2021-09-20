@@ -1,4 +1,13 @@
-// import demo1 from '../assets/images/1.jpg'
+import shing from '../assets/images/shing-avatar.png'
+import sion from '../assets/images/sion-avatar.png'
+import daphne from '../assets/images/daphne-avatar.png'
+import tugo from '../assets/images/tugo-avatar.png'
+
+import date1 from '../assets/images/79.png'
+import date2 from '../assets/images/80.png'
+import date3 from '../assets/images/81.png'
+import date4 from '../assets/images/82.png'
+
 const demo =
   'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/08/fdc48d59-gp0stupjr_high_res.jpg'
 
@@ -6,6 +15,7 @@ const data = {
   judges: [
     {
       id: 'tugocheng',
+      avatar: tugo,
       pic: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/d602f416-tugo-avatar.png',
       name: '鄭振揚 Tugo Cheng',
       designation: '風景攝影師',
@@ -16,6 +26,7 @@ const data = {
     },
     {
       id: 'shing',
+      avatar: shing,
       pic: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/3d57c8bf-shing-avatar.png',
       name: '馮漢城',
       designation: '生態攝影師及紀錄片製作人',
@@ -26,6 +37,7 @@ const data = {
     },
     {
       id: 'daphnewong',
+      avatar: daphne,
       pic: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/6f962855-daphne-avatar.png',
       name: '黃遂心 Daphne Wong',
       designation: '生態攝影師及紀錄片製作人',
@@ -36,6 +48,7 @@ const data = {
     },
     {
       id: 'sionchan',
+      avatar: sion,
       pic: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/4f6f4ae1-sion-avatar.png',
       name: '陳可淳 Chan Hall Sion',
       designation: '綠色和平守護大嶼項目主任',
@@ -48,9 +61,26 @@ const data = {
   rules: {
     timelineHeadline: '重要日子',
     timelines: [
-      '31/10 作品截止遞交日期',
-      '14/11 比賽結果公佈',
-      'TBC Photowalk 日期',
+      {
+        date: '2021年9月20日',
+        pic: date1,
+        details: '作品開放遞交',
+      },
+      {
+        date: '2021年10月31日',
+        pic: date2,
+        details: '作品截止遞交',
+      },
+      {
+        date: '2021年11月中旬',
+        pic: date3,
+        details: '比賽結果公佈',
+      },
+      {
+        date: '2021年11月下旬',
+        pic: date4,
+        details: '「與大師同攝」延伸活動',
+      },
     ],
     uploadHeadline: '相片上載',
     uploads: [

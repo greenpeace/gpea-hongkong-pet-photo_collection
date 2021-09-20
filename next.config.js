@@ -80,4 +80,7 @@ module.exports = {
       return `next_${new Date().getTime()}`
     }
   },
+  images: {
+    domains: ['res.cloudinary.com'],
+  },
 }

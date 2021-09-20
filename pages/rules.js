@@ -3,16 +3,18 @@ import Head from 'next/head'
 import Wrapper from 'components/site/wrapper'
 import {
   Box,
-  Stack,
   Center,
   Divider,
   List,
   OrderedList,
   ListItem,
   Heading,
+  Stack,
   Text,
-  Container,
+  Wrap,
+  WrapItem,
 } from '@chakra-ui/react'
+import Image from 'next/image'
 
 import PageContainer from '@/components/site/container/pageContainer'
 import ContentContainer from '@/components/site/container/contentContainer'
@@ -53,7 +55,21 @@ export default function Index() {
       <PageContainer>
         <ContentContainer>
           <RuleHeadline>{data.rules.timelineHeadline}</RuleHeadline>
-          <Box>
+          <Wrap py={4} spacing={6}>
+            {data.rules.timelines.map((c, i) => (
+              <WrapItem
+                key={i}
+                w={{ base: '38%', md: '20%' }}
+                maxWidth={'180px'}
+              >
+                <Stack spacing={4} alignItems={'center'}>
+                  <Image src={c.pic} alt={c.details} />
+                  <Text fontSize={'sm'}>{c.details}</Text>
+                </Stack>
+              </WrapItem>
+            ))}
+          </Wrap>
+          {/* <Box>
             <OrderedList spacing={2}>
               {data.rules.timelines.map((c) => (
                 <ListItem key={c}>
@@ -61,7 +77,7 @@ export default function Index() {
                 </ListItem>
               ))}
             </OrderedList>
-          </Box>
+          </Box> */}
 
           <Divider my={4} />
 
