@@ -198,7 +198,7 @@ const MyForm = (props) => {
             fontSize='xl'
             color='#FFF'
             letterSpacing={4}
-            bg='#ff8100'
+            bg='orange.500'
             _hover={{ bg: 'campaign.climate' }}
           >
             {formContent.submit_text}
@@ -282,10 +282,13 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
-    const fallbackValue = (d) => d ? d : ''
+    const fallbackValue = (d) => (d ? d : '')
     const hiddenFormData = props.hiddenForm.data
     const FORM_URL = helper.getPostURL()
-    const CAMPAIGN_ID =  process.env.NODE_ENV === 'production' ? helper.getCampaignID() : "7012u000000OxDYAA0"
+    const CAMPAIGN_ID =
+      process.env.NODE_ENV === 'production'
+        ? helper.getCampaignID()
+        : '7012u000000OxDYAA0'
     const getHiddenFields = document.querySelectorAll(
       'input[value][type="hidden"]:not([value=""])'
     )
@@ -316,13 +319,15 @@ const MyEnhancedForm = withFormik({
 
     if (response.statusText === 'OK') {
       props.createUser()
-      const getData = JSON.parse(localStorage.getItem('greenpeacePhotoCollection'))
+      const getData = JSON.parse(
+        localStorage.getItem('greenpeacePhotoCollection')
+      )
       const name = `${values.FirstName} ${values.LastName}`
       const data = {
         // mail: base64Encode(values.Email),
         name: base64Encode(name),
         userId: getData.userId,
-        signed: true
+        signed: true,
         // TODO: save?
         // mobile: `${values.MobileCountryCode} ${values.MobilePhone}`,
         // birthDate: values.Birthdate

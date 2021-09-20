@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import Vote from 'components/list/vote'
-import {
-  Box,
-  Text,
-  Heading,
-  Flex,
-  Skeleton,
-  Stack,
-} from '@chakra-ui/react'
+import { Box, Text, Heading, Flex, Skeleton, Stack } from '@chakra-ui/react'
 import { connect } from 'react-redux'
 import { useRouter } from 'next/router'
 import * as modalActions from 'store/actions/action-types/modal-actions'
 import styled from 'styled-components'
-import _ from "lodash"
+import _ from 'lodash'
 import { motion } from 'framer-motion'
 import LazyLoad from 'react-lazyload'
 
@@ -29,21 +22,25 @@ const Placeholder = () => {
   )
 }
 
-const CATES = {all:`全部`, lantauLandscape: `大嶼風景`, lantauEcology: '大嶼生態'}
+const CATES = {
+  all: `全部`,
+  lantauLandscape: `大嶼風景`,
+  lantauEcology: '大嶼生態',
+}
 
 function Index({ data, filter }) {
   const router = useRouter()
   const [imageLoading, setImageLoading] = useState(true)
   const [pulsing, setPulsing] = useState(true)
-  const [filterCate, setFilterCate] = useState("")
+  const [filterCate, setFilterCate] = useState('')
   const [photo, setPhoto] = useState([])
 
   useEffect(async () => {
-    if(filter !== 'all' && filter !== undefined){
+    if (filter !== 'all' && filter !== undefined) {
       setFilterCate(CATES[filter])
-      await setPhoto(data.filter(d=>d.category === CATES[filter]))
+      await setPhoto(data.filter((d) => d.category === CATES[filter]))
       return
-    } 
+    }
     setPhoto(data)
   }, [filter, data])
 
@@ -53,7 +50,13 @@ function Index({ data, filter }) {
   }
 
   const handleModal = (id) => {
-    router.push(`${router.asPath}${router.asPath.indexOf(`?`) === -1 ? `?` : `&`}id=${id}`, undefined, { shallow: true })
+    router.push(
+      `${router.asPath}${
+        router.asPath.indexOf(`?`) === -1 ? `?` : `&`
+      }id=${id}`,
+      undefined,
+      { shallow: true }
+    )
   }
 
   if (photo.length === 0) {
@@ -79,17 +82,20 @@ function Index({ data, filter }) {
   }
 
   // const sortBy = _.orderBy(photo, ['count'],['desc']);
-  
+
   return (
     <Box gridColumn={'-moz-initial'} className='masonry'>
-      {photo
-      .map((d, i) => (
-        <LazyLoad once={i.once} offset={100} key={i} debounce={500}>
+      {photo.map((d, i) => (
+        <LazyLoad
+          once={d.once}
+          key={i}
+          offset={[-200, 0]}
+          placeholder={<Placeholder />}
+          debounce={500}
+        >
           <PhotoItem
             className='grid'
-            onClick={() =>
-              handleModal(d.id)
-            }
+            onClick={() => handleModal(d.id)}
             cursor={'pointer'}
           >
             <Box className='grid__body'>
@@ -120,7 +126,7 @@ function Index({ data, filter }) {
                   </Text>
                 )}
                 <Box className='grid__vote' align-self={'flex-end'}>
-                  <Vote imageId={d.id} count={d.count}/>
+                  <Vote imageId={d.id} count={d.count} />
                 </Box>
               </Flex>
             </Box>

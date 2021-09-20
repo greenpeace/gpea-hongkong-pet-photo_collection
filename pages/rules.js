@@ -46,7 +46,7 @@ export default function Index() {
         <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
           捕捉大嶼獨有光景，立即上載你的作品，贏取參與「與大師同攝」延伸活動的機會，各組別優勝作品將有機會刊登於綠色和平年曆，並於綠色和平網上平台發佈，與香港20萬讀者分享。
         </Text>
-        <Box py={4}>
+        <Box py={6} width={'100%'} maxWidth={'240px'}>
           <UploadButton />
         </Box>
       </TopBanner>

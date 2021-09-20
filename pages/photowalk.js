@@ -45,13 +45,11 @@ export default function Index() {
         </title>
       </Head>
       <TopBanner>
-        <Heading fontSize={{ base: '3xl', md: '5xl' }}>
-          「與大師同攝」延伸活動
-        </Heading>
+        <Heading fontSize={{ base: '3xl', md: '5xl' }}>「與大師同攝」</Heading>
         <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
-          比賽參加者可優先獲得參加延伸活動的資格
+          「山海大嶼」攝影比賽2021參加者可優先獲得參加「與大師同攝」延伸活動的資格，活動詳情及優先報名表將於在11月中以電郵通知。
         </Text>
-        <Box py={4}>
+        <Box py={6} width={'100%'} maxWidth={'240px'}>
           <UploadButton />
           <Text mt={8} fontSize={'sm'}>
             * 參加者優先獲得參加資格
@@ -107,10 +105,10 @@ export default function Index() {
               <ListItem>講者：馮漢城、黃遂心、郭子祈</ListItem>
               <ListItem>
                 活動焦點：
-                <List spacing={2}>
-                  <ListItem>活動焦點：濕地：水牛與雀鳥</ListItem>
-                  <ListItem>海岸：招潮蟹、沙白蜆與雀鳥</ListItem>
-                  <ListItem>紅樹林：招潮蟹</ListItem>
+                <List pl={4} mt={4} spacing={2}>
+                  <ListItem>- 濕地：水牛與雀鳥</ListItem>
+                  <ListItem>- 海岸：招潮蟹、沙白蜆與雀鳥</ListItem>
+                  <ListItem>- 紅樹林：招潮蟹</ListItem>
                 </List>
               </ListItem>
             </List>

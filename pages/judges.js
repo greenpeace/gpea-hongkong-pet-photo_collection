@@ -34,7 +34,7 @@ export default function Index() {
       </Head>
       <TopBanner>
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>比賽評審</Heading>
-        <Box py={6}>
+        <Box py={6} width={'100%'} maxWidth={'240px'}>
           <UploadButton />
         </Box>
       </TopBanner>
