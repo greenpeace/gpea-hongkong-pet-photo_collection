@@ -67,7 +67,7 @@ module.exports = {
   trailingSlash: true,
   exportPathMap: async () => ({
     '/': { page: '/' },
-    '/introduction': { page: '/introductino' },
+    '/introduction': { page: '/introduction' },
     '/judges': { page: '/judges' },
     '/photowalk': { page: '/photowalk' },
     '/rules': { page: '/rules' },

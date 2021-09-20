@@ -1,16 +1,7 @@
 import React, { Fragment } from 'react'
 import Head from 'next/head'
 import Wrapper from 'components/site/wrapper'
-import {
-  Box,
-  Stack,
-  Divider,
-  Heading,
-  Image,
-  SimpleGrid,
-  Text,
-  Wrap,
-} from '@chakra-ui/react'
+import { Box, Stack, Heading, Image, SimpleGrid, Text } from '@chakra-ui/react'
 
 import PageContainer from '@/components/site/container/pageContainer'
 import ContentContainer from '@/components/site/container/contentContainer'
