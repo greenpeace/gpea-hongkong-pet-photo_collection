@@ -89,7 +89,13 @@ function Index({ data, filter, grid }) {
       className={`masonry ${grid === `multi` ? `multi` : ``}`}
     >
       {photo.map((d, i) => (
-        <LazyLoad once={i.once} offset={100} key={i} debounce={500}>
+        <LazyLoad
+          once={d.once}
+          key={i}
+          offset={[-100, 0]}
+          placeholder={<Placeholder />}
+          debounce={500}
+        >
           <PhotoItem
             className='grid'
             onClick={() => handleModal(d.id)}
@@ -104,14 +110,6 @@ function Index({ data, filter, grid }) {
               >
                 {d.title}
               </Heading>
-
-              {/* <Flex direction={'row'} align={'center'}>
-                <Box>
-                  <Text className='grid__author' fontSize={'md'}>
-                    {d.votes}
-                  </Text>
-                </Box>
-              </Flex> */}
               <Flex
                 mt={'auto'}
                 w={'100%'}
