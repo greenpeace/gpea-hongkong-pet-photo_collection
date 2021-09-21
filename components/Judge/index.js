@@ -1,15 +1,5 @@
 import React from 'react'
-import {
-  Avatar,
-  Box,
-  Stack,
-  Center,
-  Heading,
-  Image,
-  Text,
-  Flex,
-  Link,
-} from '@chakra-ui/react'
+import { Box, Stack, Heading, Text, Flex, Link, Image } from '@chakra-ui/react'
 import styled from 'styled-components'
 import { FaTwitter, FaYoutube, FaInstagram, FaFacebook } from 'react-icons/fa'
 
@@ -23,16 +13,11 @@ const Judge = ({ judge }) => {
       py={6}
       px={4}
       mt={12}
+      id={judge.id}
     >
-      <Center mt={-16}>
-        <Avatar
-          size='2xl'
-          name={judge.name}
-          src={judge.pic}
-          loading='lazy'
-          bg='transparent'
-        />
-      </Center>
+      <Box w='33.33%' mx={'auto'} mt={-12}>
+        <Image src={judge.avatar} loading='lazy' alt={judge.name} />
+      </Box>
       <Stack spacing={6}>
         <Box mt={4}>
           <Heading as='h3' fontSize={'xl'} mb={2} fontWeight={500}>

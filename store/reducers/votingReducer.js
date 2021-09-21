@@ -18,7 +18,6 @@ const votingReducer = (state = initState, action) => {
     case votingActions.SET_VOTING_FAIL:
       return {
         ...state,
-        data: action.data,
         lastAction: action.type
     }
 

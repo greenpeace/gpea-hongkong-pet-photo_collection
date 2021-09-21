@@ -35,10 +35,10 @@ const SocialButton = ({ children, label, href }) => {
 
 export default function SmallWithSocial() {
   return (
-    <Box bg={'gray.800'} color={'gray.100'}>
+    <Box bg={'#1a1c26'} color={'gray.100'}>
       <Container
         as={Stack}
-        maxW={'100%'}
+        maxW={'1200px'}
         px={4}
         py={8}
         direction={{ base: 'column', md: 'row' }}
@@ -46,7 +46,9 @@ export default function SmallWithSocial() {
         justify={{ base: 'center', md: 'space-between' }}
         align={{ base: 'center', md: 'center' }}
       >
-        <Text>© GREENPEACE {new Date().getFullYear()}</Text>
+        <Text as='span' fontSize={'sm'}>
+          © GREENPEACE {new Date().getFullYear()}
+        </Text>
         <Stack direction={'row'} spacing={8}>
           <SocialButton
             label={'Facebook'}

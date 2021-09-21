@@ -179,7 +179,7 @@ const MyForm = (props) => {
             <Select placeholder={formContent.select} onChange={handleChange}>
               {birthDateYear &&
                 birthDateYear.map((d) => (
-                  <option key={d.value} value={d.value}>
+                  <option key={d.value} value={`${d.value}-01-01`}>
                     {d.value}
                   </option>
                 ))}
@@ -282,11 +282,14 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
-    const getData = JSON.parse(
-      localStorage.getItem('greenpeacePhotoCollection')
-    )
+    const fallbackValue = (d) => (d ? d : '')
+    const hiddenFormData = props.hiddenForm.data
+    // let birthdateValue = values.Birthdate ? `${values.Birthdate}-01-01` : ''
     const FORM_URL = helper.getPostURL()
-    const CAMPAIGN_ID = helper.getCampaignID()
+    const CAMPAIGN_ID =
+      process.env.NODE_ENV === 'production'
+        ? helper.getCampaignID()
+        : '7012u000000OxDYAA0'
     const getHiddenFields = document.querySelectorAll(
       'input[value][type="hidden"]:not([value=""])'
     )
@@ -298,6 +301,12 @@ const MyEnhancedForm = withFormik({
     const formData = {
       ...hiddenFormValue,
       ...values,
+      // TODO: Match values from hidden from
+      UtmMedium: fallbackValue(hiddenFormData.utm_medium),
+      UtmSource: fallbackValue(hiddenFormData.utm_source),
+      UtmCampaign: fallbackValue(hiddenFormData.utm_campaign),
+      UtmContent: fallbackValue(hiddenFormData.utm_content),
+      UtmTerm: fallbackValue(hiddenFormData.utm_term),
       CampaignId: `${CAMPAIGN_ID}`,
     }
 
@@ -329,14 +338,31 @@ const MyEnhancedForm = withFormik({
       setSubmitting(false)
       props.setModal(false)
       props.createUserSuccess(data)
+
+      /* Tracking events */
+      window.dataLayer = window.dataLayer || []
+
+      window.dataLayer.push({
+        event: 'gaEvent',
+        eventCategory: 'petitions',
+        eventAction: 'signup',
+        eventLabel: 'photo-collection',
+        eventValue: '',
+      })
+
+      window.dataLayer.push({
+        event: 'fbqEvent',
+        contentName: 'photo-colletion',
+        contentCategory: 'Petition Signup',
+      })
     }
   },
 
   displayName: 'BasicForm',
 })(MyForm)
 
-const mapStateToProps = ({ user, signup }) => {
-  return { user, signup }
+const mapStateToProps = ({ user, signup, hiddenForm }) => {
+  return { user, signup, hiddenForm }
 }
 
 const mapDispatchToProps = (dispatch) => {

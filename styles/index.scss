@@ -44,8 +44,12 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select:focus,
+  textarea:focus,
+  input:focus {
+    font-size: 16px;
+  }
 }
 
 .masonry {
@@ -57,12 +61,26 @@ a {
   @media (max-width: 575.98px) {
     columns: 1;
   }
-  &.multi {
-    @media (max-width: 575.98px) {
-      columns: 2;
+}
+
+// 2 columns masonry
+.masonry.multi {
+  @media (max-width: 575.98px) {
+    column-gap: 12px;
+    columns: 2;
+    .grid {
+      border-radius: 4px;
+      margin-bottom: 12px;
+      &:before {
+        display: none;
+      }
+      &__body {
+        visibility: hidden;
+      }
     }
   }
 }
+
 .grid {
   height: auto;
   width: 100%;
@@ -127,11 +145,21 @@ a {
     width: auto;
     background-color: rgba(0, 0, 0, 0.45);
     color: #fff;
-    font-size: 14px;
     font-weight: bold;
     border-radius: 4px;
     padding: 4px 12px;
     margin-bottom: 4px;
+    margin-right: 4px;
+  }
+  &__badge {
+    width: auto;
+    background-color: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 4px 12px;
+    margin-bottom: 4px;
+    margin-right: 4px;
   }
 }
 
@@ -174,4 +202,9 @@ img {
     background-color: rgba(0, 0, 0, 0.75);
     color: rgba(255, 255, 255, 0.85);
   }
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
 }

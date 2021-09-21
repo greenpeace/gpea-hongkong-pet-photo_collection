@@ -24,13 +24,7 @@ import * as storeVotingActions from 'store/actions/action-types/store-voting-act
 import { IconButton } from '@chakra-ui/react'
 import { AiOutlineShareAlt, AiOutlineCloudUpload } from 'react-icons/ai'
 import {
-  EmailShareButton,
   FacebookShareButton,
-  LineShareButton,
-  LinkedinShareButton,
-  MailruShareButton,
-  PinterestShareButton,
-  TelegramShareButton,
   TwitterShareButton,
   WhatsappShareButton,
   FacebookIcon,
@@ -59,7 +53,7 @@ function ModalWrapper({
   useEffect(() => {
     setShareUrl(document.location.href)
     // console.log(shareUrl)
-  })
+  }, [])
 
   useEffect(async () => {
     if (!photo) {
@@ -73,7 +67,25 @@ function ModalWrapper({
 
   const handleCloseModal = () => {
     closeModal()
-    router.back()
+    const { slug } = router.query
+    if (slug) {
+      router.push(
+        {
+          pathname: router.pathname,
+          query: { slug: slug },
+        },
+        undefined,
+        { shallow: true }
+      )
+    } else {
+      router.push(
+        {
+          pathname: router.pathname,
+        },
+        undefined,
+        { shallow: true }
+      )
+    }
   }
 
   const handleVoting = () => {
@@ -120,14 +132,30 @@ function ModalWrapper({
       {content && (
         <Fade in={modal.isOpen}>
           <ModalContent>
-            <Stack maxW={'1200px'} spacing={4}>
+            <Stack pos='relative' maxW={'1200px'}>
+              <Flex
+                pos='sticky'
+                zIndex={'1'}
+                top='0'
+                flexDirection={`row-reverse`}
+              >
+                <Box
+                  m={2}
+                  pos='relative'
+                  zIndex={'1'}
+                  rounded={'full'}
+                  backgroundColor={'white'}
+                >
+                  <CloseButton size='lg' onClick={() => handleCloseModal()} />
+                </Box>
+              </Flex>
               <Box>
-                <Flex flexDirection={`row-reverse`}>
-                  <Box p={2}>
-                    <CloseButton size='lg' onClick={() => handleCloseModal()} />
-                  </Box>
-                </Flex>
-                <Flex alignItems={'center'} justifyContent={'center'}>
+                <Flex
+                  className='photo-container'
+                  alignItems={'center'}
+                  justifyContent={'center'}
+                  backgroundColor={'black'}
+                >
                   <Box className='photo-wrapper'>
                     <Img
                       className='photo'
@@ -152,12 +180,11 @@ function ModalWrapper({
                 <Stack
                   w={'full'}
                   direction={{ base: 'column', md: 'row' }}
-                  alignItems={{ base: 'flex-start', md: 'center' }}
+                  alignItems={{ base: 'flex-start' }}
                   justifyContent={'space-between'}
-                  spacing={8}
                 >
-                  <Heading fontSize={'2xl'}>{content.title}</Heading>
-                  <Wrap align='center' my={2} py={2} spacing={4}>
+                  <Wrap flex={1} align='center' py={2} spacing={4}>
+                    <Heading fontSize={'2xl'}>{content.title}</Heading>
                     <Button
                       size='md'
                       mx={2}
@@ -171,7 +198,8 @@ function ModalWrapper({
                         ? `感謝您的投票`
                         : `投票`}
                     </Button>
-
+                  </Wrap>
+                  <Wrap align='center' my={4} py={2} spacing={4}>
                     <IconButton
                       aria-label='Share 分享'
                       isRound
@@ -198,12 +226,12 @@ function ModalWrapper({
                   </Wrap>
                 </Stack>
 
-                <Stack direction='row' spacing={4}>
-                  <Text as={'span'} fontSize={'sm'} color={'gray.700'}>
+                <Stack direction='row' pt={4} spacing={2} color={'gray.700'}>
+                  <Text as={'span'} fontSize={'sm'}>
                     作者：
                     {content.author}
                   </Text>
-                  <Text as={'span'} fontSize={'sm'} color={'gray.700'}>
+                  <Text as={'span'} fontSize={'sm'}>
                     於 {new Date(content.timestamp).toLocaleDateString()} 上載
                   </Text>
                 </Stack>
@@ -234,8 +262,8 @@ function ModalWrapper({
                 <Divider my={4} />
 
                 <Text fontSize='sm' color={'gray.700'} pb={6}>
-                  「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。獲選佳作更有機會展出及刊登於綠色和平2022年〈山海大嶼〉年曆中，參加者亦可優先獲得參加大嶼Photo
-                  walk（詳情容後公佈）的機會。
+                  大嶼山坐擁山林、河溪、濕地、草地等多種生態環境，造就出香港的生物多樣性，
+                  綠色和平設立「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。
                 </Text>
               </Stack>
             </Stack>

@@ -3,15 +3,17 @@ import Head from 'next/head'
 import Wrapper from 'components/site/wrapper'
 import {
   Box,
-  Stack,
   Center,
   Divider,
   List,
   OrderedList,
   ListItem,
   Heading,
+  Stack,
   Text,
-  Container,
+  Wrap,
+  WrapItem,
+  Image,
 } from '@chakra-ui/react'
 
 import PageContainer from '@/components/site/container/pageContainer'
@@ -36,25 +38,41 @@ export default function Index() {
         <title>
           比賽詳情 - 山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 | 香港
         </title>
+        <meta
+          name='description'
+          content='捕捉大嶼獨有光景，立即上載你的作品，贏取參與「與大師同攝」延伸活動的機會，各組別優勝作品將有機會刊登於綠色和平年曆，並於綠色和平網上平台發佈，與香港20萬讀者分享。'
+        />
       </Head>
-      <TopBanner>
+      <TopBanner
+        src={
+          'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/87ea4a0b-gp1sular_high_res.jpg'
+        }
+      >
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>比賽詳情</Heading>
-        <Box py={4}>
+        <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
+          捕捉大嶼獨有光景，立即上載你的作品，贏取參與「與大師同攝」延伸活動的機會，各組別優勝作品將有機會刊登於綠色和平年曆，並於綠色和平網上平台發佈，與香港20萬讀者分享。
+        </Text>
+        <Box py={6} width={'100%'} maxWidth={'240px'}>
           <UploadButton />
         </Box>
       </TopBanner>
       <PageContainer>
         <ContentContainer>
           <RuleHeadline>{data.rules.timelineHeadline}</RuleHeadline>
-          <Box>
-            <OrderedList spacing={2}>
-              {data.rules.timelines.map((c) => (
-                <ListItem key={c}>
-                  <Text fontSize={'sm'}>{c}</Text>
-                </ListItem>
-              ))}
-            </OrderedList>
-          </Box>
+          <Wrap py={4} spacing={6}>
+            {data.rules.timelines.map((c, i) => (
+              <WrapItem
+                key={i}
+                w={{ base: '38%', md: '20%' }}
+                maxWidth={'180px'}
+              >
+                <Stack spacing={4} alignItems={'center'}>
+                  <Image src={c.pic} alt={c.details} />
+                  <Text fontSize={'sm'}>{c.details}</Text>
+                </Stack>
+              </WrapItem>
+            ))}
+          </Wrap>
 
           <Divider my={4} />
 

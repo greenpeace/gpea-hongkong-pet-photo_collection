@@ -20,7 +20,7 @@ const UploadButton = ({ setModal, user }) => {
       bg={'orange.500'}
       href={'#'}
       _hover={{
-        bg: 'orange.300',
+        bg: 'orange',
       }}
       onClick={() => (signed ? router.push('/upload') : setModal(true))}
     >

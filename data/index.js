@@ -1,21 +1,32 @@
-// import demo1 from '../assets/images/1.jpg'
+import shing from '../assets/images/shing-avatar.png'
+import sion from '../assets/images/sion-avatar.png'
+import daphne from '../assets/images/daphne-avatar.png'
+import tugo from '../assets/images/tugo-avatar.png'
+
+import date1 from '../assets/images/79.png'
+import date2 from '../assets/images/80.png'
+import date3 from '../assets/images/81.png'
+import date4 from '../assets/images/82.png'
+
 const demo =
   'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/08/fdc48d59-gp0stupjr_high_res.jpg'
 
 const data = {
   judges: [
     {
-      id: 1,
+      id: 'tugocheng',
+      avatar: tugo,
       pic: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/d602f416-tugo-avatar.png',
       name: '鄭振揚 Tugo Cheng',
-      designation: '香港風景攝影師',
+      designation: '風景攝影師',
       profile:
         '鄭振揚（Tugo），本地建築師和藝術攝影師，作品屢奪國際殊榮，2017年獲選為「Perspective亞太區40位年輕藝術家」之一。受其建築學背景影響，他的作品構圖特別著重線條和韻律，曾於香港和世界各地展出，並被CNN、BBC、SCMP、Guardian和Wallpaper * 等刊載，國家地理雜誌更以其相片作封面。鄭曾擔任Canon Photo Marathon、會德豐攝影大賽和不同專業學會比賽的評審。',
       ig: 'tcycheng',
       fb: 'TUGO CHENG Photography',
     },
     {
-      id: 2,
+      id: 'shing',
+      avatar: shing,
       pic: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/3d57c8bf-shing-avatar.png',
       name: '馮漢城',
       designation: '生態攝影師及紀錄片製作人',
@@ -25,7 +36,8 @@ const data = {
       fb: 'FHS Wildlife',
     },
     {
-      id: 3,
+      id: 'daphnewong',
+      avatar: daphne,
       pic: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/6f962855-daphne-avatar.png',
       name: '黃遂心 Daphne Wong',
       designation: '生態攝影師及紀錄片製作人',
@@ -35,22 +47,40 @@ const data = {
       fb: 'Daphne Wong - Photographer & Filmmaker',
     },
     {
-      id: 4,
+      id: 'sionchan',
+      avatar: sion,
       pic: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/4f6f4ae1-sion-avatar.png',
       name: '陳可淳 Chan Hall Sion',
       designation: '綠色和平守護大嶼項目主任',
       profile:
-        '陳可淳（阿淳）一直關注公民社會，參與過的議題包括社區營造、公平貿易及塑膠污染等，目前是綠色和平城市發展的項目主任。無論是因工作需要到戶外考察，還是在工餘享受戶外風光，都經常到訪不同部份的香港郊野。希望更多香港人，可以加入我們一起守護大嶼，堅守香港。',
-      ig: '',
-      fb: '',
+        '陳可淳（阿淳）一直關注公民社會，參與過的議題包括社區營造、公平貿易及塑膠污染等，目前是綠色和平守護大嶼的項目主任。無論是因工作需要到戶外考察，還是在工餘享受戶外風光，都經常到訪不同部份的香港郊野。希望更多香港人，可以加入我們一起守護大嶼，堅守香港。',
+      ig: '綠色和平Greenpeace Hong Kong',
+      fb: 'Greenpeace 綠色和平 - 香港',
     },
   ],
   rules: {
     timelineHeadline: '重要日子',
     timelines: [
-      '31/10 作品截止遞交日期',
-      '14/11 比賽結果公佈',
-      'TBC Photowalk 日期',
+      {
+        date: '2021年9月20日',
+        pic: date1,
+        details: '作品開放遞交',
+      },
+      {
+        date: '2021年10月31日',
+        pic: date2,
+        details: '作品截止遞交',
+      },
+      {
+        date: '2021年11月中旬',
+        pic: date3,
+        details: '比賽結果公佈',
+      },
+      {
+        date: '2021年11月下旬',
+        pic: date4,
+        details: '「與大師同攝」延伸活動',
+      },
     ],
     uploadHeadline: '相片上載',
     uploads: [
@@ -80,9 +110,9 @@ const data = {
     criteriaHeadline: '評審準則',
     criterias: [
       '本次攝影比賽會依據下列之標準，從每個組別之全體有效參賽作品中選出優勝作品：',
-      '1. 意念、主題（比重最高）',
-      '2. 攝影技巧、藝術感、構圖',
-      '3. 創意',
+      '1. 意念、主題（40%）',
+      '2. 攝影技巧、藝術感、構圖（30%）',
+      '3. 創意（30%）',
       '本攝影比賽優勝作品將於2021年11月選出，並以電子郵件通知。各評審的評審結果為最終決定。',
     ],
     specificationHeadline: '作品規範',
@@ -100,12 +130,13 @@ const data = {
       '凡參賽者即視為同意本比賽各項規定，如有未盡事宜，主辦單位可隨時補充說明或變更。若因任何理由而無法進行本活動，主辦單位有權決定終止、變更或暫停本活動，並保留活動修改正式規定內容之權利。',
     ],
     dateHeadline: '徵件日期',
-    date: '香港時間2021年9月13日起至10月31日23:59:59止。',
+    date: '香港時間2021年9月21日起至10月31日23:59:59止。',
     prizeHeadline: '獎品',
     prizes: [
-      '捕捉大嶼獨有光景，立即上載你的作品，贏取參與「與大師同攝」大嶼Photowalk的機會，各組別優勝作品將有機會刊登於綠色和平2022年〈山海大嶼〉年曆，並於綠色和平網上平台發佈，與香港20萬讀者分享。',
-      '佳作獎（每組3名）「堅守大嶼」旗幟一面、綠色和平2022年〈山海大嶼〉年曆、優先參與大嶼Photowalk的資格',
-      '入圍獎（每組5名）綠色和平2022年〈一刻大嶼〉年曆一個、優先參與大嶼Photowalk的資格',
+      '捕捉大嶼獨有光景，立即上載你的作品，贏取參與「與大師同攝」延伸活動的機會，各組別優勝作品將有機會刊登於綠色和平2022年〈山海大嶼〉年曆，並於綠色和平網上平台發佈，與香港20萬讀者分享。',
+      '- 專業大獎（每組1名）大嶼山片藍造工房藍染體驗工作坊一節（價值$780）、藍染和尚袋一個（價值$440）、「堅守大嶼」旗幟一面、綠色和平2022年〈山海大嶼〉年曆、優先參與「與大師同攝」延伸活動的資格。',
+      '- 佳作獎（每組3名）「堅守大嶼」旗幟一面、綠色和平2022年〈山海大嶼〉年曆、優先參與「與大師同攝」延伸活動的資格',
+      '- 入圍獎（每組5名）綠色和平2022年〈山海大嶼〉年曆一個、優先參與「與大師同攝」延伸活動的資格',
     ],
   },
   photowalk: {
@@ -113,11 +144,13 @@ const data = {
     items: [
       '請穿著適合戶外活動的衣物及行山鞋、做好防曬措施，並帶備食水，盡量避免使用即棄樽裝水',
       '可帶備個人拍攝器材（如相機、腳架、收音咪等），參加者可在戶外環節，由導師從旁指導進行生態拍攝',
+      '參加者需填妥健康申報表。',
+      '參加者需進行體溫檢測及需全程配戴口罩。',
     ],
     tcHeadline: '條款及細則',
     tcs: [
       '參加者需自攜相機及記憶咭上課。',
-      '如香港天文台於活動開始前3 小時之內發出3 號或以上颱風信號或黃色/紅色/黑色暴雨警告，本活動將會取消及再作安排。',
+      '如香港天文台於活動開始前3 小時之內發出3號或以上颱風信號或黃色/紅色/黑色暴雨警告，本活動將會取消及再作安排。',
       '主辦單位保留因惡劣天氣，突發事故或人數不足而取消或調動活動的權利，參加者將獲另行通知。',
       '如於活動上作出破壞性、妨礙活動進行、或損害其他參加者利益的行為，主辦單位有權立即取消該名學員的參加資格。',
       '主辦單位保留對活動細則作出任何更改之最終決定權。',
@@ -125,6 +158,8 @@ const data = {
   },
   thankyouMessage: {
     headLine: '感謝您的參與！',
+    zeroLine:
+      '「山海大嶼」攝影比賽2021參加者可優先獲得參加「與大師同攝」延伸活動的資格，活動詳情及優先報名表將於11月中以電郵通知。',
     firstLine: '您願意進一步行動，捐款支持綠色和平更多環境項目嗎？',
     SecondLine:
       '守護大嶼！我們需要您的支持為環境堅持努力。綠色和平不接受政府、企業捐款，請立刻加入我們的1%會員計畫，以您的1%收入，支持我們的100%財政獨立。',

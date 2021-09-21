@@ -29,11 +29,11 @@ class NextDocument extends Document {
           {/* description */}
           <meta
             name='description'
-            content='「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。獲選佳作更有機會展出及刊登於綠色和平2022年〈山海大嶼〉年曆中，參加者亦可優先獲得參加大嶼Photo walk（詳情容後公佈）的機會。'
+            content='「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。獲選佳作更有機會展出及刊登於綠色和平2022年〈山海大嶼〉年曆中，參加者亦可優先獲得參加「與大師同攝」延伸活動的資格。'
           />
           <meta
             property='og:description'
-            content='「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。獲選佳作更有機會展出及刊登於綠色和平2022年〈山海大嶼〉年曆中，參加者亦可優先獲得參加大嶼Photo walk（詳情容後公佈）的機會。'
+            content='「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。獲選佳作更有機會展出及刊登於綠色和平2022年〈山海大嶼〉年曆中，參加者亦可優先獲得參加「與大師同攝」延伸活動的資格。'
           />
           {/* meta image */}
           <meta
@@ -43,7 +43,7 @@ class NextDocument extends Document {
           {/* Load google fonts */}
           <link rel='preconnect' href='https://fonts.gstatic.com' />
           <link
-            href='https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap'
+            href='https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap'
             rel='stylesheet'
           />
         </Head>
@@ -142,11 +142,31 @@ class NextDocument extends Document {
               name='CampaignId'
               defaultValue='7012u000000P8kwAAC'
             />
-            <input type='hidden' name='UtmMedium' defaultValue='' />
-            <input type='hidden' name='UtmSource' defaultValue='' />
-            <input type='hidden' name='UtmCampaign' defaultValue='' />
-            <input type='hidden' name='UtmContent' defaultValue='' />
-            <input type='hidden' name='UtmTerm' defaultValue='' />
+            <input
+              type='hidden'
+              name='UtmMedium'
+              id='UtmMedium'
+              defaultValue=''
+            />
+            <input
+              type='hidden'
+              name='UtmSource'
+              id='UtmSource'
+              defaultValue=''
+            />
+            <input
+              type='hidden'
+              name='UtmCampaign'
+              id='UtmCampaign'
+              defaultValue=''
+            />
+            <input
+              type='hidden'
+              name='UtmContent'
+              id='UtmContent'
+              defaultValue=''
+            />
+            <input type='hidden' name='UtmTerm' id='UtmTerm' defaultValue='' />
             <input type='hidden' name='CampaignData1__c' defaultValue='' />
             <input type='hidden' name='CampaignData2__c' defaultValue='' />
             <input type='hidden' name='CampaignData3__c' defaultValue='' />

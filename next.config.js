@@ -1,12 +1,21 @@
-module.exports = {
+// next.config.js
+const isProd = process.env.NODE_ENV === 'production'
+const withPlugins = require('next-compose-plugins')
+const optimizedImages = require('next-optimized-images')
+
+const nextConfig = {
   env: {
-    // USER_AUTH_KEY: process.env.USER_AUTH_KEY,
-    USER_URL: {},
     G_SHEET: `https://gsheet-toolkit.small-service.gpeastasia.org/v1/db`,
     CLOUDINARY_API: `https://api.cloudinary.com/v1_1/gpea/image/upload`,
     CLOUDINARY_PRESET: `wugp5bjn`,
     NAV: [
       { LABEL: '主頁', VALUE: '/', HREF: '/', REF: '/' },
+      {
+        LABEL: '序言',
+        VALUE: 'introduction',
+        HREF: '/introduction',
+        REF: 'introduction',
+      },
       { LABEL: '比賽評審', VALUE: 'judges', HREF: '/judges', REF: 'judges' },
       { LABEL: '比賽詳情', VALUE: 'rules', HREF: '/rules', REF: 'rules' },
       {
@@ -56,11 +65,11 @@ module.exports = {
       },
     ],
   },
-  basePath:
-    process.env.NODE_ENV === 'production' ? '/app/photo-collection' : '',
+  basePath: isProd ? '/app/photo-collection' : '',
   trailingSlash: true,
   exportPathMap: async () => ({
     '/': { page: '/' },
+    '/introduction': { page: '/introduction' },
     '/judges': { page: '/judges' },
     '/photowalk': { page: '/photowalk' },
     '/rules': { page: '/rules' },
@@ -73,4 +82,12 @@ module.exports = {
       return `next_${new Date().getTime()}`
     }
   },
+  images: {
+    disableStaticImages: true,
+  },
+  assetPrefix: isProd
+    ? 'https://change.greenpeace.org.hk/app/photo-collection'
+    : '',
 }
+
+module.exports = withPlugins([optimizedImages], nextConfig)

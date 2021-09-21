@@ -22,9 +22,9 @@ const theme = extendTheme({
       900: '#212529',
     },
     orange: {
-      100: '#ffdda3',
-      300: '#ffb452',
-      500: '#ff8100', // Default CTA
+      300: '#ffb243',
+      500: '#ff8100',
+      700: '#c55200',
     },
   },
   fonts: {},
