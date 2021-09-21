@@ -49,7 +49,7 @@ const MiniDonateForm = (props) => {
   }
 
   const targetDonateURL =
-    'https://supporter.ea.greenpeace.org/hk/s/donate/donation-new?language=zh_HK&campaign=climate'
+    'https://supporter.ea.greenpeace.org/hk/s/donate/donation-new?language=zh_HK&campaign=countrypark'
 
   const handleOpenLink = (value) => {
     window.open(`${targetDonateURL}&donate_amt=${donateType}:${amount}`)
