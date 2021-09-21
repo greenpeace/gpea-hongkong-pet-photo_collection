@@ -13,9 +13,8 @@ import {
   OrderedList,
   List,
   ListItem,
+  Image,
 } from '@chakra-ui/react'
-import Image from 'next/image'
-import styled from 'styled-components'
 
 import PageContainer from '@/components/site/container/pageContainer'
 import ContentContainer from '@/components/site/container/contentContainer'
@@ -25,7 +24,7 @@ import Judge from '@/components/Judge'
 
 import data from '../data'
 
-import v1 from '../assets/images/IMG_4114.jpeg'
+import v1 from '../assets/images/IMG_4114.jpg'
 import v2 from '../assets/images/Lantau for Green Peace-selections (1).jpg'
 import v3 from '../assets/images/121A0671_full.jpg'
 import v4 from '../assets/images/1W4A3779 1_resized.jpg'
@@ -41,6 +40,20 @@ const james = {
     '生態攝影師James 從小開始觀察及拍攝本地生態。在大學修讀環境科學，令他更有專業地發掘及記錄本地豐富的生態，最近James更憑着一幅環頸鴴覓食的相片榮獲 East Asia-Australasian Flyway Partnership 的水鳥攝影比賽2019成人組冠軍。James拍攝生態的題材廣泛，不只限於雀鳥，James亦曾在本地兩棲爬行類動物攝影比賽裏面獲得成人組冠軍！',
   ig: 'jameskwok_wildlife',
   fb: '',
+}
+
+const ImageRounded = ({ children }) => {
+  return (
+    <Box
+      rounded={'md'}
+      boxShadow={'2xl'}
+      width={'full'}
+      height={'300px'}
+      overflow={'hidden'}
+    >
+      {children}
+    </Box>
+  )
 }
 
 const RuleHeadline = ({ children }) => {
@@ -113,12 +126,12 @@ export default function Index() {
                 * 參加者優先獲得參加資格
               </Text>
             </Box>
-            <Box>
+            <ImageRounded>
               <Image src={v1} alt={'v1'} />
-            </Box>
-            <Box>
+            </ImageRounded>
+            <ImageRounded>
               <Image src={v2} alt={'v2'} />
-            </Box>
+            </ImageRounded>
             <Divider />
             <Heading as='h3' fontSize={'2xl'} my={4}>
               二.「與大師同攝」大嶼生態攝影工作坊
@@ -146,12 +159,12 @@ export default function Index() {
                 * 參加者優先獲得參加資格
               </Text>
             </Box>
-            <Box rounded={'md'}>
+            <ImageRounded>
               <Image src={v3} alt={'v3'} />
-            </Box>
-            <Box>
+            </ImageRounded>
+            <ImageRounded>
               <Image src={v4} alt={'v4'} />
-            </Box>
+            </ImageRounded>
             <Divider />
           </Stack>
           <Grid>

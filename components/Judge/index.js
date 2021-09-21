@@ -1,6 +1,5 @@
 import React from 'react'
-import { Box, Stack, Heading, Text, Flex, Link } from '@chakra-ui/react'
-import Image from 'next/image'
+import { Box, Stack, Heading, Text, Flex, Link, Image } from '@chakra-ui/react'
 import styled from 'styled-components'
 import { FaTwitter, FaYoutube, FaInstagram, FaFacebook } from 'react-icons/fa'
 
@@ -17,12 +16,7 @@ const Judge = ({ judge }) => {
       id={judge.id}
     >
       <Box w='33.33%' mx={'auto'} mt={-12}>
-        <Image
-          src={judge.avatar}
-          placeholder='blur'
-          loading='lazy'
-          alt={judge.name}
-        />
+        <Image src={judge.avatar} loading='lazy' alt={judge.name} />
       </Box>
       <Stack spacing={6}>
         <Box mt={4}>

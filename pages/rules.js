@@ -13,8 +13,8 @@ import {
   Text,
   Wrap,
   WrapItem,
+  Image,
 } from '@chakra-ui/react'
-import Image from 'next/image'
 
 import PageContainer from '@/components/site/container/pageContainer'
 import ContentContainer from '@/components/site/container/contentContainer'
@@ -22,8 +22,6 @@ import TopBanner from '@/components/site/banner/banner'
 import UploadButton from '@/components/site/button/uploadButton'
 
 import data from '../data'
-
-import banner from '../assets/images/GP1SUL6W_High_res.jpg'
 
 const RuleHeadline = ({ children }) => {
   return (
@@ -45,7 +43,11 @@ export default function Index() {
           content='捕捉大嶼獨有光景，立即上載你的作品，贏取參與「與大師同攝」延伸活動的機會，各組別優勝作品將有機會刊登於綠色和平年曆，並於綠色和平網上平台發佈，與香港20萬讀者分享。'
         />
       </Head>
-      <TopBanner src={banner.src}>
+      <TopBanner
+        src={
+          'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/4e2d1325-gp1sul6w_high_res-scaled.jpg'
+        }
+      >
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>比賽詳情</Heading>
         <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
           捕捉大嶼獨有光景，立即上載你的作品，贏取參與「與大師同攝」延伸活動的機會，各組別優勝作品將有機會刊登於綠色和平年曆，並於綠色和平網上平台發佈，與香港20萬讀者分享。
@@ -71,15 +73,6 @@ export default function Index() {
               </WrapItem>
             ))}
           </Wrap>
-          {/* <Box>
-            <OrderedList spacing={2}>
-              {data.rules.timelines.map((c) => (
-                <ListItem key={c}>
-                  <Text fontSize={'sm'}>{c}</Text>
-                </ListItem>
-              ))}
-            </OrderedList>
-          </Box> */}
 
           <Divider my={4} />
 

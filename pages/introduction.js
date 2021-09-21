@@ -10,7 +10,19 @@ import UploadButton from '@/components/site/button/uploadButton'
 
 import data from '../data'
 
-import banner from '../assets/images/GP1SUL8F_High_res.jpg'
+const ImageRounded = ({ children }) => {
+  return (
+    <Box
+      rounded={'md'}
+      boxShadow={'2xl'}
+      width={'full'}
+      height={'300px'}
+      overflow={'hidden'}
+    >
+      {children}
+    </Box>
+  )
+}
 
 export default function Index() {
   return (
@@ -18,7 +30,11 @@ export default function Index() {
       <Head>
         <title>序言 - 山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 | 香港</title>
       </Head>
-      <TopBanner src={banner}>
+      <TopBanner
+        src={
+          'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/e4530e56-gp1sul8f_high_res-scaled.jpg'
+        }
+      >
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>序言</Heading>
         <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
           「山海大嶼」攝影比賽2021參加者可優先獲得參加「與大師同攝」延伸活動的資格，活動詳情及優先報名表將於在11月中以電郵通知。
@@ -48,27 +64,27 @@ export default function Index() {
               <Text>
                 立即行動，一人一張大嶼相片，保留大嶼今昔，讓下一代也得以親身見證這片山光水色！
               </Text>
-              <Box py={4}>
+              <Box>
                 <UploadButton />
               </Box>
             </Stack>
           </Box>
-          <Box px={4}>
-            <Stack spacing={8}>
-              <Box pr={12}>
+          <Box px={8}>
+            <Stack spacing={6}>
+              <ImageRounded>
                 <Image
                   src='https://www.greenpeace.org/static/planet4-hongkong-stateless/2020/10/6baccb13-dji_0185-l-e1622200897723.jpg'
                   alt='綠色和平「堅守大嶼滑翔傘行動」。© Vincent Chan / Greenpeace'
                   loading='lazy'
                 />
-              </Box>
-              <Box pl={12}>
+              </ImageRounded>
+              <ImageRounded mr={12}>
                 <Image
                   src='https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/05/729d9cbc-gp1sul6v_high_res-scaled.jpg'
                   alt='綠色和平一直堅持守護生態，反對明日大嶼填海計劃。'
                   loading='lazy'
                 />
-              </Box>
+              </ImageRounded>
             </Stack>
           </Box>
         </SimpleGrid>

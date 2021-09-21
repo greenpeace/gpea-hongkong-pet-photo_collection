@@ -45,9 +45,8 @@ function Index({ data, filter, grid, sorting }) {
   }, [filter, data])
 
   useEffect(async () => {
-
-    if(sorting === 'votes'){
-      setPhoto(_.orderBy(photo, ['count'],['desc']))
+    if (sorting === 'votes') {
+      setPhoto(_.orderBy(photo, ['count'], ['desc']))
     } else {
       if (filter !== 'all' && filter !== undefined) {
         setFilterCate(CATES[filter])
@@ -57,7 +56,6 @@ function Index({ data, filter, grid, sorting }) {
         setPhoto(data)
       }
     }
-
   }, [sorting])
 
   const imageLoaded = () => {
@@ -77,23 +75,14 @@ function Index({ data, filter, grid, sorting }) {
 
   if (photo.length === 0) {
     return (
-      <Stack spacing={4}>
-        <Skeleton height='6rem' />
-        <Skeleton height='6rem' />
-        <Skeleton height='6rem' />
-      </Stack>
-      // <Box gridColumn={'-moz-initial'} className='masonry'>
-      //   {/* 讀取中... */}
-      //   <Placeholder />
-      //   <Placeholder />
-      //   <Placeholder />
-      //   <Placeholder />
-      //   <Placeholder />
-      //   <Placeholder />
-      //   <Placeholder />
-      //   <Placeholder />
-      //   <Placeholder />
-      // </Box>
+      <Box gridColumn={'-moz-initial'} className='masonry'>
+        <Placeholder />
+        <Placeholder />
+        <Placeholder />
+        <Placeholder />
+        <Placeholder />
+        <Placeholder />
+      </Box>
     )
   }
 
@@ -106,7 +95,7 @@ function Index({ data, filter, grid, sorting }) {
         <LazyLoad
           once={d.once}
           key={i}
-          offset={[-100, 0]}
+          offset={[-150, 0]}
           placeholder={<Placeholder />}
           debounce={500}
         >
@@ -130,11 +119,18 @@ function Index({ data, filter, grid, sorting }) {
                 alignItems={'center'}
                 justifyContent={'space-between'}
               >
-                {d.category && (
-                  <Text as='span' className='grid__tag' fontSize={'sm'}>
-                    #{d.category}
-                  </Text>
-                )}
+                <Box>
+                  {d.category && (
+                    <Text as='span' className='grid__tag' fontSize={'xs'}>
+                      #{d.category}
+                    </Text>
+                  )}
+                  {d.featured && (
+                    <Text as='span' className='grid__badge' fontSize={'xs'}>
+                      #評審作品
+                    </Text>
+                  )}
+                </Box>
                 <Box className='grid__vote' align-self={'flex-end'}>
                   <Vote imageId={d.id} count={d.count} />
                 </Box>
@@ -167,7 +163,13 @@ function Index({ data, filter, grid, sorting }) {
 }
 
 const mapStateToProps = ({ photo, voting, filter, grid, sorting }) => {
-  return { data: photo.data, voting: voting.data, filter: filter.data, grid: grid.data, sorting: filter.sortBy }
+  return {
+    data: photo.data,
+    voting: voting.data,
+    filter: filter.data,
+    grid: grid.data,
+    sorting: filter.sortBy,
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {

@@ -9,7 +9,6 @@ import {
   Wrap,
   WrapItem,
 } from '@chakra-ui/react'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import UploadButton from '@/components/site/button/uploadButton'
 import TopBanner from '@/components/site/banner/banner'
@@ -43,33 +42,25 @@ export default function Index() {
         <Wrap spacing={4}>
           {data.judges.map((judge, index) => (
             <WrapItem key={index}>
-              <Tooltip label={judge.name} fontSize={'md'} placement='top-start'>
+              <Tooltip
+                label={`${judge.designation}\n\n${judge.name}`}
+                fontSize={'lg'}
+                placement='top-start'
+              >
                 <Box
                   cursor='pointer'
                   onClick={() => {
                     router.push('/judges')
                   }}
                 >
-                  <Image
-                    width={80}
-                    height={80}
+                  <Avatar
+                    size='lg'
+                    name={judge.name}
                     src={judge.avatar}
-                    placeholder='blur'
                     loading='lazy'
-                    alt={judge.name}
+                    bg='transparent'
                   />
                 </Box>
-                {/* <Avatar
-                  size='lg'
-                  name={judge.name}
-                  src={judge.pic}
-                  loading='lazy'
-                  bg='transparent'
-                  cursor='pointer'
-                  onClick={() => {
-                    router.push('/judges')
-                  }}
-                /> */}
               </Tooltip>
             </WrapItem>
           ))}

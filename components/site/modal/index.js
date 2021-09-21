@@ -53,7 +53,7 @@ function ModalWrapper({
   useEffect(() => {
     setShareUrl(document.location.href)
     // console.log(shareUrl)
-  })
+  }, [])
 
   useEffect(async () => {
     if (!photo) {

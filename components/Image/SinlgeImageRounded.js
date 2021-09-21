@@ -1,6 +1,5 @@
 import React from 'react'
-import { Box } from '@chakra-ui/react'
-import Image from 'next/image'
+import { Box, Image } from '@chakra-ui/react'
 
 const SingleImageRounded = (src, alt) => {
   return (

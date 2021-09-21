@@ -14,8 +14,6 @@ import Judge from '@/components/Judge'
 
 import data from '../data'
 
-import banner from '../assets/images/GP1SUL6W_High_res.jpg'
-
 // const MasonryItem = styled.li`
 //   width: 90%;
 //   max-width: 380px;
@@ -34,7 +32,11 @@ export default function Index() {
           比賽評審 - 山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 | 香港
         </title>
       </Head>
-      <TopBanner src={banner.src}>
+      <TopBanner
+        src={
+          'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/4e2d1325-gp1sul6w_high_res-scaled.jpg'
+        }
+      >
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>比賽評審</Heading>
         <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
           評審團將由資深攝影師、紀錄片製作人及綠色和平代表組成

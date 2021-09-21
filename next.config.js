@@ -1,7 +1,10 @@
-module.exports = {
+// next.config.js
+const isProd = process.env.NODE_ENV === 'production'
+const withPlugins = require('next-compose-plugins')
+const optimizedImages = require('next-optimized-images')
+
+const nextConfig = {
   env: {
-    // USER_AUTH_KEY: process.env.USER_AUTH_KEY,
-    USER_URL: {},
     G_SHEET: `https://gsheet-toolkit.small-service.gpeastasia.org/v1/db`,
     CLOUDINARY_API: `https://api.cloudinary.com/v1_1/gpea/image/upload`,
     CLOUDINARY_PRESET: `wugp5bjn`,
@@ -62,8 +65,7 @@ module.exports = {
       },
     ],
   },
-  basePath:
-    process.env.NODE_ENV === 'production' ? '/app/photo-collection' : '',
+  basePath: isProd ? '/app/photo-collection' : '',
   trailingSlash: true,
   exportPathMap: async () => ({
     '/': { page: '/' },
@@ -81,6 +83,11 @@ module.exports = {
     }
   },
   images: {
-    domains: ['res.cloudinary.com'],
+    disableStaticImages: true,
   },
+  assetPrefix: isProd
+    ? 'https://change.greenpeace.org.hk/app/photo-collection'
+    : '',
 }
+
+module.exports = withPlugins([optimizedImages], nextConfig)

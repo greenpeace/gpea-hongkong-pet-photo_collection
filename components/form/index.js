@@ -338,6 +338,23 @@ const MyEnhancedForm = withFormik({
       setSubmitting(false)
       props.setModal(false)
       props.createUserSuccess(data)
+
+      /* Tracking events */
+      window.dataLayer = window.dataLayer || []
+
+      window.dataLayer.push({
+        event: 'gaEvent',
+        eventCategory: 'petitions',
+        eventAction: 'signup',
+        eventLabel: 'photo-collection',
+        eventValue: '',
+      })
+
+      window.dataLayer.push({
+        event: 'fbqEvent',
+        contentName: 'photo-colletion',
+        contentCategory: 'Petition Signup',
+      })
     }
   },
 
