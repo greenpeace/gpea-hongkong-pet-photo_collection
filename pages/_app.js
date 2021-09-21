@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { auth } from 'components/utils'
 import Router from 'next/router'
 import nProgress from 'nprogress'
+import TagManager from 'react-gtm-module'
 
 import theme from '../theme/theme'
 import { appTheme } from '../theme/app'
@@ -22,9 +23,19 @@ Router.events.on('routeChangeComplete', nProgress.done)
 const MyApp = ({ Component, pageProps }) => {
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    /* GTM is only applicable for production env */
+    if (process.env.NODE_ENV === 'production') {
+      const tagManagerArgs = {
+        gtmId: 'GTM-M6LZL75',
+      }
+      TagManager.initialize(tagManagerArgs)
+    }
+  }, [])
+
   useEffect(async () => {
     const data = auth()
-    let params = {};
+    let params = {}
     const getHiddenFields = document.querySelectorAll(
       'input[value][type="hidden"]:not([value=""])'
     )
@@ -33,19 +44,24 @@ const MyApp = ({ Component, pageProps }) => {
       {}
     )
 
-    await window.location.search.slice(1).split('&').forEach(elm => {
-      if (elm === '') return;
-      let spl = elm.split('=');
-      const d = decodeURIComponent;
-      params[d(spl[0])] = (spl.length >= 2 ? d(spl[1]) : true);
-    });
+    await window.location.search
+      .slice(1)
+      .split('&')
+      .forEach((elm) => {
+        if (elm === '') return
+        let spl = elm.split('=')
+        const d = decodeURIComponent
+        params[d(spl[0])] = spl.length >= 2 ? d(spl[1]) : true
+      })
 
     dispatch({ type: userActions.SET_USER_SUCCESS, data: JSON.parse(data) })
-    dispatch({ type: hiddenFormActions.SET_HIDDEN_FORM, data: {
-      ...hiddenFormValue,
-      ...params
-    } })
-
+    dispatch({
+      type: hiddenFormActions.SET_HIDDEN_FORM,
+      data: {
+        ...hiddenFormValue,
+        ...params,
+      },
+    })
   }, [])
 
   const getLayout = Component.getLayout || ((page) => page)
