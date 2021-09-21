@@ -44,13 +44,7 @@ const james = {
 
 const ImageRounded = ({ children }) => {
   return (
-    <Box
-      rounded={'md'}
-      boxShadow={'2xl'}
-      width={'full'}
-      height={'300px'}
-      overflow={'hidden'}
-    >
+    <Box rounded={'md'} boxShadow={'2xl'} width={'full'} overflow={'hidden'}>
       {children}
     </Box>
   )
@@ -126,12 +120,14 @@ export default function Index() {
                 * 參加者優先獲得參加資格
               </Text>
             </Box>
-            <ImageRounded>
-              <Image src={v1} alt={'v1'} />
-            </ImageRounded>
-            <ImageRounded>
-              <Image src={v2} alt={'v2'} />
-            </ImageRounded>
+            <Stack direction={'row'} spacing={2}>
+              <ImageRounded>
+                <Image src={v1} alt={'v1'} />
+              </ImageRounded>
+              <ImageRounded>
+                <Image src={v2} height={'100%'} objectFit='cover' alt={'v2'} />
+              </ImageRounded>
+            </Stack>
             <Divider />
             <Heading as='h3' fontSize={'2xl'} my={4}>
               二.「與大師同攝」大嶼生態攝影工作坊
@@ -159,12 +155,14 @@ export default function Index() {
                 * 參加者優先獲得參加資格
               </Text>
             </Box>
-            <ImageRounded>
-              <Image src={v3} alt={'v3'} />
-            </ImageRounded>
-            <ImageRounded>
-              <Image src={v4} alt={'v4'} />
-            </ImageRounded>
+            <Stack direction={'row'} spacing={2}>
+              <ImageRounded>
+                <Image src={v3} alt={'v3'} />
+              </ImageRounded>
+              <ImageRounded>
+                <Image src={v4} alt={'v4'} />
+              </ImageRounded>
+            </Stack>
             <Divider />
           </Stack>
           <Grid>
