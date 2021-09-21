@@ -34,7 +34,7 @@ export default function Index() {
       </Head>
       <TopBanner
         src={
-          'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/4e2d1325-gp1sul6w_high_res-scaled.jpg'
+          'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/6cf0d78d-dji_0445.jpg'
         }
       >
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>比賽評審</Heading>

@@ -67,7 +67,11 @@ export default function Index() {
           香港
         </title>
       </Head>
-      <TopBanner>
+      <TopBanner
+        src={
+          'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/6e3a05a4-gp1sul6v_high_res-scaled.jpg'
+        }
+      >
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>與大師同攝</Heading>
         <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
           「山海大嶼」攝影比賽2021參加者可優先獲得參加「與大師同攝」延伸活動的資格，活動詳情及優先報名表將於11月中以電郵通知。

@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import _ from 'lodash'
 import { motion } from 'framer-motion'
 import LazyLoad from 'react-lazyload'
+import { HiOutlineBadgeCheck } from 'react-icons/Hi'
 
 const PhotoItem = styled.div`
   width: 100%;
@@ -105,14 +106,21 @@ function Index({ data, filter, grid, sorting }) {
             cursor={'pointer'}
           >
             <Box className='grid__body'>
-              <Heading
-                className='grid__title'
-                py={2}
-                fontSize={{ base: 'xl', md: '2xl' }}
-                noOfLines={2}
-              >
-                {d.title}
-              </Heading>
+              <Flex w={'100%'} justifyContent={'space-between'}>
+                <Heading
+                  className='grid__title'
+                  py={2}
+                  fontSize={{ base: 'xl', md: '2xl' }}
+                  noOfLines={2}
+                >
+                  {d.title}
+                </Heading>
+                {d.featured && (
+                  <Box ml={4} minW={'32px'}>
+                    <HiOutlineBadgeCheck size='28px' />
+                  </Box>
+                )}
+              </Flex>
               <Flex
                 mt={'auto'}
                 w={'100%'}
