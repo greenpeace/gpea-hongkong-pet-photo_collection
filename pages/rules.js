@@ -25,7 +25,7 @@ import data from '../data'
 
 const RuleHeadline = ({ children }) => {
   return (
-    <Text fontWeight={500} fontSize={'xl'} mb={4}>
+    <Text fontWeight={700} color={'brand.500'} fontSize={'2xl'} mb={4}>
       {children}
     </Text>
   )
@@ -152,7 +152,7 @@ export default function Index() {
             <List spacing={4}>
               {data.rules.prizes.map((c) => (
                 <ListItem key={c}>
-                  <Text fontSize={'md'}>{c}</Text>
+                  <Text fontSize={'sm'}>{c}</Text>
                 </ListItem>
               ))}
             </List>

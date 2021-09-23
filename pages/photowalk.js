@@ -116,7 +116,7 @@ export default function Index() {
               <ListItem>對象：「山海大嶼」攝影比賽2021參加者</ListItem>
               <ListItem>語言：廣東話</ListItem>
               <ListItem>費用：免費</ListItem>
-              <ListItem>講者：鄭振揚</ListItem>
+              <ListItem>導師：鄭振揚</ListItem>
             </List>
             <Box py={4}>
               <UploadButton />
@@ -143,7 +143,7 @@ export default function Index() {
               <ListItem>對象：「山海大嶼」攝影比賽2021參加者</ListItem>
               <ListItem>語言：廣東話</ListItem>
               <ListItem>費用：免費</ListItem>
-              <ListItem>講者：馮漢城、黃遂心、郭子祈</ListItem>
+              <ListItem>導師：馮漢城、黃遂心、郭子祈</ListItem>
               <ListItem>
                 活動焦點：
                 <List pl={4} mt={4} spacing={2}>

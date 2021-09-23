@@ -174,7 +174,7 @@ function ModalWrapper({
                 direction={'column'}
                 alignItems={'flex-start'}
                 spacing={6}
-                px={4}
+                px={6}
                 py={4}
               >
                 <Stack
@@ -191,6 +191,7 @@ function ModalWrapper({
                       px={8}
                       py={4}
                       colorScheme='green'
+                      backgroundColor='brand.500'
                       onClick={() => handleVoting()}
                       disabled={storeVoting.indexOf(content.id) !== -1}
                     >
@@ -239,32 +240,79 @@ function ModalWrapper({
                 <Stack py={4}>
                   {content.description && (
                     <Box>
-                      <Text as='p' lineHeight={'2'} fontSize='sm'>
-                        {content.description}
+                      <Text
+                        as='h3'
+                        lineHeight={'2'}
+                        fontSize={'md'}
+                        px={4}
+                        mb={2}
+                        borderLeft={'4px'}
+                        borderColor={'brand.500'}
+                      >
+                        作品說明
+                      </Text>
+                      <Text
+                        as='p'
+                        lineHeight={'2'}
+                        fontSize='sm'
+                        style={{ whiteSpace: 'pre-line' }}
+                      >
+                        {`${content.description}`}
                       </Text>
                     </Box>
                   )}
                   {content.story && (
                     <Box>
-                      <Text as='p' lineHeight={'2'} fontSize='sm'>
-                        {content.story}
+                      <Text
+                        as='h3'
+                        lineHeight={'2'}
+                        fontSize={'md'}
+                        px={4}
+                        mt={4}
+                        mb={2}
+                        borderLeft={'4px'}
+                        borderColor={'brand.500'}
+                      >
+                        我的大嶼故事
+                      </Text>
+                      <Text
+                        as='p'
+                        lineHeight={'2'}
+                        fontSize='sm'
+                        style={{ whiteSpace: 'pre-line' }}
+                      >
+                        {`${content.story}`}
                       </Text>
                     </Box>
                   )}
                 </Stack>
 
-                <Box>
-                  <Text as='span' className='grid__tag'>
+                {content.category && (
+                  <Text as='span' className='grid__tag' fontSize={'xs'}>
                     #{content.category}
                   </Text>
-                </Box>
+                )}
+
+                {content.featured && (
+                  <Text as='span' className='grid__badge' fontSize={'xs'}>
+                    #{content.featured}
+                  </Text>
+                )}
 
                 <Divider my={4} />
 
-                <Text fontSize='sm' color={'gray.700'} pb={6}>
-                  大嶼山坐擁山林、河溪、濕地、草地等多種生態環境，造就出香港的生物多樣性，
-                  綠色和平設立「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。
-                </Text>
+                <Box
+                  py={2}
+                  px={4}
+                  mb={4}
+                  borderLeft={'4px'}
+                  borderColor={'brand.500'}
+                >
+                  <Text fontSize='sm' color={'gray.700'}>
+                    大嶼山坐擁山林、河溪、濕地、草地等多種生態環境，造就出香港的生物多樣性，
+                    綠色和平設立「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。
+                  </Text>
+                </Box>
               </Stack>
             </Stack>
           </ModalContent>
