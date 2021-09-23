@@ -159,7 +159,7 @@ function ModalWrapper({
                   <Box className='photo-wrapper'>
                     <Img
                       className='photo'
-                      src={content.url}
+                      src={content.qBest}
                       alt={content.title}
                       maxH={`75vh`}
                       loading='lazy'

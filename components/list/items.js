@@ -158,7 +158,7 @@ function Index({ data, filter, grid, sorting }) {
                 }
                 onLoad={imageLoaded}
                 width='100%'
-                src={d.url}
+                src={d.qEco}
                 alt={d.title}
                 loading='lazy'
               />

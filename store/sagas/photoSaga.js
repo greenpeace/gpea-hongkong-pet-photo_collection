@@ -7,6 +7,17 @@ export function* getPhoto() {
   try {
     const photos = yield call(() => axios.get(`${process.env.G_SHEET}/photo-collection?q={"published": "TRUE"}`)
     .then((response) => response.data)
+    .then((data) => {
+      const resData = {
+        ...data,
+        records: data.records.map(d=>({
+          ...d,
+          qEco: d.url.replace("/upload/", "/upload/q_auto:eco/"),
+          qBest: d.url.replace("/upload/", "/upload/q_auto:best/"),
+        }))
+      }
+      return resData
+    })
     .catch(function (error) {
       console.log(error);
     }));
