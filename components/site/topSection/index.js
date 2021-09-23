@@ -26,7 +26,7 @@ export default function Index() {
       <TopBanner>
         <Image
           src={
-            'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/56b997e4-photo-album-preview.png'
+            'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/53cf32d0-photo-album-preview_new.png'
           }
           alt='山海大嶼攝影比賽 2021'
         />
@@ -46,7 +46,7 @@ export default function Index() {
         <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
           「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像你訴說山海故事，保留大嶼今昔。獲選佳作更有機會展出及刊登於綠色和平2022年〈山海大嶼〉年曆中，參加者亦可優先獲得參加「與大師同攝」延伸活動的資格。
         </Text>
-        <Box py={6} width={'100%'} maxWidth={'240px'}>
+        <Box width={'100%'} maxWidth={'240px'}>
           <UploadButton />
         </Box>
         <Wrap spacing={4}>

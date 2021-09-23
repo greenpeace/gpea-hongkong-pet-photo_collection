@@ -294,7 +294,7 @@ function ModalWrapper({
 
                 {content.featured === 'TRUE' && (
                   <Text as='span' className='grid__badge' fontSize={'xs'}>
-                    #{content.featured}
+                    #評審作品
                   </Text>
                 )}
 
