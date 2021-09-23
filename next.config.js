@@ -68,7 +68,7 @@ const nextConfig = {
   basePath: isProd ? '/app/photo-collection' : '',
   // Use the CDN in production and localhost for development.
   assetPrefix: isProd
-    ? 'https://change.greenpeace.org.hk/app/photo-collection'
+    ? 'https://change.greenpeace.org.hk/app/photo-collection/'
     : '',
   trailingSlash: true,
   exportPathMap: async () => ({
@@ -87,6 +87,7 @@ const nextConfig = {
     }
   },
   images: {
+    domains: ['change.greenpeace.org.hk'],
     disableStaticImages: true,
   },
 }
@@ -96,6 +97,14 @@ module.exports = withPlugins(
     optimizedImages,
     {
       /* config for next-optimized-images */
+      mozjpeg: {
+        quality: 80,
+      },
+      pngquant: {
+        speed: 3,
+        strip: true,
+        verbose: true,
+      },
     },
   ],
   nextConfig

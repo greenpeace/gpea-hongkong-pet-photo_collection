@@ -24,7 +24,7 @@
     "lodash": "^4.17.21",
     "next": "11.1.0",
     "next-compose-plugins": "^2.2.1",
-    "next-optimized-images": "^1.4.2",
+    "next-optimized-images": "^2.6.2",
     "next-redux-wrapper": "^7.0.2",
     "nprogress": "^0.2.0",
     "os": "^0.1.2",
