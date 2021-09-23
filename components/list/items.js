@@ -115,7 +115,7 @@ function Index({ data, filter, grid, sorting }) {
                 >
                   {d.title}
                 </Heading>
-                {d.featured && (
+                {d.featured === 'TRUE' && (
                   <Box ml={4} minW={'32px'}>
                     <HiOutlineBadgeCheck size='28px' />
                   </Box>
@@ -133,7 +133,7 @@ function Index({ data, filter, grid, sorting }) {
                       #{d.category}
                     </Text>
                   )}
-                  {d.featured && (
+                  {d.featured === 'TRUE' && (
                     <Text as='span' className='grid__badge' fontSize={'xs'}>
                       #評審作品
                     </Text>

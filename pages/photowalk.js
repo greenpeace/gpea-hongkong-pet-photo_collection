@@ -37,7 +37,7 @@ const james = {
   name: '郭子祈 James Kwok',
   designation: '生態攝影師',
   profile:
-    '生態攝影師James 從小開始觀察及拍攝本地生態。在大學修讀環境科學，令他更有專業地發掘及記錄本地豐富的生態，最近James更憑着一幅環頸鴴覓食的相片榮獲 East Asia-Australasian Flyway Partnership 的水鳥攝影比賽2019成人組冠軍。James拍攝生態的題材廣泛，不只限於雀鳥，James亦曾在本地兩棲爬行類動物攝影比賽裏面獲得成人組冠軍！',
+    '生態攝影師James 從小開始觀察及拍攝本地生態。在大學修讀環境科學，令他更有專業地發掘及記錄本地豐富的生態，最近James更憑着一幅環頸鴴覓食的相片榮獲 East Asian-Australasian Flyway Partnership 的水鳥攝影比賽2019成人組冠軍。James拍攝生態的題材廣泛，不只限於雀鳥，James亦曾在本地兩棲爬行類動物攝影比賽裏面獲得成人組冠軍！',
   ig: 'jameskwok_wildlife',
   fb: '',
 }

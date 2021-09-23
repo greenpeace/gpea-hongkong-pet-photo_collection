@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Stack, Center } from '@chakra-ui/react'
 
 const TopBanner = ({
-  src = 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2019/06/efc1d3c2-dji_0409.jpg',
+  src = 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2020/02/e2bf64c3-dji_0431-scaled.jpg',
   children,
 }) => {
   return (

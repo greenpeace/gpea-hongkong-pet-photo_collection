@@ -8,6 +8,7 @@ import {
   List,
   OrderedList,
   ListItem,
+  UnorderedList,
   Heading,
   Stack,
   Text,
@@ -150,9 +151,16 @@ export default function Index() {
           <RuleHeadline>{data.rules.prizeHeadline}</RuleHeadline>
           <Box>
             <List spacing={4}>
-              {data.rules.prizes.map((c) => (
-                <ListItem key={c}>
-                  <Text fontSize={'sm'}>{c}</Text>
+              {data.rules.prizeList.map((c, i) => (
+                <ListItem key={i}>
+                  <RuleHeadline>{c.headline}</RuleHeadline>
+                  <UnorderedList spacing={2}>
+                    {c.items.map((item, i) => (
+                      <ListItem key={i}>
+                        <Text fontSize={'sm'}>{item}</Text>
+                      </ListItem>
+                    ))}
+                  </UnorderedList>
                 </ListItem>
               ))}
             </List>

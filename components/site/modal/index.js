@@ -175,7 +175,7 @@ function ModalWrapper({
                 alignItems={'flex-start'}
                 spacing={6}
                 px={6}
-                py={4}
+                py={6}
               >
                 <Stack
                   w={'full'}
@@ -227,7 +227,7 @@ function ModalWrapper({
                   </Wrap>
                 </Stack>
 
-                <Stack direction='row' pt={4} spacing={2} color={'gray.700'}>
+                <Stack direction='row' pt={2} spacing={2} color={'gray.700'}>
                   <Text as={'span'} fontSize={'sm'}>
                     作者：
                     {content.author}
@@ -245,7 +245,7 @@ function ModalWrapper({
                         lineHeight={'2'}
                         fontSize={'md'}
                         px={4}
-                        mb={2}
+                        my={4}
                         borderLeft={'4px'}
                         borderColor={'brand.500'}
                       >
@@ -253,7 +253,7 @@ function ModalWrapper({
                       </Text>
                       <Text
                         as='p'
-                        lineHeight={'2'}
+                        lineHeight={'1.7'}
                         fontSize='sm'
                         style={{ whiteSpace: 'pre-line' }}
                       >
@@ -268,8 +268,7 @@ function ModalWrapper({
                         lineHeight={'2'}
                         fontSize={'md'}
                         px={4}
-                        mt={4}
-                        mb={2}
+                        my={4}
                         borderLeft={'4px'}
                         borderColor={'brand.500'}
                       >
@@ -277,7 +276,7 @@ function ModalWrapper({
                       </Text>
                       <Text
                         as='p'
-                        lineHeight={'2'}
+                        lineHeight={'1.7'}
                         fontSize='sm'
                         style={{ whiteSpace: 'pre-line' }}
                       >
@@ -293,7 +292,7 @@ function ModalWrapper({
                   </Text>
                 )}
 
-                {content.featured && (
+                {content.featured === 'TRUE' && (
                   <Text as='span' className='grid__badge' fontSize={'xs'}>
                     #{content.featured}
                   </Text>

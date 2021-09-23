@@ -14,8 +14,6 @@ import { useRouter } from 'next/router'
 import UploadButton from '@/components/site/button/uploadButton'
 import TopBanner from '@/components/site/banner/banner'
 
-import HeadlineVisual from '../assets/images/headline.png'
-
 import data from 'data'
 
 export default function Index() {
@@ -26,7 +24,12 @@ export default function Index() {
         <title>山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 | 香港</title>
       </Head>
       <TopBanner>
-        <Image src={HeadlineVisual} alt='山海大嶼攝影比賽 2021' />
+        <Image
+          src={
+            'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/56b997e4-photo-album-preview.png'
+          }
+          alt='山海大嶼攝影比賽 2021'
+        />
         <Heading
           fontWeight={'700'}
           fontSize={{ base: '3xl', md: '5xl' }}
@@ -50,9 +53,13 @@ export default function Index() {
           {data.judges.map((judge, index) => (
             <WrapItem key={index}>
               <Tooltip
-                label={`${judge.designation}\n\n${judge.name}`}
+                label={`
+                ${judge.designation}
+                ${judge.name}
+                `}
                 fontSize={'lg'}
                 placement='top-start'
+                style={{ whiteSpace: 'pre-line' }}
               >
                 <Box
                   cursor='pointer'
