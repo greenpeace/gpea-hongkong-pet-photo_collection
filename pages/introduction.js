@@ -12,13 +12,7 @@ import data from '../data'
 
 const ImageRounded = ({ children }) => {
   return (
-    <Box
-      rounded={'md'}
-      boxShadow={'2xl'}
-      width={'full'}
-      height={'300px'}
-      overflow={'hidden'}
-    >
+    <Box rounded={'md'} boxShadow={'2xl'} width={'full'} overflow={'hidden'}>
       {children}
     </Box>
   )
@@ -78,7 +72,7 @@ export default function Index() {
                   loading='lazy'
                 />
               </ImageRounded>
-              <ImageRounded mr={12}>
+              <ImageRounded>
                 <Image
                   src='https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/05/729d9cbc-gp1sul6v_high_res-scaled.jpg'
                   alt='綠色和平一直堅持守護生態，反對明日大嶼填海計劃。'

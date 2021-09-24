@@ -124,12 +124,12 @@ export default function Index() {
                 * 參加者優先獲得參加資格
               </Text>
             </Box>
-            <Stack direction={'row'} spacing={2}>
+            <Stack direction={'row'} alignItems={'flex-start'} spacing={2}>
               <ImageRounded>
                 <Image src={v1} alt={'v1'} />
               </ImageRounded>
               <ImageRounded>
-                <Image src={v2} height={'100%'} objectFit='cover' alt={'v2'} />
+                <Image src={v2} alt={'v2'} />
               </ImageRounded>
             </Stack>
             <Divider />
