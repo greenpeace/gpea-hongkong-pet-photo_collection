@@ -294,9 +294,9 @@ const MyEnhancedForm = withFormik({
       errors.Description = formContent.empty_data_alert
     }
 
-    if (!values.Story) {
-      errors.Story = formContent.empty_data_alert
-    }
+    // if (!values.Story) {
+    //   errors.Story = formContent.empty_data_alert
+    // }
 
     if (!values.Category) {
       errors.Category = formContent.empty_data_alert

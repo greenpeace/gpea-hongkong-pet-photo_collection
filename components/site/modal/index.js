@@ -7,6 +7,7 @@ import {
   ModalContent,
   Button,
   Stack,
+  Skeleton,
   Box,
   Img,
   Flex,
@@ -41,6 +42,7 @@ function ModalWrapper({
   storeVoting,
   storeUserVotes,
 }) {
+  const [imageLoading, setImageLoading] = useState(true)
   const [shareUrl, setShareUrl] = useState()
   const [content, setContent] = useState(modal.content)
   const router = useRouter()
@@ -127,12 +129,13 @@ function ModalWrapper({
       closeOnOverlayClick={true}
       size={'4xl'}
       trapFocus={false}
+      closeOnEsc={true}
     >
       <ModalOverlay />
       {content && (
         <Fade in={modal.isOpen}>
           <ModalContent>
-            <Stack pos='relative' maxW={'1200px'}>
+            <Stack pos='relative' maxW={'1200px'} h={'100%'}>
               <Flex
                 pos='sticky'
                 zIndex={'1'}
@@ -156,18 +159,24 @@ function ModalWrapper({
                   justifyContent={'center'}
                   backgroundColor={'black'}
                 >
-                  <Box className='photo-wrapper'>
-                    <Img
-                      className='photo'
-                      src={content.qBest}
-                      alt={content.title}
-                      maxH={`75vh`}
-                      loading='lazy'
-                    />
-                    <Box className='photo-credit' py={1} px={2}>
-                      <Text fontSize={'sm'}>©{content.author}</Text>
+                  <Fade in={!imageLoading}>
+                    <Box className='photo-wrapper'>
+                      <Img
+                        className='photo'
+                        src={content.qBest}
+                        alt={content.title}
+                        width='100%'
+                        maxH={`75vh`}
+                        loading='lazy'
+                        onLoad={() =>
+                          setTimeout(() => setImageLoading(false), 1000)
+                        }
+                      />
+                      <Box className='photo-credit' py={1} px={2}>
+                        <Text fontSize={'sm'}>©{content.author}</Text>
+                      </Box>
                     </Box>
-                  </Box>
+                  </Fade>
                 </Flex>
               </Box>
               <Stack
@@ -179,12 +188,15 @@ function ModalWrapper({
               >
                 <Stack
                   w={'full'}
+                  spacing={6}
                   direction={{ base: 'column', md: 'row' }}
                   alignItems={{ base: 'flex-start' }}
                   justifyContent={'space-between'}
                 >
-                  <Wrap flex={1} align='center' py={2} spacing={4}>
-                    <Heading fontSize={'2xl'}>{content.title}</Heading>
+                  <Wrap flex={1} align={'center'} spacing={6}>
+                    <Heading fontSize={'2xl'} minW={'300px'}>
+                      {content.title}
+                    </Heading>
                     <Button
                       size='md'
                       mx={2}
@@ -200,7 +212,7 @@ function ModalWrapper({
                         : `投票`}
                     </Button>
                   </Wrap>
-                  <Wrap align='center' my={4} py={2} spacing={4}>
+                  <Wrap align='center' spacing={4}>
                     <IconButton
                       aria-label='Share 分享'
                       isRound
@@ -227,7 +239,7 @@ function ModalWrapper({
                   </Wrap>
                 </Stack>
 
-                <Stack direction='row' pt={2} spacing={2} color={'gray.700'}>
+                <Stack direction='row' spacing={2} color={'gray.700'}>
                   <Text as={'span'} fontSize={'sm'}>
                     作者：
                     {content.author}
@@ -237,7 +249,7 @@ function ModalWrapper({
                   </Text>
                 </Stack>
 
-                <Stack py={4}>
+                <Stack>
                   {content.description && (
                     <Box>
                       <Text

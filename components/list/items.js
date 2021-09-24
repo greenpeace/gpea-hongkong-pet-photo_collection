@@ -96,7 +96,7 @@ function Index({ data, filter, grid, sorting }) {
         <LazyLoad
           once={d.once}
           key={i}
-          offset={[50, 0]}
+          offset={[100, 0]}
           placeholder={<Placeholder />}
           debounce={500}
         >
