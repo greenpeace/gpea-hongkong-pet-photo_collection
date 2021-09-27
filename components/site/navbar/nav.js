@@ -42,7 +42,7 @@ function WithSubnavigation({ user, setModal, setSorting }) {
       onToggle()
     }
 
-    if (router.asPath !== prevRoute.asPath) {
+    if (router.route !== prevRoute.route) {
       setSorting('default')
     }
   }, [router])
