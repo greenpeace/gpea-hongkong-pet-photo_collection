@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import * as filterActions from 'store/actions/action-types/filter-actions'
 import * as gridActions from 'store/actions/action-types/grid-actions'
 import { BsGrid1X2Fill, BsGrid1X2 } from 'react-icons/bs'
+import { FaSortNumericDownAlt, FaSortNumericUp, FaSortAmountDown, FaSortAmountUpAlt } from "react-icons/fa";
 
 const CATEGORY = process.env.CATEGORY || []
 
@@ -57,8 +58,10 @@ function WithAction({setFilter, setSorting, setGrid, grid, sorting}) {
           </HStack>
           <Box>
             <Select size="sm" onChange={(e)=>setSorting(e.target.value)} value={sorting}>
-              <option value="default">按日期排序</option>
-              <option value="votes">按投票排序</option>
+              <option value="defaultDESC">按日期降序</option>
+              <option value="defaultASC">按日期升序</option>
+              <option value="votesDESC">按投票降序</option>
+              <option value="votesASC">按投票升序</option>
             </Select>
           </Box>
           <Stack d={{base: 'flex', md: 'none'}} pl={4}>

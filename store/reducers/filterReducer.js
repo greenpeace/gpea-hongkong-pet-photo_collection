@@ -2,7 +2,7 @@ import * as filterActions from 'store/actions/action-types/filter-actions'
 
 const initState = {
   data: 'all',
-  sortBy: 'default'
+  sortBy: 'defaultDESC'
 }
 
 const filterReducer = (state = initState, action) => {

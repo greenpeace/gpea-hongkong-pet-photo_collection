@@ -14,6 +14,7 @@ export function* getPhoto() {
           ...d,
           qEco: d.url.replace("/upload/", "/upload/q_auto:eco/"),
           qBest: d.url.replace("/upload/", "/upload/q_auto:best/"),
+          newTimestamp: new Date(d.timestamp).getTime()
         }))
       }
       return resData

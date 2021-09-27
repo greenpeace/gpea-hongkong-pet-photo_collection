@@ -37,12 +37,12 @@ function WithSubnavigation({ user, setModal, setSorting }) {
     if (!router || !prevRoute) {
       return
     }
-    
+
     if (router.pathname !== prevRoute.pathname && isOpen) {
       onToggle()
     }
 
-    if (router.asPath !== prevRoute.asPath) {
+    if (router.asPath !== prevRoute.asPath && router.query.slug !== prevRoute.query.slug) {
       setSorting('defaultDESC')
     }
   }, [router])
@@ -75,7 +75,7 @@ function WithSubnavigation({ user, setModal, setSorting }) {
             cursor={'pointer'}
             loading='eager'
             onClick={() => {
-              router.push(`/`)
+              router.push(`/tag/all`)
             }}
           />
 
