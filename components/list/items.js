@@ -46,8 +46,25 @@ function Index({ data, filter, grid, sorting }) {
   }, [filter, data])
 
   useEffect(async () => {
-    if (sorting === 'votes') {
-      setPhoto(_.orderBy(photo, ['count'], ['desc']))
+    if (sorting !== '') {
+      switch (sorting) {
+        case 'defaultDESC':
+          setPhoto(_.orderBy(photo, ['newTimestamp'], ['desc']))
+          break;
+        case 'defaultASC':
+          setPhoto(_.orderBy(photo, ['newTimestamp'], ['desc']))
+          break;
+        case 'votesDESC':
+          setPhoto(_.orderBy(photo, ['count'], ['desc']))
+          break;
+        case 'votesASC':
+          setPhoto(_.orderBy(photo, ['count'], ['asc']))
+          break;
+      
+        default:
+          setPhoto(data)
+          break;
+      }
     } else {
       if (filter !== 'all' && filter !== undefined) {
         setFilterCate(CATES[filter])
