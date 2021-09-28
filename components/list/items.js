@@ -18,7 +18,7 @@ const PhotoItem = styled.div`
 const Placeholder = () => {
   return (
     <PhotoItem className='grid'>
-      <Skeleton height='6rem' />
+      <Skeleton height='8rem' />
     </PhotoItem>
   )
 }
@@ -50,20 +50,20 @@ function Index({ data, filter, grid, sorting }) {
       switch (sorting) {
         case 'defaultDESC':
           setPhoto(_.orderBy(photo, ['newTimestamp'], ['desc']))
-          break;
+          break
         case 'defaultASC':
           setPhoto(_.orderBy(photo, ['newTimestamp'], ['desc']))
-          break;
+          break
         case 'votesDESC':
           setPhoto(_.orderBy(photo, ['count'], ['desc']))
-          break;
+          break
         case 'votesASC':
           setPhoto(_.orderBy(photo, ['count'], ['asc']))
-          break;
-      
+          break
+
         default:
           setPhoto(data)
-          break;
+          break
       }
     } else {
       if (filter !== 'all' && filter !== undefined) {
@@ -113,7 +113,6 @@ function Index({ data, filter, grid, sorting }) {
         <LazyLoad
           once={d.once}
           key={i}
-          offset={[-100, 0]}
           placeholder={<Placeholder />}
           debounce={500}
         >
@@ -161,11 +160,10 @@ function Index({ data, filter, grid, sorting }) {
                 </Box>
               </Flex>
             </Box>
-            <Box className={`${pulsing ? 'pulse' : ''} loadable`}>
+            <Box>
               <motion.img
-                initial={{ height: '6rem', opacity: 0 }}
+                initial={{ opacity: 0 }}
                 animate={{
-                  height: imageLoading ? '6rem' : 'auto',
                   opacity: imageLoading ? 0 : 1,
                 }}
                 transition={

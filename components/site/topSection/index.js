@@ -25,7 +25,7 @@ export default function Index() {
       </Head>
       <TopBanner>
         <Image
-          src='https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/dc37bafb-photo-album-preview_chinese2.png'
+          src='https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/279f402e-lantau-kv.png'
           alt='山海大嶼攝影比賽 2021'
         />
         <Box display={'none'}>
