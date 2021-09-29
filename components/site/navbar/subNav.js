@@ -6,12 +6,7 @@ import { useRouter } from 'next/router'
 import * as filterActions from 'store/actions/action-types/filter-actions'
 import * as gridActions from 'store/actions/action-types/grid-actions'
 import { BsGrid1X2Fill, BsGrid1X2 } from 'react-icons/bs'
-import {
-  FaSortNumericDownAlt,
-  FaSortNumericUp,
-  FaSortAmountDown,
-  FaSortAmountUpAlt,
-} from 'react-icons/fa'
+import { FaSortNumericDownAlt, FaSortNumericUp, FaSortAmountDown, FaSortAmountUpAlt } from "react-icons/fa";
 
 const CATEGORY = process.env.CATEGORY || []
 
@@ -31,7 +26,7 @@ const NavLink = ({ children, href, active }) => {
   )
 }
 
-function WithAction({ setFilter, setSorting, setGrid, grid, sorting }) {
+function WithAction({setFilter, setSorting, setGrid, grid, sorting}) {
   const router = useRouter()
   let { slug } = router.query
 
@@ -40,6 +35,25 @@ function WithAction({ setFilter, setSorting, setGrid, grid, sorting }) {
       setFilter(slug)
     }
   }, [slug])
+
+  const sortByDateIcon = [{
+    component: () => <FaSortAmountDown fontSize={20} onClick={()=>setSorting('defaultDESC')} color={sorting === 'defaultDESC' ? '#000' : '#D2D2D2'}/>,
+    value: 'defaultDESC'
+  },
+  {
+    component: () => <FaSortAmountUpAlt fontSize={20} onClick={()=>setSorting('defaultASC')} color={sorting === 'defaultASC' ? '#000' : '#D2D2D2'}/>,
+    value: 'defaultASC',
+  }]
+  
+  const sortByVotesIcon = [
+  {
+    component: () => <FaSortNumericDownAlt fontSize={20} onClick={()=>setSorting('votesDESC')} color={sorting === 'votesDESC' ? '#000' : '#D2D2D2'}/>,
+    value: 'votesDESC',
+  },
+  {
+    component:() => <FaSortNumericUp fontSize={20} onClick={()=>setSorting('votesASC')} color={sorting === 'votesASC' ? '#000' : '#D2D2D2'}/>,
+    value: 'votesASC',
+  }]
 
   return (
     <>
@@ -62,33 +76,33 @@ function WithAction({ setFilter, setSorting, setGrid, grid, sorting }) {
             })}
           </HStack>
           <Box>
-            <Select
-              size='sm'
-              onChange={(e) => setSorting(e.target.value)}
-              value={sorting}
-            >
-              <option value='defaultDESC'>按日期排序（新至舊）</option>
-              <option value='defaultASC'>按日期排序（舊至新）</option>
-              <option value='votesDESC'>按投票排序（多至少）</option>
-              <option value='votesASC'>按投票排序（少至多）</option>
-            </Select>
-          </Box>
-          <Stack d={{ base: 'flex', md: 'none' }} pl={4}>
-            <Box>
-              {grid === 'multi' ? (
-                <BsGrid1X2Fill onClick={() => setGrid('normal')} />
-              ) : (
-                <BsGrid1X2 onClick={() => setGrid('multi')} />
-              )}
-            </Box>
+          <Stack direction={'row'}>
+            <Stack direction={'row'}>
+              {sortByDateIcon.map(d=> <Box key={d.value}>{d.component()}</Box>)}
+            </Stack>
+            <Stack direction={'row'}>
+              {sortByVotesIcon.map(d=> <Box key={d.value}>{d.component()}</Box>)}
+            </Stack>
           </Stack>
+            {/* <Select size="sm" onChange={(e)=>setSorting(e.target.value)} value={sorting}>
+              <option value="defaultDESC">按日期降序</option>
+              <option value="defaultASC">按日期升序</option>
+              <option value="votesDESC">按投票降序</option>
+              <option value="votesASC">按投票升序</option>
+            </Select> */}
+          </Box>
+          <Stack d={{base: 'flex', md: 'none'}} pl={4}>
+            <Box>{grid === 'multi' ? <BsGrid1X2Fill onClick={()=>setGrid('normal')}/> : <BsGrid1X2 onClick={()=>setGrid('multi')}/> }</Box>
+          </Stack>
+
         </Flex>
       </Box>
     </>
   )
 }
 
-const mapStateToProps = ({ filter, grid }) => {
+
+const mapStateToProps = ({filter, grid}) => {
   return { filter, grid: grid.data, sorting: filter.sortBy }
 }
 
