@@ -68,7 +68,7 @@ a {
 }
 
 // 2 columns masonry
-.masonry.multi {
+.multi {
   @media (max-width: 575.98px) {
     column-gap: 12px;
     columns: 2;
@@ -227,6 +227,7 @@ img {
 }
 
 /* Style your items */
-.masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+.masonry-grid_column > div {
+  /* change div to reference your elements you put in <Masonry> */
   margin-bottom: 15px;
 }

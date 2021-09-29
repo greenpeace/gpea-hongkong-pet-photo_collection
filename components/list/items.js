@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Vote from 'components/list/vote'
-import {
-  Box,
-  Text,
-  Heading,
-  Flex,
-  Skeleton,
-  Image,
-} from '@chakra-ui/react'
+import { Box, Text, Heading, Flex, Skeleton, Image } from '@chakra-ui/react'
 import { connect } from 'react-redux'
 import { useRouter } from 'next/router'
 import * as modalActions from 'store/actions/action-types/modal-actions'
@@ -51,8 +44,8 @@ function Index({ data, filter, grid, sorting }) {
     default: 3,
     1100: 3,
     700: 2,
-    500: 1
-  };
+    500: 1,
+  }
 
   useEffect(async () => {
     if (filter !== 'all' && filter !== undefined) {
@@ -120,7 +113,7 @@ function Index({ data, filter, grid, sorting }) {
   return (
     <Masonry
       breakpointCols={grid === `multi` ? 2 : breakpointColumnsObj}
-      className='masonry-grid'
+      className={`masonry-grid ${grid === 'multi' ? 'multi' : ''}`}
       columnClassName='masonry-grid_column'
     >
       {photo.map((d, i) => (
@@ -172,8 +165,8 @@ function Index({ data, filter, grid, sorting }) {
             </Flex>
           </Box>
           <Box>
-          {/** https://web.dev/browser-level-image-lazy-loading/ */}
-            <Image src={d.qEco} loading={'lazy'}/>
+            {/** https://web.dev/browser-level-image-lazy-loading/ */}
+            <Image src={d.qEco} loading={'lazy'} />
             {/* <motion.img
           initial={{ height: '6rem', opacity: 0 }}
           animate={{
