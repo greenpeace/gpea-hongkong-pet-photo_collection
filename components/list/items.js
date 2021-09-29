@@ -26,7 +26,7 @@ const PhotoItem = styled.div`
 const Placeholder = () => {
   return (
     <PhotoItem className='grid'>
-      <Skeleton height='6rem' />
+      <Skeleton height='8rem' />
     </PhotoItem>
   )
 }
@@ -129,6 +129,8 @@ function Index({ data, filter, grid, sorting }) {
           onClick={() => handleModal(d.id)}
           cursor={'pointer'}
           key={i}
+          placeholder={<Placeholder />}
+          debounce={500}
         >
           <Box className='grid__body'>
             <Flex w={'100%'} justifyContent={'space-between'}>
