@@ -144,6 +144,9 @@ function Index({ data, filter, grid, sorting }) {
                 justifyContent={'space-between'}
               >
                 <Box>
+                  <Text as='span' className='grid__tag' fontSize={'xs'}>
+                    {i + 1}
+                  </Text>
                   {d.category && (
                     <Text as='span' className='grid__tag' fontSize={'xs'}>
                       #{d.category}

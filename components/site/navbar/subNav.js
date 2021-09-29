@@ -6,7 +6,12 @@ import { useRouter } from 'next/router'
 import * as filterActions from 'store/actions/action-types/filter-actions'
 import * as gridActions from 'store/actions/action-types/grid-actions'
 import { BsGrid1X2Fill, BsGrid1X2 } from 'react-icons/bs'
-import { FaSortNumericDownAlt, FaSortNumericUp, FaSortAmountDown, FaSortAmountUpAlt } from "react-icons/fa";
+import {
+  FaSortNumericDownAlt,
+  FaSortNumericUp,
+  FaSortAmountDown,
+  FaSortAmountUpAlt,
+} from 'react-icons/fa'
 
 const CATEGORY = process.env.CATEGORY || []
 
@@ -26,7 +31,7 @@ const NavLink = ({ children, href, active }) => {
   )
 }
 
-function WithAction({setFilter, setSorting, setGrid, grid, sorting}) {
+function WithAction({ setFilter, setSorting, setGrid, grid, sorting }) {
   const router = useRouter()
   let { slug } = router.query
 
@@ -57,25 +62,33 @@ function WithAction({setFilter, setSorting, setGrid, grid, sorting}) {
             })}
           </HStack>
           <Box>
-            <Select size="sm" onChange={(e)=>setSorting(e.target.value)} value={sorting}>
-              <option value="defaultDESC">按日期降序</option>
-              <option value="defaultASC">按日期升序</option>
-              <option value="votesDESC">按投票降序</option>
-              <option value="votesASC">按投票升序</option>
+            <Select
+              size='sm'
+              onChange={(e) => setSorting(e.target.value)}
+              value={sorting}
+            >
+              <option value='defaultDESC'>按日期排序（新至舊）</option>
+              <option value='defaultASC'>按日期排序（舊至新）</option>
+              <option value='votesDESC'>按投票排序（多至少）</option>
+              <option value='votesASC'>按投票排序（少至多）</option>
             </Select>
           </Box>
-          <Stack d={{base: 'flex', md: 'none'}} pl={4}>
-            <Box>{grid === 'multi' ? <BsGrid1X2Fill onClick={()=>setGrid('normal')}/> : <BsGrid1X2 onClick={()=>setGrid('multi')}/> }</Box>
+          <Stack d={{ base: 'flex', md: 'none' }} pl={4}>
+            <Box>
+              {grid === 'multi' ? (
+                <BsGrid1X2Fill onClick={() => setGrid('normal')} />
+              ) : (
+                <BsGrid1X2 onClick={() => setGrid('multi')} />
+              )}
+            </Box>
           </Stack>
-
         </Flex>
       </Box>
     </>
   )
 }
 
-
-const mapStateToProps = ({filter, grid}) => {
+const mapStateToProps = ({ filter, grid }) => {
   return { filter, grid: grid.data, sorting: filter.sortBy }
 }
 

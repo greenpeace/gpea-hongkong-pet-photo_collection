@@ -53,13 +53,17 @@ a {
 }
 
 .masonry {
+  // display: grid;
   columns: 3;
-  column-gap: 20px;
+  column-gap: 12px;
+  // grid-template-columns: repeat(3, 1fr);
   @media (max-width: 767.98px) {
     columns: 2;
+    // grid-template-columns: repeat(2, 1fr);
   }
   @media (max-width: 575.98px) {
     columns: 1;
+    // grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -162,8 +166,6 @@ a {
     margin-right: 4px;
   }
 }
-
-
 
 .pulse {
   animation: pulse 1.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
