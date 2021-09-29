@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import Vote from 'components/list/vote'
-import { Box, Text, Heading, Flex, Skeleton, Stack } from '@chakra-ui/react'
+import {
+  Box,
+  Text,
+  Heading,
+  Flex,
+  Skeleton,
+  Image,
+} from '@chakra-ui/react'
 import { connect } from 'react-redux'
 import { useRouter } from 'next/router'
 import * as modalActions from 'store/actions/action-types/modal-actions'
@@ -9,6 +16,7 @@ import _ from 'lodash'
 import { motion } from 'framer-motion'
 import LazyLoad from 'react-lazyload'
 import { HiOutlineBadgeCheck } from 'react-icons/Hi'
+import Masonry from 'react-masonry-css'
 
 const PhotoItem = styled.div`
   width: 100%;
@@ -35,6 +43,16 @@ function Index({ data, filter, grid, sorting }) {
   const [pulsing, setPulsing] = useState(true)
   const [filterCate, setFilterCate] = useState('')
   const [photo, setPhoto] = useState([])
+  const imageLoaded = () => {
+    setImageLoading(false)
+    setTimeout(() => setPulsing(false), 400)
+  }
+  const breakpointColumnsObj = {
+    default: 3,
+    1100: 3,
+    700: 2,
+    500: 1
+  };
 
   useEffect(async () => {
     if (filter !== 'all' && filter !== undefined) {
@@ -50,20 +68,20 @@ function Index({ data, filter, grid, sorting }) {
       switch (sorting) {
         case 'defaultDESC':
           setPhoto(_.orderBy(photo, ['newTimestamp'], ['desc']))
-          break;
+          break
         case 'defaultASC':
-          setPhoto(_.orderBy(photo, ['newTimestamp'], ['desc']))
-          break;
+          setPhoto(_.orderBy(photo, ['newTimestamp'], ['asc']))
+          break
         case 'votesDESC':
           setPhoto(_.orderBy(photo, ['count'], ['desc']))
-          break;
+          break
         case 'votesASC':
           setPhoto(_.orderBy(photo, ['count'], ['asc']))
-          break;
-      
+          break
+
         default:
           setPhoto(data)
-          break;
+          break
       }
     } else {
       if (filter !== 'all' && filter !== undefined) {
@@ -75,11 +93,6 @@ function Index({ data, filter, grid, sorting }) {
       }
     }
   }, [sorting])
-
-  const imageLoaded = () => {
-    setImageLoading(false)
-    setTimeout(() => setPulsing(false), 400)
-  }
 
   const handleModal = (id) => {
     router.push(
@@ -105,85 +118,81 @@ function Index({ data, filter, grid, sorting }) {
   }
 
   return (
-    <Box
-      gridColumn={'-moz-initial'}
-      className={`masonry ${grid === `multi` ? `multi` : ``}`}
+    <Masonry
+      breakpointCols={grid === `multi` ? 2 : breakpointColumnsObj}
+      className='masonry-grid'
+      columnClassName='masonry-grid_column'
     >
       {photo.map((d, i) => (
-        <LazyLoad
-          once={d.once}
+        <PhotoItem
+          className='grid'
+          onClick={() => handleModal(d.id)}
+          cursor={'pointer'}
           key={i}
-          offset={[100, 0]}
-          placeholder={<Placeholder />}
-          debounce={500}
         >
-          <PhotoItem
-            className='grid'
-            onClick={() => handleModal(d.id)}
-            cursor={'pointer'}
-          >
-            <Box className='grid__body'>
-              <Flex w={'100%'} justifyContent={'space-between'}>
-                <Heading
-                  className='grid__title'
-                  py={2}
-                  fontSize={{ base: 'xl', md: '2xl' }}
-                  noOfLines={2}
-                >
-                  {d.title}
-                </Heading>
-                {d.featured === 'TRUE' && (
-                  <Box ml={4} minW={'32px'}>
-                    <HiOutlineBadgeCheck size='28px' />
-                  </Box>
-                )}
-              </Flex>
-              <Flex
-                mt={'auto'}
-                w={'100%'}
-                alignItems={'center'}
-                justifyContent={'space-between'}
+          <Box className='grid__body'>
+            <Flex w={'100%'} justifyContent={'space-between'}>
+              <Heading
+                className='grid__title'
+                py={2}
+                fontSize={{ base: 'xl', md: '2xl' }}
+                noOfLines={2}
               >
-                <Box>
-                  {d.category && (
-                    <Text as='span' className='grid__tag' fontSize={'xs'}>
-                      #{d.category}
-                    </Text>
-                  )}
-                  {d.featured === 'TRUE' && (
-                    <Text as='span' className='grid__badge' fontSize={'xs'}>
-                      #評審作品
-                    </Text>
-                  )}
+                {d.title}
+              </Heading>
+              {d.featured === 'TRUE' && (
+                <Box ml={4} minW={'32px'}>
+                  <HiOutlineBadgeCheck size='28px' />
                 </Box>
-                <Box className='grid__vote' align-self={'flex-end'}>
-                  <Vote imageId={d.id} count={d.count} />
-                </Box>
-              </Flex>
-            </Box>
-            <Box className={`${pulsing ? 'pulse' : ''} loadable`}>
-              <motion.img
-                initial={{ height: '6rem', opacity: 0 }}
-                animate={{
-                  height: imageLoading ? '6rem' : 'auto',
-                  opacity: imageLoading ? 0 : 1,
-                }}
-                transition={
-                  ({ transform: { delay: 0, duration: 0.3 } },
-                  { height: { delay: 0, duration: 0.4 } },
-                  { opacity: { delay: 0.5, duration: 0.4 } })
-                }
-                onLoad={imageLoaded}
-                width='100%'
-                src={d.qEco}
-                alt={d.title}
-                loading='lazy'
-              />
-            </Box>
-          </PhotoItem>
-        </LazyLoad>
+              )}
+            </Flex>
+            <Flex
+              mt={'auto'}
+              w={'100%'}
+              alignItems={'center'}
+              justifyContent={'space-between'}
+            >
+              <Box>
+                {d.category && (
+                  <Text as='span' className='grid__tag' fontSize={'xs'}>
+                    #{d.category}
+                  </Text>
+                )}
+                {d.featured === 'TRUE' && (
+                  <Text as='span' className='grid__badge' fontSize={'xs'}>
+                    #評審作品
+                  </Text>
+                )}
+              </Box>
+              <Box className='grid__vote' align-self={'flex-end'}>
+                <Vote imageId={d.id} count={d.count} />
+              </Box>
+            </Flex>
+          </Box>
+          <Box>
+          {/** https://web.dev/browser-level-image-lazy-loading/ */}
+            <Image src={d.qEco} loading={'lazy'}/>
+            {/* <motion.img
+          initial={{ height: '6rem', opacity: 0 }}
+          animate={{
+            height: imageLoading ? '6rem' : 'auto',
+            opacity: imageLoading ? 0 : 1,
+          }}
+          transition={
+            ({ transform: { delay: 0, duration: 0.3 } },
+            { height: { delay: 0, duration: 0.4 } },
+            { opacity: { delay: 0.5, duration: 0.4 } })
+          }
+          onLoad={imageLoaded}
+          width='100%'
+          src={d.qEco}
+          alt={d.title}
+          loading='lazy'
+        /> */}
+          </Box>
+        </PhotoItem>
       ))}
-    </Box>
+    </Masonry>
   )
 }
 
