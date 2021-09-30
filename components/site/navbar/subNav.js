@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Box, Flex, HStack, Select, Text, Stack } from '@chakra-ui/react'
 import Link from 'next/link'
@@ -32,6 +32,7 @@ const NavLink = ({ children, href, active }) => {
 }
 
 function WithAction({ setFilter, setSorting, setGrid, grid, sorting }) {
+  const [type, setType] = useState('sortByDate')
   const router = useRouter()
   let { slug } = router.query
 
@@ -41,51 +42,12 @@ function WithAction({ setFilter, setSorting, setGrid, grid, sorting }) {
     }
   }, [slug])
 
-  const sortByDateIcon = [
-    {
-      component: () => (
-        <FaSortAmountDown
-          fontSize={20}
-          onClick={() => setSorting('defaultDESC')}
-          color={sorting === 'defaultDESC' ? '#000' : '#D2D2D2'}
-        />
-      ),
-      value: 'defaultDESC',
-    },
-    {
-      component: () => (
-        <FaSortAmountUpAlt
-          fontSize={20}
-          onClick={() => setSorting('defaultASC')}
-          color={sorting === 'defaultASC' ? '#000' : '#D2D2D2'}
-        />
-      ),
-      value: 'defaultASC',
-    },
-  ]
+  const handleChangeType = (value) => {
+    value === 'sortByDate' ? setSorting('defaultDESC') : setSorting('votesDESC')
+    setType(value)
+  }
 
-  const sortByVotesIcon = [
-    {
-      component: () => (
-        <FaSortNumericDownAlt
-          fontSize={20}
-          onClick={() => setSorting('votesDESC')}
-          color={sorting === 'votesDESC' ? '#000' : '#D2D2D2'}
-        />
-      ),
-      value: 'votesDESC',
-    },
-    {
-      component: () => (
-        <FaSortNumericUp
-          fontSize={20}
-          onClick={() => setSorting('votesASC')}
-          color={sorting === 'votesASC' ? '#000' : '#D2D2D2'}
-        />
-      ),
-      value: 'votesASC',
-    },
-  ]
+  console.log(`sorting-`,sorting)
 
   return (
     <>
@@ -96,7 +58,7 @@ function WithAction({ setFilter, setSorting, setGrid, grid, sorting }) {
             as={'nav'}
             display={{ base: 'flex', md: 'flex' }}
             alignItems={'center'}
-            spacing={6}
+            spacing={{base: 2, sm: 6}}
           >
             {CATEGORY.map((d) => {
               slug = slug ? slug : 'all'
@@ -109,30 +71,45 @@ function WithAction({ setFilter, setSorting, setGrid, grid, sorting }) {
           </HStack>
           <Box>
             <Stack direction={'row'}>
-              <Stack direction={'row'}>
-                {sortByDateIcon.map((d) => (
-                  <Box key={d.value}>{d.component()}</Box>
-                ))}
-              </Stack>
-              <Stack direction={'row'}>
-                {sortByVotesIcon.map((d) => (
-                  <Box key={d.value}>{d.component()}</Box>
-                ))}
-              </Stack>
+              <Select 
+                fontSize="sm"
+                size="sm" 
+                onChange={(e)=>handleChangeType(e.target.value)} 
+                value={type}
+                _focus={{ boxShadow: "none", fontSize: "sm" }}>
+                <option value="sortByDate">上載日期</option>
+                <option value="sortByType">投票數目</option>
+              </Select>
+              {type === 'sortByDate' && <Stack direction={'row'} pt={2}>
+                {sorting === 'defaultDESC' ? <FaSortAmountUpAlt
+                  fontSize={20}
+                  onClick={() => setSorting('defaultASC')}
+                /> :
+                <FaSortAmountDown
+                  fontSize={20}
+                  onClick={() => setSorting('defaultDESC')}
+                />
+                }
+              </Stack>}
+              {type === 'sortByType' &&  <Stack direction={'row'} pt={2}>
+                {sorting === 'votesDESC' ? <FaSortNumericUp
+                  fontSize={20}
+                  onClick={() => setSorting('votesASC')}
+                /> :
+                <FaSortNumericDownAlt
+                  fontSize={20}
+                  onClick={() => setSorting('votesDESC')}
+                />
+                }
+              </Stack>}
             </Stack>
-            {/* <Select size="sm" onChange={(e)=>setSorting(e.target.value)} value={sorting}>
-              <option value="defaultDESC">按日期降序</option>
-              <option value="defaultASC">按日期升序</option>
-              <option value="votesDESC">按投票降序</option>
-              <option value="votesASC">按投票升序</option>
-            </Select> */}
           </Box>
-          <Stack d={{ base: 'flex', md: 'none' }} pl={4}>
-            <Box>
+          <Stack d={{ base: 'flex', md: 'none' }} pl={2}>
+            <Box pt={1} fontSize={18}>
               {grid === 'multi' ? (
-                <BsGrid1X2Fill onClick={() => setGrid('normal')} />
+                <BsGrid1X2Fill onClick={() => setGrid('normal')}/>
               ) : (
-                <BsGrid1X2 onClick={() => setGrid('multi')} />
+                <BsGrid1X2 onClick={() => setGrid('multi')}/>
               )}
             </Box>
           </Stack>
