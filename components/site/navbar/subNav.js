@@ -47,8 +47,6 @@ function WithAction({ setFilter, setSorting, setGrid, grid, sorting }) {
     setType(value)
   }
 
-  console.log(`sorting-`,sorting)
-
   return (
     <>
       <Box bg={'gray.100'} px={4}>
