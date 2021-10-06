@@ -15,7 +15,7 @@ export function* getPhoto() {
           qEco: d.url.replace("/upload/", "/upload/q_25/"),
           qBest: d.url.replace("/upload/", "/upload/q_auto:best/"),
           newTimestamp: new Date(d.timestamp).getTime()
-        }))
+        })).sort((a,b)=> b.newTimestamp - a.newTimestamp)
       }
       return resData
     })

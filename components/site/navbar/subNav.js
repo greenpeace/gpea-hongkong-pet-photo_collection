@@ -79,22 +79,22 @@ function WithAction({ setFilter, setSorting, setGrid, grid, sorting }) {
                 <option value="sortByType">投票數目</option>
               </Select>
               {type === 'sortByDate' && <Stack direction={'row'} pt={2}>
-                {sorting === 'defaultDESC' ? <FaSortAmountUpAlt
+                {sorting === 'defaultDESC' ? <FaSortAmountDown
                   fontSize={20}
                   onClick={() => setSorting('defaultASC')}
                 /> :
-                <FaSortAmountDown
+                <FaSortAmountUpAlt
                   fontSize={20}
                   onClick={() => setSorting('defaultDESC')}
                 />
                 }
               </Stack>}
               {type === 'sortByType' &&  <Stack direction={'row'} pt={2}>
-                {sorting === 'votesDESC' ? <FaSortNumericUp
+                {sorting === 'votesDESC' ? <FaSortNumericDownAlt
                   fontSize={20}
                   onClick={() => setSorting('votesASC')}
                 /> :
-                <FaSortNumericDownAlt
+                <FaSortNumericUp
                   fontSize={20}
                   onClick={() => setSorting('votesDESC')}
                 />
