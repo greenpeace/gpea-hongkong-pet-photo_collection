@@ -8,7 +8,7 @@ import * as gridActions from 'store/actions/action-types/grid-actions'
 import { BsGrid1X2Fill, BsGrid1X2 } from 'react-icons/bs'
 import {
   FaSortNumericDownAlt,
-  FaSortNumericUp,
+  FaSortNumericDown,
   FaSortAmountDown,
   FaSortAmountUpAlt,
 } from 'react-icons/fa'
@@ -56,7 +56,7 @@ function WithAction({ setFilter, setSorting, setGrid, grid, sorting }) {
             as={'nav'}
             display={{ base: 'flex', md: 'flex' }}
             alignItems={'center'}
-            spacing={{base: 2, sm: 6}}
+            spacing={{ base: 2, sm: 6 }}
           >
             {CATEGORY.map((d) => {
               slug = slug ? slug : 'all'
@@ -69,45 +69,54 @@ function WithAction({ setFilter, setSorting, setGrid, grid, sorting }) {
           </HStack>
           <Box>
             <Stack direction={'row'}>
-              <Select 
-                fontSize="sm"
-                size="sm" 
-                onChange={(e)=>handleChangeType(e.target.value)} 
+              <Select
+                fontSize='sm'
+                size='sm'
+                onChange={(e) => handleChangeType(e.target.value)}
                 value={type}
-                _focus={{ boxShadow: "none", fontSize: "sm" }}>
-                <option value="sortByDate">上載日期</option>
-                <option value="sortByType">投票數目</option>
+                _focus={{ boxShadow: 'none', fontSize: 'sm' }}
+              >
+                <option value='sortByDate'>上載日期</option>
+                <option value='sortByType'>投票數目</option>
               </Select>
-              {type === 'sortByDate' && <Stack direction={'row'} pt={2}>
-                {sorting === 'defaultDESC' ? <FaSortAmountDown
-                  fontSize={20}
-                  onClick={() => setSorting('defaultASC')}
-                /> :
-                <FaSortAmountUpAlt
-                  fontSize={20}
-                  onClick={() => setSorting('defaultDESC')}
-                />
-                }
-              </Stack>}
-              {type === 'sortByType' &&  <Stack direction={'row'} pt={2}>
-                {sorting === 'votesDESC' ? <FaSortNumericDownAlt
-                  fontSize={20}
-                  onClick={() => setSorting('votesASC')}
-                /> :
-                <FaSortNumericUp
-                  fontSize={20}
-                  onClick={() => setSorting('votesDESC')}
-                />
-                }
-              </Stack>}
+              {type === 'sortByDate' && (
+                <Stack direction={'row'} pt={2}>
+                  {sorting === 'defaultDESC' ? (
+                    <FaSortAmountDown
+                      fontSize={20}
+                      onClick={() => setSorting('defaultASC')}
+                    />
+                  ) : (
+                    <FaSortAmountUpAlt
+                      fontSize={20}
+                      onClick={() => setSorting('defaultDESC')}
+                    />
+                  )}
+                </Stack>
+              )}
+              {type === 'sortByType' && (
+                <Stack direction={'row'} pt={2}>
+                  {sorting === 'votesDESC' ? (
+                    <FaSortNumericDownAlt
+                      fontSize={20}
+                      onClick={() => setSorting('votesASC')}
+                    />
+                  ) : (
+                    <FaSortNumericDown
+                      fontSize={20}
+                      onClick={() => setSorting('votesDESC')}
+                    />
+                  )}
+                </Stack>
+              )}
             </Stack>
           </Box>
           <Stack d={{ base: 'flex', md: 'none' }} pl={2}>
             <Box pt={1} fontSize={18}>
               {grid === 'multi' ? (
-                <BsGrid1X2Fill onClick={() => setGrid('normal')}/>
+                <BsGrid1X2Fill onClick={() => setGrid('normal')} />
               ) : (
-                <BsGrid1X2 onClick={() => setGrid('multi')}/>
+                <BsGrid1X2 onClick={() => setGrid('multi')} />
               )}
             </Box>
           </Stack>
