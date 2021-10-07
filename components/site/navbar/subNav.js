@@ -54,9 +54,12 @@ function WithAction({ setFilter, setSorting, setGrid, grid, sorting }) {
           <HStack
             flex={1}
             as={'nav'}
-            display={{ base: 'flex', md: 'flex' }}
+            display={{ base: 'flex' }}
             alignItems={'center'}
+            justifyContent={'space-around'}
             spacing={{ base: 2, sm: 6 }}
+            marginRight={2}
+            maxWidth={'280px'}
           >
             {CATEGORY.map((d) => {
               slug = slug ? slug : 'all'
