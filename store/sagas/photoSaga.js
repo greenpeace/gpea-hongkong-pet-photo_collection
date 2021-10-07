@@ -12,8 +12,8 @@ export function* getPhoto() {
         ...data,
         records: data.records.map(d=>({
           ...d,
-          qEco: d.url.replace("/upload/", "/upload/q_25/"),
-          qBest: d.url.replace("/upload/", "/upload/q_auto:best/"),
+          qEco: d.url.replace("/upload/", "/upload/c_fit,w_480,q_25/"),
+          qBest: d.url.replace("/upload/", "/upload/c_fit,w_1280,q_auto:best/"),
           newTimestamp: new Date(d.timestamp).getTime()
         })).sort((a,b)=> b.newTimestamp - a.newTimestamp)
       }
