@@ -5,7 +5,7 @@ import * as photoActions from 'store/actions/action-types/photo-actions'
 
 export function* getPhoto() {
   try {
-    const photos = yield call(() => axios.get(`${process.env.G_SHEET}/photo-collection?q={"published": "TRUE"}`)
+    const photos = yield call(() => axios.get(`${process.env.G_SHEET}/photo-collection?q={"published": "TRUE"}&limit=999`)
     .then((response) => response.data)
     .then((data) => {
       const resData = {

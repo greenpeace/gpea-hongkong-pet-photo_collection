@@ -6,16 +6,50 @@ import * as photoActions from 'store/actions/action-types/photo-actions'
 
 export function* getVoting() {
   try {
-    const state = yield select();
-    const voting = yield call(() => axios.get(`${process.env.G_SHEET}/photo-collection-voting`)
-    .then((response) => {
-      return response.data.records
+    let fetchURLs = [];
+    let voteResult = [];
+    const getVotingTotal = yield call(() => axios.get(`${process.env.G_SHEET}/photo-collection-voting?limit=1`)
+    .then((response) => {      
+      return response.data.totalCount
     })
     .catch(function (error) {
       console.log(error);
     }));
 
-    const count = _(voting)
+    for (let i = 0; i < getVotingTotal; i+=100) {
+      fetchURLs = [...fetchURLs, `${process.env.G_SHEET}/photo-collection-voting?offset=${i}`]
+    }
+
+    const allVoting = yield call(() => axios.all(
+      fetchURLs.map(d =>axios.get(d))
+    )
+
+    // const allVoting = yield call(() => axios.all([
+    //   //TODO:
+    //   axios.get(`${process.env.G_SHEET}/photo-collection-voting`), 
+    //   axios.get(`${process.env.G_SHEET}/photo-collection-voting?offset=100`),
+    //   axios.get(`${process.env.G_SHEET}/photo-collection-voting?offset=200`)
+    // ])
+    .then(axios.spread(async (...res) => {
+      await res.map(d => voteResult.push(d.data.records))
+      return voteResult.flat(1)
+    })).catch(function (error) {
+      console.log(error);
+    }));
+
+    const state = yield select();
+    // const voting = yield call(() => axios.get(`${process.env.G_SHEET}/photo-collection-voting`)
+    // .then((response) => {      
+    //   return response.data.records
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // }));
+
+    // console.log(`voting--`,voting)
+    // console.log(`allVoting--`,allVoting)
+
+    const count = _(allVoting)
     .groupBy('id')
     .map((items, id) => {
       return ({ id, count: items.length })
