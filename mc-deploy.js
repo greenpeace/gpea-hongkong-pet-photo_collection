@@ -41,7 +41,7 @@ const buildFolder = path.join(__dirname, 'out')
 // New websign endpoint can accept optional fields
 const EndpointURL = ''
 const CampaignId = ''
-const interests = ['General'] // Arctic, Climate, Forest, Health, Oceans, Plastics
+const interests = ['Health'] // Arctic, Climate, Forest, Health, Oceans, Plastics
 const ftpConfigName = 'change_hk' // refer to ~/.npm-en-uploader-secret
 const ftpRemoteDir = '/app/photo-collection'
 
