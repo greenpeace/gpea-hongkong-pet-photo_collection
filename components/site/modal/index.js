@@ -13,7 +13,7 @@ import {
   Flex,
   Fade,
   CloseButton,
-  Wrap,
+  Wrap
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { connect } from 'react-redux'
@@ -62,6 +62,7 @@ function ModalWrapper({
       return
     }
 
+    setContent(null)
     const { id } = modal
     const getPhoto = await photo.find((d) => d.id === id)
     setContent(getPhoto)
@@ -69,6 +70,7 @@ function ModalWrapper({
 
   const handleCloseModal = () => {
     closeModal()
+    setImageLoading(true)
     const { slug } = router.query
     if (slug) {
       router.push(
@@ -159,8 +161,8 @@ function ModalWrapper({
                   justifyContent={'center'}
                   backgroundColor={'black'}
                 >
-                  <Fade in={!imageLoading}>
-                    <Box className='photo-wrapper'>
+                  <Fade in>
+                    <Box className='photo-wrapper' minH={40}>
                       <Img
                         className='photo'
                         src={content.qBest}
@@ -168,13 +170,13 @@ function ModalWrapper({
                         width='100%'
                         maxH={`75vh`}
                         loading='lazy'
-                        onLoad={() =>
-                          setTimeout(() => setImageLoading(false), 1000)
-                        }
+                        onLoad={() => setImageLoading(false)}
+                        pos={`relative`}
+                        zIndex={2}
                       />
-                      <Box className='photo-credit' py={1} px={2}>
+                      {!imageLoading && <Box className='photo-credit' py={1} px={2}>
                         <Text fontSize={'sm'}>©{content.author}</Text>
-                      </Box>
+                      </Box>}
                     </Box>
                   </Fade>
                 </Flex>
