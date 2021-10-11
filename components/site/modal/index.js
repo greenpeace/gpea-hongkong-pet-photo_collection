@@ -13,7 +13,7 @@ import {
   Flex,
   Fade,
   CloseButton,
-  Wrap
+  Wrap,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { connect } from 'react-redux'
@@ -140,14 +140,14 @@ function ModalWrapper({
             <Stack pos='relative' maxW={'1200px'} h={'100%'}>
               <Flex
                 pos='sticky'
-                zIndex={'1'}
+                zIndex={'3'}
                 top='0'
                 flexDirection={`row-reverse`}
               >
                 <Box
                   m={2}
                   pos='relative'
-                  zIndex={'1'}
+                  zIndex={'99'}
                   rounded={'full'}
                   backgroundColor={'white'}
                 >
@@ -174,9 +174,11 @@ function ModalWrapper({
                         pos={`relative`}
                         zIndex={2}
                       />
-                      {!imageLoading && <Box className='photo-credit' py={1} px={2}>
-                        <Text fontSize={'sm'}>©{content.author}</Text>
-                      </Box>}
+                      {!imageLoading && (
+                        <Box className='photo-credit' py={1} px={2}>
+                          <Text fontSize={'sm'}>©{content.author}</Text>
+                        </Box>
+                      )}
                     </Box>
                   </Fade>
                 </Flex>
