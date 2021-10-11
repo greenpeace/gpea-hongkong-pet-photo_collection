@@ -166,10 +166,10 @@ function Index({ data, filter, grid, sorting }) {
             </Flex>
           </Box>
           <Box>
-          <LazyLoad height={200} offset={10} once>
-            {/** https://web.dev/browser-level-image-lazy-loading/ */}
-            <Image src={d.qEco} loading={'lazy'} />
-          </LazyLoad>
+            <LazyLoad height={200} offset={10} once>
+              {/** https://web.dev/browser-level-image-lazy-loading/ */}
+              <Image src={d.qEco} alt={d.title} loading={'lazy'} />
+            </LazyLoad>
             {/* <motion.img
           initial={{ height: '6rem', opacity: 0 }}
           animate={{
