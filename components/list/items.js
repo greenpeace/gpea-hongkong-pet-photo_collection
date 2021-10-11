@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import * as modalActions from 'store/actions/action-types/modal-actions'
 import styled from 'styled-components'
 import _ from 'lodash'
+import lozad from 'lozad'
 import { motion } from 'framer-motion'
 import LazyLoad from 'react-lazyload'
 import { HiOutlineBadgeCheck } from 'react-icons/Hi'
@@ -165,8 +166,10 @@ function Index({ data, filter, grid, sorting }) {
             </Flex>
           </Box>
           <Box>
+          <LazyLoad height={200} offset={10} once>
             {/** https://web.dev/browser-level-image-lazy-loading/ */}
             <Image src={d.qEco} loading={'lazy'} />
+          </LazyLoad>
             {/* <motion.img
           initial={{ height: '6rem', opacity: 0 }}
           animate={{

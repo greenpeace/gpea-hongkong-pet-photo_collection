@@ -132,6 +132,7 @@ function ModalWrapper({
       size={'4xl'}
       trapFocus={false}
       closeOnEsc={true}
+      motionPreset="none"
     >
       <ModalOverlay />
       {content && (
