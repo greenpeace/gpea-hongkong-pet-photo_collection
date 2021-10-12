@@ -1,4 +1,4 @@
-import { AiFillHeart, AiOutlineHeart  } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import React, { useEffect, useState } from 'react';
 import { Flex, Box, Text } from '@chakra-ui/react';
 import { connect } from 'react-redux';
@@ -14,9 +14,13 @@ function Index({ imageId, voting, storeVoting, count }) {
 
   return (
     <Flex direction={{ base: 'row' }} align={`center`}>
-      {storeVoting.indexOf(imageId) !== -1 ? <AiFillHeart /> : <AiOutlineHeart/>}
+      {storeVoting.indexOf(imageId) !== -1 ? (
+        <AiFillHeart />
+      ) : (
+        <AiOutlineHeart />
+      )}
       <Box px={2}>
-        <Text fontWeight={700}>{count ? count : 0}</Text>
+        {count && count > 0 && <Text fontWeight={700}>{count}</Text>}
       </Box>
     </Flex>
   );

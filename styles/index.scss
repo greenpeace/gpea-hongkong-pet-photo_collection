@@ -204,6 +204,7 @@ img {
 .photo-wrapper {
   position: relative;
   .photo-credit {
+    z-index: 99;
     position: absolute;
     right: 0;
     bottom: 0;
