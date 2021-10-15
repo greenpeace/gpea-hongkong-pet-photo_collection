@@ -1,12 +1,12 @@
 // 404.js
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 export default function FourOhFour() {
   const router = useRouter()
   useEffect(() => {
     router.push('/')
-  }, [])
+  })
 
   return (
     <>
