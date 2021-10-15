@@ -35,6 +35,19 @@ body {
   scroll-behavior: smooth;
 }
 
+html {
+  font-size: 100%;
+} /*16px*/
+
+body {
+  font-family: 'Noto Sans TC', sans-serif !important;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.022em;
+  font-style: normal;
+}
+
 #__next {
   flex-direction: column;
 }
