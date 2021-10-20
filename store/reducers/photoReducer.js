@@ -1,7 +1,8 @@
 import * as photoActions from 'store/actions/action-types/photo-actions'
 
 const initState = {
-  data: []
+  data: [],
+  total: 0
 }
 
 const photoReducer = (state = initState, action) => {
@@ -26,6 +27,7 @@ const photoReducer = (state = initState, action) => {
         ...state,
         data: action.data,
         // voting: action.voting,
+        total: action.total,
         lastAction: action.type
     }
 
@@ -35,6 +37,14 @@ const photoReducer = (state = initState, action) => {
         data: action.data,
         lastAction: action.type
     }
+
+    case photoActions.UPDATE_PHOTO:
+      return {
+        ...state,
+        data: action.data,
+        lastAction: action.type
+    }
+    
 
 
 
