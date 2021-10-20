@@ -1,6 +1,6 @@
-import React from 'react'
-import Head from 'next/head'
-import Wrapper from 'components/site/wrapper'
+import React from 'react';
+import Head from 'next/head';
+import Wrapper from 'components/site/wrapper';
 import {
   Box,
   Center,
@@ -8,28 +8,29 @@ import {
   List,
   OrderedList,
   ListItem,
+  UnorderedList,
   Heading,
   Stack,
   Text,
   Wrap,
   WrapItem,
   Image,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
 
-import PageContainer from '@/components/site/container/pageContainer'
-import ContentContainer from '@/components/site/container/contentContainer'
-import TopBanner from '@/components/site/banner/banner'
-import UploadButton from '@/components/site/button/uploadButton'
+import PageContainer from '@/components/site/container/pageContainer';
+import ContentContainer from '@/components/site/container/contentContainer';
+import TopBanner from '@/components/site/banner/banner';
+import UploadButton from '@/components/site/button/uploadButton';
 
-import data from '../data'
+import data from '../data';
 
 const RuleHeadline = ({ children }) => {
   return (
-    <Text fontWeight={500} fontSize={'xl'} mb={4}>
+    <Text fontWeight={700} color={'brand.500'} fontSize={'2xl'} mb={4}>
       {children}
     </Text>
-  )
-}
+  );
+};
 
 export default function Index() {
   return (
@@ -39,8 +40,8 @@ export default function Index() {
           比賽詳情 - 山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 | 香港
         </title>
         <meta
-          name='description'
-          content='捕捉大嶼獨有光景，立即上載你的作品，贏取參與「與大師同攝」延伸活動的機會，各組別優勝作品將有機會刊登於綠色和平年曆，並於綠色和平網上平台發佈，與香港20萬讀者分享。'
+          name="description"
+          content="捕捉大嶼獨有光景，立即上載你的作品，贏取參與「與大師同攝」延伸活動的機會，各組別優勝作品將有機會刊登於綠色和平年曆，並於綠色和平網上平台發佈，與香港20萬讀者分享。"
         />
       </Head>
       <TopBanner
@@ -150,9 +151,16 @@ export default function Index() {
           <RuleHeadline>{data.rules.prizeHeadline}</RuleHeadline>
           <Box>
             <List spacing={4}>
-              {data.rules.prizes.map((c) => (
-                <ListItem key={c}>
-                  <Text fontSize={'md'}>{c}</Text>
+              {data.rules.prizeList.map((c, i) => (
+                <ListItem key={i}>
+                  <RuleHeadline>{c.headline}</RuleHeadline>
+                  <UnorderedList spacing={2}>
+                    {c.items.map((item, i) => (
+                      <ListItem key={i}>
+                        <Text fontSize={'sm'}>{item}</Text>
+                      </ListItem>
+                    ))}
+                  </UnorderedList>
                 </ListItem>
               ))}
             </List>
@@ -160,7 +168,7 @@ export default function Index() {
         </ContentContainer>
       </PageContainer>
     </>
-  )
+  );
 }
 
-Index.getLayout = (page) => <Wrapper>{page}</Wrapper>
+Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;

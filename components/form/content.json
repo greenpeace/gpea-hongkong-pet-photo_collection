@@ -10,7 +10,7 @@
   "label_year_of_birth_optional": "出生年份（選填）",
   "label_description": "作品標題",
   "placeholder_description": "作品標題（可包括拍攝地點、時間及其他相關資訊）",
-  "label_story": "作品說明",
+  "label_story": "作品說明（選填）",
   "placeholder_story": "作品說明（可包括您堅守大嶼的原因）",
   "label_file": "圖片",
   "select": "請選擇",

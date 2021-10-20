@@ -7,22 +7,23 @@ import {
   ModalContent,
   Button,
   Stack,
+  Skeleton,
   Box,
-  Img,
+  Image,
   Flex,
   Fade,
   CloseButton,
   Wrap,
-} from '@chakra-ui/react'
-import { useRouter } from 'next/router'
-import { connect } from 'react-redux'
-import React, { useEffect, useState } from 'react'
-import _ from 'lodash'
-import * as modalActions from 'store/actions/action-types/modal-actions'
-import * as votingActions from 'store/actions/action-types/voting-actions'
-import * as storeVotingActions from 'store/actions/action-types/store-voting-actions'
-import { IconButton } from '@chakra-ui/react'
-import { AiOutlineShareAlt, AiOutlineCloudUpload } from 'react-icons/ai'
+} from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import { connect } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import _ from 'lodash';
+import * as modalActions from 'store/actions/action-types/modal-actions';
+import * as votingActions from 'store/actions/action-types/voting-actions';
+import * as storeVotingActions from 'store/actions/action-types/store-voting-actions';
+import { IconButton } from '@chakra-ui/react';
+import { AiOutlineShareAlt, AiOutlineCloudUpload } from 'react-icons/ai';
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -30,7 +31,7 @@ import {
   FacebookIcon,
   TwitterIcon,
   WhatsappIcon,
-} from 'react-share'
+} from 'react-share';
 
 function ModalWrapper({
   modal,
@@ -41,33 +42,36 @@ function ModalWrapper({
   storeVoting,
   storeUserVotes,
 }) {
-  const [shareUrl, setShareUrl] = useState()
-  const [content, setContent] = useState(modal.content)
-  const router = useRouter()
+  const [imageLoading, setImageLoading] = useState(true);
+  const [shareUrl, setShareUrl] = useState();
+  const [content, setContent] = useState(modal.content);
+  const router = useRouter();
 
   const localUser =
     typeof window !== 'undefined'
       ? JSON.parse(localStorage.getItem(`greenpeacePhotoCollection`))
-      : null
+      : null;
 
   useEffect(() => {
-    setShareUrl(document.location.href)
+    setShareUrl(document.location.href);
     // console.log(shareUrl)
-  }, [])
+  }, []);
 
   useEffect(async () => {
     if (!photo) {
-      return
+      return;
     }
 
-    const { id } = modal
-    const getPhoto = await photo.find((d) => d.id === id)
-    setContent(getPhoto)
-  }, [modal.id])
+    setContent(null);
+    const { id } = modal;
+    const getPhoto = await photo.find((d) => d.id === id);
+    setContent(getPhoto);
+  }, [modal.id]);
 
   const handleCloseModal = () => {
-    closeModal()
-    const { slug } = router.query
+    closeModal();
+    setImageLoading(true);
+    const { slug } = router.query;
     if (slug) {
       router.push(
         {
@@ -76,7 +80,7 @@ function ModalWrapper({
         },
         undefined,
         { shallow: true }
-      )
+      );
     } else {
       router.push(
         {
@@ -84,9 +88,9 @@ function ModalWrapper({
         },
         undefined,
         { shallow: true }
-      )
+      );
     }
-  }
+  };
 
   const handleVoting = () => {
     if (localUser) {
@@ -97,12 +101,12 @@ function ModalWrapper({
           votes: '1',
           userId: localUser.userId || '',
         },
-      ]
-      const storeData = [...storeVoting, content.id]
-      vote(gSheetFormData)
-      storeUserVotes(storeData)
+      ];
+      const storeData = [...storeVoting, content.id];
+      vote(gSheetFormData);
+      storeUserVotes(storeData);
     }
-  }
+  };
 
   const NavigatorShare = (title, text, url) => {
     if (navigator.share) {
@@ -113,11 +117,11 @@ function ModalWrapper({
           url: url.value,
         })
         .then(() => console.log('Successful share'))
-        .catch((error) => console.log('Error sharing', error))
+        .catch((error) => console.log('Error sharing', error));
     } else {
-      console.log('Web Share API is not supported in your browser.')
+      console.log('Web Share API is not supported in your browser.');
     }
-  }
+  };
 
   return (
     <Modal
@@ -127,70 +131,83 @@ function ModalWrapper({
       closeOnOverlayClick={true}
       size={'4xl'}
       trapFocus={false}
+      closeOnEsc={true}
+      motionPreset="none"
     >
       <ModalOverlay />
       {content && (
         <Fade in={modal.isOpen}>
           <ModalContent>
-            <Stack pos='relative' maxW={'1200px'}>
+            <Stack pos="relative" maxW={'1200px'} h={'100%'}>
               <Flex
-                pos='sticky'
-                zIndex={'1'}
-                top='0'
+                pos="sticky"
+                zIndex={'3'}
+                top="0"
                 flexDirection={`row-reverse`}
               >
                 <Box
                   m={2}
-                  pos='relative'
-                  zIndex={'1'}
+                  pos="relative"
+                  zIndex={'99'}
                   rounded={'full'}
                   backgroundColor={'white'}
                 >
-                  <CloseButton size='lg' onClick={() => handleCloseModal()} />
+                  <CloseButton size="lg" onClick={() => handleCloseModal()} />
                 </Box>
               </Flex>
               <Box>
                 <Flex
-                  className='photo-container'
+                  className="photo-container"
                   alignItems={'center'}
                   justifyContent={'center'}
                   backgroundColor={'black'}
                 >
-                  <Box className='photo-wrapper'>
-                    <Img
-                      className='photo'
-                      src={content.url}
-                      alt={content.title}
-                      maxH={`75vh`}
-                      loading='lazy'
-                    />
-                    <Box className='photo-credit' py={1} px={2}>
-                      <Text fontSize={'sm'}>©{content.author}</Text>
+                  <Fade in={!imageLoading}>
+                    <Box className="photo-wrapper" minH={40}>
+                      <Image
+                        src={content.qBest}
+                        alt={content.title}
+                        width="100%"
+                        maxH={`75vh`}
+                        loading="lazy"
+                        onLoad={() => setImageLoading(false)}
+                        pos={`relative`}
+                        zIndex={2}
+                      />
+                      {!imageLoading && (
+                        <Box className="photo-credit" py={1} px={2}>
+                          <Text fontSize={'sm'}>©{content.author}</Text>
+                        </Box>
+                      )}
                     </Box>
-                  </Box>
+                  </Fade>
                 </Flex>
               </Box>
               <Stack
                 direction={'column'}
                 alignItems={'flex-start'}
                 spacing={6}
-                px={4}
-                py={4}
+                px={6}
+                py={6}
               >
                 <Stack
                   w={'full'}
+                  spacing={6}
                   direction={{ base: 'column', md: 'row' }}
                   alignItems={{ base: 'flex-start' }}
                   justifyContent={'space-between'}
                 >
-                  <Wrap flex={1} align='center' py={2} spacing={4}>
-                    <Heading fontSize={'2xl'}>{content.title}</Heading>
+                  <Wrap flex={1} align={'center'} spacing={6}>
+                    <Heading fontSize={'2xl'} minW={'300px'}>
+                      {content.title}
+                    </Heading>
                     <Button
-                      size='md'
+                      size="md"
                       mx={2}
                       px={8}
                       py={4}
-                      colorScheme='green'
+                      colorScheme="green"
+                      backgroundColor="brand.500"
                       onClick={() => handleVoting()}
                       disabled={storeVoting.indexOf(content.id) !== -1}
                     >
@@ -199,19 +216,19 @@ function ModalWrapper({
                         : `投票`}
                     </Button>
                   </Wrap>
-                  <Wrap align='center' my={4} py={2} spacing={4}>
+                  <Wrap align="center" spacing={4}>
                     <IconButton
-                      aria-label='Share 分享'
+                      aria-label="Share 分享"
                       isRound
                       w={'28px'}
-                      variant='outline'
+                      variant="outline"
                       icon={<AiOutlineShareAlt />}
                       onClick={() => {
                         NavigatorShare(
                           content.title,
                           content.description,
                           shareUrl
-                        )
+                        );
                       }}
                     />
                     <FacebookShareButton url={shareUrl} quote={content.title}>
@@ -226,7 +243,7 @@ function ModalWrapper({
                   </Wrap>
                 </Stack>
 
-                <Stack direction='row' pt={4} spacing={2} color={'gray.700'}>
+                <Stack direction="row" spacing={2} color={'gray.700'}>
                   <Text as={'span'} fontSize={'sm'}>
                     作者：
                     {content.author}
@@ -236,42 +253,88 @@ function ModalWrapper({
                   </Text>
                 </Stack>
 
-                <Stack py={4}>
+                <Stack>
                   {content.description && (
                     <Box>
-                      <Text as='p' lineHeight={'2'} fontSize='sm'>
-                        {content.description}
+                      <Text
+                        as="h3"
+                        lineHeight={'2'}
+                        fontSize={'md'}
+                        px={4}
+                        my={4}
+                        borderLeft={'4px'}
+                        borderColor={'brand.500'}
+                      >
+                        作品說明
+                      </Text>
+                      <Text
+                        as="p"
+                        lineHeight={'1.7'}
+                        fontSize="sm"
+                        style={{ whiteSpace: 'pre-line' }}
+                      >
+                        {`${content.description}`}
                       </Text>
                     </Box>
                   )}
                   {content.story && (
                     <Box>
-                      <Text as='p' lineHeight={'2'} fontSize='sm'>
-                        {content.story}
+                      <Text
+                        as="h3"
+                        lineHeight={'2'}
+                        fontSize={'md'}
+                        px={4}
+                        my={4}
+                        borderLeft={'4px'}
+                        borderColor={'brand.500'}
+                      >
+                        我的大嶼故事
+                      </Text>
+                      <Text
+                        as="p"
+                        lineHeight={'1.7'}
+                        fontSize="sm"
+                        style={{ whiteSpace: 'pre-line' }}
+                      >
+                        {`${content.story}`}
                       </Text>
                     </Box>
                   )}
                 </Stack>
 
-                <Box>
-                  <Text as='span' className='grid__tag'>
+                {content.category && (
+                  <Text as="span" className="grid__tag" fontSize={'xs'}>
                     #{content.category}
                   </Text>
-                </Box>
+                )}
+
+                {content.featured === 'TRUE' && (
+                  <Text as="span" className="grid__badge" fontSize={'xs'}>
+                    #評審作品
+                  </Text>
+                )}
 
                 <Divider my={4} />
 
-                <Text fontSize='sm' color={'gray.700'} pb={6}>
-                  大嶼山坐擁山林、河溪、濕地、草地等多種生態環境，造就出香港的生物多樣性，
-                  綠色和平設立「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。
-                </Text>
+                <Box
+                  py={2}
+                  px={4}
+                  mb={4}
+                  borderLeft={'4px'}
+                  borderColor={'brand.500'}
+                >
+                  <Text fontSize="sm" color={'gray.700'}>
+                    大嶼山坐擁山林、河溪、濕地、草地等多種生態環境，造就出香港的生物多樣性，
+                    綠色和平設立「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海的故事，保留大嶼今昔。
+                  </Text>
+                </Box>
               </Stack>
             </Stack>
           </ModalContent>
         </Fade>
       )}
     </Modal>
-  )
+  );
 }
 
 const mapStateToProps = ({ modal, photo, voting, storeVoting }) => ({
@@ -279,23 +342,23 @@ const mapStateToProps = ({ modal, photo, voting, storeVoting }) => ({
   photo: photo.data,
   voting: voting.data,
   storeVoting: storeVoting.data,
-})
+});
 
 const mapDispatchToProps = (dispatch) => {
   return {
     closeModal: () => {
-      dispatch({ type: modalActions.CLOSE_MODAL })
+      dispatch({ type: modalActions.CLOSE_MODAL });
     },
     openModal: () => {
-      dispatch({ type: modalActions.OPEN_MODAL })
+      dispatch({ type: modalActions.OPEN_MODAL });
     },
     vote: (data) => {
-      dispatch({ type: votingActions.ADD_VOTING, data })
+      dispatch({ type: votingActions.ADD_VOTING, data });
     },
     storeUserVotes: (data) => {
-      dispatch({ type: storeVotingActions.STORE_VOTING, data })
+      dispatch({ type: storeVotingActions.STORE_VOTING, data });
     },
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalWrapper)
+export default connect(mapStateToProps, mapDispatchToProps)(ModalWrapper);

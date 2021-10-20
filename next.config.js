@@ -1,7 +1,7 @@
 // next.config.js
-const isProd = process.env.NODE_ENV === 'production'
-const withPlugins = require('next-compose-plugins')
-const optimizedImages = require('next-optimized-images')
+const isProd = process.env.NODE_ENV === 'production';
+const withPlugins = require('next-compose-plugins');
+const optimizedImages = require('next-optimized-images');
 
 const nextConfig = {
   env: {
@@ -66,6 +66,10 @@ const nextConfig = {
     ],
   },
   basePath: isProd ? '/app/photo-collection' : '',
+  // Use the CDN in production and localhost for development.
+  assetPrefix: isProd
+    ? 'https://change.greenpeace.org.hk/app/photo-collection/'
+    : '',
   trailingSlash: true,
   exportPathMap: async () => ({
     '/': { page: '/' },
@@ -77,17 +81,31 @@ const nextConfig = {
   }),
   generateBuildId: async () => {
     if (process.env.BUILD_ID) {
-      return `${process.env.BUILD_ID}_${new Date().getTime()}`
+      return `${process.env.BUILD_ID}_${new Date().getTime()}`;
     } else {
-      return `next_${new Date().getTime()}`
+      return `next_${new Date().getTime()}`;
     }
   },
   images: {
+    domains: ['change.greenpeace.org.hk'],
     disableStaticImages: true,
   },
-  assetPrefix: isProd
-    ? 'https://change.greenpeace.org.hk/app/photo-collection'
-    : '',
-}
+};
 
-module.exports = withPlugins([optimizedImages], nextConfig)
+module.exports = withPlugins(
+  [
+    optimizedImages,
+    {
+      /* config for next-optimized-images */
+      mozjpeg: {
+        quality: 80,
+      },
+      pngquant: {
+        speed: 3,
+        strip: true,
+        verbose: true,
+      },
+    },
+  ],
+  nextConfig
+);

@@ -1,7 +1,7 @@
-const fs = require('fs')
-const path = require('path')
-const os = require('os')
-const FTPS = require('ftps')
+const fs = require('fs');
+const path = require('path');
+const os = require('os');
+const FTPS = require('ftps');
 /*
 Install the dependencies first
 */
@@ -34,20 +34,20 @@ Install the dependencies first
  */
 
 // definitions
-const buildFolder = path.join(__dirname, 'out')
+const buildFolder = path.join(__dirname, 'out');
 //
 // const EndpointURL = "https://cloud.greenhk.greenpeace.org/petition-pp";
 //
 // New websign endpoint can accept optional fields
-const EndpointURL = ''
-const CampaignId = ''
-const interests = ['General'] // Arctic, Climate, Forest, Health, Oceans, Plastics
-const ftpConfigName = 'change_hk' // refer to ~/.npm-en-uploader-secret
-const ftpRemoteDir = '/app/photo-collection'
+const EndpointURL = '';
+const CampaignId = '';
+const interests = ['Health']; // Arctic, Climate, Forest, Health, Oceans, Plastics
+const ftpConfigName = 'change_hk'; // refer to ~/.npm-en-uploader-secret
+const ftpRemoteDir = '/app/photo-collection';
 
-let indexHtmlFilePath = path.join(buildFolder, 'index.html')
-let fbuf = fs.readFileSync(indexHtmlFilePath)
-let content = fbuf.toString()
+let indexHtmlFilePath = path.join(buildFolder, 'index.html');
+let fbuf = fs.readFileSync(indexHtmlFilePath);
+let content = fbuf.toString();
 
 // copied from https://github.com/greenpeace/gpea-npm-en-uploader/blob/master/upload_folder.js
 /**
@@ -59,11 +59,11 @@ let content = fbuf.toString()
  */
 const upload_folder = function (settings, localDir) {
   // @see https://github.com/Atinux/node-ftps for arguments
-  var ftps = new FTPS(settings)
+  var ftps = new FTPS(settings);
 
   console.info(
     `Sync from \`${localDir}\` to \`${settings.protocol}://${settings.username}@${settings.host}:${settings.remoteDir}\``
-  )
+  );
 
   return ftps
     .mirror({
@@ -77,13 +77,13 @@ const upload_folder = function (settings, localDir) {
       // err will be null (to respect async convention)
       // res is an hash with { error: stderr || null, data: stdout }
       if (err) {
-        console.error(err)
+        console.error(err);
       } else {
-        console.info('Successfully uploaded.')
-        console.info(res.data)
+        console.info('Successfully uploaded.');
+        console.info(res.data);
       }
-    })
-}
+    });
+};
 
 // patch form contents
 // let formTmpl = `<form method="post" action="%%=v(@EndpointURL)=%%" id="mc-form" style="display: none">
@@ -193,9 +193,9 @@ const upload_folder = function (settings, localDir) {
 // console.log('content patched');
 
 // upload the folder to FTP
-let raw = fs.readFileSync(path.join(os.homedir(), '.npm-en-uploader-secret'))
-let secrets = JSON.parse(raw)
+let raw = fs.readFileSync(path.join(os.homedir(), '.npm-en-uploader-secret'));
+let secrets = JSON.parse(raw);
 
-let ftpSetting = secrets[ftpConfigName]
-ftpSetting['remoteDir'] = ftpRemoteDir
-upload_folder(ftpSetting, buildFolder)
+let ftpSetting = secrets[ftpConfigName];
+ftpSetting['remoteDir'] = ftpRemoteDir;
+upload_folder(ftpSetting, buildFolder);

@@ -35,6 +35,19 @@ body {
   scroll-behavior: smooth;
 }
 
+html {
+  font-size: 100%;
+} /*16px*/
+
+body {
+  font-family: 'Noto Sans TC', sans-serif !important;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.022em;
+  font-style: normal;
+}
+
 #__next {
   flex-direction: column;
 }
@@ -53,18 +66,22 @@ a {
 }
 
 .masonry {
+  // display: grid;
   columns: 3;
-  column-gap: 20px;
+  column-gap: 12px;
+  // grid-template-columns: repeat(3, 1fr);
   @media (max-width: 767.98px) {
     columns: 2;
+    // grid-template-columns: repeat(2, 1fr);
   }
   @media (max-width: 575.98px) {
     columns: 1;
+    // grid-template-columns: repeat(1, 1fr);
   }
 }
 
 // 2 columns masonry
-.masonry.multi {
+.multi {
   @media (max-width: 575.98px) {
     column-gap: 12px;
     columns: 2;
@@ -77,6 +94,9 @@ a {
       &__body {
         visibility: hidden;
       }
+    }
+    .masonry-grid_column {
+      width: 100% !important;
     }
   }
 }
@@ -166,6 +186,7 @@ a {
 .pulse {
   animation: pulse 1.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+
 .loadable {
   overflow: hidden;
   margin: 0 auto;
@@ -196,6 +217,7 @@ img {
 .photo-wrapper {
   position: relative;
   .photo-credit {
+    z-index: 99;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -207,4 +229,19 @@ img {
 .consent {
   display: flex;
   align-items: flex-start;
+}
+
+.masonry-grid:not(.multi) {
+  display: flex;
+  margin-left: -15px; /* gutter size offset */
+  width: auto;
+  .masonry-grid_column {
+    padding-left: 15px; /* gutter size */
+    background-clip: padding-box;
+  }
+  /* Style your items */
+  .masonry-grid_column > div {
+    /* change div to reference your elements you put in <Masonry> */
+    margin-bottom: 15px;
+  }
 }

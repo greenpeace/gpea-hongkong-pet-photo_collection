@@ -8,44 +8,47 @@ import {
   Image,
   useColorModeValue,
   useDisclosure,
-} from '@chakra-ui/react'
-import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
-import Link from 'next/link'
-import React, { useRef, useEffect } from 'react'
-import { connect } from 'react-redux'
-import _ from 'lodash'
-import * as filterActions from 'store/actions/action-types/filter-actions'
-import * as signupActions from 'store/actions/action-types/signup-actions'
-import { useRouter } from 'next/router'
+} from '@chakra-ui/react';
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import Link from 'next/link';
+import React, { useRef, useEffect } from 'react';
+import { connect } from 'react-redux';
+import _ from 'lodash';
+import * as filterActions from 'store/actions/action-types/filter-actions';
+import * as signupActions from 'store/actions/action-types/signup-actions';
+import { useRouter } from 'next/router';
 
-import UploadButton from '@/components/site/button/uploadButton'
+import UploadButton from '@/components/site/button/uploadButton';
 
 // Hook
 function usePrevious(value) {
-  const ref = useRef()
+  const ref = useRef();
   useEffect(() => {
-    ref.current = value
-  }, [value])
-  return ref.current
+    ref.current = value;
+  }, [value]);
+  return ref.current;
 }
 
 function WithSubnavigation({ user, setModal, setSorting }) {
-  const router = useRouter()
-  const prevRoute = usePrevious(router)
-  const { isOpen, onToggle } = useDisclosure()
+  const router = useRouter();
+  const prevRoute = usePrevious(router);
+  const { isOpen, onToggle } = useDisclosure();
   useEffect(() => {
     if (!router || !prevRoute) {
-      return
+      return;
     }
 
     if (router.pathname !== prevRoute.pathname && isOpen) {
-      onToggle()
+      onToggle();
     }
 
-    if (router.asPath !== prevRoute.asPath) {
-      setSorting('default')
+    if (
+      router.asPath !== prevRoute.asPath &&
+      router.query.slug !== prevRoute.query.slug
+    ) {
+      setSorting('defaultDESC');
     }
-  }, [router])
+  }, [router]);
   return (
     <Box>
       <Flex
@@ -73,9 +76,9 @@ function WithSubnavigation({ user, setModal, setSorting }) {
             maxW={'120px'}
             alt={'Greenpeace 綠色和平'}
             cursor={'pointer'}
-            loading='eager'
+            loading="eager"
             onClick={() => {
-              router.push(`/`)
+              router.push(`/tag/all`);
             }}
           />
 
@@ -93,14 +96,14 @@ function WithSubnavigation({ user, setModal, setSorting }) {
         <MobileNav isOpen={isOpen} />
       </Collapse>
     </Box>
-  )
+  );
 }
 
 const DesktopNav = () => {
-  const NAV_ITEMS = process.env.NAV || []
-  const linkColor = useColorModeValue('gray.600', 'gray.200')
-  const linkHoverColor = useColorModeValue('gray.800', 'white')
-  const popoverContentBgColor = useColorModeValue('white', 'gray.800')
+  const NAV_ITEMS = process.env.NAV || [];
+  const linkColor = useColorModeValue('gray.600', 'gray.200');
+  const linkHoverColor = useColorModeValue('gray.800', 'white');
+  const popoverContentBgColor = useColorModeValue('white', 'gray.800');
 
   return (
     <Stack direction={'row'} spacing={8}>
@@ -121,11 +124,11 @@ const DesktopNav = () => {
         </Box>
       ))}
     </Stack>
-  )
-}
+  );
+};
 
 const MobileNav = () => {
-  const NAV_ITEMS = process.env.NAV || []
+  const NAV_ITEMS = process.env.NAV || [];
   return (
     <Stack
       bg={useColorModeValue('white', 'gray.800')}
@@ -158,22 +161,22 @@ const MobileNav = () => {
         </Stack>
       ))}
     </Stack>
-  )
-}
+  );
+};
 
 const mapStateToProps = ({ user }) => ({
   user: user.data,
-})
+});
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setModal: (bol) => {
-      dispatch({ type: signupActions.SET_SIGNUP_MODAL, data: bol })
+      dispatch({ type: signupActions.SET_SIGNUP_MODAL, data: bol });
     },
     setSorting: (data) => {
-      dispatch({ type: filterActions.SET_SORTING, data })
+      dispatch({ type: filterActions.SET_SORTING, data });
     },
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(WithSubnavigation)
+export default connect(mapStateToProps, mapDispatchToProps)(WithSubnavigation);

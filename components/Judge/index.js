@@ -1,7 +1,7 @@
-import React from 'react'
-import { Box, Stack, Heading, Text, Flex, Link, Image } from '@chakra-ui/react'
-import styled from 'styled-components'
-import { FaTwitter, FaYoutube, FaInstagram, FaFacebook } from 'react-icons/fa'
+import React from 'react';
+import { Box, Stack, Heading, Text, Flex, Link, Image } from '@chakra-ui/react';
+import styled from 'styled-components';
+import { FaTwitter, FaYoutube, FaInstagram, FaFacebook } from 'react-icons/fa';
 
 const Judge = ({ judge }) => {
   return (
@@ -11,16 +11,16 @@ const Judge = ({ judge }) => {
       boxShadow={'2xl'}
       rounded={'md'}
       py={6}
-      px={4}
+      px={6}
       mt={12}
       id={judge.id}
     >
-      <Box w='33.33%' mx={'auto'} mt={-12}>
-        <Image src={judge.avatar} loading='lazy' alt={judge.name} />
+      <Box w="33.33%" mx={'auto'} mt={-14}>
+        <Image src={judge.avatar} alt={judge.name} loading="lazy" />
       </Box>
       <Stack spacing={6}>
-        <Box mt={4}>
-          <Heading as='h3' fontSize={'xl'} mb={2} fontWeight={500}>
+        <Box mt={8} textAlign={'center'}>
+          <Heading as="h3" fontSize={'xl'} mb={2} fontWeight={500}>
             {judge.name}
           </Heading>
           <Text fontSize={'sm'} letterSpacing={'2px'} color={'gray.900'}>
@@ -35,15 +35,15 @@ const Judge = ({ judge }) => {
             <Link isExternal>
               <Flex alignItems={'center'}>
                 <FaFacebook />
-                <Text as='span' fontSize={'sm'} color={'gray.700'} mx={2}>
+                <Text as="span" fontSize={'xs'} color={'gray.700'} mx={2}>
                   {judge.fb}
                 </Text>
               </Flex>
             </Link>
             <Link isExternal>
               <Flex alignItems={'center'}>
-                <FaInstagram w='8' />
-                <Text as='span' fontSize={'sm'} color={'gray.700'} mx={2}>
+                <FaInstagram w="8" />
+                <Text as="span" fontSize={'xs'} color={'gray.700'} mx={2}>
                   {judge.ig}
                 </Text>
               </Flex>
@@ -52,7 +52,7 @@ const Judge = ({ judge }) => {
         )}
       </Stack>
     </Box>
-  )
-}
+  );
+};
 
-export default Judge
+export default Judge;

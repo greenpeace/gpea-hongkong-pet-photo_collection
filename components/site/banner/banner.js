@@ -1,8 +1,8 @@
-import React from 'react'
-import { Box, Stack, Center } from '@chakra-ui/react'
+import React from 'react';
+import { Box, Stack, Center } from '@chakra-ui/react';
 
 const TopBanner = ({
-  src = 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2019/06/efc1d3c2-dji_0409.jpg',
+  src = 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2020/02/e2bf64c3-dji_0431-scaled.jpg',
   children,
 }) => {
   return (
@@ -15,7 +15,7 @@ const TopBanner = ({
       alignItems={'center'}
       justifyContent={'center'}
     >
-      <Center h={'100%'} maxW={`container.md`} margin={`0 auto`} zIndex={1}>
+      <Center h={'100%'} maxW={'container.lg'} margin={'0 auto'} zIndex={1}>
         <Stack
           py={14}
           px={4}
@@ -39,7 +39,7 @@ const TopBanner = ({
         />
       </Center>
     </Stack>
-  )
-}
+  );
+};
 
-export default TopBanner
+export default TopBanner;
