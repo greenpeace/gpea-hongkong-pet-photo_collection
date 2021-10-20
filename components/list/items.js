@@ -32,7 +32,7 @@ const CATES = {
   lantauEcology: '大嶼生態',
 };
 
-function Index({ data, filter, grid, sorting, updatePhoto, total }) {
+function Index({ data, filter, grid, sorting, updatePhoto, total, voting }) {
   const router = useRouter();
   const [pulsing, setPulsing] = useState(true);
   const [filterCate, setFilterCate] = useState('');
@@ -114,11 +114,23 @@ function Index({ data, filter, grid, sorting, updatePhoto, total }) {
         console.log(error);
       })
 
+const merged = await _.merge(_.keyBy([...photo, ...result.records], 'id'), _.keyBy(voting, 'id'));
+const values = await _.values(merged).filter(d=> !_.isEmpty(d.url)).map(d=>{
+  if(!('count' in d)){
+    return({
+      ...d,
+      count: 0
+    })
+  }
+  return d
+});
+
+
       setPhoto(() => {
-        return [...photo, ...result.records];
+        return values;
       });
 
-      updatePhoto([...photo, ...result.records])
+      updatePhoto(values)
     }, 500);
   };
 
@@ -144,8 +156,6 @@ function Index({ data, filter, grid, sorting, updatePhoto, total }) {
       </Box>
     );
   }
-
-  console.log(`photo:::::`,photo)
 
   return (
     <Box>

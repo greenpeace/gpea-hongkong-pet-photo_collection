@@ -65,8 +65,6 @@ export function* getPhoto() {
     const state = yield select();
     const getCurrentPhoto = state.photo
 
-    console.log(`getCurrentPhoto--`,getCurrentPhoto)
-
     const photos = yield call(() => axios.get(`${process.env.G_SHEET}/photo-collection?q={"published": "TRUE"}&offset=${getCurrentPhoto.data?.length}`)
     .then((response) => response.data)
     .then((data) => {
@@ -84,8 +82,6 @@ export function* getPhoto() {
     .catch(function (error) {
       console.log(error);
     }));
-
-    console.log(`resData-`,photos)
 
     yield put({ type: photoActions.SET_PHOTO_SUCCESS, data: photos.records, total: photos.totalCount})
 
