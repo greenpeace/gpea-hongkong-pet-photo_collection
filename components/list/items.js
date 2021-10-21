@@ -1,11 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 import Vote from 'components/list/vote';
 import { Box, Text, Heading, Flex, Skeleton, Image } from '@chakra-ui/react';
 import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
 import * as modalActions from 'store/actions/action-types/modal-actions';
-import * as photoActions from 'store/actions/action-types/photo-actions'
+import * as photoActions from 'store/actions/action-types/photo-actions';
 import styled from 'styled-components';
 import _ from 'lodash';
 import LazyLoad from 'react-lazyload';
@@ -36,17 +36,12 @@ function Index({ data, filter, grid, sorting, updatePhoto, total, voting }) {
   const router = useRouter();
   const [pulsing, setPulsing] = useState(true);
   const [filterCate, setFilterCate] = useState('');
-
-  const listInnerRef = useRef();
-
   const [photo, setPhoto] = useState([]);
-  // const [isFetching, setIsFetching] = useState(false);
-  // const [page, setPage] = useState(1);
 
   const breakpointColumnsObj = {
     default: 3,
     1100: 3,
-    700: 2,
+    700: 3,
     500: 1,
   };
 
@@ -96,41 +91,53 @@ function Index({ data, filter, grid, sorting, updatePhoto, total, voting }) {
 
   const fetchData = async () => {
     setTimeout(async () => {
-      const result = await axios.get(`${process.env.G_SHEET}/photo-collection?q={"published": "TRUE"}&offset=${photo.length}&limit=50`)
-      .then((response) => response.data)
-      .then((data) => {
-        const resData = {
-          ...data,
-          records: data.records.map(d=>({
-            ...d,
-            qEco: d.url.replace("/upload/", "/upload/c_fit,w_480,q_25/"),
-            qBest: d.url.replace("/upload/", "/upload/c_fit,w_1280,q_auto:best/"),
-            newTimestamp: new Date(d.timestamp).getTime()
-          })).sort((a,b)=> b.newTimestamp - a.newTimestamp)
-        }
-        return resData
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
+      const result = await axios
+        .get(
+          `${process.env.G_SHEET}/photo-collection?q={"published": "TRUE"}&offset=${photo.length}&limit=50`
+        )
+        .then((response) => response.data)
+        .then((data) => {
+          const resData = {
+            ...data,
+            records: data.records
+              .map((d) => ({
+                ...d,
+                qEco: d.url.replace('/upload/', '/upload/c_fit,w_480,q_25/'),
+                qBest: d.url.replace(
+                  '/upload/',
+                  '/upload/c_fit,w_1280,q_auto:best/'
+                ),
+                newTimestamp: new Date(d.timestamp).getTime(),
+              }))
+              .sort((a, b) => b.newTimestamp - a.newTimestamp),
+          };
+          return resData;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
 
-const merged = await _.merge(_.keyBy([...photo, ...result.records], 'id'), _.keyBy(voting, 'id'));
-const values = await _.values(merged).filter(d=> !_.isEmpty(d.url)).map(d=>{
-  if(!('count' in d)){
-    return({
-      ...d,
-      count: 0
-    })
-  }
-  return d
-});
-
+      const merged = await _.merge(
+        _.keyBy([...photo, ...result.records], 'id'),
+        _.keyBy(voting, 'id')
+      );
+      const values = await _.values(merged)
+        .filter((d) => !_.isEmpty(d.url))
+        .map((d) => {
+          if (!('count' in d)) {
+            return {
+              ...d,
+              count: 0,
+            };
+          }
+          return d;
+        });
 
       setPhoto(() => {
         return values;
       });
 
-      updatePhoto(values)
+      updatePhoto(values);
     }, 500);
   };
 
@@ -163,11 +170,11 @@ const values = await _.values(merged).filter(d=> !_.isEmpty(d.url)).map(d=>{
         dataLength={photo.length}
         next={() => fetchData()}
         hasMore={photo.length !== total}
-        loader={<h4>讀取中...</h4>}
+        loader={<Box textAlign={`center`} py={4}>讀取中...</Box>}
       >
         <Masonry
-          breakpointCols={grid === `multi` ? 2 : breakpointColumnsObj}
-          className={`masonry-grid ${grid === 'multi' ? 'multi' : ''}`}
+          breakpointCols={grid === `multi` ? 3 : breakpointColumnsObj}
+          className={`masonry-grid ${grid}`}
           columnClassName="masonry-grid_column"
         >
           {photo.map((d, i) => (
@@ -238,7 +245,7 @@ const mapStateToProps = ({ photo, voting, filter, grid, sorting }) => {
     filter: filter.data,
     grid: grid.data,
     sorting: filter.sortBy,
-    total: photo.total
+    total: photo.total,
   };
 };
 
@@ -248,7 +255,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({ type: modalActions.OPEN_MODAL });
     },
     updatePhoto: (data) => {
-      dispatch({ type: photoActions.UPDATE_PHOTO, data })
+      dispatch({ type: photoActions.UPDATE_PHOTO, data });
     },
   };
 };
