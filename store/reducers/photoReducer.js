@@ -2,7 +2,9 @@ import * as photoActions from 'store/actions/action-types/photo-actions'
 
 const initState = {
   data: [],
-  total: 0
+  total: 0,
+  lantauEcologyTotal: 0,
+  lantauLandscapeTotal: 0,
 }
 
 const photoReducer = (state = initState, action) => {
@@ -23,6 +25,17 @@ const photoReducer = (state = initState, action) => {
     }
 
     case photoActions.SET_PHOTO_SUCCESS:
+      return {
+        ...state,
+        data: action.data,
+        // voting: action.voting,
+        total: action.total,
+        lastAction: action.type,
+        lantauEcologyTotal: action.lantauEcologyTotal,
+        lantauLandscapeTotal: action.lantauLandscapeTotal,
+    }
+
+    case photoActions.UPDATE_PHOTO_SORTING:
       return {
         ...state,
         data: action.data,

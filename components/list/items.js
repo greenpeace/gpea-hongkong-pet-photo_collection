@@ -37,6 +37,7 @@ function Index({ data, filter, grid, sorting, updatePhoto, total, voting }) {
   const [pulsing, setPulsing] = useState(true);
   const [filterCate, setFilterCate] = useState('');
   const [photo, setPhoto] = useState([]);
+  const [cateTotal, setCateTotal] = useState(total);
 
   const breakpointColumnsObj = {
     default: 3,
@@ -51,6 +52,7 @@ function Index({ data, filter, grid, sorting, updatePhoto, total, voting }) {
       await setPhoto(data.filter((d) => d.category === CATES[filter]));
       return;
     }
+
     setPhoto(data);
   }, [filter, data]);
 
@@ -90,7 +92,11 @@ function Index({ data, filter, grid, sorting, updatePhoto, total, voting }) {
   }, []);
 
   const fetchData = async () => {
+    if(photo.length >= total){
+      return
+    }
     setTimeout(async () => {
+      // console.log(`photo--`,photo.length)
       const result = await axios
         .get(
           `${process.env.G_SHEET}/photo-collection?q={"published": "TRUE"}&offset=${photo.length}&limit=50`
@@ -117,6 +123,10 @@ function Index({ data, filter, grid, sorting, updatePhoto, total, voting }) {
           console.log(error);
         });
 
+        if(_.isEmpty(result)){
+          return
+        }
+
       const merged = await _.merge(
         _.keyBy([...photo, ...result.records], 'id'),
         _.keyBy(voting, 'id')
@@ -138,7 +148,7 @@ function Index({ data, filter, grid, sorting, updatePhoto, total, voting }) {
       });
 
       updatePhoto(values);
-    }, 500);
+    }, 1000);
   };
 
   const handleModal = (id) => {
@@ -170,7 +180,7 @@ function Index({ data, filter, grid, sorting, updatePhoto, total, voting }) {
         dataLength={photo.length}
         next={() => fetchData()}
         hasMore={photo.length !== total}
-        loader={<Box textAlign={`center`} py={4}>讀取中...</Box>}
+        // loader={<Box textAlign={`center`} py={4}>讀取中...</Box>}
       >
         <Masonry
           breakpointCols={grid === `multi` ? 3 : breakpointColumnsObj}
