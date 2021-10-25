@@ -62,7 +62,12 @@ export function* getPhoto() {
         })
     );
 
-    // const photos = yield call(() => axios.get(`${process.env.G_SHEET}/photo-collection?q={"published": "TRUE"}`)
+    console.log(`allPhoto-`, allPhoto);
+
+    // const state = yield select();
+    // const getCurrentPhoto = state.photo
+
+    // const photos = yield call(() => axios.get(`${process.env.G_SHEET}/photo-collection?q={"published": "TRUE"}&offset=${getCurrentPhoto.data?.length}`)
     // .then((response) => response.data)
     // .then((data) => {
     //   const resData = {
@@ -80,6 +85,64 @@ export function* getPhoto() {
     //   console.log(error);
     // }));
 
-    yield put({ type: photoActions.SET_PHOTO_SUCCESS, data: allPhoto.records });
+    // const state = yield select();
+    // const getCurrentPhoto = state.photo
+
+    // console.log(`getCurrentPhoto--`,getCurrentPhoto)
+
+    yield put({
+      type: photoActions.SET_PHOTO_SUCCESS,
+      data: allPhoto.records,
+      total: allPhoto.totalCount,
+    });
+
+    // yield put({ type: photoActions.SET_PHOTO_SUCCESS, data: allPhoto.records })
+  } catch (e) {}
+}
+
+export function* updatePhoto() {
+  try {
+    const CATES = {
+      all: `全部`,
+      lantauLandscape: `大嶼風景`,
+      lantauEcology: '大嶼生態',
+    };
+    let result = [];
+    const state = yield select();
+    const getCurrentPhoto = state.photo?.data;
+    const getCurrentPhotoTotal = state.photo?.total;
+    const getCurrentSortBy = state.filter.sortBy;
+    const getCurrentFilter = state.filter.data;
+
+    switch (getCurrentSortBy) {
+      case 'defaultDESC':
+        result = _.orderBy(getCurrentPhoto, ['newTimestamp'], ['desc']);
+        break;
+      case 'defaultASC':
+        result = _.orderBy(getCurrentPhoto, ['newTimestamp'], ['asc']);
+        break;
+      case 'votesDESC':
+        result = _.orderBy(getCurrentPhoto, ['count'], ['desc']);
+        break;
+      case 'votesASC':
+        result = _.orderBy(getCurrentPhoto, ['count'], ['asc']);
+        break;
+
+      default:
+        result = getCurrentPhoto;
+        break;
+    }
+
+    if (getCurrentFilter !== 'all') {
+      result = yield call(() =>
+        result.filter((d) => d.category === CATES[filter])
+      );
+    }
+
+    yield put({
+      type: photoActions.UPDATE_PHOTO_SORTING,
+      data: result,
+      total: getCurrentPhotoTotal,
+    });
   } catch (e) {}
 }

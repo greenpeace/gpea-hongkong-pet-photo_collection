@@ -10,6 +10,18 @@ class NextDocument extends Document {
     return (
       <Html lang="zh">
         <Head>
+          {/* campaign dataLayer */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+          var dataLayer = (window.dataLayer = window.dataLayer || []);
+          dataLayer.push({
+            gCampaign: 'health',
+            gBasket: 'photo-collection',
+          });
+        `,
+            }}
+          />
           <link
             rel="shortcut icon"
             type="image/png"
