@@ -245,3 +245,9 @@ img {
     margin-bottom: 15px;
   }
 }
+
+/* override chakraui button disabled opacity */
+.main-cta[disabled],
+.main-cta:disabled {
+  opacity: 1 !important;
+}

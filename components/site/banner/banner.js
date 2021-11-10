@@ -15,7 +15,7 @@ const TopBanner = ({
       alignItems={'center'}
       justifyContent={'center'}
     >
-      <Center h={'100%'} maxW={'container.lg'} margin={'0 auto'} zIndex={1}>
+      <Center h={'100%'} maxW={'container.md'} margin={'0 auto'} zIndex={1}>
         <Stack
           py={14}
           px={4}
