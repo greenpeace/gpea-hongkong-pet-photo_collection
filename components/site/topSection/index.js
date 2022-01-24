@@ -25,14 +25,16 @@ export default function Index() {
       </Head>
       <TopBanner>
         <Image
+          w={'full'}
+          maxW={'580px'}
           src="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/279f402e-lantau-kv.png"
           alt="山海大嶼攝影比賽 2021"
         />
         <Box display={'none'}>
           <Heading fontWeight={'700'} fontSize={{ base: '3xl', md: '5xl' }}>
-            <Text as="span" fontWeight={'900'}>
+            <Text as="span" fontWeight={'bold'}>
               山海大嶼
-            </Text>{' '}
+            </Text>
             攝影比賽 2021
           </Heading>
           <Heading fontSize={{ base: 'lg', md: 'xl' }}>

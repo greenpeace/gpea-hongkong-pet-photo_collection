@@ -51,17 +51,23 @@ function WithAction({ setFilter, setSorting, setGrid, grid, sorting }) {
 
   return (
     <>
-      <Box bg={'gray.100'} px={4}>
-        <Flex h={12} alignItems={'center'} justifyContent={'space-between'}>
+      <Box bg={'gray.100'}>
+        <Flex
+          minH={'60px'}
+          py={2}
+          px={4}
+          alignItems={'center'}
+          justifyContent={'space-between'}
+        >
           <HStack
             flex={1}
             as={'nav'}
             display={{ base: 'flex' }}
             alignItems={'center'}
             justifyContent={'space-around'}
-            spacing={{ base: 2, sm: 6 }}
+            spacing={{ base: 2, md: 6 }}
             marginRight={2}
-            maxWidth={'220px'}
+            maxWidth={'200px'}
           >
             {CATEGORY.map((d) => {
               slug = slug ? slug : 'all';
@@ -117,7 +123,7 @@ function WithAction({ setFilter, setSorting, setGrid, grid, sorting }) {
             </Stack>
           </Box>
           <Stack d={{ base: 'flex', md: 'none' }} pl={2}>
-            <Box pt={1} fontSize={18}>
+            <Box pt={1} fontSize={16}>
               {grid === 'multi' ? (
                 <BsGrid1X2Fill onClick={() => setGrid('normal')} />
               ) : (
