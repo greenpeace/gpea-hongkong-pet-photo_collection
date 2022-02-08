@@ -43,7 +43,7 @@ function Index({ data, filter, grid, sorting, total, voting, fetchPhoto }) {
   const breakpointColumnsObj = {
     default: 3,
     1100: 3,
-    700: 3,
+    700: 2,
     500: 1,
   };
 
