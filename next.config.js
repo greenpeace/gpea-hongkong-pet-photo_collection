@@ -65,6 +65,7 @@ const nextConfig = {
       },
     ],
   },
+  basePath: isProd ? '/app/photo-collection' : '',
   // Use the CDN in production and localhost for development.
   assetPrefix: isProd
     ? 'https://change.greenpeace.org.hk/app/photo-collection/'
