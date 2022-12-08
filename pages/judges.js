@@ -1,18 +1,18 @@
-import React from 'react'
-import Head from 'next/head'
-import Wrapper from 'components/site/wrapper'
-import { Box, Heading, Text, Grid, GridItem } from '@chakra-ui/react'
-import styled from 'styled-components'
-import Masonry from 'react-masonry-component'
-import { FaTwitter, FaYoutube, FaInstagram, FaFacebook } from 'react-icons/fa'
+import React from 'react';
+import Head from 'next/head';
+import Wrapper from 'components/site/wrapper';
+import { Box, Heading, Text, Grid, GridItem } from '@chakra-ui/react';
+import styled from 'styled-components';
+import Masonry from 'react-masonry-component';
+import { FaTwitter, FaYoutube, FaInstagram, FaFacebook } from 'react-icons/fa';
 
-import PageContainer from '@/components/site/container/pageContainer'
-import ContentContainer from '@/components/site/container/contentContainer'
-import TopBanner from '@/components/site/banner/banner'
-import UploadButton from '@/components/site/button/uploadButton'
-import Judge from '@/components/Judge'
+import PageContainer from '@/components/site/container/pageContainer';
+import ContentContainer from '@/components/site/container/contentContainer';
+import TopBanner from '@/components/site/banner/banner';
+import UploadButton from '@/components/site/button/uploadButton';
+import Judge from '@/components/Judge';
 
-import data from '../data'
+import data from '../data';
 
 // const MasonryItem = styled.li`
 //   width: 90%;
@@ -39,9 +39,9 @@ export default function Index() {
       >
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>比賽評審</Heading>
         <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
-          評審團將由資深攝影師、紀錄片製作人及綠色和平代表組成
+          評審團將由著名插畫家、環保 KOL、環保繪本小畫家及綠色和平代表組成
         </Text>
-        <Box py={6} width={'100%'} maxWidth={'240px'}>
+        <Box d={'none'} py={6} width={'100%'} maxWidth={'240px'}>
           <UploadButton />
         </Box>
       </TopBanner>
@@ -70,7 +70,7 @@ export default function Index() {
         {/* </Masonry> */}
       </PageContainer>
     </>
-  )
+  );
 }
 
-Index.getLayout = (page) => <Wrapper>{page}</Wrapper>
+Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;

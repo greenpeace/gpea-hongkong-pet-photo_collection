@@ -9,7 +9,7 @@ const nextConfig = {
     CLOUDINARY_API: `https://api.cloudinary.com/v1_1/gpea/image/upload`,
     CLOUDINARY_PRESET: `wugp5bjn`,
     NAV: [
-      { LABEL: '主頁', VALUE: '/', HREF: '/', REF: '/' },
+      // { LABEL: '主頁', VALUE: '/', HREF: '/', REF: '/' },
       {
         LABEL: '序言',
         VALUE: 'introduction',
@@ -18,12 +18,12 @@ const nextConfig = {
       },
       { LABEL: '比賽評審', VALUE: 'judges', HREF: '/judges', REF: 'judges' },
       { LABEL: '比賽詳情', VALUE: 'rules', HREF: '/rules', REF: 'rules' },
-      {
-        LABEL: '與大師同攝',
-        VALUE: 'photowalk',
-        HREF: '/photowalk',
-        REF: 'photowalk',
-      },
+      // {
+      //   LABEL: '與大師同攝',
+      //   VALUE: 'photowalk',
+      //   HREF: '/photowalk',
+      //   REF: 'photowalk',
+      // },
     ],
     CATEGORY: [
       {
@@ -65,27 +65,27 @@ const nextConfig = {
       },
     ],
   },
-  basePath: isProd ? '/app/photo-collection' : '',
+  basePath: isProd ? '/app/plasticfree-harbour-demo' : '',
   // Use the CDN in production and localhost for development.
   assetPrefix: isProd
-    ? 'https://change.greenpeace.org.hk/app/photo-collection/'
+    ? 'https://change.greenpeace.org.hk/app/plasticfree-harbour-demo/'
     : '',
   trailingSlash: true,
   exportPathMap: async () => ({
     '/': { page: '/' },
     '/introduction': { page: '/introduction' },
     '/judges': { page: '/judges' },
-    '/photowalk': { page: '/photowalk' },
+    // '/photowalk': { page: '/photowalk' },
     '/rules': { page: '/rules' },
-    '/upload': { page: '/upload' },
+    // '/upload': { page: '/upload' },
   }),
-  generateBuildId: async () => {
-    if (process.env.BUILD_ID) {
-      return `${process.env.BUILD_ID}_${new Date().getTime()}`;
-    } else {
-      return `next_${new Date().getTime()}`;
-    }
-  },
+  // generateBuildId: async () => {
+  //   if (process.env.BUILD_ID) {
+  //     return `${process.env.BUILD_ID}_${new Date().getTime()}`;
+  //   } else {
+  //     return `next_${new Date().getTime()}`;
+  //   }
+  // },
   images: {
     domains: ['change.greenpeace.org.hk'],
     disableStaticImages: true,

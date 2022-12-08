@@ -33,7 +33,7 @@ export default function Index() {
         <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
           「山海大嶼」攝影比賽2021參加者可優先獲得參加「與大師同攝」延伸活動的資格，活動詳情及優先報名表將於11月中以電郵通知。
         </Text>
-        <Box py={6} width={'100%'} maxWidth={'240px'}>
+        <Box d={'none'} py={6} width={'100%'} maxWidth={'240px'}>
           <UploadButton />
         </Box>
       </TopBanner>
@@ -58,7 +58,7 @@ export default function Index() {
               <Text>
                 立即行動，一人一張大嶼相片，保留大嶼今昔，讓下一代也得以親身見證這片山光水色！
               </Text>
-              <Box>
+              <Box d={'none'} py={6} width={'100%'} maxWidth={'240px'}>
                 <UploadButton />
               </Box>
             </Stack>

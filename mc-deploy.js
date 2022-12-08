@@ -39,11 +39,9 @@ const buildFolder = path.join(__dirname, 'out');
 // const EndpointURL = "https://cloud.greenhk.greenpeace.org/petition-pp";
 //
 // New websign endpoint can accept optional fields
-const EndpointURL = '';
-const CampaignId = '';
-const interests = ['Plastics']; // Arctic, Climate, Forest, Health, Oceans, Plastics
-const ftpConfigName = 'change_hk'; // refer to ~/.npm-en-uploader-secret
-const ftpRemoteDir = '/app/plasticfree-harbour';
+const ftpConfigName = 'change_hk_cloud'; // refer to ~/.npm-en-uploader-secret
+const ftpRemoteDir =
+  '/web/change.greenpeace.org.hk/htdocs/app/plasticfree-harbour-demo';
 
 let indexHtmlFilePath = path.join(buildFolder, 'index.html');
 let fbuf = fs.readFileSync(indexHtmlFilePath);

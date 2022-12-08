@@ -41,7 +41,7 @@ export default function Index() {
         </title>
         <meta
           name="description"
-          content="捕捉大嶼獨有光景，立即上載你的作品，贏取參與「與大師同攝」延伸活動的機會，各組別優勝作品將有機會刊登於綠色和平年曆，並於綠色和平網上平台發佈，與香港20萬讀者分享。"
+          content="發揮創意，繪製「無塑海港」，立即上載你的作品，贏取豐富獎品並優先參與「無塑海港」展覽。各組別優勝作品將印刷成實物，成為你獨一無二的專屬重用杯，並於綠色和平「無塑海港」展覽展出，讓公眾進一步了解重用系統的概念及願景。 "
         />
       </Head>
       <TopBanner
@@ -53,7 +53,7 @@ export default function Index() {
         <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
           捕捉大嶼獨有光景，立即上載你的作品，贏取參與「與大師同攝」延伸活動的機會，各組別優勝作品將有機會刊登於綠色和平年曆，並於綠色和平網上平台發佈，與香港20萬讀者分享。
         </Text>
-        <Box py={6} width={'100%'} maxWidth={'240px'}>
+        <Box d={'none'} py={6} width={'100%'} maxWidth={'240px'}>
           <UploadButton />
         </Box>
       </TopBanner>

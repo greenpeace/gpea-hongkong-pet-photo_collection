@@ -10,18 +10,6 @@ class NextDocument extends Document {
     return (
       <Html lang="zh">
         <Head>
-          {/* campaign dataLayer */}
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-          var dataLayer = (window.dataLayer = window.dataLayer || []);
-          dataLayer.push({
-            gCampaign: 'health',
-            gBasket: 'photo-collection',
-          });
-        `,
-            }}
-          />
           <link
             rel="shortcut icon"
             type="image/png"
@@ -36,16 +24,16 @@ class NextDocument extends Document {
           {/* title */}
           <meta
             property="og:title"
-            content="山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 | 香港"
+            content="「無塑海港」重用杯創意設計比賽 - Greenpeace 綠色和平 | 香港"
           />
           {/* description */}
           <meta
             name="description"
-            content="「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海故事，保留大嶼今昔。獲選佳作更有機會展出及刊登於綠色和平2022年〈山海大嶼〉年曆中，參加者亦可優先獲得參加「與大師同攝」延伸活動的資格。"
+            content="「無塑海港」重用杯創意設計比賽，號召愛環保、愛香港的你，一起以設計訴說走塑故事，以重用留住今日海港。得獎設計會製作成實體重用杯送贈得獎者並作展覧用途，參加者亦可優先參加比賽頒獎禮及「無塑海港」展覽。"
           />
           <meta
             property="og:description"
-            content="「山海大嶼」相簿，號召熱愛大嶼、熱愛香港的你，一起以影像訴說山海故事，保留大嶼今昔。獲選佳作更有機會展出及刊登於綠色和平2022年〈山海大嶼〉年曆中，參加者亦可優先獲得參加「與大師同攝」延伸活動的資格。"
+            content="「無塑海港」重用杯創意設計比賽，號召愛環保、愛香港的你，一起以設計訴說走塑故事，以重用留住今日海港。得獎設計會製作成實體重用杯送贈得獎者並作展覧用途，參加者亦可優先參加比賽頒獎禮及「無塑海港」展覽。"
           />
           {/* meta image */}
           <meta
