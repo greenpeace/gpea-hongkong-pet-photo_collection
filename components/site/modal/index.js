@@ -209,7 +209,7 @@ function ModalWrapper({
                       colorScheme="green"
                       backgroundColor="brand.500"
                       onClick={() => handleVoting()}
-                      isDisabled={storeVoting.indexOf(content.id) !== -1}
+                      // isDisabled={storeVoting.indexOf(content.id) !== -1}
                     >
                       {storeVoting.indexOf(content.id) !== -1
                         ? `感謝您的投票`

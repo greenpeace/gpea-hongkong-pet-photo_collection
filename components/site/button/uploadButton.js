@@ -40,7 +40,7 @@ const UploadButton = ({ setModal, user }) => {
       _hover={{
         bg: 'orange',
       }}
-      isDisabled="true"
+      isDisabled={true}
     >
       活動已截止
     </Button>
