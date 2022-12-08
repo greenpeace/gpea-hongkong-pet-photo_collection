@@ -41,9 +41,9 @@ const buildFolder = path.join(__dirname, 'out');
 // New websign endpoint can accept optional fields
 const EndpointURL = '';
 const CampaignId = '';
-const interests = ['Health']; // Arctic, Climate, Forest, Health, Oceans, Plastics
+const interests = ['Plastics']; // Arctic, Climate, Forest, Health, Oceans, Plastics
 const ftpConfigName = 'change_hk'; // refer to ~/.npm-en-uploader-secret
-const ftpRemoteDir = '/app/photo-collection';
+const ftpRemoteDir = '/app/plasticfree-harbour';
 
 let indexHtmlFilePath = path.join(buildFolder, 'index.html');
 let fbuf = fs.readFileSync(indexHtmlFilePath);
