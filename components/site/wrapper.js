@@ -108,7 +108,7 @@ function Layout({ children, signup, openModal, fetchPhoto, voting, photo }) {
         }}
       >
         <Nav />
-        <SubNav />
+        {/* <SubNav /> */}
       </Box>
       {children}
       <Footer />
