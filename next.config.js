@@ -11,7 +11,7 @@ const nextConfig = {
     NAV: [
       // { LABEL: '主頁', VALUE: '/', HREF: '/', REF: '/' },
       {
-        LABEL: '序言',
+        LABEL: '主頁',
         VALUE: 'introduction',
         HREF: '/introduction',
         REF: 'introduction',

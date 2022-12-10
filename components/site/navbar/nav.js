@@ -101,7 +101,6 @@ function WithSubnavigation({ user, setModal, setSorting }) {
 
 const DesktopNav = () => {
   const NAV_ITEMS = process.env.NAV || [];
-
   return (
     <Stack direction={'row'} spacing={8}>
       {NAV_ITEMS.map((d) => (

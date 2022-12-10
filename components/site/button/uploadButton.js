@@ -1,13 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '@chakra-ui/react';
+import { Button, Link } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
 import * as signupActions from 'store/actions/action-types/signup-actions';
 import _ from 'lodash';
 
-const UploadButton = ({ setModal, user }) => {
+const UploadButton = ({ setModal, user, url }) => {
   const router = useRouter();
   const { signed } = user;
+
+  if (!!url) {
+    return (
+        <Button
+          className="main-cta"
+          w={'100%'}
+          px={'4'}
+          py={'4'}
+          mx={'auto'}
+          rounded={'md'}
+          fontWeight={'bold'}
+          color={'white'}
+          bg={'orange.500'}
+          href={'#'}
+          _hover={{
+            bg: 'orange',
+          }}
+          style={{textDecoration: 'none'}}
+          onClick={() => router.push(url)}
+        >
+          立即參加
+        </Button>
+    );
+  }
+
   return (
     // <Button
     //   w={'100%'}
@@ -42,7 +67,7 @@ const UploadButton = ({ setModal, user }) => {
       }}
       isDisabled={true}
     >
-      活動已截止
+      立即參加
     </Button>
   );
 };

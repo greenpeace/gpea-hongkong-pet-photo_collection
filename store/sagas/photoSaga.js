@@ -62,7 +62,7 @@ export function* getPhoto() {
         })
     );
 
-    console.log(`allPhoto-`, allPhoto);
+    // console.log(`allPhoto-`, allPhoto);
 
     // const state = yield select();
     // const getCurrentPhoto = state.photo

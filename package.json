@@ -48,12 +48,15 @@
     "styled-components": "^5.3.1"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.13",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.0",
     "husky": "^7.0.0",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^8.0.0",
-    "pretty-quick": "^3.1.1"
+    "postcss": "^8.4.19",
+    "pretty-quick": "^3.1.1",
+    "tailwindcss": "^3.2.4"
   }
 }

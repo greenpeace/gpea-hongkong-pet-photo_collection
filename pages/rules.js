@@ -22,6 +22,8 @@ import ContentContainer from '@/components/site/container/contentContainer';
 import TopBanner from '@/components/site/banner/banner';
 import UploadButton from '@/components/site/button/uploadButton';
 
+import GroupTable from '@/components/rules/group';
+
 import data from '../data';
 
 const RuleHeadline = ({ children }) => {
@@ -36,12 +38,10 @@ export default function Index() {
   return (
     <>
       <Head>
-        <title>
-          比賽詳情 - 山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 | 香港
-        </title>
+        <title>發揮創意，繪製「無塑海港」</title>
         <meta
           name="description"
-          content="發揮創意，繪製「無塑海港」，立即上載你的作品，贏取豐富獎品並優先參與「無塑海港」展覽。各組別優勝作品將印刷成實物，成為你獨一無二的專屬重用杯，並於綠色和平「無塑海港」展覽展出，讓公眾進一步了解重用系統的概念及願景。 "
+          content="發揮創意，繪製「無塑海港」，立即上載你的作品，贏取豐富獎品並優先參與「無塑海港」展覽。各組別優勝作品將印刷成實物，成為你獨一無二的專屬重用杯，並於綠色和平「無塑海港」展覽展出及用作推廣綠色和平項目之用途，讓公眾進一步了解重用系統的概念及願景。"
         />
       </Head>
       <TopBanner
@@ -51,7 +51,7 @@ export default function Index() {
       >
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>比賽詳情</Heading>
         <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
-          捕捉大嶼獨有光景，立即上載你的作品，贏取參與「與大師同攝」延伸活動的機會，各組別優勝作品將有機會刊登於綠色和平年曆，並於綠色和平網上平台發佈，與香港20萬讀者分享。
+          發揮創意，繪製「無塑海港」，立即上載你的作品，贏取豐富獎品並優先參與「無塑海港」展覽。各組別優勝作品將印刷成實物，成為你獨一無二的專屬重用杯，並於綠色和平「無塑海港」展覽展出及用作推廣綠色和平項目之用途，讓公眾進一步了解重用系統的概念及願景。
         </Text>
         <Box d={'none'} py={6} width={'100%'} maxWidth={'240px'}>
           <UploadButton />
@@ -165,6 +165,32 @@ export default function Index() {
               ))}
             </List>
           </Box>
+
+          <Divider my={4} />
+          
+          <RuleHeadline>參賽組別</RuleHeadline>
+
+          <GroupTable />
+
+          <Text fontSize={'md'}>捐款參加費及豐富禮品</Text>
+
+          <UnorderedList spacing={2}>
+            <ListItem>
+              <Text fontSize={'sm'}>
+                所有參加者成功上載參賽作品後，均可得到電子參賽證書一張
+              </Text>
+            </ListItem>
+            <ListItem>
+              <Text fontSize={'sm'}>
+                $100 以上捐款參加費用可作慈善捐款扣稅用途
+              </Text>
+            </ListItem>
+            <ListItem>
+              <Text fontSize={'sm'}>
+                所有禮品先到先得，送完即止。禮品領取詳情將於電郵通知。
+              </Text>
+            </ListItem>
+          </UnorderedList>
         </ContentContainer>
       </PageContainer>
     </>

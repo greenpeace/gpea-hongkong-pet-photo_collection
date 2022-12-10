@@ -1,4 +1,7 @@
 // @import './Home.module.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html {
   box-sizing: border-box;
@@ -250,4 +253,14 @@ img {
 .main-cta[disabled],
 .main-cta:disabled {
   opacity: 1 !important;
+}
+
+.tw{
+  .grid {
+    border-radius: 0px;
+    &:before {
+      background-color: transparent;
+    }
+    margin-bottom: 0;
+  }  
 }
