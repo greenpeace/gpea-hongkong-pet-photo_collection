@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Wrapper from 'components/site/wrapper';
-import { Box, Heading, Text, Grid, GridItem } from '@chakra-ui/react';
+import { Box, Heading, Text, Grid, GridItem, Flex } from '@chakra-ui/react';
 import styled from 'styled-components';
 import Masonry from 'react-masonry-component';
 import { FaTwitter, FaYoutube, FaInstagram, FaFacebook } from 'react-icons/fa';
@@ -68,6 +68,9 @@ export default function Index() {
           ))}
         </Grid>
         {/* </Masonry> */}
+        <Flex flex={1} justify={'flex-end'} direction={'row'} maxW={'140px'} my={8}>
+          <UploadButton />
+        </Flex>
       </PageContainer>
     </>
   );

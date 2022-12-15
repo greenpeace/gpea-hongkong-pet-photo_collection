@@ -78,7 +78,7 @@ function WithSubnavigation({ user, setModal, setSorting }) {
             cursor={'pointer'}
             loading="eager"
             onClick={() => {
-              router.push(`/`);
+              router.push(`/introduction`);
             }}
           />
 

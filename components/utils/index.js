@@ -17,6 +17,7 @@ export function base64Encode(value) {
 }
 
 export function base64Decode(value) {
+  if(!value) return
   return Base64.decode(value); 
 }
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Stack, Heading, Text, Flex, Link, Image } from '@chakra-ui/react';
-import styled from 'styled-components';
 import { FaTwitter, FaYoutube, FaInstagram, FaFacebook } from 'react-icons/fa';
 
 const Judge = ({ judge }) => {
@@ -28,11 +27,11 @@ const Judge = ({ judge }) => {
           </Text>
         </Box>
         <Text fontSize={'sm'} letterSpacing={'2px'} color={'gray.700'}>
-          {judge.profile}
+          <span dangerouslySetInnerHTML={{ __html: judge.profile }} />
         </Text>
-        {judge.ig && judge.fb && (
-          <Stack w={'100%'} direction={'column'} spacing={4}>
-            <Link isExternal>
+        <Stack w={'100%'} direction={'column'} spacing={4}>
+          {judge.fb && (
+            <Link href={judge.fb} isExternal>
               <Flex alignItems={'center'}>
                 <FaFacebook />
                 <Text as="span" fontSize={'xs'} color={'gray.700'} mx={2}>
@@ -40,7 +39,9 @@ const Judge = ({ judge }) => {
                 </Text>
               </Flex>
             </Link>
-            <Link isExternal>
+          )}
+          {judge.ig && (
+            <Link href={judge.ig} isExternal>
               <Flex alignItems={'center'}>
                 <FaInstagram w="8" />
                 <Text as="span" fontSize={'xs'} color={'gray.700'} mx={2}>
@@ -48,8 +49,8 @@ const Judge = ({ judge }) => {
                 </Text>
               </Flex>
             </Link>
-          </Stack>
-        )}
+          )}
+        </Stack>
       </Stack>
     </Box>
   );

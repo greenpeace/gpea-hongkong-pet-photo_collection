@@ -30,9 +30,9 @@ export default function Index() {
         }
       >
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>序言</Heading>
-        <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
+        {/* <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
           「山海大嶼」攝影比賽2021參加者可優先獲得參加「與大師同攝」延伸活動的資格，活動詳情及優先報名表將於11月中以電郵通知。
-        </Text>
+        </Text> */}
         <Box d={'none'} py={6} width={'100%'} maxWidth={'240px'}>
           <UploadButton />
         </Box>

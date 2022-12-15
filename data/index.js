@@ -1,7 +1,8 @@
 import shing from '../assets/images/shing-avatar.png';
-import sion from '../assets/images/sion-avatar.png';
-import daphne from '../assets/images/daphne-avatar.png';
-import tugo from '../assets/images/tugo-avatar.png';
+
+import mandyCat from '../assets/images/mandyCat-avatar.png';
+import leanneTam from '../assets/images/leanneTam-avatar.png';
+import brianKan from '../assets/images/brianKan-avatar.png';
 
 import date1 from '../assets/images/79.png';
 import date2 from '../assets/images/80.png';
@@ -15,14 +16,14 @@ const data = {
   judges: [
     {
       id: 'mandcat',
-      avatar: tugo,
+      avatar: mandyCat,
       pic: 'https://via.placeholder.com/800x800.png',
-      name: '文地貓 Mandcat',
-      designation: '風景攝影師',
+      name: '文地貓 Mandycat',
+      designation: '著名插畫家',
       profile:
-        '評審團將由著名插畫家、環保 KOL、環保繪本小畫家及綠色和平代表組成。評審團將由著名插畫家、環保 KOL、環保繪本小畫家及綠色和平代表組成。',
-      ig: '',
-      fb: '',
+        '文地貓為香港著名資深插畫家，於2000年開始，文地貓亦先後替多本雜誌及多個網站寫寫畫畫，包括東方新地more、新假期、Esdlife.com(生活易)、明報學生版、Metropop及Yahoo等。亦有推出個人繪本故事。愛貓的她以貓貓和自己作為插畫主角，其刊出之作品多以打工心情和生活感受為主及分享生活雜記。',
+      ig: 'https://www.instagram.com/mandycats/',
+      fb: 'https://www.facebook.com/mandycats',
     },
     {
       id: 'kol',
@@ -37,25 +38,25 @@ const data = {
     },
     {
       id: 'leannetam',
-      avatar: daphne,
+      avatar: leanneTam,
       pic: 'https://via.placeholder.com/800x800.png',
       name: '譚穎琳 Leanne Tam',
       designation: '綠色和平走塑項目主任',
       profile:
-        '評審團將由著名插畫家、環保 KOL、環保繪本小畫家及綠色和平代表組成。評審團將由著名插畫家、環保 KOL、環保繪本小畫家及綠色和平代表組成。',
-      ig: '綠色和平Greenpeace Hong Kong',
-      fb: 'Greenpeace 綠色和平 - 香港',
+        '走塑項目主任譚穎琳（Leanne）在綠色和平工作數年間，積極推行「全城走塑」項目，除了把握政府政策窗口發聲，Leanne 曾帶領團隊舉行多個不同形式的大型社區活動，促進社區走塑風潮；過往成功招募超過 1,100 間走塑店鋪，又推出重用餐具社區實驗活動，最近更夥拍初創公司開創智能借杯手機 App！',
+      ig: 'https://www.instagram.com/greenpeace_hk/',
+      fb: 'https://www.facebook.com/greenpeacehk',
     },
     {
       id: 'briankan',
-      avatar: sion,
+      avatar: brianKan,
       pic: 'https://via.placeholder.com/800x800.png',
       name: '簡鏡倫 Brian Kan',
       designation: '環保繪本小畫家',
       profile:
-        '香港環保少年簡鏡倫（Brian）曾在他 7 歲時以繪畫為海洋動物請命，不僅積極宣傳、募款，更將繪本收入捐助支持綠色和平，以行動守護環境！',
-      ig: '綠色和平Greenpeace Hong Kong',
-      fb: 'Greenpeace 綠色和平 - 香港',
+        '香港環保少年簡鏡倫（Brian）曾在他 7 歲時以繪畫為海洋動物請命，不僅積極宣傳、募款，更將繪本收入捐助支持綠色和平，以行動守護環境！<br/><br/>現時 13 歲的 Brian，正為最新的作品努力著，他依然熱衷於畫畫，更進一步學習素描、油畫和國畫。他的畫作中，有一部分是與環境議題有關，像是污染、保育野生動物。',
+      ig: '',
+      fb: 'https://www.facebook.com/briankl.kan',
     },
   ],
   rules: {

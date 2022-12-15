@@ -90,6 +90,15 @@ const nextConfig = {
     domains: ['change.greenpeace.org.hk'],
     disableStaticImages: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/introduction',
+        permanent: true,
+      }
+    ]
+  },
 };
 
 module.exports = withPlugins(

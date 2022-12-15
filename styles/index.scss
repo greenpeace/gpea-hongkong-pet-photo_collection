@@ -260,6 +260,7 @@ img {
     border-radius: 0px;
     &:before {
       background-color: transparent;
+      content: none;
     }
     margin-bottom: 0;
   }  
