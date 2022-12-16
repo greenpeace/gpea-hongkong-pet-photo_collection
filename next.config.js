@@ -9,12 +9,11 @@ const nextConfig = {
     CLOUDINARY_API: `https://api.cloudinary.com/v1_1/gpea/image/upload`,
     CLOUDINARY_PRESET: `wugp5bjn`,
     NAV: [
-      // { LABEL: '主頁', VALUE: '/', HREF: '/', REF: '/' },
       {
         LABEL: '主頁',
-        VALUE: 'introduction',
-        HREF: '/introduction',
-        REF: 'introduction',
+        VALUE: '/',
+        HREF: '/',
+        REF: '/',
       },
       { LABEL: '比賽評審', VALUE: 'judges', HREF: '/judges', REF: 'judges' },
       { LABEL: '比賽詳情', VALUE: 'rules', HREF: '/rules', REF: 'rules' },
@@ -73,31 +72,14 @@ const nextConfig = {
   trailingSlash: true,
   exportPathMap: async () => ({
     '/': { page: '/' },
-    '/introduction': { page: '/introduction' },
     '/judges': { page: '/judges' },
     // '/photowalk': { page: '/photowalk' },
     '/rules': { page: '/rules' },
     // '/upload': { page: '/upload' },
   }),
-  // generateBuildId: async () => {
-  //   if (process.env.BUILD_ID) {
-  //     return `${process.env.BUILD_ID}_${new Date().getTime()}`;
-  //   } else {
-  //     return `next_${new Date().getTime()}`;
-  //   }
-  // },
   images: {
     domains: ['change.greenpeace.org.hk'],
     disableStaticImages: true,
-  },
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/introduction',
-        permanent: true,
-      }
-    ]
   },
 };
 
