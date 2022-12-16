@@ -12,9 +12,9 @@ const nextConfig = {
       // { LABEL: '主頁', VALUE: '/', HREF: '/', REF: '/' },
       {
         LABEL: '主頁',
-        VALUE: 'introduction',
-        HREF: '/introduction',
-        REF: 'introduction',
+        VALUE: '',
+        HREF: '/',
+        REF: '',
       },
       { LABEL: '比賽評審', VALUE: 'judges', HREF: '/judges', REF: 'judges' },
       { LABEL: '比賽詳情', VALUE: 'rules', HREF: '/rules', REF: 'rules' },
@@ -93,8 +93,8 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/',
-        destination: '/introduction',
+        source: '/introduction',
+        destination: '/',
         permanent: true,
       }
     ]
