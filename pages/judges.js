@@ -29,7 +29,7 @@ export default function Index() {
     <>
       <Head>
         <title>
-          比賽評審 - 山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 | 香港
+          比賽評審 - 「無塑海港」重用杯創意設計比賽 - Greenpeace 綠色和平 | 香港
         </title>
       </Head>
       <TopBanner
@@ -68,7 +68,13 @@ export default function Index() {
           ))}
         </Grid>
         {/* </Masonry> */}
-        <Flex flex={1} justify={'flex-end'} direction={'row'} maxW={'140px'} my={8}>
+        <Flex
+          flex={1}
+          justify={'flex-end'}
+          direction={'row'}
+          maxW={'140px'}
+          my={8}
+        >
           <UploadButton />
         </Flex>
       </PageContainer>

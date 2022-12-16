@@ -38,7 +38,12 @@ export default function Index() {
   return (
     <>
       <Head>
-        <title>發揮創意，繪製「無塑海港」</title>
+        <Head>
+          <title>
+            比賽詳情 - 「無塑海港」重用杯創意設計比賽 - Greenpeace 綠色和平 |
+            香港
+          </title>
+        </Head>
         <meta
           name="description"
           content="發揮創意，繪製「無塑海港」，立即上載你的作品，贏取豐富獎品並優先參與「無塑海港」展覽。各組別優勝作品將印刷成實物，成為你獨一無二的專屬重用杯，並於綠色和平「無塑海港」展覽展出及用作推廣綠色和平項目之用途，讓公眾進一步了解重用系統的概念及願景。"
