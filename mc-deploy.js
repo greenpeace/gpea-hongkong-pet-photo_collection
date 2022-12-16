@@ -41,7 +41,7 @@ const buildFolder = path.join(__dirname, 'out');
 // New websign endpoint can accept optional fields
 const ftpConfigName = 'change_hk_cloud'; // refer to ~/.npm-en-uploader-secret
 const ftpRemoteDir =
-  '/web/change.greenpeace.org.hk/htdocs/app/plasticfree-harbour-demo';
+  '/web/change.greenpeace.org.hk/htdocs/app/plasticfree-harbour';
 
 let indexHtmlFilePath = path.join(buildFolder, 'index.html');
 let fbuf = fs.readFileSync(indexHtmlFilePath);

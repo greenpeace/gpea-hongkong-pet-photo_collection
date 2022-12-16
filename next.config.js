@@ -64,10 +64,10 @@ const nextConfig = {
       },
     ],
   },
-  basePath: isProd ? '/app/plasticfree-harbour-demo' : '',
+  basePath: isProd ? '/app/plasticfree-harbour' : '',
   // Use the CDN in production and localhost for development.
   assetPrefix: isProd
-    ? 'https://change.greenpeace.org.hk/app/plasticfree-harbour-demo/'
+    ? 'https://change.greenpeace.org.hk/app/plasticfree-harbour/'
     : '',
   trailingSlash: true,
   exportPathMap: async () => ({
