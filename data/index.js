@@ -1,13 +1,13 @@
-import shing from '../assets/images/shing-avatar.png';
+import gloria from '../assets/images/gloria.png';
 
 import mandyCat from '../assets/images/mandyCat-avatar.png';
-import leanneTam from '../assets/images/leanneTam-avatar.png';
+import leanneTam from '../assets/images/leanneTam.png';
 import brianKan from '../assets/images/brianKan-avatar.png';
 
-import date1 from '../assets/images/79.png';
-import date2 from '../assets/images/80.png';
-import date3 from '../assets/images/81.png';
-import date4 from '../assets/images/82.png';
+import date1 from '../assets/images/event_launch.png';
+import date2 from '../assets/images/deadline.png';
+import date3 from '../assets/images/announce_date.png';
+import date4 from '../assets/images/event_date.png';
 
 const demo =
   'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/08/fdc48d59-gp0stupjr_high_res.jpg';
@@ -27,21 +27,21 @@ const data = {
     },
     {
       id: 'kol',
-      avatar: shing,
+      avatar: gloria,
       pic: 'https://via.placeholder.com/800x800.png',
-      name: 'KOL',
-      designation: '環保 KOL',
+      name: '葉蘊儀 Gloria Yip',
+      designation: '多媒體藝術家',
       profile:
-        '評審團將由著名插畫家、環保 KOL、環保繪本小畫家及綠色和平代表組成。評審團將由著名插畫家、環保 KOL、環保繪本小畫家及綠色和平代表組成。',
-      ig: 'fhs.f',
-      fb: 'FHS Wildlife',
+        '葉蘊儀，出生於香港，香港女演員、歌手及藝術家。香港影劇圈在八十年代末崛起的玉女明星，以清純可愛形象出道。13歲開始拍攝廣告，隨後踏入演藝圈，演藝事業在香港、日本、韓國、台灣、中國大陸以及亞洲各地都有不錯的成績。以女書相關背景研究為碩士論文主題，近年以視覺藝術家身分在香港活動，媒材包含陶藝、編織、新鮮蔬果、複合媒材、多媒體等，平日觀注香港人權、女性自主、教育、環保等議題，並受邀在明報發表專欄，並著有《她們的二三事》一書。(TBC)',
+      ig: '',
+      fb: '',
     },
     {
       id: 'leannetam',
       avatar: leanneTam,
       pic: 'https://via.placeholder.com/800x800.png',
       name: '譚穎琳 Leanne Tam',
-      designation: '綠色和平走塑項目主任',
+      designation: '綠色和平減塑項目主任',
       profile:
         '走塑項目主任譚穎琳（Leanne）在綠色和平工作數年間，積極推行「全城走塑」項目，除了把握政府政策窗口發聲，Leanne 曾帶領團隊舉行多個不同形式的大型社區活動，促進社區走塑風潮；過往成功招募超過 1,100 間走塑店鋪，又推出重用餐具社區實驗活動，最近更夥拍初創公司開創智能借杯手機 App！',
       ig: 'https://www.instagram.com/greenpeace_hk/',

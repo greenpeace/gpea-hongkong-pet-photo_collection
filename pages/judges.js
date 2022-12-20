@@ -14,16 +14,6 @@ import Judge from '@/components/Judge';
 
 import data from '../data';
 
-// const MasonryItem = styled.li`
-//   width: 90%;
-//   max-width: 380px;
-// `
-// const masonryOptions = {
-//   originTop: true,
-//   gutter: 20,
-//   itemSelector: '.photo-item',
-// }
-
 export default function Index() {
   return (
     <>
@@ -42,7 +32,7 @@ export default function Index() {
           評審團將由著名插畫家、環保 KOL、環保繪本小畫家及綠色和平代表組成
         </Text>
         <Box d={'none'} py={6} width={'100%'} maxWidth={'240px'}>
-          <UploadButton />
+          <UploadButton url={'https://api.greenpeace.org.hk/app/preview-hk/?preview=event-plastics-plasticfree_harbour'} />
         </Box>
       </TopBanner>
       <PageContainer>
@@ -75,7 +65,7 @@ export default function Index() {
           maxW={'140px'}
           my={8}
         >
-          <UploadButton />
+           <UploadButton url={'https://api.greenpeace.org.hk/app/preview-hk/?preview=event-plastics-plasticfree_harbour'} />
         </Flex>
       </PageContainer>
     </>

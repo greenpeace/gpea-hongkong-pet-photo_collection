@@ -10,6 +10,9 @@ import UploadButton from '@/components/site/button/uploadButton';
 
 import data from '../data';
 
+import vs01 from "../assets/images/vs01.jpeg"
+import vs02 from "../assets/images/vs02.jpeg"
+
 const ImageRounded = ({ children }) => {
   return (
     <Box rounded={'md'} boxShadow={'2xl'} width={'full'} overflow={'hidden'}>
@@ -69,10 +72,10 @@ export default function Index() {
                 守護環境需要結合眾人之力，向世界展示你我的「無塑」願景，動員小朋友、大朋友守護屬於我們的海港。期待你的參與，將創意設計轉化成推動「減塑」的力量。
               </Text>
               <Text>
-                立即參與，一人一個設計，一起推廣「重用杯借還系統」和全城走塑理念，讓下一代仍能享受同見證這片蔚藍海港的醉人景色
+                立即參與，一人一個設計，一起推廣「重用杯借還系統」和全城走塑理念，讓下一代仍能享受同見證這片蔚藍海港的醉人景色！
               </Text>
               <Box py={6} width={'100%'} maxWidth={'240px'}>
-                <UploadButton url={'/'} />
+                <UploadButton url={'https://api.greenpeace.org.hk/app/preview-hk/?preview=event-plastics-plasticfree_harbour'} />
               </Box>
             </Stack>
           </Box>
@@ -80,15 +83,15 @@ export default function Index() {
             <Stack spacing={6}>
               <ImageRounded>
                 <Image
-                  src="https://www.greenpeace.org/static/planet4-hongkong-stateless/2020/10/6baccb13-dji_0185-l-e1622200897723.jpg"
-                  alt="綠色和平「堅守大嶼滑翔傘行動」。© Vincent Chan / Greenpeace"
+                  src={vs02}
+                  alt="「無塑海港」重用杯創意設計比賽"
                   loading="lazy"
                 />
               </ImageRounded>
               <ImageRounded>
                 <Image
-                  src="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/05/729d9cbc-gp1sul6v_high_res-scaled.jpg"
-                  alt="綠色和平一直堅持守護生態，反對明日大嶼填海計劃。"
+                  src={vs01}
+                  alt="「無塑海港」重用杯創意設計比賽"
                   loading="lazy"
                 />
               </ImageRounded>

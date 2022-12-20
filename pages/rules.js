@@ -23,6 +23,7 @@ import TopBanner from '@/components/site/banner/banner';
 import UploadButton from '@/components/site/button/uploadButton';
 
 import GroupTable from '@/components/rules/group';
+import RewardsTable from '@/components/rules/rewards';
 
 import data from '../data';
 
@@ -38,17 +39,15 @@ export default function Index() {
   return (
     <>
       <Head>
-        <Head>
           <title>
             比賽詳情 - 「無塑海港」重用杯創意設計比賽 - Greenpeace 綠色和平 |
             香港
           </title>
-        </Head>
-        <meta
+          <meta
           name="description"
           content="發揮創意，繪製「無塑海港」，立即上載你的作品，贏取豐富獎品並優先參與「無塑海港」展覽。各組別優勝作品將印刷成實物，成為你獨一無二的專屬重用杯，並於綠色和平「無塑海港」展覽展出及用作推廣綠色和平項目之用途，讓公眾進一步了解重用系統的概念及願景。"
         />
-      </Head>
+        </Head>
       <TopBanner
         src={
           'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/87ea4a0b-gp1sular_high_res.jpg'
@@ -96,7 +95,7 @@ export default function Index() {
               <ListItem>
                 <Text fontSize={'sm'}>
                   重用杯設計檔將會於報名後以電郵方式提供給參加者，參加者需把參賽設計以手繪或電腦繪圖畫在重用杯設計檔上，並於作品上載網站（公開組）/
-                  設計檔後頁（學校團體組）寫上 100 字內的創作意念
+                  設計檔後頁（學校團體組）<b>寫上 100 字內的創作意念</b>
                 </Text>
               </ListItem>
             </OrderedList>
@@ -131,7 +130,7 @@ export default function Index() {
           <UnorderedList spacing={2} pl={2}>
             <ListItem>
               <Text fontSize={'sm'}>
-                所有參加者成功上載參賽作品後，均可得到電子參賽證書一張
+                所有參加者成功上載參賽作品後，均可得到電子參賽證書乙張
               </Text>
             </ListItem>
             <ListItem>
@@ -166,7 +165,7 @@ export default function Index() {
                 <UnorderedList spacing={2}>
                   <ListItem>
                     <Text fontSize={'sm'}>
-                      公眾組別：重用杯設計檔、作品上載專屬連結；
+                      公開組：重用杯設計檔、作品上載專屬連結；
                     </Text>
                   </ListItem>
                   <ListItem>
@@ -182,7 +181,7 @@ export default function Index() {
 
               <ListItem>
                 <Text fontSize={'sm'}>
-                  請於最後遞交日期 2023 年 2 月 12 日 23:59 或之前遞交參賽作品
+                  請於截止日期 2023 年 2 月 12 日 晚上 11 時 59 分前遞交參賽作品
                   <br />
                   *學校組別遞交日期以信封上郵戳所示日期為準
                 </Text>
@@ -235,7 +234,7 @@ export default function Index() {
                 <Text fontSize={'sm'}>檔案格式：JPG 及 PDF</Text>
               </ListItem>
               <ListItem>
-                <Text fontSize={'sm'}>檔案大小：JPG 及 PDF（10MB 或以上）</Text>
+                <Text fontSize={'sm'}>檔案大小：JPG 及 PDF（10MB 或以下）</Text>
               </ListItem>
             </OrderedList>
 
@@ -269,14 +268,16 @@ export default function Index() {
               </ListItem>
             </OrderedList>
             <Text fontSize={'sm'} my={2}>
-              本設計比賽優勝作品將於 2023 年 1
-              月選出，並以電子郵件通知。各評審的評審結果為最終決定。
+              本設計比賽優勝作品將於 2023 年 3月選出，並以電子郵件通知。各評審的評審結果為最終決定。
             </Text>
           </Box>
 
           <Divider my={4} />
           <RuleHeadline>獎項及獎品</RuleHeadline>
-          <Box>
+
+          <RewardsTable/>
+
+          {/* <Box>
             <Text fontSize={'sm'} mb={2}>
               冠軍、亞軍、季軍及優異獎各一名，共 4 個獎項，得獎者可獲得
             </Text>
@@ -349,7 +350,7 @@ export default function Index() {
                 <Text fontSize={'sm'}>Slowood 精美環保禮品包乙份</Text>
               </ListItem>
             </OrderedList>
-          </Box>
+          </Box> */}
 
           <Text fontSize={'sm'} fontWeight={500} style={{ color: '#1A202C' }}>
             *獎品將於 3 月比賽頒獎禮頒發

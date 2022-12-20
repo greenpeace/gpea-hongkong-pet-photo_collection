@@ -88,7 +88,7 @@ function WithSubnavigation({ user, setModal, setSorting }) {
         </Flex>
 
         <Flex flex={1} justify={'flex-end'} direction={'row'} maxW={'140px'}>
-          <UploadButton />
+          <UploadButton url={'https://api.greenpeace.org.hk/app/preview-hk/?preview=event-plastics-plasticfree_harbour'} />
         </Flex>
       </Flex>
 

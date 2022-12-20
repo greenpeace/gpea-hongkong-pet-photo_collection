@@ -7,10 +7,16 @@ import _ from 'lodash';
 
 const UploadButton = ({ setModal, user, url }) => {
   const router = useRouter();
-  const { signed } = user;
+  // const { signed } = user;
 
   if (!!url) {
     return (
+      <Link
+        style={{ textDecoration: 'none' }}
+        href={url}
+        target="_blank"
+        w={'100%'}
+      >
         <Button
           className="main-cta"
           w={'100%'}
@@ -21,15 +27,14 @@ const UploadButton = ({ setModal, user, url }) => {
           fontWeight={'bold'}
           color={'white'}
           bg={'orange.500'}
-          href={'#'}
           _hover={{
             bg: 'orange',
           }}
-          style={{textDecoration: 'none'}}
-          onClick={() => router.push(url)}
+          rel="noreferrer"
         >
           立即參加
         </Button>
+      </Link>
     );
   }
 

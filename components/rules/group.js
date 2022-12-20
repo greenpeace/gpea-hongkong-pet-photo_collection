@@ -1,3 +1,5 @@
+import { Text, Link } from '@chakra-ui/react';
+
 const Group = () => {
   const ClickIcon = () => (
     <div className="w-[24px]">
@@ -34,9 +36,12 @@ const Group = () => {
 
               <li className="inline-flex items-center text-gray-600 cursor-auto">
                 <ClickIcon />
-                額外捐款$200 (可獲得減塑徽章乙個及咖啡優惠券乙張(*指定商店))
+                額外捐款$200：可獲得減塑徽章乙個及咖啡優惠券乙張（*指定商店）
               </li>
             </ul>
+            <div className="text-gray-600 text-sm mt-4">
+              每月捐款支持者報名詳情，可參閱本會早前已發送之電郵。
+            </div>
           </div>
 
           <p className="mt-4 font-medium text-gray-700">公眾人士</p>
@@ -45,36 +50,66 @@ const Group = () => {
             <ul className="grid grid-cols-1 gap-4 ">
               <li className="inline-flex items-center text-gray-600 cursor-auto">
                 <ClickIcon />
-                $150 （可獲得減塑徽章乙個）
+                $150：可獲得減塑徽章乙個
               </li>
 
               <li className="inline-flex items-center text-gray-600 cursor-auto">
                 <ClickIcon />
-                $350 （可獲得減塑徽章乙個、咖啡渣番梘乙個）
+                $350：可獲得減塑徽章乙個、咖啡渣番梘乙個
               </li>
 
               <li className="inline-flex items-center text-gray-600 cursor-auto">
                 <ClickIcon />
-                $550
-                （可獲得減塑徽章乙個、咖啡渣番梘乙個及咖啡優惠券乙張）*指定商 店
+                $550：可獲得減塑徽章乙個、咖啡渣番梘乙個及咖啡優惠券乙張（*指定商店）
               </li>
             </ul>
+            <Link
+              href={'https://api.greenpeace.org.hk/app/preview-hk/?preview=event-plastics-plasticfree_harbour'}
+              target="_blank"
+              rel="noreferrer"
+              style={{ textDecoration: 'none' }}
+            >
+              <Text
+                fontWeight={700}
+                textAlign={'right'}
+                color={'brand.500'}
+                p={2}
+              >
+                立即報名
+              </Text>
+            </Link>
           </div>
         </div>
 
         <div className="p-5 border-t-4 border-b-4 border-[#66cc00] bg-white cursor-auto">
           <p className="uppercase text-sm font-medium text-gray-500">學校組</p>
 
-          <p className="mt-4 font-medium text-gray-700 cursor-auto">小學組及中學組</p>
+          <p className="mt-4 font-medium text-gray-700 cursor-auto">
+            小學組及中學組
+          </p>
 
           <div className="bg-[#F9F9F9] rounded-lg p-2 mt-2">
             <ul className="grid grid-cols-1 gap-4">
               <li className="inline-flex items-center text-gray-600 cursor-auto">
                 <ClickIcon />
-                $1,500
-                (不限參加人數，成功報名後可獲得「減塑知識王」教材包乙份，包括簡報、工作紙及教學指引)
+                $1,500：不限參加人數，成功報名後可獲得「減塑知識王」教材包乙份，包括簡報、工作紙及教學指引
               </li>
             </ul>
+            <Link
+              href={'https://api.greenpeace.org.hk/app/preview-hk/?preview=event-plastics-plasticfree_harbour'}
+              target="_blank"
+              rel="noreferrer"
+              style={{ textDecoration: 'none' }}
+            >
+              <Text
+                fontWeight={700}
+                textAlign={'right'}
+                color={'brand.500'}
+                p={2}
+              >
+                立即報名
+              </Text>
+            </Link>
           </div>
         </div>
       </div>
