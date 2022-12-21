@@ -13,8 +13,8 @@ import data from '../data';
 import vs01 from "../assets/images/vs01.jpeg"
 import vs02 from "../assets/images/vs02.jpeg"
 
-import mainVS from "../assets/images/GP_webbanner_Web1920x1080.jpg"
-import mobileMainVS from "../assets/images/GP_webbanner_banner390x550.jpg"
+import mainVS from "../assets/images/GP_ImageOnly_3751x1080.jpg"
+import mobileMainVS from "../assets/images/GP_ImageOnly_3751x1080.jpg"
 
 const ImageRounded = ({ children }) => {
   return (

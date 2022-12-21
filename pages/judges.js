@@ -13,8 +13,9 @@ import UploadButton from '@/components/site/button/uploadButton';
 import Judge from '@/components/Judge';
 
 import data from '../data';
-import mainVS from "../assets/images/GP_webbanner_Web1920x1080.jpg"
-import mobileMainVS from "../assets/images/GP_webbanner_banner390x550.jpg"
+import mainVS from "../assets/images/GP_ImageOnly_3751x1080.jpg"
+import mobileMainVS from "../assets/images/GP_ImageOnly_3751x1080.jpg"
+
 
 export default function Index() {
   return (

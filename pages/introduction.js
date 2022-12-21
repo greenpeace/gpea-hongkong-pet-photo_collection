@@ -10,6 +10,9 @@ import UploadButton from '@/components/site/button/uploadButton';
 
 import data from '../data';
 
+import mainVS from "../assets/images/GP_ImageOnly_3751x1080.jpg"
+import mobileMainVS from "../assets/images/GP_ImageOnly_3751x1080.jpg"
+
 const ImageRounded = ({ children }) => {
   return (
     <Box rounded={'md'} boxShadow={'2xl'} width={'full'} overflow={'hidden'}>
@@ -25,9 +28,8 @@ export default function Index() {
         <title>序言 - 山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 | 香港</title>
       </Head>
       <TopBanner
-        src={
-          'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/e4530e56-gp1sul8f_high_res-scaled.jpg'
-        }
+        src={mainVS}
+        mobile={mobileMainVS}
       >
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>序言</Heading>
         {/* <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>

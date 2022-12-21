@@ -29,8 +29,8 @@ import FormatTable from '@/components/rules/format';
 
 import data from '../data';
 
-import mainVS from "../assets/images/GP_webbanner_Web1920x1080.jpg"
-import mobileMainVS from "../assets/images/GP_webbanner_banner390x550.jpg"
+import mainVS from "../assets/images/GP_ImageOnly_3751x1080.jpg"
+import mobileMainVS from "../assets/images/GP_ImageOnly_3751x1080.jpg"
 
 const RuleHeadline = ({ children }) => {
   return (
