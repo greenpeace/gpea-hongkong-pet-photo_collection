@@ -1,4 +1,7 @@
-import { Text, Link } from '@chakra-ui/react';
+import { Text, Link, Image, Box, Flex } from '@chakra-ui/react';
+import image01 from "../../assets/images/202212_Design_graphic-12.jpg"
+import image02 from "../../assets/images/202212_Design_graphic-13.jpg"
+import image03 from "../../assets/images/202212_Design_graphic-14.png"
 
 const Group = () => {
   const ClickIcon = () => (
@@ -36,7 +39,10 @@ const Group = () => {
             <div className="text-gray-600 text-sm mt-4">
               每月捐款支持者報名詳情，可參閱本會早前已發送之電郵。
             </div>
+           
           </div>
+
+          <Image src={image02} alt={"獎品"} loading="lazy" />
 
           <p className="mt-4 font-medium text-gray-700">公眾人士</p>
 
@@ -73,7 +79,9 @@ const Group = () => {
               </Text>
             </Link>
           </div>
+          <Image src={image01} alt={"獎品"} loading="lazy" />
         </div>
+        
 
         <div className="p-5 border-t-4 border-b-4 border-[#66cc00] bg-white cursor-auto">
           <p className="uppercase text-sm font-medium text-gray-500">學校組</p>
@@ -105,6 +113,9 @@ const Group = () => {
               </Text>
             </Link>
           </div>
+          <Flex justify="end" align="end">
+          <Image src={image03} maxW={'120px'} py={2} align="right" alt={"獎品"} loading="lazy" />
+          </Flex>
         </div>
       </div>
     </div>

@@ -1,10 +1,13 @@
 import React from 'react';
 import { Box, Stack, Center } from '@chakra-ui/react';
 
+import mainVS from "../../../assets/images/GP__SocialPost800x800.jpg"
+
 const TopBanner = ({
-  src = 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2020/02/e2bf64c3-dji_0431-scaled.jpg',
-  mobile = 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2020/02/e2bf64c3-dji_0431-scaled.jpg',
+  src = mainVS,
+  mobile = mainVS,
   children,
+  opacity = 0.5
 }) => {
   return (
     <Stack
@@ -36,7 +39,7 @@ const TopBanner = ({
           top={0}
           bottom={0}
           w={'100%'}
-          opacity={0.5}
+          opacity={opacity}
         />
       </Center>
     </Stack>
