@@ -88,12 +88,12 @@ function WithSubnavigation({ user, setModal, setSorting }) {
         </Flex>
 
         <Flex flex={1} justify={'flex-end'} direction={'row'} maxW={'140px'}>
-          <UploadButton url={'https://api.greenpeace.org.hk/app/preview-hk/?preview=event-plastics-plasticfree_harbour'} />
+          {/* <UploadButton url={'https://api.greenpeace.org.hk/app/preview-hk/?preview=event-plastics-plasticfree_harbour'} /> */}
         </Flex>
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
-        <MobileNav isOpen={isOpen} />
+        <MobileNav isOpen={isOpen} onToggle={onToggle} />
       </Collapse>
     </Box>
   );
@@ -123,7 +123,7 @@ const DesktopNav = () => {
   );
 };
 
-const MobileNav = () => {
+const MobileNav = ({onToggle}) => {
   const NAV_ITEMS = process.env.NAV || [];
   return (
     <Stack
@@ -149,6 +149,7 @@ const MobileNav = () => {
                   textDecoration: 'none',
                   cursor: 'pointer',
                 }}
+                onClick={()=>onToggle()}
               >
                 <Text>{d.LABEL}</Text>
               </Box>

@@ -14,7 +14,7 @@ const Judge = ({ judge }) => {
       mt={12}
       id={judge.id}
     >
-      <Box w="33.33%" mx={'auto'} mt={-14}>
+      <Box w="33.33%" mx={'auto'} mt={-14} borderRadius={99} overflow={'hidden'}>
         <Image src={judge.avatar} alt={judge.name} loading="lazy" />
       </Box>
       <Stack spacing={6}>

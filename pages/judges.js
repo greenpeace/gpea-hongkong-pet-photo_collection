@@ -58,7 +58,7 @@ export default function Index() {
           ))}
         </Grid>
         {/* </Masonry> */}
-        <Flex
+        {/* <Flex
           flex={1}
           justify={'flex-end'}
           direction={'row'}
@@ -66,7 +66,7 @@ export default function Index() {
           my={8}
         >
            <UploadButton url={'https://api.greenpeace.org.hk/app/preview-hk/?preview=event-plastics-plasticfree_harbour'} />
-        </Flex>
+        </Flex> */}
       </PageContainer>
     </>
   );

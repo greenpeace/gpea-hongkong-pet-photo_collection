@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Wrapper from 'components/site/wrapper';
 import {
@@ -24,6 +25,7 @@ import UploadButton from '@/components/site/button/uploadButton';
 
 import GroupTable from '@/components/rules/group';
 import RewardsTable from '@/components/rules/rewards';
+import FormatTable from '@/components/rules/format';
 
 import data from '../data';
 
@@ -36,18 +38,31 @@ const RuleHeadline = ({ children }) => {
 };
 
 export default function Index() {
+  const publicRef = useRef(null);
+  const schoolRef = useRef(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.query?.detail === 'public') {
+      publicRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    if (router.query?.detail === 'school') {
+      schoolRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [router.query, publicRef, schoolRef]);
+
   return (
     <>
       <Head>
-          <title>
-            比賽詳情 - 「無塑海港」重用杯創意設計比賽 - Greenpeace 綠色和平 |
-            香港
-          </title>
-          <meta
+        <title>
+          比賽詳情 - 「無塑海港」重用杯創意設計比賽 - Greenpeace 綠色和平 | 香港
+        </title>
+        <meta
           name="description"
           content="發揮創意，繪製「無塑海港」，立即上載你的作品，贏取豐富獎品並優先參與「無塑海港」展覽。各組別優勝作品將印刷成實物，成為你獨一無二的專屬重用杯，並於綠色和平「無塑海港」展覽展出及用作推廣綠色和平項目之用途，讓公眾進一步了解重用系統的概念及願景。"
         />
-        </Head>
+      </Head>
       <TopBanner
         src={
           'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/87ea4a0b-gp1sular_high_res.jpg'
@@ -84,7 +99,7 @@ export default function Index() {
           <RuleHeadline>主題方向</RuleHeadline>
           <Box>
             <Text fontSize={'sm'} mb={2}>
-              「全城走塑，重用代替即棄，保護美麗海港」
+              <b>「全城走塑，重用代替即棄，保護美麗海港」</b>
             </Text>
             <OrderedList spacing={2}>
               <ListItem>
@@ -117,6 +132,8 @@ export default function Index() {
             </OrderedList>
           </Box>
 
+          <div id="public" ref={publicRef}></div>
+          <div id="school" ref={schoolRef}></div>
           <Divider my={4} />
 
           <RuleHeadline>參賽組別</RuleHeadline>
@@ -170,7 +187,7 @@ export default function Index() {
                   </ListItem>
                   <ListItem>
                     <Text fontSize={'sm'}>
-                      學校組別：重用杯設計檔、作品遞交需知、「減塑知識王」教材包；
+                      學校組別：重用杯設計檔、作品遞交需知、「無塑海港」教材包；
                     </Text>
                   </ListItem>
                   <ListItem>
@@ -219,35 +236,8 @@ export default function Index() {
           <Divider my={4} />
 
           <RuleHeadline>作品格式</RuleHeadline>
-          <Box>
-            <OrderedList spacing={2}>
-              <ListItem>
-                <Text fontSize={'sm'}>
-                  檔案名稱要求： 報名英文姓名及電話號碼（例如：Lam Tai
-                  Man_51234567）
-                </Text>
-              </ListItem>
-              <ListItem>
-                <Text fontSize={'sm'}>圖片像素：300dpi 或以上</Text>
-              </ListItem>
-              <ListItem>
-                <Text fontSize={'sm'}>檔案格式：JPG 及 PDF</Text>
-              </ListItem>
-              <ListItem>
-                <Text fontSize={'sm'}>檔案大小：JPG 及 PDF（10MB 或以下）</Text>
-              </ListItem>
-            </OrderedList>
 
-            <Text fontSize={'sm'} my={2}>
-              請代表老師將參賽學生中英文姓名以 excel 或 word 檔電郵至{' '}
-              <a href="mailto:event.hk@greenpeace.org">
-                <u>event.hk@greenpeace.org</u>
-              </a>
-              ，並將已清楚填上學生姓名及創作意念的作品以郵寄形式（有足夠郵資），寄付至：香港九龍新蒲崗太子道東
-              698 號寶光商業中心 10 樓
-              綠色和平辦公室（請註明：「無塑海港」重用杯創意設計比賽），成功遞交後將收到確認電郵。
-            </Text>
-          </Box>
+          <FormatTable/>
 
           <Divider my={4} />
 
@@ -268,89 +258,15 @@ export default function Index() {
               </ListItem>
             </OrderedList>
             <Text fontSize={'sm'} my={2}>
-              本設計比賽優勝作品將於 2023 年 3月選出，並以電子郵件通知。各評審的評審結果為最終決定。
+              本設計比賽優勝作品將於 2023 年
+              3月選出，並以電子郵件通知。各評審的評審結果為最終決定。
             </Text>
           </Box>
 
           <Divider my={4} />
           <RuleHeadline>獎項及獎品</RuleHeadline>
 
-          <RewardsTable/>
-
-          {/* <Box>
-            <Text fontSize={'sm'} mb={2}>
-              冠軍、亞軍、季軍及優異獎各一名，共 4 個獎項，得獎者可獲得
-            </Text>
-            <OrderedList spacing={2}>
-              <ListItem>
-                <Text fontSize={'sm'}>實體及電子證書各乙張；</Text>
-              </ListItem>
-              <ListItem>
-                <Text fontSize={'sm'}>
-                  現金書券乙份（冠軍$800、亞軍$500、季軍$300、優異$200）；
-                </Text>
-              </ListItem>
-              <ListItem>
-                <Text fontSize={'sm'}>得獎設計實體杯乙個；</Text>
-              </ListItem>
-              <ListItem>
-                <Text fontSize={'sm'}>Slowood 精美環保禮品乙份</Text>
-              </ListItem>
-            </OrderedList>
-          </Box>
-
-          <Box my={4}>
-            <Text fontSize={'sm'} mb={2}>
-              各組別均設有冠軍、亞軍、季軍及優異獎各一名，共 8
-              個獎項，得獎者可獲得：
-            </Text>
-            <OrderedList spacing={2}>
-              <ListItem>
-                <Text fontSize={'sm'}>實體及電子證書各乙張；</Text>
-              </ListItem>
-              <ListItem>
-                <Text fontSize={'sm'}>
-                  現金書券乙份（冠軍$800、亞軍$500、季軍$300、優異$200）；
-                </Text>
-              </ListItem>
-              <ListItem>
-                <Text fontSize={'sm'}>獎座乙個；</Text>
-              </ListItem>
-              <ListItem>
-                <Text fontSize={'sm'}>得獎設計實體杯乙個；</Text>
-              </ListItem>
-              <ListItem>
-                <Text fontSize={'sm'}>Slowood 精美環保禮品乙份；</Text>
-              </ListItem>
-              <ListItem>
-                <Text fontSize={'sm'}>
-                  綠色和平代表「減塑」講座乙次（可轉 zoom 形式進行）
-                </Text>
-              </ListItem>
-            </OrderedList>
-          </Box>
-
-          <Box my={4}>
-            <Text fontSize={'sm'} my={2}>
-              另設最踴躍學校參與獎 3 名得獎學校可獲得：
-            </Text>
-            <OrderedList spacing={2}>
-              <ListItem>
-                <Text fontSize={'sm'}>實體及電子證書各乙張；</Text>
-              </ListItem>
-              <ListItem>
-                <Text fontSize={'sm'}>獎座乙個；</Text>
-              </ListItem>
-              <ListItem>
-                <Text fontSize={'sm'}>
-                  綠色和平代表「減塑」講座乙次（可轉 zoom 形式進行）；
-                </Text>
-              </ListItem>
-              <ListItem>
-                <Text fontSize={'sm'}>Slowood 精美環保禮品包乙份</Text>
-              </ListItem>
-            </OrderedList>
-          </Box> */}
+          <RewardsTable />
 
           <Text fontSize={'sm'} fontWeight={500} style={{ color: '#1A202C' }}>
             *獎品將於 3 月比賽頒獎禮頒發

@@ -1,8 +1,8 @@
 import gloria from '../assets/images/gloria.png';
 
 import mandyCat from '../assets/images/mandyCat-avatar.png';
-import leanneTam from '../assets/images/leanneTam.png';
-import brianKan from '../assets/images/brianKan-avatar.png';
+import leanneTam from '../assets/images/leanneTam_avatar.jpeg';
+import brianKan from '../assets/images/brianKan_avatar.jpeg';
 
 import date1 from '../assets/images/event_launch.png';
 import date2 from '../assets/images/deadline.png';
@@ -32,7 +32,7 @@ const data = {
       name: '葉蘊儀 Gloria Yip',
       designation: '多媒體藝術家',
       profile:
-        '葉蘊儀，出生於香港，香港女演員、歌手及藝術家。香港影劇圈在八十年代末崛起的玉女明星，以清純可愛形象出道。13歲開始拍攝廣告，隨後踏入演藝圈，演藝事業在香港、日本、韓國、台灣、中國大陸以及亞洲各地都有不錯的成績。以女書相關背景研究為碩士論文主題，近年以視覺藝術家身分在香港活動，媒材包含陶藝、編織、新鮮蔬果、複合媒材、多媒體等，平日觀注香港人權、女性自主、教育、環保等議題，並受邀在明報發表專欄，並著有《她們的二三事》一書。(TBC)',
+        '葉蘊儀，演員、多媒體藝術家、澳洲墨爾本理工大學純藝術碩士，多以陶瓷、紅繩、粘土及布料為媒介進行創作，擅長裝置藝術及繪畫等。藝術作品曾多次於海內外展出並屢獲殊榮，包括入圍2014年意大利威尼斯Arte Laguna Prize裝置藝術媒介組別的裝置藝術作品《家書》（Home Poem）。<br/><br/>葉蘊儀身體力行推動環保，擅長以環保物料進行藝術創作，並推出環保手工課程，鼓勵小朋友以家中信手拈來的物料創作美觀又實用的擺設及用具，從小養成環保生活習慣。',
       ig: '',
       fb: '',
     },
@@ -80,7 +80,7 @@ const data = {
       {
         date: '2021年11月下旬',
         pic: date4,
-        details: '「與大師同攝」延伸活動',
+        details: '比賽頒獎禮及「無塑海港」展覽',
       },
     ],
     uploadHeadline: '相片上載',

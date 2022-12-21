@@ -17,12 +17,6 @@ const Group = () => {
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mx-auto">
         <div className="p-5 border-t-4 border-b-4 border-[#66cc00] bg-white cursor-auto">
           <p className="uppercase text-sm font-medium text-gray-500">公開組</p>
-
-          {/* <p className="mt-4 text-2xl text-gray-700 font-medium">
-            {' '}
-            綠色和平每月捐款支持者/公眾人士
-          </p> */}
-
           <p className="mt-4 font-medium text-gray-700">
             綠色和平每月捐款支持者
           </p>
@@ -64,7 +58,7 @@ const Group = () => {
               </li>
             </ul>
             <Link
-              href={'https://api.greenpeace.org.hk/app/preview-hk/?preview=event-plastics-plasticfree_harbour'}
+              href={'https://cloud.greenhk.greenpeace.org/donation-plastics-plasticfree_harbour_public'}
               target="_blank"
               rel="noreferrer"
               style={{ textDecoration: 'none' }}
@@ -92,11 +86,11 @@ const Group = () => {
             <ul className="grid grid-cols-1 gap-4">
               <li className="inline-flex items-center text-gray-600 cursor-auto">
                 <ClickIcon />
-                $1,500：不限參加人數，成功報名後可獲得「減塑知識王」教材包乙份，包括簡報、工作紙及教學指引
+                $1,500：不限參加人數，成功報名後可獲得「無塑海港」教材包乙份，包括簡報、工作紙及教學指引
               </li>
             </ul>
             <Link
-              href={'https://api.greenpeace.org.hk/app/preview-hk/?preview=event-plastics-plasticfree_harbour'}
+              href={'https://forms.gle/xcz1NFSdm7rjXdqR8'}
               target="_blank"
               rel="noreferrer"
               style={{ textDecoration: 'none' }}

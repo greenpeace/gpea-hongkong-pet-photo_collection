@@ -17,6 +17,9 @@ const nextConfig = {
       },
       { LABEL: '比賽評審', VALUE: 'judges', HREF: '/judges', REF: 'judges' },
       { LABEL: '比賽詳情', VALUE: 'rules', HREF: '/rules', REF: 'rules' },
+      { LABEL: '公開組報名詳情', VALUE: 'rules?detail=public', HREF: '/rules?detail=public', REF: 'rules?detail=public' },
+      { LABEL: '學校組報名詳情', VALUE: 'rules?detail=school', HREF: '/rules?detail=school', REF: 'rules?detail=school' },
+
       // {
       //   LABEL: '與大師同攝',
       //   VALUE: 'photowalk',
