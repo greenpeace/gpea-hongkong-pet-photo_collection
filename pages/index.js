@@ -13,6 +13,9 @@ import data from '../data';
 import vs01 from "../assets/images/vs01.jpeg"
 import vs02 from "../assets/images/vs02.jpeg"
 
+import mainVS from "../assets/images/GP_webbanner_Web1920x1080.jpg"
+import mobileMainVS from "../assets/images/GP_webbanner_banner390x550.jpg"
+
 const ImageRounded = ({ children }) => {
   return (
     <Box rounded={'md'} boxShadow={'2xl'} width={'full'} overflow={'hidden'}>
@@ -30,9 +33,8 @@ export default function Index() {
         </title>
       </Head>
       <TopBanner
-        src={
-          'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/e4530e56-gp1sul8f_high_res-scaled.jpg'
-        }
+        src={mainVS}
+        mobile={mobileMainVS}
       >
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>序言</Heading>
         {/* <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>

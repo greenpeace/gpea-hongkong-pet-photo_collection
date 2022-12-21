@@ -29,6 +29,9 @@ import FormatTable from '@/components/rules/format';
 
 import data from '../data';
 
+import mainVS from "../assets/images/GP_webbanner_Web1920x1080.jpg"
+import mobileMainVS from "../assets/images/GP_webbanner_banner390x550.jpg"
+
 const RuleHeadline = ({ children }) => {
   return (
     <Text fontWeight={700} color={'brand.500'} fontSize={'2xl'} mb={4}>
@@ -64,9 +67,8 @@ export default function Index() {
         />
       </Head>
       <TopBanner
-        src={
-          'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/87ea4a0b-gp1sular_high_res.jpg'
-        }
+        src={mainVS}
+        mobile={mobileMainVS}
       >
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>比賽詳情</Heading>
         <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>

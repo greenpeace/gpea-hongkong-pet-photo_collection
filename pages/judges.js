@@ -13,6 +13,8 @@ import UploadButton from '@/components/site/button/uploadButton';
 import Judge from '@/components/Judge';
 
 import data from '../data';
+import mainVS from "../assets/images/GP_webbanner_Web1920x1080.jpg"
+import mobileMainVS from "../assets/images/GP_webbanner_banner390x550.jpg"
 
 export default function Index() {
   return (
@@ -23,9 +25,8 @@ export default function Index() {
         </title>
       </Head>
       <TopBanner
-        src={
-          'https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/6cf0d78d-dji_0445.jpg'
-        }
+        src={mainVS}
+        mobile={mobileMainVS}
       >
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>比賽評審</Heading>
         <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
