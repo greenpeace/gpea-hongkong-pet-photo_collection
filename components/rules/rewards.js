@@ -34,7 +34,7 @@ const Rewards = () => {
           <p className="uppercase text-sm font-medium text-gray-500">公開組</p>
 
           <p className="my-4 text-gray-700">
-          冠軍、亞軍、季軍及優異獎各一名，共 4 個獎項，得獎者可獲得
+          冠軍、亞軍、季軍及優異獎各一名，共 4 個獎項，得獎者可獲得：
           </p>
 
           <OrderedList spacing={2}>
