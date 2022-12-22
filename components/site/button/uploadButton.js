@@ -4,8 +4,9 @@ import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
 import * as signupActions from 'store/actions/action-types/signup-actions';
 import _ from 'lodash';
+import NextLink from 'next/link'
 
-const UploadButton = ({ setModal, user, url }) => {
+const UploadButton = ({ setModal, user, url, target ="_blank" }) => {
   const router = useRouter();
   // const { signed } = user;
 
@@ -14,8 +15,9 @@ const UploadButton = ({ setModal, user, url }) => {
       <Link
         style={{ textDecoration: 'none' }}
         href={url}
-        target="_blank"
+        target={target}
         w={'100%'}
+        as={NextLink}
       >
         <Button
           className="main-cta"
@@ -83,9 +85,9 @@ const mapStateToProps = ({ user }) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setModal: (bol) => {
-      dispatch({ type: signupActions.SET_SIGNUP_MODAL, data: bol });
-    },
+    // setModal: (bol) => {
+    //   dispatch({ type: signupActions.SET_SIGNUP_MODAL, data: bol });
+    // },
   };
 };
 

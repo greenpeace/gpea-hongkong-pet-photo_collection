@@ -9,6 +9,7 @@ import {
   Image,
   Wrap,
   WrapItem,
+  Link
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import UploadButton from '@/components/site/button/uploadButton';
@@ -48,7 +49,7 @@ export default function Index({opacity}) {
           更新：「山海大嶼」攝影比賽2021已截止報名，多謝支持，請密切留意最新比賽消息。
         </Text> */}
         <Box py={6} width={'100%'} maxWidth={'240px'}>
-          <UploadButton  />
+          <UploadButton url="/rules" target='_self' />
         </Box>
         <Wrap spacing={4}>
           {data.judges.map((judge, index) => (
