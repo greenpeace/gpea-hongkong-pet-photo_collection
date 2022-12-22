@@ -9,7 +9,7 @@ export default function Index() {
   return (
     <>
       <Head>
-        <title>序言 - 山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 | 香港</title>
+        <title>山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 | 香港</title>
       </Head>
       <TopSection opacity={0}/>
       {/* <PageContainer>

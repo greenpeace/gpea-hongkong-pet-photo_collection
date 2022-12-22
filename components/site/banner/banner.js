@@ -2,10 +2,12 @@ import React from 'react';
 import { Box, Stack, Center } from '@chakra-ui/react';
 
 import mainVS from "../../../assets/images/GP__SocialPost800x800.jpg"
+import mainVSDesktop from "../../../assets/images/desktop.jpg"
+import mainVSMobile from "../../../assets/images/mobile.jpg"
 
 const TopBanner = ({
-  src = mainVS,
-  mobile = mainVS,
+  src = mainVSDesktop,
+  mobile = mainVSMobile,
   children,
   opacity = 0.5
 }) => {
