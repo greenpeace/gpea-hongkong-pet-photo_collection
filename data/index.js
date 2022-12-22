@@ -1,10 +1,10 @@
 import gloria from '../assets/images/gloria.png';
 
-import mandyCat from '../assets/images/mandyCat-avatar.png';
+import mandyCat from '../assets/images/Mandy-icon-05.png';
 import leanneTam from '../assets/images/leanneTam_avatar.jpeg';
 import brianKan from '../assets/images/brianKan_avatar.jpeg';
 
-import date1 from '../assets/images/event_launch.png';
+import date1 from '../assets/images/22.png';
 import date2 from '../assets/images/deadline.png';
 import date3 from '../assets/images/announce_date.png';
 import date4 from '../assets/images/event_date.png';

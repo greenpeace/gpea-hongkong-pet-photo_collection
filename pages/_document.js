@@ -38,7 +38,7 @@ class NextDocument extends Document {
           {/* meta image */}
           <meta
             property="og:image"
-            content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/8fc53baa-photo-album-preview2.jpg"
+            content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/12/043a25ec-gp_webbanner_banner390x550-1.jpg"
           />
           {/* Load google fonts */}
           <link rel="preconnect" href="https://fonts.gstatic.com" />

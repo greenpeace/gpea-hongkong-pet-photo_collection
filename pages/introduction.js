@@ -25,7 +25,7 @@ export default function Index() {
   return (
     <>
       <Head>
-        <title>序言 - 山海大嶼 攝影比賽2021 - Greenpeace 綠色和平 | 香港</title>
+        <title>序言 - 「無塑海港」重用杯創意設計比賽 - Greenpeace 綠色和平 | 香港</title>
       </Head>
       <TopBanner
         src={mainVS}
