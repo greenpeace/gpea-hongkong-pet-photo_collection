@@ -65,17 +65,18 @@ export default function Index({opacity}) {
               >
                 <Box
                   cursor="pointer"
-                  onClick={() => {
-                    router.push('/judges');
-                  }}
+                  // onClick={() => {
+                  //   router.push('/judges');
+                  // }}
+                  h={'80px'}
                 >
-                  <Avatar
+                  {/* <Avatar
                     size="lg"
                     name={judge.name}
                     src={judge.avatar}
                     loading="lazy"
                     bg="transparent"
-                  />
+                  /> */}
                 </Box>
               </Tooltip>
             </WrapItem>
