@@ -41,9 +41,8 @@ const data = {
       avatar: leanneTam,
       pic: 'https://via.placeholder.com/800x800.png',
       name: '譚穎琳 Leanne Tam',
-      designation: '綠色和平減塑項目主任',
-      profile:
-        '走塑項目主任譚穎琳（Leanne）在綠色和平工作數年間，積極推行「全城走塑」項目，除了把握政府政策窗口發聲，Leanne 曾帶領團隊舉行多個不同形式的大型社區活動，促進社區走塑風潮；過往成功招募超過 1,100 間走塑店鋪，又推出重用餐具社區實驗活動，最近更夥拍初創公司開創智能借杯手機 App！',
+      designation: '綠色和平減廢項目主任',
+      profile:'減廢項目主任譚穎琳（Leanne）在綠色和平工作期間於政策、企業及社區層面，積極倡議以源頭減廢方式解決垃圾問題。Leanne 與團隊在社區推行多個不同形式的計劃，例如2018年開始的「全城走塑」項目，至今成功招募過百名走塑小隊義工，共同蒐集超過 1,100 間走塑友善店鋪；2021年在荃灣推出重用餐具社區實驗活動；2022年更與本地初創公司合作推出數碼化的「重用杯借還系統」手機應用程式，成功連結36間咖啡店，包括咖啡品牌參與，一同實現以重用代替即棄的減廢願景。',
       ig: 'https://www.instagram.com/greenpeace_hk/',
       fb: 'https://www.facebook.com/greenpeacehk',
     },
@@ -80,7 +79,7 @@ const data = {
       {
         date: '2021年11月下旬',
         pic: date4,
-        details: '比賽頒獎禮及「無塑海港」展覽',
+        details: '比賽頒獎禮及<br/>「無塑海港」展覽',
       },
     ],
     uploadHeadline: '相片上載',

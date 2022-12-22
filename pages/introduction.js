@@ -66,7 +66,7 @@ export default function Index() {
               立即參與，一人一個設計，一起推廣「重用杯借還系統」和全城走塑理念，讓下一代仍能享受同見證這片蔚藍海港的醉人景色
               </Text>
               <Box py={6} width={'100%'} maxWidth={'240px'}>
-                <UploadButton url={'/'} />
+                <UploadButton url={'/rules'} />
               </Box>
             </Stack>
           </Box>

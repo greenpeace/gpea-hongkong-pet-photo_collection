@@ -90,7 +90,7 @@ export default function Index() {
               >
                 <Stack spacing={4} alignItems={'center'}>
                   <Image src={c.pic} alt={c.details} />
-                  <Text fontSize={'sm'}>{c.details}</Text>
+                  <Text fontSize={'sm'} dangerouslySetInnerHTML={{__html: c.details}} />
                 </Stack>
               </WrapItem>
             ))}
@@ -189,7 +189,7 @@ export default function Index() {
                   </ListItem>
                   <ListItem>
                     <Text fontSize={'sm'}>
-                      學校組別：重用杯設計檔、作品遞交需知、「無塑海港」教材包；
+                      學校組：重用杯設計檔、作品遞交需知、「無塑海港」教材包；
                     </Text>
                   </ListItem>
                   <ListItem>

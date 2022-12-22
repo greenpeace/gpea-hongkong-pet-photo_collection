@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Stack, Center } from '@chakra-ui/react';
 
 import mainVS from "../../../assets/images/GP__SocialPost800x800.jpg"
-import mainVSDesktop from "../../../assets/images/desktop.jpg"
+import mainVSDesktop from "../../../assets/images/desktop_v2.jpeg"
 import mainVSMobile from "../../../assets/images/mobile.jpg"
 
 const TopBanner = ({
