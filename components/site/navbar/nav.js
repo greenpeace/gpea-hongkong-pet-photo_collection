@@ -8,6 +8,7 @@ import {
   Image,
   useColorModeValue,
   useDisclosure,
+  Button,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
@@ -87,9 +88,68 @@ function WithSubnavigation({ user, setModal, setSorting }) {
           </Flex>
         </Flex>
 
+        <div className="md:hidden flex-1">&nbsp;</div>
+
+        <div className="hidden md:flex flex-col lg:flex-row gap-2">
         <Flex flex={1} justify={'flex-end'} direction={'row'} maxW={'140px'}>
-          {/* <UploadButton url={'https://api.greenpeace.org.hk/app/preview-hk/?preview=event-plastics-plasticfree_harbour'} /> */}
+          <a
+            href={
+              'https://cloud.greenhk.greenpeace.org/donation-plastics-plasticfree_harbour_public/?_gl=1*ndl4h0*_ga*OTgzMjQxMzM4LjE2NzE0MjIzNDQ.*_ga_4KSKE81WM7*MTY3MTc3MTczNS4xMy4xLjE2NzE3NzE4NzguNTcuMC4w&_ga=2.111883143.2073700989.1671590531-983241338.1671422344'
+            }
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Button
+              className="main-cta"
+              w={'100%'}
+              px={'4'}
+              py={'4'}
+              mx={'auto'}
+              rounded={'md'}
+              fontWeight={'bold'}
+              color={'white'}
+              bg={'orange.500'}
+              _hover={{
+                bg: 'orange',
+              }}
+              rel="noreferrer"
+              fontSize={{base: "sm", md: "md"}}
+            >
+              公開組報名
+            </Button>
+          </a>
         </Flex>
+
+        <Flex flex={1} justify={'flex-end'} direction={'row'} maxW={'140px'}>
+          <a
+            href={
+              'https://docs.google.com/forms/d/e/1FAIpQLScnV-d1rBK_RWJtUYB9VuujSs0PCBZxvfCF_-pOZp5IqSkuJg/viewform'
+            }
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Button
+              className="main-cta"
+              w={'100%'}
+              px={'4'}
+              py={'4'}
+              mx={'auto'}
+              rounded={'md'}
+              fontWeight={'bold'}
+              color={'white'}
+              bg={'orange.500'}
+              _hover={{
+                bg: 'orange',
+              }}
+              rel="noreferrer"
+              fontSize={{base: "sm", md: "md"}}
+            >
+              學校組報名
+            </Button>
+          </a>
+        </Flex>
+        </div>
+
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
@@ -102,12 +162,12 @@ function WithSubnavigation({ user, setModal, setSorting }) {
 const DesktopNav = () => {
   const NAV_ITEMS = process.env.NAV || [];
   return (
-    <Stack direction={'row'} spacing={8}>
+    <Stack direction={'row'} spacing={{base: 4, md:8}}>
       {NAV_ITEMS.map((d) => (
-        <Box key={d.LABEL}>
+        <Box key={d.LABEL} textAlign="center">
           <Link href={d.HREF} passHref>
             <Box
-              fontSize={'sm'}
+              fontSize={{base: "xs", md: "sm"}}
               fontWeight={500}
               _hover={{
                 textDecoration: 'none',
@@ -123,7 +183,7 @@ const DesktopNav = () => {
   );
 };
 
-const MobileNav = ({onToggle}) => {
+const MobileNav = ({ onToggle }) => {
   const NAV_ITEMS = process.env.NAV || [];
   return (
     <Stack
@@ -149,14 +209,70 @@ const MobileNav = ({onToggle}) => {
                   textDecoration: 'none',
                   cursor: 'pointer',
                 }}
-                onClick={()=>onToggle()}
+                onClick={() => onToggle()}
               >
                 <Text>{d.LABEL}</Text>
               </Box>
             </Link>
+
           </Flex>
         </Stack>
       ))}
+      <Flex flex={1} direction={'row'} maxW={'140px'}>
+          <a
+            href={
+              'https://cloud.greenhk.greenpeace.org/donation-plastics-plasticfree_harbour_public/?_gl=1*ndl4h0*_ga*OTgzMjQxMzM4LjE2NzE0MjIzNDQ.*_ga_4KSKE81WM7*MTY3MTc3MTczNS4xMy4xLjE2NzE3NzE4NzguNTcuMC4w&_ga=2.111883143.2073700989.1671590531-983241338.1671422344'
+            }
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Button
+              className="main-cta"
+              w={'100%'}
+              px={'4'}
+              py={'4'}
+              mx={'auto'}
+              rounded={'md'}
+              fontWeight={'bold'}
+              color={'white'}
+              bg={'orange.500'}
+              _hover={{
+                bg: 'orange',
+              }}
+              rel="noreferrer"
+            >
+              公開組報名
+            </Button>
+          </a>
+        </Flex>
+
+        <Flex flex={1} direction={'row'} maxW={'140px'}>
+          <a
+            href={
+              'https://docs.google.com/forms/d/e/1FAIpQLScnV-d1rBK_RWJtUYB9VuujSs0PCBZxvfCF_-pOZp5IqSkuJg/viewform'
+            }
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Button
+              className="main-cta"
+              w={'100%'}
+              px={'4'}
+              py={'4'}
+              mx={'auto'}
+              rounded={'md'}
+              fontWeight={'bold'}
+              color={'white'}
+              bg={'orange.500'}
+              _hover={{
+                bg: 'orange',
+              }}
+              rel="noreferrer"
+            >
+              學校組報名
+            </Button>
+          </a>
+        </Flex>
     </Stack>
   );
 };

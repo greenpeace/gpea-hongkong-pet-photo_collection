@@ -6,7 +6,7 @@ import * as signupActions from 'store/actions/action-types/signup-actions';
 import _ from 'lodash';
 import NextLink from 'next/link'
 
-const UploadButton = ({ setModal, user, url, target ="_blank" }) => {
+const UploadButton = ({ setModal, user, url, target ="_blank", text = "立即參加" }) => {
   const router = useRouter();
   // const { signed } = user;
 
@@ -18,6 +18,7 @@ const UploadButton = ({ setModal, user, url, target ="_blank" }) => {
         target={target}
         w={'100%'}
         as={NextLink}
+        isExternal
       >
         <Button
           className="main-cta"
@@ -34,7 +35,7 @@ const UploadButton = ({ setModal, user, url, target ="_blank" }) => {
           }}
           rel="noreferrer"
         >
-          立即參加
+          {text}
         </Button>
       </Link>
     );
