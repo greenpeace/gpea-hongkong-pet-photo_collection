@@ -29,7 +29,7 @@ const Format = () => {
   );
   return (
     <div className="tw mb-4">
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mx-auto">
+      <div className="w-full grid grid-cols-1 md:grid-cols-1 gap-6 mx-auto">
         <div className="p-5 border-t-4 border-b-4 border-[#66cc00] bg-white cursor-auto">
           <p className="uppercase text-sm font-medium text-gray-500">公開組</p>
 
@@ -56,21 +56,6 @@ const Format = () => {
                 </Text>
               </ListItem>
             </OrderedList>
-          </div>
-        </div>
-
-        <div className="p-5 border-t-4 border-b-4 border-[#66cc00] bg-white cursor-auto">
-          <p className="uppercase text-sm font-medium text-gray-500">學校組</p>
-
-          <div className="rounded-lg p-2 mt-1">
-            <Text fontSize={'sm'} my={2}>
-              請代表老師將參賽學生中英文姓名以 excel 或 word 檔電郵至{' '}
-              <a href="mailto:event.hk@greenpeace.org">
-                <u>event.hk@greenpeace.org</u>
-              </a>
-              ，並將已清楚填上學生姓名及創作意念的作品以郵寄形式（有足夠郵資），寄付至：香港九龍新蒲崗太子道東
-              698 號寶光商業中心 10 樓綠色和平辦公室（請註明：「無塑海港」重用杯創意設計比賽），成功遞交後將收到確認電郵。
-            </Text>
           </div>
         </div>
       </div>

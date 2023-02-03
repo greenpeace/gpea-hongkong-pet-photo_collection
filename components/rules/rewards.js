@@ -29,7 +29,7 @@ const Rewards = () => {
   );
   return (
     <div className="tw mb-4">
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mx-auto">
+      <div className="w-full grid grid-cols-1 md:grid-cols-1 gap-6 mx-auto">
         <div className="p-5 border-t-4 border-b-4 border-[#66cc00] bg-white cursor-auto">
           <p className="uppercase text-sm font-medium text-gray-500">公開組</p>
 
@@ -55,7 +55,7 @@ const Rewards = () => {
             </OrderedList>
         </div>
 
-        <div className="p-5 border-t-4 border-b-4 border-[#66cc00] bg-white cursor-auto">
+        {/* <div className="p-5 border-t-4 border-b-4 border-[#66cc00] bg-white cursor-auto">
           <p className="uppercase text-sm font-medium text-gray-500">學校組</p>
 
           <p className="my-4 text-gray-700 cursor-auto">
@@ -112,7 +112,7 @@ const Rewards = () => {
 
 
 
-        </div>
+        </div> */}
       </div>
     </div>
   );

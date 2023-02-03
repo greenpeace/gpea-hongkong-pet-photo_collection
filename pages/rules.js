@@ -126,11 +126,11 @@ export default function Index() {
               <ListItem>
                 <Text fontSize={'sm'}>綠色和平每月捐款人及公眾人士</Text>
               </ListItem>
-              <ListItem>
+              {/* <ListItem>
                 <Text fontSize={'sm'}>
                   分為小學組及中學組，學校可以以學校名義報名，參加後該校不限參加人數
                 </Text>
-              </ListItem>
+              </ListItem> */}
             </OrderedList>
           </Box>
 
@@ -172,8 +172,6 @@ export default function Index() {
               <ListItem>
                 <Text fontSize={'sm'}>
                   填妥網上報名表格並成功繳付報名費。
-                  <br />
-                  *以支票報名只適用於學校組別
                 </Text>
               </ListItem>
 
@@ -184,25 +182,28 @@ export default function Index() {
                 <UnorderedList spacing={2}>
                   <ListItem>
                     <Text fontSize={'sm'}>
-                      公開組：重用杯設計檔、作品上載專屬連結；
+                      重用杯設計檔、作品上載專屬連結；
                     </Text>
                   </ListItem>
                   <ListItem>
+                    <Text fontSize={'sm'}>
+                      有關索取禮品安排（如適用）
+                    </Text>
+                  </ListItem>
+                  {/* <ListItem>
                     <Text fontSize={'sm'}>
                       學校組：重用杯設計檔、作品遞交需知、「無塑海港」教材包；
                     </Text>
                   </ListItem>
                   <ListItem>
                     <Text fontSize={'sm'}>有關索取禮品安排（如適用）</Text>
-                  </ListItem>
+                  </ListItem> */}
                 </UnorderedList>
               </ListItem>
 
               <ListItem>
                 <Text fontSize={'sm'}>
-                  請於截止日期 2023 年 2 月 12 日 晚上 11 時 59 分前遞交參賽作品
-                  <br />
-                  *學校組別遞交日期以信封上郵戳所示日期為準
+                  請於截止日期 2023 年 2 月 19 日 晚上 11 時 59 分前遞交參賽作品
                 </Text>
               </ListItem>
 
@@ -325,7 +326,7 @@ export default function Index() {
                 <u>event.hk@greenpeace.org</u>
               </a>{' '}
               或於辦公時間星期一至五上午十時至下午六時（午膳時間除外）致電
-              2854-8318 或與會員服務部梁小姐 聯絡。
+              2854-8318 或與會員服務部郭小姐 聯絡。
             </Text>
           </Box>
 

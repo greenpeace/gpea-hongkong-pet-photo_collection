@@ -17,7 +17,7 @@ const Group = () => {
   );
   return (
     <div className="tw mb-4">
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mx-auto">
+      <div className="w-full grid grid-cols-1 gap-6 mx-auto">
         <div className="p-5 border-t-4 border-b-4 border-[#66cc00] bg-white cursor-auto">
           <p className="uppercase text-sm font-medium text-gray-500">公開組</p>
           <p className="mt-4 font-medium text-gray-700">
@@ -42,7 +42,7 @@ const Group = () => {
            
           </div>
 
-          <Image src={image02} alt={"獎品"} loading="lazy" />
+          <Image src={image02} alt={"獎品"} loading="lazy" maxW={400}/>
 
           <p className="mt-4 font-medium text-gray-700">公眾人士</p>
 
@@ -79,11 +79,11 @@ const Group = () => {
               </Text>
             </Link>
           </div>
-          <Image src={image01} alt={"獎品"} loading="lazy" />
+          <Image src={image01} alt={"獎品"} loading="lazy" maxW={600} />
         </div>
         
 
-        <div className="p-5 border-t-4 border-b-4 border-[#66cc00] bg-white cursor-auto">
+        {/* <div className="p-5 border-t-4 border-b-4 border-[#66cc00] bg-white cursor-auto">
           <p className="uppercase text-sm font-medium text-gray-500">學校組</p>
 
           <p className="mt-4 font-medium text-gray-700 cursor-auto">
@@ -116,7 +116,7 @@ const Group = () => {
           <Flex justify="end" align="end">
           <Image src={image03} maxW={'120px'} py={2} align="right" alt={"獎品"} loading="lazy" />
           </Flex>
-        </div>
+        </div> */}
       </div>
     </div>
   );

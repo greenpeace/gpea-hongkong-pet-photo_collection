@@ -5,8 +5,11 @@ import mainVS from "../../../assets/images/GP__SocialPost800x800.jpg"
 import mainVSDesktop from "../../../assets/images/desktop_v2.jpeg"
 import mainVSMobile from "../../../assets/images/mobile.jpg"
 
+import mainVSDesktopV3 from "../../../assets/images/mv_03.png"
+import mainVSMobileV3 from "../../../assets/images/mb_v3.jpeg"
+
 const TopBanner = ({
-  src = mainVSDesktop,
+  src = mainVSDesktopV3,
   mobile = mainVSMobile,
   children,
   opacity = 0.5
