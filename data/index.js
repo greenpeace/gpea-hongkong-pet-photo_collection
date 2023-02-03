@@ -5,7 +5,7 @@ import leanneTam from '../assets/images/leanneTam_avatar.jpeg';
 import brianKan from '../assets/images/brianKan_avatar.jpeg';
 
 import date1 from '../assets/images/22.png';
-import date2 from '../assets/images/deadline.png';
+import date2 from '../assets/images/219.png';
 import date3 from '../assets/images/announce_date.png';
 import date4 from '../assets/images/event_date.png';
 

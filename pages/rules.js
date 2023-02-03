@@ -4,9 +4,7 @@ import Head from 'next/head';
 import Wrapper from 'components/site/wrapper';
 import {
   Box,
-  Center,
   Divider,
-  List,
   OrderedList,
   ListItem,
   UnorderedList,
@@ -29,8 +27,8 @@ import FormatTable from '@/components/rules/format';
 
 import data from '../data';
 
-import mainVS from "../assets/images/GP_ImageOnly_3751x1080.jpg"
-import mobileMainVS from "../assets/images/GP_ImageOnly_3751x1080.jpg"
+import mainVS from '../assets/images/GP_ImageOnly_3751x1080.jpg';
+import mobileMainVS from '../assets/images/GP_ImageOnly_3751x1080.jpg';
 
 const RuleHeadline = ({ children }) => {
   return (
@@ -66,10 +64,7 @@ export default function Index() {
           content="發揮創意，繪製「無塑海港」，立即上載你的作品，贏取豐富獎品並優先參與「無塑海港」展覽。各組別優勝作品將印刷成實物，成為你獨一無二的專屬重用杯，並於綠色和平「無塑海港」展覽展出及用作推廣綠色和平項目之用途，讓公眾進一步了解重用系統的概念及願景。"
         />
       </Head>
-      <TopBanner
-        src={mainVS}
-        mobile={mobileMainVS}
-      >
+      <TopBanner src={mainVS} mobile={mobileMainVS}>
         <Heading fontSize={{ base: '3xl', md: '5xl' }}>比賽詳情</Heading>
         <Text lineHeight={'1.7'} fontSize={{ base: 'sm', md: 'md' }}>
           發揮創意，繪製「無塑海港」，立即上載你的作品，贏取豐富獎品並優先參與「無塑海港」展覽。各組別優勝作品將印刷成實物，成為你獨一無二的專屬重用杯，並於綠色和平「無塑海港」展覽展出及用作推廣綠色和平項目之用途，讓公眾進一步了解重用系統的概念及願景。
@@ -90,7 +85,10 @@ export default function Index() {
               >
                 <Stack spacing={4} alignItems={'center'}>
                   <Image src={c.pic} alt={c.details} />
-                  <Text fontSize={'sm'} dangerouslySetInnerHTML={{__html: c.details}} />
+                  <Text
+                    fontSize={'sm'}
+                    dangerouslySetInnerHTML={{ __html: c.details }}
+                  />
                 </Stack>
               </WrapItem>
             ))}
@@ -126,11 +124,6 @@ export default function Index() {
               <ListItem>
                 <Text fontSize={'sm'}>綠色和平每月捐款人及公眾人士</Text>
               </ListItem>
-              {/* <ListItem>
-                <Text fontSize={'sm'}>
-                  分為小學組及中學組，學校可以以學校名義報名，參加後該校不限參加人數
-                </Text>
-              </ListItem> */}
             </OrderedList>
           </Box>
 
@@ -170,9 +163,7 @@ export default function Index() {
           <Box>
             <OrderedList spacing={2}>
               <ListItem>
-                <Text fontSize={'sm'}>
-                  填妥網上報名表格並成功繳付報名費。
-                </Text>
+                <Text fontSize={'sm'}>填妥網上報名表格並成功繳付報名費。</Text>
               </ListItem>
 
               <ListItem>
@@ -186,9 +177,7 @@ export default function Index() {
                     </Text>
                   </ListItem>
                   <ListItem>
-                    <Text fontSize={'sm'}>
-                      有關索取禮品安排（如適用）
-                    </Text>
+                    <Text fontSize={'sm'}>有關索取禮品安排（如適用）</Text>
                   </ListItem>
                   {/* <ListItem>
                     <Text fontSize={'sm'}>
@@ -240,7 +229,7 @@ export default function Index() {
 
           <RuleHeadline>作品格式</RuleHeadline>
 
-          <FormatTable/>
+          <FormatTable />
 
           <Divider my={4} />
 

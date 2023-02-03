@@ -6,11 +6,11 @@ import mainVSDesktop from "../../../assets/images/desktop_v2.jpeg"
 import mainVSMobile from "../../../assets/images/mobile.jpg"
 
 import mainVSDesktopV3 from "../../../assets/images/mv_03.png"
-import mainVSMobileV3 from "../../../assets/images/mb_v3.jpeg"
+import mainVSMobileV3 from "../../../assets/images/mb_mv.jpg"
 
 const TopBanner = ({
   src = mainVSDesktopV3,
-  mobile = mainVSMobile,
+  mobile = mainVSMobileV3,
   children,
   opacity = 0.5
 }) => {
