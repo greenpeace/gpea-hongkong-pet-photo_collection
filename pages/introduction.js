@@ -13,6 +13,9 @@ import data from '../data';
 import mainVS from "../assets/images/GP_ImageOnly_3751x1080.jpg"
 import mobileMainVS from "../assets/images/GP_ImageOnly_3751x1080.jpg"
 
+import rImage from "../assets/images/20220628-ReuseCup-©Chilam-Wong-43.jpeg"
+import rImage02 from "../assets/images/GP0STRGP6_Web_size.jpg"
+
 const ImageRounded = ({ children }) => {
   return (
     <Box rounded={'md'} boxShadow={'2xl'} width={'full'} overflow={'hidden'}>
@@ -51,7 +54,7 @@ export default function Index() {
               海港是香港的重要標誌，無論是維港的城市景貌抑或離島的自然風光，都代表香港的面貌。
               </Text>
               <Text>
-              可是，每年卻有逾八百萬噸塑膠垃圾流入海洋，嚴重威脅海洋生態，以及你我和下一代的健康。
+              可是，每年卻有<b>逾八百萬噸塑膠垃圾流入海洋</b>，嚴重威脅海洋生態，以及你我和下一代的健康。
               </Text>
               <Text>
               綠色和平相信，從源頭減少即棄塑膠的生產和使用，並在社區實踐以重用代替即棄，善用社會共享資源，才是方便市民的源頭減廢方案，同時拯救我們引以為傲的美麗海港。
@@ -63,9 +66,9 @@ export default function Index() {
               守護環境需要結合眾人之力，向世界展示你我的「無塑」願景，動員小朋友、大朋友守護屬於我們的海港。期待你的參與，將創意設計轉化成推動「減塑」的力量。
               </Text>
               <Text>
-              立即參與，一人一個設計，一起推廣「重用杯借還系統」和全城走塑理念，讓下一代仍能享受同見證這片蔚藍海港的醉人景色
+              立即參與，一人一個設計，一起推廣<b>「重用杯借還系統」</b>和<b>全城走塑</b>理念，讓下一代仍能享受同見證這片蔚藍海港的醉人景色
               </Text>
-              <Box py={6} width={'100%'} maxWidth={'240px'}>
+              <Box py={6} width={'100%'} maxWidth={'240px'} alignSelf={{base: "center", sm: "flex-start"}}>
                 <UploadButton url={'/rules'} />
               </Box>
             </Stack>
@@ -74,14 +77,14 @@ export default function Index() {
             <Stack spacing={6}>
               <ImageRounded>
                 <Image
-                  src="https://www.greenpeace.org/static/planet4-hongkong-stateless/2020/10/6baccb13-dji_0185-l-e1622200897723.jpg"
+                  src={rImage}
                   alt="綠色和平「堅守大嶼滑翔傘行動」。© Vincent Chan / Greenpeace"
                   loading="lazy"
                 />
               </ImageRounded>
               <ImageRounded>
                 <Image
-                  src="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/05/729d9cbc-gp1sul6v_high_res-scaled.jpg"
+                  src={rImage02}
                   alt="綠色和平一直堅持守護生態，反對明日大嶼填海計劃。"
                   loading="lazy"
                 />

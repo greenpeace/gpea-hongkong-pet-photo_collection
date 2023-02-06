@@ -120,7 +120,7 @@ function WithSubnavigation({ user, setModal, setSorting }) {
           </a>
         </Flex>
 
-        <Flex flex={1} justify={'flex-end'} direction={'row'} maxW={'140px'}>
+        {/* <Flex flex={1} justify={'flex-end'} direction={'row'} maxW={'140px'}>
           <a
             href={
               'https://docs.google.com/forms/d/e/1FAIpQLScnV-d1rBK_RWJtUYB9VuujSs0PCBZxvfCF_-pOZp5IqSkuJg/viewform'
@@ -147,7 +147,7 @@ function WithSubnavigation({ user, setModal, setSorting }) {
               學校組報名
             </Button>
           </a>
-        </Flex>
+        </Flex> */}
         </div>
 
       </Flex>
@@ -245,7 +245,7 @@ const MobileNav = ({ onToggle }) => {
             </Button>
           </a>
         </Flex>
-
+{/* 
         <Flex flex={1} direction={'row'} maxW={'140px'}>
           <a
             href={
@@ -272,7 +272,7 @@ const MobileNav = ({ onToggle }) => {
               學校組報名
             </Button>
           </a>
-        </Flex>
+        </Flex> */}
     </Stack>
   );
 };
