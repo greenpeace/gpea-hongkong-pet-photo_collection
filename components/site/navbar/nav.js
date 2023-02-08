@@ -94,7 +94,7 @@ function WithSubnavigation({ user, setModal, setSorting }) {
         <Flex flex={1} justify={'flex-end'} direction={'row'} maxW={'140px'}>
           <a
             href={
-              'https://cloud.greenhk.greenpeace.org/donation-plastics-plasticfree_harbour_public/?_gl=1*ndl4h0*_ga*OTgzMjQxMzM4LjE2NzE0MjIzNDQ.*_ga_4KSKE81WM7*MTY3MTc3MTczNS4xMy4xLjE2NzE3NzE4NzguNTcuMC4w&_ga=2.111883143.2073700989.1671590531-983241338.1671422344'
+              'https://cloud.greenhk.greenpeace.org/donation-plastics-plasticfree_harbour_public'
             }
             target="_blank"
             rel="noreferrer"
@@ -115,7 +115,7 @@ function WithSubnavigation({ user, setModal, setSorting }) {
               rel="noreferrer"
               fontSize={{base: "sm", md: "md"}}
             >
-              公開組報名
+              立即報名
             </Button>
           </a>
         </Flex>
@@ -221,7 +221,7 @@ const MobileNav = ({ onToggle }) => {
       <Flex flex={1} direction={'row'} maxW={'140px'}>
           <a
             href={
-              'https://cloud.greenhk.greenpeace.org/donation-plastics-plasticfree_harbour_public/?_gl=1*ndl4h0*_ga*OTgzMjQxMzM4LjE2NzE0MjIzNDQ.*_ga_4KSKE81WM7*MTY3MTc3MTczNS4xMy4xLjE2NzE3NzE4NzguNTcuMC4w&_ga=2.111883143.2073700989.1671590531-983241338.1671422344'
+              'https://cloud.greenhk.greenpeace.org/donation-plastics-plasticfree_harbour_public'
             }
             target="_blank"
             rel="noreferrer"
@@ -241,7 +241,7 @@ const MobileNav = ({ onToggle }) => {
               }}
               rel="noreferrer"
             >
-              公開組報名
+              立即報名
             </Button>
           </a>
         </Flex>

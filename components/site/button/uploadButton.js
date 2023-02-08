@@ -6,7 +6,7 @@ import * as signupActions from 'store/actions/action-types/signup-actions';
 import _ from 'lodash';
 import NextLink from 'next/link'
 
-const UploadButton = ({ setModal, user, url, target ="_blank", text = "立即參加" }) => {
+const UploadButton = ({ setModal, user, url, target ="_blank", text = "立即報名" }) => {
   const router = useRouter();
   // const { signed } = user;
 
@@ -42,23 +42,6 @@ const UploadButton = ({ setModal, user, url, target ="_blank", text = "立即參
   }
 
   return (
-    // <Button
-    //   w={'100%'}
-    //   px={'4'}
-    //   py={'4'}
-    //   mx={'auto'}
-    //   rounded={'md'}
-    //   fontWeight={'bold'}
-    //   color={'white'}
-    //   bg={'orange.500'}
-    //   href={'#'}
-    //   _hover={{
-    //     bg: 'orange',
-    //   }}
-    //   onClick={() => (signed ? router.push('/upload') : setModal(true))}
-    // >
-    //   {signed ? '上載圖片' : '立即參加'}
-    // </Button>
     <Button
       className="main-cta"
       w={'100%'}

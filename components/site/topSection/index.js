@@ -9,7 +9,8 @@ import {
   Image,
   Wrap,
   WrapItem,
-  Link
+  Link,
+  Button
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import UploadButton from '@/components/site/button/uploadButton';
@@ -49,7 +50,36 @@ export default function Index({opacity}) {
           更新：「山海大嶼」攝影比賽2021已截止報名，多謝支持，請密切留意最新比賽消息。
         </Text> */}
         <Box py={6} width={'100%'} maxWidth={'240px'}>
-          <UploadButton url="/rules" target='_self' />
+
+        <a
+            href={
+              'https://cloud.greenhk.greenpeace.org/donation-plastics-plasticfree_harbour_public'
+            }
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Button
+              className="main-cta"
+              w={'100%'}
+              px={'4'}
+              py={'4'}
+              mx={'auto'}
+              rounded={'md'}
+              fontWeight={'bold'}
+              color={'white'}
+              bg={'orange.500'}
+              href={'#'}
+              _hover={{
+                bg: 'orange',
+              }}
+              fontSize={{base: "sm", md: "md"}}
+            >
+              立即報名
+            </Button>
+          </a>
+
+
+          {/* <UploadButton url='https://cloud.greenhk.greenpeace.org/donation-plastics-plasticfree_harbour_public' target='_blank' /> */}
         </Box>
         <Wrap spacing={4}>
           {data.judges.map((judge, index) => (
